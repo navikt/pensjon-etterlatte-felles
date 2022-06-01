@@ -1,4 +1,4 @@
-rootProject.name = "pensjon-etterlatte-root"
+rootProject.name = "pensjon-etterlatte-felles"
 
 include(
     "apps:etterlatte-proxy",

@@ -1,4 +1,4 @@
-# pensjon-etterlatte
+# pensjon-etterlatte-felles
 
 Monorepo med apper som er felles for Team Etterlatte
 
@@ -7,9 +7,6 @@ Monorepo med apper som er felles for Team Etterlatte
 
 [etterlatte-kafkamanager](apps/etterlatte-kafkamanager) \
 Kafka Manager for å enkelt se flyten til en søknad.
-
-[etterlatte-node-server](apps/etterlatte-node-server) \
-Felles node backend for Team Etterlatte sine React-apper.
 
 [etterlatte-notifikasjoner](apps/etterlatte-notifikasjoner) \
 App som sender notifikasjoner (e-post, sms, melding på nav.no) til sluttbrukeren.
