@@ -1,5 +1,9 @@
 plugins {
-    id("etterlatte.rapids-and-rivers")
+    id("etterlatte.common")
+}
+
+repositories {
+    maven("https://jitpack.io")
 }
 
 dependencies {
@@ -8,6 +12,7 @@ dependencies {
     implementation(Ktor.ClientLoggingJvm)
     implementation(Ktor.ClientAuth)
     implementation(Ktor.ClientJackson)
+    implementation(NavFelles.RapidAndRivers)
 
     implementation(project(":libs:common"))
 

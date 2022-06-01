@@ -1,12 +1,9 @@
 # pensjon-etterlatte
 
-Monorepo for ny løsning for ytelser til etterlatte
+Monorepo med apper som er felles for Team Etterlatte
 
 
 ## Apper
-
-[barnepensjon-ui](apps/barnepensjon-ui) \
-Brukergrensesnittet for "Søknad om barnepensjon".
 
 [etterlatte-kafkamanager](apps/etterlatte-kafkamanager) \
 Kafka Manager for å enkelt se flyten til en søknad.
@@ -25,21 +22,6 @@ Proxy for å tillate kommunikasjon mellom GCP og On-Prem.
 
 [ey-pdfgen](apps/ey-pdfgen) \
 Enkel app for opprettelse av PDF til journalføring. Benytter seg av [pdfgen](https://github.com/navikt/pdfgen)
-
-[gjenlevendepensjon-ui](apps/gjenlevendepensjon-ui) \
-Brukergrensesnittet for "Søknad om gjenlevendepensjon".
-
-[innsendt-soeknad](apps/innsendt-soeknad) \
-Database app for håndtering av søknader (lagring, uthenting, sending, m.m.).
-
-[journalfoer-soeknad](apps/journalfoer-soeknad) \
-Sikrer korrekt Journalføring av innsendt søknad.
-
-[selvbetjening-api](apps/selvbetjening-api) \
-API som tilgjengeliggjør data for frontend å kommunisere med diverse apper. 
-
-[sjekk-adressebeskyttelse](apps/sjekk-adressebeskyttelse) \
-Går igjennom alle fødselsnummer i søknaden og sjekker om noen av de har adressebeskyttelse.
 
 
 # Bygg og deploy
