@@ -6,7 +6,7 @@ metadata:
   name: post-til-kafka
   namespace: etterlatte
 spec:
-  image: docker.pkg.github.com/navikt/pensjon-etterlatte-felles/post-til-kafka:<versjon>
+  image: ghcr.io/navikt/pensjon-etterlatte-felles/post-til-kafka:<versjon>
   kafka:
     pool: nav-dev
   env:
