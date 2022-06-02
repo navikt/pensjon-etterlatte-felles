@@ -71,3 +71,6 @@ spec:
         - application: etterlatte-pdltjenester
           namespace: etterlatte
           cluster: dev-gcp
+        - application: etterlatte-opplysninger-fra-inntektskomponenten
+          namespace: etterlatte
+          cluster: dev-gcp
