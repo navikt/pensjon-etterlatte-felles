@@ -3,9 +3,12 @@
 
     <div class="header-content">
         <div class="user-info">
-            <p>{{uppercase mottaker.navn}}</p>
+            <p>{{uppercase mottaker.fornavn}} {{uppercase mottaker.etternavn}}</p>
             <p>{{uppercase mottaker.adresse}}</p>
-            <p>{{uppercase mottaker.postnummer}}</p>
+            <p>{{uppercase mottaker.postnummer}} {{uppercase mottaker.poststed}}</p>
+            {{#if mottaker.land}}
+                <p>{{uppercase mottaker.land}}</p>
+            {{/if}}
         </div>
 
         <p class="date">Dato: {{iso_to_date utsendingsDato}}</p>
