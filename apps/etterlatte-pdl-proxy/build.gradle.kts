@@ -3,7 +3,6 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":libs:common"))
     implementation(project(":libs:ktorclient-auth-clientcredentials"))
 
     implementation(NavFelles.TokenClientCore)
@@ -30,10 +29,3 @@ dependencies {
 
     implementation(Micrometer.Prometheus)
 }
-
-/*
-java {
-    sourceCompatibility = JavaVersion.VERSION_16
-    targetCompatibility = JavaVersion.VERSION_16
-}
-*/

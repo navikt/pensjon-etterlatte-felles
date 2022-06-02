@@ -16,8 +16,6 @@ import kotlinx.coroutines.runBlocking
 import no.nav.etterlatte.routes.dok
 import no.nav.etterlatte.routes.internal
 import no.nav.etterlatte.routes.kodeverk
-import no.nav.etterlatte.libs.common.logging.CORRELATION_ID
-import no.nav.etterlatte.libs.common.logging.X_CORRELATION_ID
 import no.nav.etterlatte.routes.inntektskomponenten
 import org.slf4j.event.Level
 import java.util.*
@@ -38,7 +36,7 @@ fun Application.module() {
     install(CallLogging) {
         level = Level.INFO
         filter { call -> !call.request.path().startsWith("/internal") }
-        mdc(CORRELATION_ID) { call -> call.request.header(X_CORRELATION_ID) ?: UUID.randomUUID().toString() }
+        mdc("correlation_id") { call -> call.request.header("x_correlation_id") ?: UUID.randomUUID().toString() }
     }
 
     routing {
