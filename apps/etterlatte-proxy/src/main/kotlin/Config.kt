@@ -9,12 +9,16 @@ data class Config(
     val kodeverk: KODEVERK,
     val dok: DOK,
     val aad: AAD,
-    val tokenX: TokenX
+    val tokenX: TokenX,
+    val inntektskomponenten: INNTEKTSKOMPONENTEN
 ) {
     data class DOK(
         val url: String
     )
     data class KODEVERK(
+        val url: String
+    )
+    data class INNTEKTSKOMPONENTEN(
         val url: String
     )
 
@@ -57,6 +61,7 @@ data class Config(
 suspend fun ApplicationConfig.load() = Config(
     dok = Config.DOK(url = property("dok.url").getString()),
     kodeverk = Config.KODEVERK(url = property("kodeverk.url").getString()),
+    inntektskomponenten = Config.INNTEKTSKOMPONENTEN(url = property("inntektskomponenten.url").getString()),
     sts = Config.Sts(
         url = property("sts.url").getString(),
         serviceuser = Config.Sts.ServiceUser(

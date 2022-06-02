@@ -18,6 +18,7 @@ import no.nav.etterlatte.routes.internal
 import no.nav.etterlatte.routes.kodeverk
 import no.nav.etterlatte.libs.common.logging.CORRELATION_ID
 import no.nav.etterlatte.libs.common.logging.X_CORRELATION_ID
+import no.nav.etterlatte.routes.inntektskomponenten
 import org.slf4j.event.Level
 import java.util.*
 
@@ -45,6 +46,7 @@ fun Application.module() {
         authenticate("aad") {
             route("/aad") {
                 dok(config, stsClient)
+                inntektskomponenten(config, stsClient)
             }
         }
         authenticate("tokenX") {
