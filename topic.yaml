@@ -96,3 +96,6 @@ spec:
     - team: etterlatte
       application: etterlatte-avkorting
       access: readwrite
+    - team: etterlatte
+      application: etterlatte-opplysninger-fra-inntektskomponenten
+      access: readwrite
