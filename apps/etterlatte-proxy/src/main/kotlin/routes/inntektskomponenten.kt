@@ -4,6 +4,7 @@ import io.ktor.application.call
 import io.ktor.client.features.ResponseException
 import io.ktor.client.request.get
 import io.ktor.client.request.header
+import io.ktor.client.request.post
 import io.ktor.client.statement.HttpResponse
 import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpStatusCode
@@ -30,7 +31,7 @@ fun Route.inntektskomponenten(config: Config, stsClient: StsClient) {
             val stsToken = stsClient.getToken()
 
             try {
-                val response = httpClient.get<HttpResponse>(dokUrl) {
+                val response = httpClient.post<HttpResponse>(dokUrl) {
                     header(HttpHeaders.Authorization, "Bearer $stsToken")
                     header(HttpHeaders.NavConsumerId, "barnepensjon")
                     header(HttpHeaders.NavCallId, HttpHeaders.NavCallId)
