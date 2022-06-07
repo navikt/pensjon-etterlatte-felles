@@ -51,7 +51,7 @@ spec:
       value: https://dokarkiv-q1.nais.preprod.local/rest/journalpostapi/v1/journalpost
     - name: KODEVERK_URL
       value: https://kodeverk.dev.adeo.no/api/v1/kodeverk
-    - name: INNTEKTKOMPONENTEN_URL
+    - name: INNTEKTSKOMPONENTEN_URL
       value: https://app-q2.adeo.no/inntektskomponenten-ws/rs/api/v1/hentinntektliste
   prometheus:
     enabled: true
