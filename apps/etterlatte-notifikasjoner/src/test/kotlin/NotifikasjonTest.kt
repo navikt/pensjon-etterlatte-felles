@@ -5,6 +5,7 @@ import no.nav.common.JAASCredential
 import no.nav.common.KafkaEnvironment
 import no.nav.etterlatte.Notifikasjon
 import no.nav.etterlatte.SendNotifikasjon
+import no.nav.etterlatte.libs.common.test.InnsendtSoeknadFixtures
 import no.nav.etterlatte.mapper
 import no.nav.helse.rapids_rivers.JsonMessage
 import no.nav.helse.rapids_rivers.testsupport.TestRapid
@@ -15,7 +16,6 @@ import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
-import soeknad.InnsendtSoeknadFixtures
 import java.util.*
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)

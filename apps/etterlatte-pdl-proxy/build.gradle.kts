@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":libs:ktorclient-auth-clientcredentials"))
+    implementation(Etterlatte.KtorClientAuth)
 
     implementation(NavFelles.TokenClientCore)
     implementation(NavFelles.TokenValidationKtor)

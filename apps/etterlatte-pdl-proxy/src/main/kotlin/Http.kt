@@ -7,7 +7,6 @@ import com.typesafe.config.Config
 import io.ktor.application.ApplicationCall
 import io.ktor.client.HttpClient
 import io.ktor.client.call.receive
-import io.ktor.client.engine.apache.Apache
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.features.auth.Auth
@@ -28,19 +27,6 @@ import io.ktor.utils.io.ByteWriteChannel
 import io.ktor.utils.io.copyAndClose
 import no.nav.etterlatte.security.ktor.clientCredential
 
-fun jsonClient() =  HttpClient(Apache) {
-    install(JsonFeature) {
-        serializer = JacksonSerializer { configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false) }
-    }
-}
-/*fun httpClient() = HttpClient(Apache){
-    install(Logging) {
-        level = LogLevel.HEADERS
-    }
-}.also { Runtime.getRuntime().addShutdownHook(Thread{it.close()}) }
-
-
- */
 fun defaultHttpClient() = HttpClient(CIO) {
     install(JsonFeature) {
         serializer = JacksonSerializer {
