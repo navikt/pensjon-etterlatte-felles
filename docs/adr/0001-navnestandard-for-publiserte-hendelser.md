@@ -7,7 +7,7 @@ Besluttet 2022-06-09 i utviklersync-møte
 En del  av arkitekturen som har vokst fram i løsningen er at applikasjoner reagerer på hendelsene til hverandre.
 Det kan oppleves rotete og lite intuitivt om alt om hvordan en hendelse ser ut defineres i hver app.
 
-## Alterantiver
+## Alternativer
 ### Innføre en navnestandard for hendelser
 Vi blir enige om en navnestandard, og alle apper må forholde seg til det.
 En slik navnestandard kan for eksempel utformes slik at det er enkelt å se hvor hendelsen kommer fra og hva den gjelder, uten detaljert kunskap om alle appene.
@@ -17,4 +17,4 @@ Vi lar alle apper lage sine egne navn på hendelser helt uavhengig av andre appe
 
 ## Konklusjon
 Vi vil ha en felles navnestandard på hendelsene våre.
-Hendelser publiseres med navn på formastet DOMENE:HENDELSE. For eksempel publiserer behandling hendelsen BEHANDLING:OPPRETTET når en behandling er opprettet.
+Hendelser publiseres med navn på formatet `DOMENE:HENDELSE`. For eksempel publiserer behandling hendelsen `BEHANDLING:OPPRETTET` når en behandling er opprettet.
