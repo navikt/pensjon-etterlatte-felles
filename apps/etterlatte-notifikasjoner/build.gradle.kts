@@ -14,10 +14,10 @@ dependencies {
     implementation(Ktor.ClientJackson)
     implementation(NavFelles.RapidAndRivers)
 
-    implementation(project(":libs:common"))
+    implementation(Etterlatte.Common)
 
     implementation("com.github.navikt:brukernotifikasjon-schemas:v2.5.1")
-    implementation(project(":libs:ktorclient-auth-clientcredentials"))
+    implementation(Etterlatte.KtorClientAuth)
     implementation ("com.nfeld.jsonpathkt:jsonpathkt:2.0.0")
     implementation("io.confluent:kafka-avro-serializer:6.2.2") {
         exclude(group = "org.slf4j", module = "slf4j-log4j12")
@@ -32,5 +32,5 @@ dependencies {
     testImplementation(MockK.MockK)
     testImplementation(Kafka.EmbeddedEnv)
 
-    testImplementation(project(":libs:common-test"))
+    testImplementation(Etterlatte.CommonTest)
 }

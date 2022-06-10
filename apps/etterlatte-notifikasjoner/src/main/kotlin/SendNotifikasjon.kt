@@ -1,11 +1,11 @@
 package no.nav.etterlatte
 
-import innsendtsoeknad.common.SoeknadType
 import no.nav.brukernotifikasjon.schemas.builders.BeskjedInputBuilder
 import no.nav.brukernotifikasjon.schemas.builders.NokkelInputBuilder
 import no.nav.brukernotifikasjon.schemas.input.BeskjedInput
 import no.nav.brukernotifikasjon.schemas.input.NokkelInput
 import no.nav.etterlatte.libs.common.innsendtsoeknad.common.InnsendtSoeknad
+import no.nav.etterlatte.libs.common.innsendtsoeknad.common.SoeknadType
 import org.apache.kafka.clients.producer.KafkaProducer
 import org.apache.kafka.clients.producer.Producer
 import org.apache.kafka.clients.producer.ProducerRecord

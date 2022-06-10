@@ -21,6 +21,15 @@ Proxy for å tillate kommunikasjon mellom GCP og On-Prem.
 Enkel app for opprettelse av PDF til journalføring. Benytter seg av [pdfgen](https://github.com/navikt/pdfgen)
 
 
+# Kom i gang
+
+Noen avhengigheter i prosjektet ligger i Github Package Registry som krever autentisering. Det enkleste er å lage en [PAT (Personal Access Token)](https://github.com/settings/tokens).
+
+1. Opprett [PAT](https://github.com/settings/tokens). I tilfelle lenken ikke fungerer går man til `Github -> Settings -> Developer settings -> Personal access tokens`
+2. Huk av `read:packages`. Ikke legg til flere scopes enn nødvendig.
+3. Tokenet legges i `.zshrc` med `export GITHUB_TOKEN=<token>`
+
+
 # Bygg og deploy
 
 En app bygges og deployes automatisk når en endring legges til i `main`. 
