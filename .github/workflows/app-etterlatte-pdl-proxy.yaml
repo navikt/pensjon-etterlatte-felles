@@ -19,7 +19,6 @@ on:
       - fix/*
     paths:
       - apps/etterlatte-pdl-proxy/**
-      - libs/common/**
 
 jobs:
   build-and-publish:

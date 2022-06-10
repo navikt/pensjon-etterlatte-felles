@@ -2,9 +2,8 @@ name: Verify branches
 
 on:
   push:
-    branches:
-      - '*'
-      - '!main'
+    branches-ignore:
+      - main
 
 jobs:
   verify-branches:
