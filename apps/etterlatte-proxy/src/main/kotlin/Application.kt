@@ -13,6 +13,7 @@ import io.ktor.routing.IgnoreTrailingSlash
 import io.ktor.routing.route
 import io.ktor.routing.routing
 import kotlinx.coroutines.runBlocking
+import no.nav.etterlatte.routes.aareg
 import no.nav.etterlatte.routes.dok
 import no.nav.etterlatte.routes.internal
 import no.nav.etterlatte.routes.kodeverk
@@ -45,6 +46,7 @@ fun Application.module() {
             route("/aad") {
                 dok(config, stsClient)
                 inntektskomponenten(config, stsClient)
+                aareg(config, stsClient)
             }
         }
         authenticate("tokenX") {
