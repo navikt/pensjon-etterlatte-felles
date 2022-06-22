@@ -8,6 +8,7 @@ import io.ktor.client.request.post
 import io.ktor.client.statement.HttpResponse
 import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpStatusCode
+import io.ktor.request.header
 import io.ktor.response.respondText
 import io.ktor.routing.Route
 import io.ktor.routing.post
@@ -20,6 +21,7 @@ import no.nav.etterlatte.httpClient
 import no.nav.etterlatte.pipeRequest
 import no.nav.etterlatte.pipeResponse
 import org.slf4j.LoggerFactory
+import java.util.*
 
 fun Route.inntektskomponenten(config: Config, stsClient: StsClient) {
     val logger = LoggerFactory.getLogger("no.pensjon.etterlatte")
@@ -29,12 +31,13 @@ fun Route.inntektskomponenten(config: Config, stsClient: StsClient) {
 
         post {
             val stsToken = stsClient.getToken()
+            val callId = call.request.header(HttpHeaders.NavCallId) ?: UUID.randomUUID().toString()
 
             try {
                 val response = httpClient.post<HttpResponse>(dokUrl) {
                     header(HttpHeaders.Authorization, "Bearer $stsToken")
                     header(HttpHeaders.NavConsumerId, "barnepensjon")
-                    header(HttpHeaders.NavCallId, HttpHeaders.NavCallId)
+                    header(HttpHeaders.NavCallId, callId)
                     pipeRequest(call)
                 }
                 call.pipeResponse(response)

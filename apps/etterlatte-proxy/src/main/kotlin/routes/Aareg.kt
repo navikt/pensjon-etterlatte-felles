@@ -33,6 +33,7 @@ fun Route.aareg(config: Config, stsClient: StsClient) {
             val stsToken = stsClient.getToken()
             val callId = call.request.header(HttpHeaders.NavCallId) ?: UUID.randomUUID().toString()
             val personIdent = call.request.header("Nav-Personident")
+            print("personident test: $personIdent")
             try {
                 val response = httpClient.post<HttpResponse>(url) {
                     header(HttpHeaders.Authorization, "Bearer $stsToken")
@@ -44,10 +45,10 @@ fun Route.aareg(config: Config, stsClient: StsClient) {
                 call.pipeResponse(response)
 
             } catch (cause: ResponseException) {
-                logger.error("Feil i kall mot inntektskomponenten: ", cause)
+                logger.error("Feil i kall mot aareg: ", cause)
                 call.pipeResponse(cause.response)
             } catch (cause: Throwable) {
-                logger.error("Feil i kall mot inntektskomponenten: ", cause)
+                logger.error("Feil i kall mot aareg: ", cause)
                 call.respondText(status = HttpStatusCode.InternalServerError) { cause.message ?: "Intern feil" }
             }
         }
