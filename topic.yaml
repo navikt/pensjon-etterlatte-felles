@@ -73,6 +73,9 @@ spec:
       application: etterlatte-utbetaling
       access: readwrite
     - team: etterlatte
+      application: etterlatte-tilbakekreving
+      access: readwrite
+    - team: etterlatte
       application: etterlatte-vilkaar-kafka
       access: readwrite
     - team: etterlatte
