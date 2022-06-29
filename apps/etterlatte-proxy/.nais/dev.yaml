@@ -54,7 +54,7 @@ spec:
     - name: INNTEKTSKOMPONENTEN_URL
       value: https://app-q2.adeo.no/inntektskomponenten-ws/rs/api/v1/hentinntektliste
     - name: AAREG_URL
-      value: https://aareg-services-q2.dev.intern.nav.no/aareg-services/api/v2
+      value: https://aareg-services.dev.intern.nav.no/api/v2
   prometheus:
     enabled: true
     path: /internal/prometheus
