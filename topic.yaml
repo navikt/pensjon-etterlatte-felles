@@ -102,3 +102,6 @@ spec:
     - team: etterlatte
       application: etterlatte-opplysninger-fra-inntektskomponenten
       access: readwrite
+    - team: etterlatte
+      application: etterlatte-brev-api
+      access: readwrite
