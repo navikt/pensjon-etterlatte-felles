@@ -10,7 +10,7 @@ import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
 import io.ktor.response.respondText
 import io.ktor.routing.Route
-import io.ktor.routing.post
+import io.ktor.routing.get
 import io.ktor.routing.route
 import no.nav.etterlatte.Config
 import no.nav.etterlatte.StsClient
@@ -28,24 +28,23 @@ fun Route.regoppslag(config: Config, stsClient: StsClient) {
 
         get("{ident}") {
             val stsToken = stsClient.getToken()
-            logger.info(stsToken)
+            logger.info(stsToken.toString())
 
             try {
                 val id = call.parameters["ident"]!!
 
                 val response = httpClient.post<HttpResponse>(regoppslagUrl + "/postadresse") {
                     header(HttpHeaders.Authorization, "Bearer $stsToken")
-                    header("Nav_Callid", 'barnepensjon')
-                    setBody(AdresseRequest(id, "PEN"))
-                    method = HttpMethod.Post
+                    header("Nav_Callid", "barnepensjon")
+                    body = AdresseRequest(id, "PEN")
                     pipeRequest(call)
                 }
                 call.pipeResponse(response)
             } catch (cause: ResponseException) {
-                logger.error("Feil i kall mot Dokarkiv: ", cause)
+                logger.error("Feil i kall mot Regoppslag: ", cause)
                 call.pipeResponse(cause.response)
             } catch (cause: Throwable) {
-                logger.error("Feil i kall mot Dokarkiv: ", cause)
+                logger.error("Feil i kall mot Regoppslag: ", cause)
                 call.respondText(status = HttpStatusCode.InternalServerError) { cause.message ?: "Intern feil" }
             }
         }
