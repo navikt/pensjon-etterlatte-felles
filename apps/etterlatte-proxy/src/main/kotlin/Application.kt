@@ -47,6 +47,7 @@ fun Application.module() {
                 dok(config, stsClient)
                 inntektskomponenten(config, stsClient)
                 aareg(config, stsClient)
+                regoppslag(config, stsClient)
             }
         }
         authenticate("tokenX") {

@@ -26,6 +26,10 @@ data class Config(
         val url: String
     )
 
+    data class REGOPPSLAG(
+        val url: String
+    )
+
     data class Sts(
         val url: String,
         val serviceuser: ServiceUser,
@@ -67,6 +71,7 @@ suspend fun ApplicationConfig.load() = Config(
     kodeverk = Config.KODEVERK(url = property("kodeverk.url").getString()),
     inntektskomponenten = Config.INNTEKTSKOMPONENTEN(url = property("inntektskomponenten.url").getString()),
     aareg = Config.AAREG(url = property("aareg.url").getString()),
+    regoppslag = Config.REGOPPSLAG(url = property("regoppslag.url").getString()),
     sts = Config.Sts(
         url = property("sts.url").getString(),
         serviceuser = Config.Sts.ServiceUser(
