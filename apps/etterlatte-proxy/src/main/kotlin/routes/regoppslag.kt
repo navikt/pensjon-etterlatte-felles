@@ -5,9 +5,11 @@ import io.ktor.client.features.ResponseException
 import io.ktor.client.request.header
 import io.ktor.client.request.post
 import io.ktor.client.statement.HttpResponse
+import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
+import io.ktor.http.contentType
 import io.ktor.response.respondText
 import io.ktor.routing.Route
 import io.ktor.routing.get
@@ -36,6 +38,7 @@ fun Route.regoppslag(config: Config, stsClient: StsClient) {
                 val response = httpClient.post<HttpResponse>(regoppslagUrl + "/postadresse") {
                     header(HttpHeaders.Authorization, "Bearer $stsToken")
                     header("Nav_Callid", "barnepensjon")
+                    contentType(ContentType.Application.Json)
                     body = AdresseRequest(id, "PEN")
                     pipeRequest(call)
                 }
