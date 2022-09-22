@@ -24,7 +24,7 @@ fun Route.regoppslag(config: Config, stsClient: StsClient) {
     val logger = LoggerFactory.getLogger("no.pensjon.etterlatte")
     route("/regoppslag") {
         val httpClient = httpClient()
-        val regoppslagUrl = config.dok.url
+        val regoppslagUrl = config.regoppslag.url
 
         get("{ident}") {
             val stsToken = stsClient.getToken()
