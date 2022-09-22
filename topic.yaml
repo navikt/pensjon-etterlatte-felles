@@ -114,3 +114,6 @@ spec:
     - team: etterlatte
       application: etterlatte-opplysninger-fra-medl
       access: readwrite
+    - team: etterlatte
+      application: etterlatte-statistikk
+      access: readwrite
