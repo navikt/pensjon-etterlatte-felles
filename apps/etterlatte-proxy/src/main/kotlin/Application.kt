@@ -17,6 +17,7 @@ import no.nav.etterlatte.routes.aareg
 import no.nav.etterlatte.routes.dok
 import no.nav.etterlatte.routes.internal
 import no.nav.etterlatte.routes.kodeverk
+import no.nav.etterlatte.routes.regoppslag
 import no.nav.etterlatte.routes.inntektskomponenten
 import org.slf4j.event.Level
 import java.util.*
