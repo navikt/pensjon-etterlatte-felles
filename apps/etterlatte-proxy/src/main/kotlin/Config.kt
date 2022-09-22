@@ -11,7 +11,8 @@ data class Config(
     val aad: AAD,
     val tokenX: TokenX,
     val inntektskomponenten: INNTEKTSKOMPONENTEN,
-    val aareg: AAREG
+    val aareg: AAREG,
+    val regoppslag: REGOPPSLAG
 ) {
     data class DOK(
         val url: String
