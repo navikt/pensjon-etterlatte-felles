@@ -1,20 +1,18 @@
 package no.nav.etterlatte.routes
 
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.ktor.application.call
 import io.ktor.client.features.ResponseException
 import io.ktor.client.request.header
 import io.ktor.client.request.post
 import io.ktor.client.statement.HttpResponse
-import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpStatusCode
-import io.ktor.http.content.TextContent
 import io.ktor.response.respondText
 import io.ktor.routing.Route
 import io.ktor.routing.get
 import io.ktor.routing.route
 import no.nav.etterlatte.Config
+import no.nav.etterlatte.NavConsumerToken
 import no.nav.etterlatte.StsClient
 import no.nav.etterlatte.httpClient
 import no.nav.etterlatte.pipeRequest
@@ -30,13 +28,14 @@ fun Route.regoppslag(config: Config, stsClient: StsClient) {
 
         get("{ident}") {
             val stsToken = stsClient.getToken()
-            logger.info(stsToken.toString())
+            logger.info("STS token: ${stsToken.toString()}")
 
             try {
                 val id = call.parameters["ident"]!!
 
                 val response = httpClient.post<HttpResponse>(regoppslagUrl + "/postadresse") {
                     header(HttpHeaders.Authorization, "Bearer $stsToken")
+                    header(HttpHeaders.NavConsumerToken, stsToken)
                     header("Nav_Callid", "barnepensjon")
                     body = AdresseRequest(id, "PEN")
                     pipeRequest(call)
