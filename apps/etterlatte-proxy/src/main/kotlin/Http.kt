@@ -5,17 +5,20 @@ import io.ktor.application.ApplicationCall
 import io.ktor.client.HttpClient
 import io.ktor.client.call.receive
 import io.ktor.client.engine.apache.Apache
+import io.ktor.client.features.defaultRequest
 import io.ktor.client.features.json.JacksonSerializer
 import io.ktor.client.features.json.JsonFeature
 import io.ktor.client.features.logging.LogLevel
 import io.ktor.client.features.logging.Logging
 import io.ktor.client.request.HttpRequestBuilder
+import io.ktor.client.request.header
 import io.ktor.client.statement.HttpResponse
 import io.ktor.http.ContentType
 import io.ktor.http.Headers
 import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.content.OutgoingContent
+import io.ktor.http.contentType
 import io.ktor.request.receiveChannel
 import io.ktor.response.respond
 import io.ktor.util.filter
@@ -34,6 +37,10 @@ fun jsonClient() =  HttpClient(Apache) {
 fun httpClient() = HttpClient(Apache){
     install(Logging) {
         level = LogLevel.HEADERS
+    }
+
+    defaultRequest {
+        contentType(ContentType.Application.Json)
     }
 }.also { Runtime.getRuntime().addShutdownHook(Thread{it.close()}) }
 

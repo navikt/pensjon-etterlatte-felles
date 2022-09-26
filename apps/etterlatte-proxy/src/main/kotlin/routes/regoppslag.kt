@@ -38,7 +38,7 @@ fun Route.regoppslag(config: Config, stsClient: StsClient) {
                 val response = httpClient.post<HttpResponse>(regoppslagUrl + "/postadresse") {
                     header(HttpHeaders.Authorization, "Bearer $stsToken")
                     header("Nav_Callid", "barnepensjon")
-                    body = TextContent(jacksonObjectMapper().writeValueAsString(AdresseRequest(id, "PEN")), contentType = ContentType.Application.Json)
+                    body = AdresseRequest(id, "PEN")
                     pipeRequest(call)
                 }
                 call.pipeResponse(response)
