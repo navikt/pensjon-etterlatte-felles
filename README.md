@@ -2,6 +2,17 @@
 
 Monorepo med apper som er felles for Team Etterlatte
 
+## Gi en ny app tilgang til Kafka-topic "etterlatte.dodsmelding"
+Legg inn appen i `topic.yaml` for dev, `topic-prod.yaml` for prod. Etter at det er lagt inn
+kan du oppdatere topicet ved å kjøre 
+
+```
+kubectl apply -f topic.yaml
+```
+
+i konteksten `dev-gcp`. For prod må du bruke `topic-prod.yaml` i stedet, og kontekst
+`prod-gcp`.
+
 
 ## Apper
 
