@@ -38,10 +38,6 @@ fun httpClient() = HttpClient(Apache){
     install(Logging) {
         level = LogLevel.HEADERS
     }
-
-    defaultRequest {
-        contentType(ContentType.Application.Json)
-    }
 }.also { Runtime.getRuntime().addShutdownHook(Thread{it.close()}) }
 
 fun httpClientWithProxy() = HttpClient(Apache) {
