@@ -7,6 +7,7 @@ import io.ktor.client.request.post
 import io.ktor.client.statement.HttpResponse
 import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpStatusCode
+import io.ktor.request.receive
 import io.ktor.response.respondText
 import io.ktor.routing.Route
 import io.ktor.routing.get
@@ -30,8 +31,9 @@ fun Route.regoppslag(config: Config, stsClient: StsClient) {
 
             try {
                 val id = call.parameters["ident"]!!
+                val request = call.receive<AdresseRequest>()
 
-                logger.info(call.request.toString())
+                logger.info("------ Request ------: ${request.toString()}")
 
                 val response = httpClient.post<HttpResponse>(regoppslagUrl + "/postadresse") {
                     header(HttpHeaders.Authorization, "Bearer $stsToken")
