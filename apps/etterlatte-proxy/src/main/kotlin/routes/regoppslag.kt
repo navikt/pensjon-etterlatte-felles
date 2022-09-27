@@ -31,9 +31,12 @@ fun Route.regoppslag(config: Config, stsClient: StsClient) {
             try {
                 val id = call.parameters["ident"]!!
 
+                logger.info(call.request.toString())
+
                 val response = httpClient.post<HttpResponse>(regoppslagUrl + "/postadresse") {
                     header(HttpHeaders.Authorization, "Bearer $stsToken")
                     header("Nav_Callid", "barnepensjon")
+                    body = AdresseRequest("11057523044")
                     pipeRequest(call)
                 }
                 call.pipeResponse(response)
@@ -48,3 +51,7 @@ fun Route.regoppslag(config: Config, stsClient: StsClient) {
     }
 }
 
+data class AdresseRequest(
+    val ident: String,
+    val tema: String = "PEN"
+)
