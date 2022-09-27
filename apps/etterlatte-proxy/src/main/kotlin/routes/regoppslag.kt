@@ -43,7 +43,6 @@ fun Route.regoppslag(config: Config, stsClient: StsClient) {
                     header(HttpHeaders.Authorization, "Bearer $stsToken")
                     header("Nav_Callid", "barnepensjon")
                     body = TextContent(objectMapper.writeValueAsString(AdresseRequest(id)), ContentType.Application.Json)
-                    pipeRequest(call)
                 }
                 call.pipeResponse(response)
             } catch (cause: ResponseException) {
