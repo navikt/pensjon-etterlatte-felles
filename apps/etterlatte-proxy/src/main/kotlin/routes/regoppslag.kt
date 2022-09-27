@@ -31,9 +31,6 @@ fun Route.regoppslag(config: Config, stsClient: StsClient) {
 
             try {
                 val id = call.parameters["ident"]!!
-                val request = call.receive<AdresseRequest>()
-
-                logger.info("------ Request ------: ${request.toString()}")
 
                 val response = httpClient.post<HttpResponse>(regoppslagUrl + "/postadresse") {
                     header(HttpHeaders.Authorization, "Bearer $stsToken")
