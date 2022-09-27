@@ -15,6 +15,7 @@ import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.content.TextContent
+import io.ktor.http.contentType
 import io.ktor.response.respondText
 import io.ktor.routing.Route
 import io.ktor.routing.get
@@ -48,6 +49,7 @@ fun Route.regoppslag(config: Config, stsClient: StsClient) {
                     header("Nav_Callid", "barnepensjon")
                     // body = TextContent(objectMapper.writeValueAsString(AdresseRequest(id)), ContentType.Application.Json)
                     body = objectMapper.writeValueAsString(AdresseRequest(id))
+                    contentType(ContentType.Application.Json)
                 }
                 call.pipeResponse(response)
             } catch (cause: ResponseException) {
