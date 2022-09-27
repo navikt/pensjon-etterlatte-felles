@@ -12,7 +12,6 @@ import io.ktor.routing.Route
 import io.ktor.routing.get
 import io.ktor.routing.route
 import no.nav.etterlatte.Config
-import no.nav.etterlatte.NavConsumerToken
 import no.nav.etterlatte.StsClient
 import no.nav.etterlatte.httpClient
 import no.nav.etterlatte.pipeRequest
@@ -28,16 +27,13 @@ fun Route.regoppslag(config: Config, stsClient: StsClient) {
 
         get("{ident}") {
             val stsToken = stsClient.getToken()
-            logger.info("STS token: ${stsToken.toString()}")
 
             try {
                 val id = call.parameters["ident"]!!
 
                 val response = httpClient.post<HttpResponse>(regoppslagUrl + "/postadresse") {
                     header(HttpHeaders.Authorization, "Bearer $stsToken")
-                    header(HttpHeaders.NavConsumerToken, stsToken)
                     header("Nav_Callid", "barnepensjon")
-                    body = AdresseRequest(id, "PEN")
                     pipeRequest(call)
                 }
                 call.pipeResponse(response)
@@ -52,7 +48,3 @@ fun Route.regoppslag(config: Config, stsClient: StsClient) {
     }
 }
 
-data class AdresseRequest(
-    val ident: String,
-    val tema: String
-)
