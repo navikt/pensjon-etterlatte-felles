@@ -1,8 +1,6 @@
 import io.mockk.mockk
 import no.nav.brukernotifikasjon.schemas.input.BeskjedInput
 import no.nav.brukernotifikasjon.schemas.input.NokkelInput
-import no.nav.common.JAASCredential
-import no.nav.common.KafkaEnvironment
 import no.nav.etterlatte.Notifikasjon
 import no.nav.etterlatte.SendNotifikasjon
 import no.nav.etterlatte.libs.common.test.InnsendtSoeknadFixtures
@@ -16,15 +14,14 @@ import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
-import java.util.*
+import org.testcontainers.containers.KafkaContainer
+import org.testcontainers.utility.DockerImageName
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class NotifikasjonTest {
-    private val topicname: String = "test_topic"
-    private val user = "srvkafkaclient"
-    private val pass = "kafkaclient"
     private val mockKafkaProducer =
         MockProducer<NokkelInput, BeskjedInput>(true, mockk(relaxed = true), mockk(relaxed = true))
+
     private val sendMelding = SendNotifikasjon(
         mapOf(
             "BRUKERNOTIFIKASJON_BESKJED_TOPIC" to "test_topic",
@@ -33,25 +30,12 @@ internal class NotifikasjonTest {
             "NAIS_NAME" to "etterlatte-notifikasjoner"
         ), mockKafkaProducer
     )
-    private val embeddedKafkaEnvironment = KafkaEnvironment(
-        autoStart = false,
-        noOfBrokers = 1,
-        topicInfos = listOf(KafkaEnvironment.TopicInfo(name = topicname, partitions = 1)),
-        withSchemaRegistry = true,
-        withSecurity = true,
 
-        users = listOf(JAASCredential(user, pass)),
-        brokerConfigOverrides = Properties().apply {
-            this["auto.leader.rebalance.enable"] = "false"
-            this["group.initial.rebalance.delay.ms"] =
-                "1" //Avoid waiting for new consumers to join group before first rebalancing (default 3000ms)
-        }
-    )
+    private val kafkaContainer = KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.2.1"))
 
     @BeforeAll
     fun setUp() {
-        embeddedKafkaEnvironment.start()
-        embeddedKafkaEnvironment.withSecurity
+        kafkaContainer.start()
     }
 
     @BeforeEach
@@ -142,6 +126,6 @@ internal class NotifikasjonTest {
 
     @AfterAll
     fun tearDown() {
-        embeddedKafkaEnvironment.tearDown()
+        kafkaContainer.stop()
     }
 }

@@ -3,17 +3,19 @@ plugins {
 }
 
 dependencies {
-    implementation(Ktor.ServerNetty)
+    implementation(Ktor.ServerAuth)
     implementation(Ktor.ClientCore)
-    implementation(Ktor.ClientCoreJvm)
-    implementation(Ktor.ClientAuthJvm)
+    implementation(Ktor.CallLogging)
     implementation(Ktor.ClientApache)
-    implementation(Ktor.ClientJackson)
+    implementation(Ktor.ClientAuth)
     implementation(Ktor.ClientLogging)
-    implementation(Ktor.ServerCore)
-    implementation(Ktor.Auth)
-    implementation(Ktor.AuthJwt)
     implementation(Ktor.Jackson)
+    implementation(Ktor.ServerContentNegotiation)
+    implementation(Ktor.ClientContentNegotiation)
+    implementation(Ktor.ServerCore)
+    implementation(Ktor.ServerNetty)
+    implementation(Ktor.ServerAuthJwt)
+
     testImplementation(NavFelles.MockOauth2Server)
 
     testImplementation(Ktor.ServerTests)

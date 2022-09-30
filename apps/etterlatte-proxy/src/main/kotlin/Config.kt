@@ -1,8 +1,9 @@
 package no.nav.etterlatte
 
 import com.fasterxml.jackson.annotation.JsonProperty
+import io.ktor.client.call.body
 import io.ktor.client.request.get
-import io.ktor.config.ApplicationConfig
+import io.ktor.server.config.ApplicationConfig
 
 data class Config(
     val sts: Sts,
@@ -71,11 +72,11 @@ suspend fun ApplicationConfig.load() = Config(
         )
     ),
     aad = Config.AAD(
-        metadata = httpClientWithProxy().use{ it.get(property("aad.wellKnownUrl").getString())},
+        metadata = httpClientWithProxy().use { it.get(property("aad.wellKnownUrl").getString()).body() },
         clientId = property("aad.clientId").getString()
     ),
     tokenX = Config.TokenX(
-        metadata = jsonClient().use{ it.get(property("tokenx.wellKnownUrl").getString())},
+        metadata = jsonClient().use { it.get(property("tokenx.wellKnownUrl").getString()).body() },
         clientId = property("tokenx.clientId").getString()
     )
 )
