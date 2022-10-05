@@ -40,15 +40,15 @@ internal class ApplicationTest {
     }
 
     @Test
-    fun testKodeverk() {
-        engine.handleRequest(HttpMethod.Get, "tokenx/kodeverk/ukjentParameter").apply {
+    fun testAareg() {
+        engine.handleRequest(HttpMethod.Get, "aad/aareg/arbeidstaker/arbeidsforhold").apply {
                 assertEquals(HttpStatusCode.Unauthorized, response.status())
             }
         }
 
     @Test
-    fun testDok() {
-        engine.handleRequest(HttpMethod.Post, "aad/dok").apply {
+    fun testInntektskomponenten() {
+        engine.handleRequest(HttpMethod.Post, "aad/inntektskomponenten").apply {
                 assertEquals(HttpStatusCode.Unauthorized, response.status())
             }
         }

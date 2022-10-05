@@ -2,7 +2,6 @@ package no.nav.etterlatte.routes
 
 import io.ktor.application.call
 import io.ktor.client.features.ResponseException
-import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.client.request.post
 import io.ktor.client.statement.HttpResponse
