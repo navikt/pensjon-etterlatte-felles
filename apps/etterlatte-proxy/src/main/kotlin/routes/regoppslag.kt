@@ -60,7 +60,7 @@ fun Route.regoppslag(config: Config, stsClient: StsClient) {
 
 data class AdresseRequest(
     val ident: String,
-    val tema: String = "PEN"
+    val tema: String = "PEN" // Todo: mulig bytte tema til et av de nye
 )
 
 val objectMapper: ObjectMapper = JsonMapper.builder()
