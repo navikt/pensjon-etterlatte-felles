@@ -14,18 +14,19 @@ import io.ktor.client.statement.HttpResponse
 import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpStatusCode
-import io.ktor.http.content.TextContent
 import io.ktor.http.contentType
+import io.ktor.request.header
 import io.ktor.response.respondText
 import io.ktor.routing.Route
 import io.ktor.routing.get
 import io.ktor.routing.route
 import no.nav.etterlatte.Config
+import no.nav.etterlatte.NavCallId
 import no.nav.etterlatte.StsClient
 import no.nav.etterlatte.httpClient
-import no.nav.etterlatte.pipeRequest
 import no.nav.etterlatte.pipeResponse
 import org.slf4j.LoggerFactory
+import java.util.*
 
 
 fun Route.regoppslag(config: Config, stsClient: StsClient) {
@@ -39,10 +40,11 @@ fun Route.regoppslag(config: Config, stsClient: StsClient) {
 
             try {
                 val id = call.parameters["ident"]!!
+                val callId = call.request.header(HttpHeaders.NavCallId) ?: UUID.randomUUID().toString()
 
                 val response = httpClient.post<HttpResponse>(regoppslagUrl + "/postadresse") {
                     header(HttpHeaders.Authorization, "Bearer $stsToken")
-                    header("Nav_Callid", "barnepensjon")
+                    header("Nav_Callid", callId)
                     body = objectMapper.writeValueAsString(AdresseRequest(id))
                     contentType(ContentType.Application.Json)
                 }

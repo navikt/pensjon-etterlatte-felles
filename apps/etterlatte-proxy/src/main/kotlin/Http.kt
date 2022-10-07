@@ -5,7 +5,6 @@ import io.ktor.application.ApplicationCall
 import io.ktor.client.HttpClient
 import io.ktor.client.call.receive
 import io.ktor.client.engine.apache.Apache
-import io.ktor.client.features.defaultRequest
 import io.ktor.client.features.json.JacksonSerializer
 import io.ktor.client.features.json.JsonFeature
 import io.ktor.client.features.logging.LogLevel
