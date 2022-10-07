@@ -11,7 +11,8 @@ data class Config(
     val aad: AAD,
     val tokenX: TokenX,
     val inntektskomponenten: INNTEKTSKOMPONENTEN,
-    val aareg: AAREG
+    val aareg: AAREG,
+    val regoppslag: REGOPPSLAG
 ) {
     data class DOK(
         val url: String
@@ -23,6 +24,10 @@ data class Config(
         val url: String
     )
     data class AAREG(
+        val url: String
+    )
+
+    data class REGOPPSLAG(
         val url: String
     )
 
@@ -67,6 +72,7 @@ suspend fun ApplicationConfig.load() = Config(
     kodeverk = Config.KODEVERK(url = property("kodeverk.url").getString()),
     inntektskomponenten = Config.INNTEKTSKOMPONENTEN(url = property("inntektskomponenten.url").getString()),
     aareg = Config.AAREG(url = property("aareg.url").getString()),
+    regoppslag = Config.REGOPPSLAG(url = property("regoppslag.url").getString()),
     sts = Config.Sts(
         url = property("sts.url").getString(),
         serviceuser = Config.Sts.ServiceUser(

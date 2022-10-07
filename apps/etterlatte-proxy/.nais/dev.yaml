@@ -55,6 +55,8 @@ spec:
       value: https://app-q2.adeo.no/inntektskomponenten-ws/rs/api/v1/hentinntektliste
     - name: AAREG_URL
       value: https://aareg-services.dev.intern.nav.no/api/v2
+    - name: REGOPPSLAG_URL
+      value: https://regoppslag.dev.intern.nav.no/rest
   prometheus:
     enabled: true
     path: /internal/prometheus
@@ -74,5 +76,8 @@ spec:
           namespace: etterlatte
           cluster: dev-gcp
         - application: etterlatte-opplysninger-fra-inntektskomponenten
+          namespace: etterlatte
+          cluster: dev-gcp
+        - application: etterlatte-brev-api
           namespace: etterlatte
           cluster: dev-gcp
