@@ -22,9 +22,6 @@ Kafka Manager for å enkelt se flyten til en søknad.
 [etterlatte-notifikasjoner](apps/etterlatte-notifikasjoner) \
 App som sender notifikasjoner (e-post, sms, melding på nav.no) til sluttbrukeren.
 
-[etterlatte-pdl-proxy](apps/etterlatte-pdl-proxy) \
-Ny proxy for å tillate kommunikasjon mellom GCP og On-Prem.
-
 [etterlatte-proxy](apps/etterlatte-proxy) \
 Proxy for å tillate kommunikasjon mellom GCP og On-Prem.
 
