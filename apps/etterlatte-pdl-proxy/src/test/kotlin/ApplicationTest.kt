@@ -62,10 +62,4 @@ internal class ApplicationTest {
 
     }
 
-    //@Test
-    fun testDok() {
-        engine.handleRequest(HttpMethod.Post, "aad/dok").apply {
-            assertEquals(HttpStatusCode.Unauthorized, response.status())
-        }
-    }
 }

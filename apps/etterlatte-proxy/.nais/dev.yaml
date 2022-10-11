@@ -47,10 +47,6 @@ spec:
   env:
     - name: STS_URL
       value: http://security-token-service.default.svc.nais.local/rest/v1/sts/token
-    - name: DOK_URL
-      value: https://dokarkiv-q1.nais.preprod.local/rest/journalpostapi/v1/journalpost
-    - name: KODEVERK_URL
-      value: https://kodeverk.dev.adeo.no/api/v1/kodeverk
     - name: INNTEKTSKOMPONENTEN_URL
       value: https://app-q2.adeo.no/inntektskomponenten-ws/rs/api/v1/hentinntektliste
     - name: AAREG_URL
