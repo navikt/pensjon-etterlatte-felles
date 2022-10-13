@@ -52,9 +52,6 @@ spec:
       application: etterlatte-overvaaking
       access: readwrite
     - team: etterlatte
-      application: post-til-kafka
-      access: readwrite
-    - team: etterlatte
       application: test-fordeler
       access: readwrite
     - team: etterlatte
