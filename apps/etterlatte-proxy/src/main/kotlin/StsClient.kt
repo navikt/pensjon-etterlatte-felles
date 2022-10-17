@@ -2,14 +2,15 @@ package no.nav.etterlatte
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import io.ktor.client.HttpClient
+import io.ktor.client.call.body
 import io.ktor.client.engine.apache.Apache
-import io.ktor.client.features.auth.Auth
-import io.ktor.client.features.auth.providers.BasicAuthCredentials
-import io.ktor.client.features.auth.providers.basic
-import io.ktor.client.features.json.JacksonSerializer
-import io.ktor.client.features.json.JsonFeature
+import io.ktor.client.plugins.auth.Auth
+import io.ktor.client.plugins.auth.providers.BasicAuthCredentials
+import io.ktor.client.plugins.auth.providers.basic
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.forms.submitForm
 import io.ktor.http.Parameters
+import io.ktor.serialization.jackson.jackson
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import java.time.Instant
@@ -25,8 +26,8 @@ class StsClient(private val config: Config.Sts) {
                 sendWithoutRequest { true }
             }
         }
-        install(JsonFeature) {
-            serializer = JacksonSerializer()
+        install(ContentNegotiation) {
+            jackson()
         }
     }.also {
         Runtime.getRuntime().addShutdownHook(Thread { it.close() })
@@ -37,13 +38,13 @@ class StsClient(private val config: Config.Sts) {
     private var cachedTokenExpiery: Instant = Instant.MIN
     private val mutex = Mutex()
 
-    private suspend fun fetchToken() = httpClient.submitForm<StsToken>(
+    private suspend fun fetchToken() = httpClient.submitForm(
         formParameters = Parameters.build {
             append("grant_type", "client_credentials")
             append("scope", "openid")
         },
         url = config.url,
-    )
+    ).body<StsToken>()
 
     private suspend fun refreshIfNeeded() {
         Instant.now().also { start ->

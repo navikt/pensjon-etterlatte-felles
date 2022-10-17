@@ -6,27 +6,27 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.databind.json.JsonMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
-import io.ktor.application.call
-import io.ktor.client.features.ResponseException
+import io.ktor.client.plugins.ResponseException
 import io.ktor.client.request.header
 import io.ktor.client.request.post
-import io.ktor.client.statement.HttpResponse
+import io.ktor.client.request.setBody
 import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.contentType
-import io.ktor.request.header
-import io.ktor.response.respondText
-import io.ktor.routing.Route
-import io.ktor.routing.get
-import io.ktor.routing.route
+import io.ktor.server.application.call
+import io.ktor.server.request.header
+import io.ktor.server.response.respondText
+import io.ktor.server.routing.Route
+import io.ktor.server.routing.get
+import io.ktor.server.routing.route
 import no.nav.etterlatte.Config
 import no.nav.etterlatte.NavCallId
 import no.nav.etterlatte.StsClient
 import no.nav.etterlatte.httpClient
 import no.nav.etterlatte.pipeResponse
 import org.slf4j.LoggerFactory
-import java.util.*
+import java.util.UUID
 
 
 fun Route.regoppslag(config: Config, stsClient: StsClient) {
@@ -42,10 +42,10 @@ fun Route.regoppslag(config: Config, stsClient: StsClient) {
                 val id = call.parameters["ident"]!!
                 val callId = call.request.header(HttpHeaders.NavCallId) ?: UUID.randomUUID().toString()
 
-                val response = httpClient.post<HttpResponse>(regoppslagUrl + "/postadresse") {
+                val response = httpClient.post(regoppslagUrl + "/postadresse") {
                     header(HttpHeaders.Authorization, "Bearer $stsToken")
                     header("Nav_Callid", callId)
-                    body = objectMapper.writeValueAsString(AdresseRequest(id))
+                    setBody(objectMapper.writeValueAsString(AdresseRequest(id)))
                     contentType(ContentType.Application.Json)
                 }
                 call.pipeResponse(response)

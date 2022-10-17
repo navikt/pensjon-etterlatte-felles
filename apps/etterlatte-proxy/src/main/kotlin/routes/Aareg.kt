@@ -1,17 +1,16 @@
 package no.nav.etterlatte.routes
 
-import io.ktor.application.call
-import io.ktor.client.features.ResponseException
+import io.ktor.client.plugins.ResponseException
 import io.ktor.client.request.get
 import io.ktor.client.request.header
-import io.ktor.client.statement.HttpResponse
 import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpStatusCode
-import io.ktor.request.header
-import io.ktor.response.respondText
-import io.ktor.routing.Route
-import io.ktor.routing.get
-import io.ktor.routing.route
+import io.ktor.server.application.call
+import io.ktor.server.request.header
+import io.ktor.server.response.respondText
+import io.ktor.server.routing.Route
+import io.ktor.server.routing.get
+import io.ktor.server.routing.route
 import no.nav.etterlatte.Config
 import no.nav.etterlatte.NavCallId
 import no.nav.etterlatte.NavConsumerToken
@@ -21,7 +20,7 @@ import no.nav.etterlatte.httpClient
 import no.nav.etterlatte.pipeRequest
 import no.nav.etterlatte.pipeResponse
 import org.slf4j.LoggerFactory
-import java.util.*
+import java.util.UUID
 
 fun Route.aareg(config: Config, stsClient: StsClient) {
     val logger = LoggerFactory.getLogger("no.pensjon.etterlatte")
@@ -36,7 +35,7 @@ fun Route.aareg(config: Config, stsClient: StsClient) {
             logger.info("personident test: $personIdent")
 
             try {
-                val response = httpClient.get<HttpResponse>(url) {
+                val response = httpClient.get(url) {
                     header(HttpHeaders.Authorization, "Bearer $stsToken")
                     header(HttpHeaders.NavConsumerToken, stsToken)
                     header(HttpHeaders.NavPersonident, personIdent)

@@ -1,25 +1,25 @@
 package no.nav.etterlatte
 
 import com.fasterxml.jackson.databind.DeserializationFeature
-import io.ktor.application.ApplicationCall
 import io.ktor.client.HttpClient
-import io.ktor.client.call.receive
+import io.ktor.client.call.body
 import io.ktor.client.engine.apache.Apache
-import io.ktor.client.features.json.JacksonSerializer
-import io.ktor.client.features.json.JsonFeature
-import io.ktor.client.features.logging.LogLevel
-import io.ktor.client.features.logging.Logging
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.client.plugins.logging.LogLevel
+import io.ktor.client.plugins.logging.Logging
 import io.ktor.client.request.HttpRequestBuilder
-import io.ktor.client.request.header
+import io.ktor.client.request.setBody
 import io.ktor.client.statement.HttpResponse
 import io.ktor.http.ContentType
 import io.ktor.http.Headers
 import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.content.OutgoingContent
-import io.ktor.http.contentType
-import io.ktor.request.receiveChannel
-import io.ktor.response.respond
+import io.ktor.serialization.jackson.jackson
+import io.ktor.server.application.ApplicationCall
+import io.ktor.server.request.receiveChannel
+import io.ktor.server.response.respond
+import io.ktor.util.InternalAPI
 import io.ktor.util.filter
 import io.ktor.utils.io.ByteReadChannel
 import io.ktor.utils.io.ByteWriteChannel
@@ -28,8 +28,8 @@ import org.apache.http.impl.conn.SystemDefaultRoutePlanner
 import java.net.ProxySelector
 
 fun jsonClient() =  HttpClient(Apache) {
-    install(JsonFeature) {
-        serializer = JacksonSerializer { configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false) }
+    install(ContentNegotiation) {
+        jackson { configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false) }
     }
 }
 
@@ -40,8 +40,8 @@ fun httpClient() = HttpClient(Apache){
 }.also { Runtime.getRuntime().addShutdownHook(Thread{it.close()}) }
 
 fun httpClientWithProxy() = HttpClient(Apache) {
-    install(JsonFeature) {
-        serializer = JacksonSerializer { configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false) }
+    install(ContentNegotiation) {
+        jackson { configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false) }
     }
     engine {
         customizeClient {
@@ -84,11 +84,12 @@ suspend fun HttpRequestBuilder.pipeRequest(call: ApplicationCall, customHeaders:
     headers.appendAll(call.request.headers.filter { key, _ ->
         requestHeadersToProxy.any{it.equals(key, true)}
     })
-    body = ProxiedContent(filterContenHeaders(call.request.headers), call.receiveChannel())
+    setBody(ProxiedContent(filterContenHeaders(call.request.headers), call.receiveChannel()))
 }
 
+@OptIn(InternalAPI::class)
 suspend fun ApplicationCall.pipeResponse(response: HttpResponse) {
-    respond(ProxiedContent(response.headers, if(response.content.isClosedForRead) { response.receive() } else { response.content }, response.status))
+    respond(ProxiedContent(response.headers, if(response.content.isClosedForRead) { response.body() } else { response.content }, response.status))
 }
 
 val HttpHeaders.NavCallId: String

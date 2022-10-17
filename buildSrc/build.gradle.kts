@@ -3,7 +3,7 @@ import ca.cutterslade.gradle.analyze.AnalyzeDependenciesTask
 
 plugins {
     `kotlin-dsl`
-    id("ca.cutterslade.analyze") version "1.8.1" apply true
+    id("ca.cutterslade.analyze") version "1.9.0" apply true
 }
 
 group = "no.nav.etterlatte"
@@ -23,11 +23,16 @@ dependencies {
 
 tasks {
     withType<Wrapper> {
-        gradleVersion = "7.3"
+        gradleVersion = "7.5.1"
     }
 
     withType<KotlinCompile> {
         kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
+    }
+
+    java {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     withType<AnalyzeDependenciesTask> {

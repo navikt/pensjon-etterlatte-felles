@@ -1,17 +1,17 @@
 package no.nav.etterlatte.routes
 
-import io.ktor.application.call
-import io.ktor.client.features.ResponseException
+import io.ktor.client.plugins.ResponseException
+import io.ktor.client.request.bearerAuth
 import io.ktor.client.request.header
 import io.ktor.client.request.post
-import io.ktor.client.statement.HttpResponse
 import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpStatusCode
-import io.ktor.request.header
-import io.ktor.response.respondText
-import io.ktor.routing.Route
-import io.ktor.routing.post
-import io.ktor.routing.route
+import io.ktor.server.application.call
+import io.ktor.server.request.header
+import io.ktor.server.response.respondText
+import io.ktor.server.routing.Route
+import io.ktor.server.routing.post
+import io.ktor.server.routing.route
 import no.nav.etterlatte.Config
 import no.nav.etterlatte.NavCallId
 import no.nav.etterlatte.NavConsumerId
@@ -20,7 +20,7 @@ import no.nav.etterlatte.httpClient
 import no.nav.etterlatte.pipeRequest
 import no.nav.etterlatte.pipeResponse
 import org.slf4j.LoggerFactory
-import java.util.*
+import java.util.UUID
 
 fun Route.inntektskomponenten(config: Config, stsClient: StsClient) {
     val logger = LoggerFactory.getLogger("no.pensjon.etterlatte")
@@ -33,8 +33,8 @@ fun Route.inntektskomponenten(config: Config, stsClient: StsClient) {
             val callId = call.request.header(HttpHeaders.NavCallId) ?: UUID.randomUUID().toString()
 
             try {
-                val response = httpClient.post<HttpResponse>(dokUrl) {
-                    header(HttpHeaders.Authorization, "Bearer $stsToken")
+                val response = httpClient.post(dokUrl) {
+                    bearerAuth(stsToken.accessToken)
                     header(HttpHeaders.NavConsumerId, "barnepensjon")
                     header(HttpHeaders.NavCallId, callId)
                     pipeRequest(call)
