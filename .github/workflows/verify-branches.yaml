@@ -4,6 +4,7 @@ on:
   push:
     branches-ignore:
       - main
+      - feature/slackbot
 
 jobs:
   verify-branches:
