@@ -1,0 +1,38 @@
+---
+apiVersion: nais.io/v1alpha1
+kind: Application
+metadata:
+  name: ey-slackbot
+  namespace: etterlatte
+  labels:
+    team: etterlatte
+spec:
+  image: {{ image }}
+  team: etterlatte
+  port: 8080
+  replicas:
+    min: 1
+    max: 2
+  liveness:
+    path: /internal/is_alive
+  readiness:
+    path: /internal/is_alive
+  resources:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 100m
+      memory: 512Mi
+  ingresses:
+    - https://ey-slackbot.labs.nais.io
+  accessPolicy:
+    outbound:
+      external:
+        - host: slack.com
+        - host: api.slack.com
+  env:
+    - name: PORT
+      value: "8080"
+  envFrom:
+    - secret: team-etterlatte-slackbot

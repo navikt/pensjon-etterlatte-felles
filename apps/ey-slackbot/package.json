@@ -1,0 +1,18 @@
+{
+  "name": "ey-slackbot",
+  "version": "0.0.1",
+  "main": "app.js",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "dependencies": {
+    "@slack/bolt": "^3.12.1",
+    "cron": "^2.1.0"
+  },
+  "engines": {
+    "node": "16.x"
+  },
+  "repository": {
+    "url": "https://github.com/navikt/pensjon-etterlatte-felles"
+  }
+}

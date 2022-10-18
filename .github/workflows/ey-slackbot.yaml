@@ -1,0 +1,37 @@
+name: ey-slackbot
+
+env:
+  IMAGE: ghcr.io/${{ github.repository }}/${{ github.workflow }}:${{ github.sha }}
+  APP_NAME: ${{ github.workflow }}
+
+on:
+  push:
+    paths:
+      - apps/ey-slackbot/**
+
+jobs:
+  build-and-publish:
+    name: Build & publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Build and publish docker image
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          docker login ghcr.io -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
+          docker build --tag ${IMAGE} apps/${APP_NAME}
+          docker push ${IMAGE}
+
+  deploy:
+    name: Deploy
+    needs: build-and-publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: labs-gcp
+          RESOURCE: apps/${{ env.APP_NAME }}/.nais/labs.yaml
