@@ -7,12 +7,6 @@
     "adresse" : "ADRESSEVEIEN 10",
     "postnummer" : "0652 OSLO"
   },
-  "utbetalingsinfo": {
-    "beloep": "3547",
-    "kontonummer": "1200.34.23321",
-    "virkningsdato": "4. April 2022"
-  },
-  "grunnbeloep": "106.399",
   "barn": {
     "navn": "Blåøyd Saks",
     "fnr": "05111850870"

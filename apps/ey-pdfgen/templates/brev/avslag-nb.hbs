@@ -10,7 +10,52 @@
 <div class="container">
     {{> brev/partials/header this}}
     <h1>Vi har avslått søknaden din om barnepensjon</h1>
-    {{> brev/partials/barn this}}
+    {{> brev/partials/infotabell this}}
+
+    <div class="row">
+        <h2>
+            Vedtak
+        </h2>
+
+        <p>
+            For å ha rett til barnepensjon må du fylle alle vilkårene. Det gjør ikke du og derfor har vi avslått
+            søknaden din.
+        </p>
+
+        <p>
+            Vilkår som ikke er oppfylt:
+        </p>
+    </div>
+
+    <div class="row">
+        <table class="vilkaar">
+            <tbody>
+            <tr>
+                <td>
+                    <img class="avslag-ikon" src="{{ image "avslag-ikon.png" }}"/>
+                </td>
+                <td>
+                    <strong>Barnet er over 18 år på virkningsdato</strong>
+
+                    <p>
+                        For å ha rett til barnepensjon når du er over 18 år må du være foreldreløs, eller dødsfallet til
+                        din forelder må skyldes yrkesskade. Dette har vi ingen opplysninger om i saken din. Derfor har
+                        vi avslått søknaden din.
+                    </p>
+
+                    <p>
+                        Trude Lutt døde den 2. februar 2022. Virkningstidspunkt for stønaden ville blitt tidligst 1.
+                        mars 2022. Blåøyd Saks var 21 år på søknadstidspunktet den 3. mars 2022.
+                    </p>
+
+                    <p>Viser til lovdata §18-4.</p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
     {{> brev/partials/klage}}
     {{> brev/partials/innsyn}}
     {{> brev/partials/sporsmaal}}
