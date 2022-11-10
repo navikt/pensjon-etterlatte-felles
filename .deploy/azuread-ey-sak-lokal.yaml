@@ -22,6 +22,9 @@ spec:
     - application: etterlatte-vedtaksvurdering
       cluster: dev-gcp
       namespace: etterlatte
+    - application: etterlatte-behandling
+      cluster: dev-gcp
+      namespace: etterlatte
   tenant: trygdeetaten.no
   secretName: azuread-ey-sak-lokal
   claims:
