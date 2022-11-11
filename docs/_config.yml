@@ -5,6 +5,7 @@ relative_links:
   enabled: true
   collections: true
 include:
+  - index.md
   - utviklerhandbok.md
 remote_theme: pages-themes/midnight@v0.2.0
 markdown: GFM
