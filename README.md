@@ -3,15 +3,29 @@
 Monorepo med apper som er felles for Team Etterlatte
 
 ## Gi en ny app tilgang til Kafka-topic "etterlatte.dodsmelding"
-Legg inn appen i `topic.yaml` for dev, `topic-prod.yaml` for prod. Etter at det er lagt inn
+Legg inn appen i `.deploy/topic.yaml` for dev, `.deploy/topic-prod.yaml` for prod. Etter at det er lagt inn
 kan du oppdatere topicet ved å kjøre 
 
 ```
-kubectl apply -f topic.yaml
+kubectl apply -f .deploy/topic.yaml
 ```
 
 i konteksten `dev-gcp`. For prod må du bruke `topic-prod.yaml` i stedet, og kontekst
 `prod-gcp`.
+
+
+## AzureAD secrets på lokal maskin
+
+Tokens/secrets som gjør det mulig å gå mot dev-gcp fra lokal maskin.\
+Kan hentes ved å kjøre følgende kommando:
+```
+kubectl -n etterlatte get secret azuread-ey-sak-lokal -o json | jq '.data | map_values(@base64d)'
+```
+
+Ved endring i filen kan denne kommandoen kjøres (OBS: dette innebærer at alle må hente tokens på nytt):
+```
+kubectl apply -f .deploy/azure-ey-sak-lokal.yaml
+```
 
 
 ## Apper
