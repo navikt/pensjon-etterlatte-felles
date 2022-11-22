@@ -14,20 +14,6 @@ i konteksten `dev-gcp`. For prod må du bruke `topic-prod.yaml` i stedet, og kon
 `prod-gcp`.
 
 
-## AzureAD secrets på lokal maskin
-
-Tokens/secrets som gjør det mulig å gå mot dev-gcp fra lokal maskin.\
-Kan hentes ved å kjøre følgende kommando:
-```
-kubectl -n etterlatte get secret azuread-ey-sak-lokal -o json | jq '.data | map_values(@base64d)'
-```
-
-Ved endring i filen kan denne kommandoen kjøres (OBS: dette innebærer at alle må hente tokens på nytt):
-```
-kubectl apply -f .deploy/azure-ey-sak-lokal.yaml
-```
-
-
 ## Apper
 
 [etterlatte-kafkamanager](apps/etterlatte-kafkamanager) \
