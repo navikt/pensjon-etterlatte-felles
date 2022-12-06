@@ -17,6 +17,9 @@ spec:
   prometheus:
     enabled: true
     path: /prometheus
+  env:
+    - name: ENABLE_HTML_ENDPOINT
+      value: "true"
   accessPolicy:
     inbound:
       rules:
