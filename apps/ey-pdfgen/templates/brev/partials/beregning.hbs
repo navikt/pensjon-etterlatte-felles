@@ -3,11 +3,30 @@
         Beregning og regulering
     </h2>
 
-    <p>
-        Barnepensjon utgjør 40 prosent av folketrygdens grunnbeløp (G), som for tiden er {{ grunnbeloep }} kr.
-    </p>
+    {{#if utbetalingsinfo.soeskenjustering}}
+        <p>
+            Det gjøres en samlet beregning av barnepensjon for barn som oppdras sammen. For denne beregning har vi lagt
+            til grunn at dere er {{antallBarn}} barn som oppdras sammen.
+        </p>
+
+        <p>
+            Barnepensjonen utgjør 40 prosent av folketrygdens grunnbeløp (G) for det første barnet i søskenflokken. For
+            hvert av de andre barna legges det til 25 prosent av G. Summen deles på antall barn, og pensjonen utbetales
+            med likt beløp til hvert av barna.
+        </p>
+
+        <p>
+            Folketrygdens grunnbeløp er for tiden {{grunnbeloep}} kroner.
+        </p>
+    {{else}}
+        <p>
+            Barnepensjonen utgjør 40 prosent av folketrygdens grunnbeløp (G), som for tiden er
+            {{grunnbeloep}} kroner. Regulering av grunnbeløpet skjer med virkning fra 1. mai hvert år og selve økningen
+            blir vanligvis etterbetalt i juni.
+        </p>
+    {{/if}}
 
     <p>
-        Reguleringen skjer med virkning fra 1. mai og selve økningen blir vanligvis etterbetalt i juni.
+        Vedtaket er gjort med hjemmel i folketrygdlovens kapittel 18 og 22.
     </p>
 </div>
