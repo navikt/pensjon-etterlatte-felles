@@ -16,17 +16,47 @@
         </p>
 
         <p>
-            Folketrygdens grunnbeløp er for tiden {{grunnbeloep}} kroner.
+            Folketrygdens grunnbeløp er for tiden {{currency_no utbetalingsinfo.grunnbeloep true}} kroner.
         </p>
     {{else}}
         <p>
             Barnepensjonen utgjør 40 prosent av folketrygdens grunnbeløp (G), som for tiden er
-            {{grunnbeloep}} kroner. Regulering av grunnbeløpet skjer med virkning fra 1. mai hvert år og selve økningen
-            blir vanligvis etterbetalt i juni.
+            {{currency_no utbetalingsinfo.grunnbeloep true}} kroner. Regulering av grunnbeløpet skjer med virkning fra
+            1. mai hvert år og
+            selve økningen blir vanligvis etterbetalt i juni.
         </p>
     {{/if}}
 
     <p>
         Vedtaket er gjort med hjemmel i folketrygdlovens kapittel 18 og 22.
     </p>
+
+    <table class="beregning-tabell">
+        <thead>
+        <tr>
+            <th>
+                Periode
+            </th>
+            <th>
+                Grunnbeløp (G)
+            </th>
+            <th>
+                Beregning gjelder
+            </th>
+            <th>
+                Utbetaling pr. måned
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each utbetalingsinfo.beregningsperioder}}
+            <tr>
+                <td>{{iso_to_date this.datoFOM}} - {{#if this.datoTOM}}{{iso_to_date this.datoTOM}}{{/if}}</td>
+                <td>{{currency_no this.grunnbeloep true}} kr</td>
+                <td>{{this.antallBarn}} barn</td>
+                <td>{{currency_no this.utbetaltBeloep true}} kr</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
 </div>
