@@ -27,13 +27,13 @@
                 Periode
             </th>
             <th>
-                Grunnbeløp (G)
-            </th>
-            <th>
                 Beregning gjelder
             </th>
             <th>
-                Utbetaling pr. måned
+                Grunnbeløp (G)
+            </th>
+            <th>
+                Brutto utbetaling pr. måned
             </th>
         </tr>
         </thead>
@@ -41,8 +41,8 @@
         {{#each utbetalingsinfo.beregningsperioder}}
             <tr>
                 <td>{{iso_to_date this.datoFOM}} - {{#if this.datoTOM}}{{iso_to_date this.datoTOM}}{{/if}}</td>
-                <td>{{currency_no this.grunnbeloep true}} kr</td>
                 <td>{{this.antallBarn}} barn</td>
+                <td>{{currency_no this.grunnbeloep true}} kr</td>
                 <td>{{currency_no this.utbetaltBeloep true}} kr</td>
             </tr>
         {{/each}}
