@@ -10,26 +10,15 @@
         </p>
 
         <p>
-            Barnepensjonen utgjør 40 prosent av folketrygdens grunnbeløp (G) for det første barnet i søskenflokken. For
-            hvert av de andre barna legges det til 25 prosent av G. Summen deles på antall barn, og pensjonen utbetales
-            med likt beløp til hvert av barna.
-        </p>
-
-        <p>
-            Folketrygdens grunnbeløp er for tiden {{currency_no utbetalingsinfo.grunnbeloep true}} kroner.
+            Barnepensjon utgjør 40 prosent av folketrygdens grunnbeløp (G) for det første barnet i søskenflokken.
+            For hvert av de øvrige barna legges det til 25 prosent av G. Summen deles på antall barn, og pensjonen
+            utbetales med likt beløp til hvert av barna. Pensjonen fordeles på 12 utbetalinger i året.
         </p>
     {{else}}
         <p>
-            Barnepensjonen utgjør 40 prosent av folketrygdens grunnbeløp (G), som for tiden er
-            {{currency_no utbetalingsinfo.grunnbeloep true}} kroner. Regulering av grunnbeløpet skjer med virkning fra
-            1. mai hvert år og
-            selve økningen blir vanligvis etterbetalt i juni.
+            Barnepensjonen utgjør 40 prosent av folketrygdens grunnbeløp (G) og fordeles på 12 utbetalinger i året.
         </p>
     {{/if}}
-
-    <p>
-        Vedtaket er gjort med hjemmel i folketrygdlovens kapittel 18 og 22.
-    </p>
 
     <table class="beregning-tabell">
         <thead>
@@ -38,13 +27,13 @@
                 Periode
             </th>
             <th>
-                Grunnbeløp (G)
-            </th>
-            <th>
                 Beregning gjelder
             </th>
             <th>
-                Utbetaling pr. måned
+                Grunnbeløp (G)
+            </th>
+            <th>
+                Brutto utbetaling pr. måned
             </th>
         </tr>
         </thead>
@@ -52,11 +41,14 @@
         {{#each utbetalingsinfo.beregningsperioder}}
             <tr>
                 <td>{{iso_to_date this.datoFOM}} - {{#if this.datoTOM}}{{iso_to_date this.datoTOM}}{{/if}}</td>
-                <td>{{currency_no this.grunnbeloep true}} kr</td>
                 <td>{{this.antallBarn}} barn</td>
+                <td>{{currency_no this.grunnbeloep true}} kr</td>
                 <td>{{currency_no this.utbetaltBeloep true}} kr</td>
             </tr>
         {{/each}}
         </tbody>
     </table>
+    <p>
+        Grunnbeløpet blir regulert 1. mai hvert år.  Økningen blir vanligvis etterbetalt i juni.
+    </p>
 </div>

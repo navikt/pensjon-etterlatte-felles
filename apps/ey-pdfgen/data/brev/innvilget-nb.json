@@ -1,7 +1,6 @@
 {
   "saksnummer": "115",
   "utbetalingsinfo": {
-    "grunnbeloep": 111477,
     "soeskenjustering": false,
     "beregningsperioder": [
       {
@@ -28,13 +27,13 @@
     "navn": "Viljesterk Doktorgrad",
     "doedsdato": "2022-08-17"
   },
-  "aktuelleParagrafer": [],
   "spraak": "nb",
   "avsender": {
-    "kontor": "NAV Porsgrunn",
+    "kontor": "NAV Familie- og pensjonsytelser Porsgrunn",
     "adresse": "Kammerherreløkka 2",
     "postnummer": "3915 PORSGRUNN",
-    "telefon": "55553333"
+    "telefon": "55553333",
+    "saksbehandler" : "Sak Saksbehandler"
   },
   "mottaker": {
     "navn": "Test Testesen",
@@ -43,5 +42,9 @@
     "poststed": "Oslo",
     "land": "Norge"
   },
-  "utsendingsDato": "2022-12-20"
+  "utsendingsDato": "2022-12-20",
+  "attestant" : {
+    "navn" : "Attest Attestant",
+    "kontor" : "NAV Familie- og pensjonsytelser Ålesund"
+  }
 }
