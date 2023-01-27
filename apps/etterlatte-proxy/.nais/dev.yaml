@@ -53,6 +53,8 @@ spec:
       value: https://aareg-services.dev.intern.nav.no/api/v2
     - name: REGOPPSLAG_URL
       value: https://regoppslag.dev.intern.nav.no/rest
+    - name: NAVANSATT_URL
+      value: https://navansatt.dev.adeo.no
   prometheus:
     enabled: true
     path: /internal/prometheus

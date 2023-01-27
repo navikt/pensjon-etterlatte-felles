@@ -11,11 +11,13 @@ data class Config(
     val tokenX: TokenX,
     val inntektskomponenten: INNTEKTSKOMPONENTEN,
     val aareg: AAREG,
-    val regoppslag: REGOPPSLAG
+    val regoppslag: REGOPPSLAG,
+    val navansatt: NAVANSATT
 ) {
     data class INNTEKTSKOMPONENTEN(
         val url: String
     )
+
     data class AAREG(
         val url: String
     )
@@ -24,13 +26,17 @@ data class Config(
         val url: String
     )
 
+    data class NAVANSATT(
+        val url: String
+    )
+
     data class Sts(
         val url: String,
-        val serviceuser: ServiceUser,
+        val serviceuser: ServiceUser
     ) {
         data class ServiceUser(
             val name: String,
-            val password: String,
+            val password: String
         ) {
             override fun toString(): String {
                 return "name=$name, password=<REDACTED>"
@@ -40,35 +46,35 @@ data class Config(
 
     data class TokenX(
         val metadata: Metadata,
-        val clientId: String,
+        val clientId: String
     ) {
         data class Metadata(
             @JsonProperty("issuer") val issuer: String,
-            @JsonProperty("jwks_uri") val jwksUri: String,
+            @JsonProperty("jwks_uri") val jwksUri: String
         )
     }
 
     data class AAD(
         val metadata: Metadata,
-        val clientId: String,
+        val clientId: String
     ) {
         data class Metadata(
             @JsonProperty("issuer") val issuer: String,
-            @JsonProperty("jwks_uri") val jwksUri: String,
+            @JsonProperty("jwks_uri") val jwksUri: String
         )
     }
-
 }
 
 suspend fun ApplicationConfig.load() = Config(
     inntektskomponenten = Config.INNTEKTSKOMPONENTEN(url = property("inntektskomponenten.url").getString()),
     aareg = Config.AAREG(url = property("aareg.url").getString()),
     regoppslag = Config.REGOPPSLAG(url = property("regoppslag.url").getString()),
+    navansatt = Config.NAVANSATT(url = property("navansatt.url").getString()),
     sts = Config.Sts(
         url = property("sts.url").getString(),
         serviceuser = Config.Sts.ServiceUser(
             name = property("serviceuser.name").getString(),
-            password = property("serviceuser.password").getString(),
+            password = property("serviceuser.password").getString()
         )
     ),
     aad = Config.AAD(
