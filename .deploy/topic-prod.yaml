@@ -48,3 +48,24 @@ spec:
     - team: etterlatte
       application: etterlatte-fordeler
       access: readwrite
+    - team: etterlatte
+      application: etterlatte-opplysninger-fra-pdl
+      access: readwrite
+    - team: etterlatte
+      application: etterlatte-opplysninger-fra-soeknad
+      access: readwrite
+    - team: etterlatte
+      application: etterlatte-behandling
+      access: readwrite
+    - team: etterlatte
+      application: etterlatte-oppdater-behandling
+      access: readwrite
+    - team: etterlatte
+      application: etterlatte-oppdater-beregning
+      access: readwrite
+    - team: etterlatte
+      application: etterlatte-vedtaksvurdering
+      access: readwrite
+    - team: etterlatte
+      application: etterlatte-grunnlag
+      access: readwrite
