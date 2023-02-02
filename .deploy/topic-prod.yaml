@@ -72,3 +72,6 @@ spec:
     - team: etterlatte
       application: etterlatte-statistikk
       access: readwrite
+    - team: etterlatte
+      application: etterlatte-brev-api
+      access: readwrite
