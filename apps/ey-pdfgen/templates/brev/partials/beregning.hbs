@@ -1,10 +1,10 @@
 <div class="row">
-    <h2>
-        Beregning og regulering
-    </h2>
+    <h3>
+        Slik har vi beregnet pensjonen din
+    </h3>
 
     {{#if utbetalingsinfo.soeskenjustering}}
-        <p>
+        <p class="paragraph-after-h">
             Det gjøres en samlet beregning av barnepensjon for barn som oppdras sammen. For denne beregning har vi lagt
             til grunn at dere er {{antallBarn}} barn som oppdras sammen.
         </p>
@@ -15,11 +15,12 @@
             utbetales med likt beløp til hvert av barna. Pensjonen fordeles på 12 utbetalinger i året.
         </p>
     {{else}}
-        <p>
+        <p class="paragraph-after-h">
             Barnepensjonen utgjør 40 prosent av folketrygdens grunnbeløp (G) og fordeles på 12 utbetalinger i året.
         </p>
     {{/if}}
 
+    <h4>Opplysninger om beregning av pensjonen din</h4>
     <table class="beregning-tabell">
         <thead>
         <tr>
@@ -33,7 +34,7 @@
                 Grunnbeløp (G)
             </th>
             <th>
-                Brutto utbetaling pr. måned
+                Brutto utbetaling per måned
             </th>
         </tr>
         </thead>

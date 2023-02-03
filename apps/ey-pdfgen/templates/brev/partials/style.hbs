@@ -54,7 +54,7 @@
         left: 0;
     }
 
-    .user-info  > p {
+    .user-info > p {
         margin: 0;
         padding: 0;
     }
@@ -70,27 +70,46 @@
         font-family: "Source Sans Pro", SourceSansPro, Source_Sans_Pro, ArialSystem, sans-serif;
     }
 
-    h1 {
+    h1, h2, h3, h4 {
         font-weight: 700;
         font-style: normal;
-        font-size: 16pt;
         font-family: "Source Sans Pro";
     }
 
+    h1 {
+        font-size: 18pt;
+    }
+
     h2 {
-        font-weight: 700;
-        font-style: normal;
+        font-size: 16pt;
+        margin-bottom: 0;
+    }
+
+    h3 {
         font-size: 14pt;
-        font-family: "Source Sans Pro";
+        margin-bottom: 0;
+    }
+
+    h4 {
+        font-size: 12pt;
+        margin-bottom: 0;
     }
 
     p {
         font-size: 12pt;
     }
 
+    .paragraph-after-h {
+        margin-top: 0pt;
+    }
+
     .row {
         width: 100%;
         padding: 0.1cm 0;
+    }
+
+    .row :last-child {
+        margin-bottom: 0;
     }
 
     .col {
@@ -140,7 +159,12 @@
         width: 100%;
     }
 
-    table.signatur td{
+    table.signatur {
+        margin-top: 0.3cm;
+    }
+
+
+    table.signatur td {
         padding: 0pt;
     }
 
