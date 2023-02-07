@@ -87,6 +87,3 @@ spec:
     - team: etterlatte
       application: etterlatte-statistikk
       access: readwrite
-    - team: etterlatte
-      application: etterlatte-vilkaarsvurdering
-      access: readwrite
