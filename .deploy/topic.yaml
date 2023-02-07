@@ -40,9 +40,6 @@ spec:
       application: etterlatte-fordeler
       access: readwrite
     - team: etterlatte
-      application: etterlatte-overvaaking
-      access: readwrite
-    - team: etterlatte
       application: test-fordeler
       access: readwrite
     - team: etterlatte
