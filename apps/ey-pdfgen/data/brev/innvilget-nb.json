@@ -1,7 +1,9 @@
 {
   "saksnummer": "115",
   "utbetalingsinfo": {
+    "beloep" : 3365,
     "soeskenjustering": false,
+    "virkningsdato": "2022-02-01",
     "beregningsperioder": [
       {
         "datoFOM": "2022-01-01",
