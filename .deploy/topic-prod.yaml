@@ -13,7 +13,7 @@ spec:
     partitions: 1
     replication: 3  # see min/max requirements
     retentionBytes: -1  # -1 means unlimited
-    retentionHours: 48  # -1 means unlimited
+    retentionHours: 168  # -1 means unlimited
   acl:
     - team: etterlatte
       application: dodsfall-fra-leesah
@@ -47,4 +47,34 @@ spec:
       access: readwrite
     - team: etterlatte
       application: etterlatte-fordeler
+      access: readwrite
+    - team: etterlatte
+      application: etterlatte-opplysninger-fra-pdl
+      access: readwrite
+    - team: etterlatte
+      application: etterlatte-opplysninger-fra-soeknad
+      access: readwrite
+    - team: etterlatte
+      application: etterlatte-behandling
+      access: readwrite
+    - team: etterlatte
+      application: etterlatte-oppdater-behandling
+      access: readwrite
+    - team: etterlatte
+      application: etterlatte-oppdater-beregning
+      access: readwrite
+    - team: etterlatte
+      application: etterlatte-vedtaksvurdering
+      access: readwrite
+    - team: etterlatte
+      application: etterlatte-grunnlag
+      access: readwrite
+    - team: etterlatte
+      application: etterlatte-statistikk
+      access: readwrite
+    - team: etterlatte
+      application: etterlatte-brev-api
+      access: readwrite
+    - team: etterlatte
+      application: etterlatte-utbetaling
       access: readwrite

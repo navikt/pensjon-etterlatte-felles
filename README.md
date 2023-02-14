@@ -36,6 +36,7 @@ Noen avhengigheter i prosjektet ligger i Github Package Registry som krever aute
 1. Opprett [PAT](https://github.com/settings/tokens). I tilfelle lenken ikke fungerer går man til `Github -> Settings -> Developer settings -> Personal access tokens`
 2. Huk av `read:packages`. Ikke legg til flere scopes enn nødvendig.
 3. Tokenet legges i `.zshrc` med `export GITHUB_TOKEN=<token>`
+4. Du må kanskje markere at tokenet skal være gyldig for NAV-organisasjonen for at det skal fungere, og i så fall må du autentisere det med SSO.
 
 
 # Bygg og deploy
