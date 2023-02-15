@@ -1,7 +1,17 @@
 version: 2
 updates:
   - package-ecosystem: "npm"
-    directory: "/"
+    directory: "/apps/ey-slackbot"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+  - package-ecosystem: "gradle"
+    directory: "/apps/etterlatte-notifikasjoner"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+  - package-ecosystem: "gradle"
+    directory: "/apps/etterlatte-proxy"
     schedule:
       interval: "daily"
     open-pull-requests-limit: 10
@@ -11,7 +21,22 @@ updates:
       interval: "daily"
     open-pull-requests-limit: 10
   - package-ecosystem: "docker"
-    directory: "/apps"
+    directory: "/apps/etterlatte-notifikasjoner"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+  - package-ecosystem: "docker"
+    directory: "/apps/etterlatte-proxy"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+  - package-ecosystem: "docker"
+    directory: "/apps/ey-pdfgen"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+  - package-ecosystem: "docker"
+    directory: "/apps/ey-slackbot"
     schedule:
       interval: "daily"
     open-pull-requests-limit: 10
