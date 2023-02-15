@@ -21,5 +21,5 @@ dependencies {
     testImplementation(Ktor.ServerTests)
 
     implementation(Micrometer.Prometheus)
-    implementation("org.json:json:20180813")
+    implementation("org.json:json:20220924")
 }
