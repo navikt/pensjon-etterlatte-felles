@@ -19,12 +19,6 @@ spec:
       application: dodsfall-fra-leesah
       access: readwrite
     - team: etterlatte
-      application: finn-etterlatte
-      access: readwrite
-    - team: etterlatte
-      application: sjekk-alder-etterlatte
-      access: readwrite
-    - team: etterlatte
       application: journalfoer-soeknad
       access: readwrite
     - team: etterlatte
@@ -40,16 +34,10 @@ spec:
       application: etterlatte-kafka-manager
       access: read
     - team: etterlatte
-      application: bpc-explorer
-      access: read
-    - team: etterlatte
       application: etterlatte-notifikasjoner
       access: readwrite
     - team: etterlatte
       application: etterlatte-fordeler
-      access: readwrite
-    - team: etterlatte
-      application: etterlatte-overvaaking
       access: readwrite
     - team: etterlatte
       application: test-fordeler
@@ -73,16 +61,10 @@ spec:
       application: etterlatte-tilbakekreving
       access: readwrite
     - team: etterlatte
-      application: etterlatte-vilkaar-kafka
-      access: readwrite
-    - team: etterlatte
       application: etterlatte-oppdater-behandling
       access: readwrite
     - team: etterlatte
       application: etterlatte-gyldig-soeknad
-      access: readwrite
-    - team: etterlatte
-      application: etterlatte-beregning
       access: readwrite
     - team: etterlatte
       application: etterlatte-grunnlag
@@ -91,29 +73,11 @@ spec:
       application: etterlatte-vedtaksvurdering
       access: readwrite
     - team: etterlatte
-      application: etterlatte-avkorting
-      access: readwrite
-    - team: etterlatte
-      application: etterlatte-opplysninger-fra-inntektskomponenten
-      access: readwrite
-    - team: etterlatte
       application: etterlatte-brev-api
-      access: readwrite
-    - team: etterlatte
-      application: etterlatte-brev-distribusjon
       access: readwrite
     - team: etterlatte
       application: etterlatte-hendelser-pdl
       access: readwrite
     - team: etterlatte
-      application: etterlatte-api
-      access: readwrite
-    - team: etterlatte
-      application: etterlatte-opplysninger-fra-medl
-      access: readwrite
-    - team: etterlatte
       application: etterlatte-statistikk
-      access: readwrite
-    - team: etterlatte
-      application: etterlatte-vilkaarsvurdering
       access: readwrite
