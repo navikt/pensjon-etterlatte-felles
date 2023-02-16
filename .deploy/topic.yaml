@@ -82,5 +82,5 @@ spec:
       application: etterlatte-statistikk
       access: readwrite
     - team: etterlatte
-      applicattion: etterlatte-vedtaksvurdering-kafka
+      application: etterlatte-vedtaksvurdering-kafka
       access: readwrite
