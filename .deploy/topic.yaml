@@ -84,3 +84,6 @@ spec:
     - team: etterlatte
       application: etterlatte-vedtaksvurdering-kafka
       access: readwrite
+    - team: etterlatte
+      application: start-regulering
+      access: write
