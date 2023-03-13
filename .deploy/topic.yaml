@@ -90,3 +90,6 @@ spec:
     - team: etterlatte
       application: start-regulering
       access: write
+    - team: etterlatte
+      application: etterlatte-vilkaarsvurdering-kafka
+      access: readwrite
