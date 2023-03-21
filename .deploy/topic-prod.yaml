@@ -66,3 +66,6 @@ spec:
     - team: etterlatte
       application: etterlatte-utbetaling
       access: readwrite
+    - team: etterlatte
+      application: etterlatte-gyldig-soeknad
+      access: readwrite
