@@ -69,3 +69,6 @@ spec:
     - team: etterlatte
       application: etterlatte-gyldig-soeknad
       access: readwrite
+    - team: etterlatte
+      application: etterlatte-hendelser-pdl
+      access: readwrite
