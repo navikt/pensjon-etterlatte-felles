@@ -14,9 +14,6 @@ on:
   push:
     branches:
       - main
-      - release/*
-      - feature/*
-      - fix/*
     paths:
       - apps/etterlatte-proxy/**
 
