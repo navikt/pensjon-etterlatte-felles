@@ -70,4 +70,4 @@ spec:
           cluster: prod-gcp
         - application: etterlatte-brev-api
           namespace: etterlatte
-          cluster: dev-gcp
+          cluster: prod-gcp
