@@ -45,6 +45,10 @@ spec:
     enabled: true
   webproxy: true
   env:
+    - name: AAREG_URL
+      value: https://aareg-services.intern.nav.no/api/v2
+    - name: REGOPPSLAG_URL
+      value: https://regoppslag.intern.nav.no/rest
     - name: STS_URL
       value: http://security-token-service.default.svc.nais.local/rest/v1/sts/token
   prometheus:
