@@ -111,8 +111,11 @@ Hent -> GET
 Opprett -> POST
 Oppdater -> PUT
 Slett -> DELETE
+Oppdater spesifikke felter -> PATCH
 
-Eks POST /api/behandling/{behandlingId} -> Oppretter en behandling
+Eks 
+POST /api/behandling -> Oppretter en behandling
+GET /api/behandling/{behandlingId} -> Henter en behandling
 ```
 
 Enkelte operasjoner trenger en mer spesifikk sti for å beskrive hva som gjøres. Eksempl på dette er:
