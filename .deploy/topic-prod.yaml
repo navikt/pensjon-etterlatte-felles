@@ -72,3 +72,12 @@ spec:
     - team: etterlatte
       application: etterlatte-hendelser-pdl
       access: readwrite
+    - team: etterlatte
+      application: etterlatte-beregning-kafka
+      access: readwrite
+    - team: etterlatte
+      application: etterlatte-vedtaksvurdering-kafka
+      access: readwrite
+    - team: etterlatte
+      application: etterlatte-vilkaarsvurdering-kafka
+      access: readwrite
