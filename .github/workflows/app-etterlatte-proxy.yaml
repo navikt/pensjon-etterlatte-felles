@@ -44,7 +44,7 @@ jobs:
           docker build --tag ${IMAGE} apps/${APP_NAME}
           docker push ${IMAGE}
 
-  deploy-to-dev-gcp:
+  deploy-to-dev-fss:
     name: Deploy to dev-fss
     needs: build-and-publish
     runs-on: ubuntu-latest
@@ -56,10 +56,10 @@ jobs:
           CLUSTER: dev-fss
           RESOURCE: apps/${{ env.APP_NAME }}/.nais/dev.yaml
 
-  deploy-to-prod-gcp:
+  deploy-to-prod-fss:
     name: Deploy to prod-fss
     if: ${{ github.ref == 'refs/heads/main' || github.event.inputs.deploy-prod == 'true' }}
-    needs: deploy-to-dev-gcp
+    needs: deploy-to-dev-fss
     runs-on: ubuntu-latest
     timeout-minutes: 3
     continue-on-error: true
