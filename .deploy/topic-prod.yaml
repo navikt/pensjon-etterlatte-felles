@@ -81,3 +81,6 @@ spec:
     - team: etterlatte
       application: etterlatte-vilkaarsvurdering-kafka
       access: readwrite
+    - team: etterlatte
+      application: etterlatte-trygdetid-kafka
+      access: readwrite
