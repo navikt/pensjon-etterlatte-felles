@@ -7,6 +7,8 @@ metadata:
     team: etterlatte
 spec:
   image: {{ image }}
+  ingresses:
+    - https://etterlatte-pdfgen.intern.dev.nav.no # For testing fra lokal maskin
   replicas:
     min: 1
     max: 1
