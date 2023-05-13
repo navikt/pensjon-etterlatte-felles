@@ -84,3 +84,6 @@ spec:
     - team: etterlatte
       application: etterlatte-trygdetid-kafka
       access: readwrite
+    - team: etterlatte
+      application: etterlatte-migrering
+      access: readwrite
