@@ -51,18 +51,14 @@ spec:
       value: https://regoppslag.intern.nav.no/rest
     - name: STS_URL
       value: http://security-token-service.default.svc.nais.local/rest/v1/sts/token
+    - name: INSTITUSJONSOPPHOLD_URL
+      value: https://inst2.intern.nav.no
   prometheus:
     enabled: true
     path: /internal/prometheus
   accessPolicy:
     inbound:
       rules:
-       # - application: finn-etterlatte
-       #   namespace: etterlatte
-       #   cluster: dev-gcp
-       # - application: sjekk-alder-etterlatte
-       #   namespace: etterlatte
-       #   cluster: dev-gcp
         - application: selvbetjening-api
           namespace: etterlatte
           cluster: prod-gcp
@@ -75,3 +71,6 @@ spec:
         - application: etterlatte-brev-api
           namespace: etterlatte
           cluster: prod-gcp
+        - application: etterlatte-institusjonsopphold
+          namespace: etterlatte
+          cluster: dev-gcp

@@ -16,6 +16,7 @@ import no.nav.etterlatte.routes.aareg
 import no.nav.etterlatte.routes.internal
 import no.nav.etterlatte.routes.regoppslag
 import no.nav.etterlatte.routes.inntektskomponenten
+import no.nav.etterlatte.routes.institusjonsoppholdRoute
 import org.slf4j.event.Level
 import java.util.*
 
@@ -43,6 +44,7 @@ fun Application.module() {
                 inntektskomponenten(config, stsClient)
                 aareg(config, stsClient)
                 regoppslag(config, stsClient)
+                institusjonsoppholdRoute(config, stsClient)
             }
         }
     }
