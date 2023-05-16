@@ -55,6 +55,8 @@ spec:
       value: https://regoppslag.dev.intern.nav.no/rest
     - name: INSTITUSJONSOPPHOLD_URL
       value: https://inst2-q2.dev.intern.nav.no
+    - name: INSTITUSJONSOPPHOLD_AZURE_SCOPE
+      value: api://dev-fss.team-rocket.inst2/.default
   prometheus:
     enabled: true
     path: /internal/prometheus

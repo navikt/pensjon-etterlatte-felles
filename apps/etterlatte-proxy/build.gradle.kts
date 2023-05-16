@@ -15,6 +15,10 @@ dependencies {
     implementation(Ktor.ServerCore)
     implementation(Ktor.ServerNetty)
     implementation(Ktor.ServerAuthJwt)
+    implementation(Ktor.OkHttp)
+    implementation(NavFelles.NavFellesTokenClientCore)
+
+    implementation(Jackson.jacksonDatatypejsr310)
 
     testImplementation(NavFelles.MockOauth2Server)
 

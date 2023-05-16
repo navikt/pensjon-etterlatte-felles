@@ -1,5 +1,8 @@
 package no.nav.etterlatte
 
+import com.typesafe.config.Config
+import com.typesafe.config.ConfigFactory
+import io.ktor.client.HttpClient
 import io.ktor.serialization.jackson.jackson
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
@@ -36,6 +39,15 @@ fun Application.module() {
         filter { call -> !call.request.path().startsWith("/internal") }
         mdc("correlation_id") { call -> call.request.header("x_correlation_id") ?: UUID.randomUUID().toString() }
     }
+    val configBasic: Config = ConfigFactory.load()
+    val institusonsOppholdHttpklient: HttpClient by lazy {
+        httpClientClientCredentials(
+            azureAppClientId = configBasic.getString("azure.app.client.id"),
+            azureAppJwk = configBasic.getString("azure.app.jwk"),
+            azureAppWellKnownUrl = configBasic.getString("azure.app.well.known.url"),
+            azureAppScope = configBasic.getString("institusjonsopphold.azure.scope")
+        )
+    }
 
     routing {
         internal()
@@ -44,7 +56,7 @@ fun Application.module() {
                 inntektskomponenten(config, stsClient)
                 aareg(config, stsClient)
                 regoppslag(config, stsClient)
-                institusjonsoppholdRoute(config, stsClient)
+                institusjonsoppholdRoute(config, institusonsOppholdHttpklient)
             }
         }
     }

@@ -1,7 +1,9 @@
 object NavFelles {
+    private const val navFellesToken = "3.0.11"
     const val RapidAndRivers = "com.github.navikt:rapids-and-rivers:2022100711511665136276.49acbaae4ed4"
     const val BrukernotifikasjonSchemas = "com.github.navikt:brukernotifikasjon-schemas:v2.5.2"
     const val MockOauth2Server = "no.nav.security:mock-oauth2-server:0.5.4"
+    const val NavFellesTokenClientCore = "no.nav.security:token-client-core:$navFellesToken"
 }
 
 object Etterlatte {
@@ -25,8 +27,12 @@ object Ktor {
     const val ServerCore = "io.ktor:ktor-server-core:$version"
     const val ServerContentNegotiation = "io.ktor:ktor-server-content-negotiation:$version"
     const val ServerNetty = "io.ktor:ktor-server-netty:$version"
-
+    const val OkHttp = "io.ktor:ktor-client-okhttp:$version"
     const val ServerTests = "io.ktor:ktor-server-tests:$version"
+}
+
+object Jackson {
+    const val jacksonDatatypejsr310 = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.0"
 }
 
 object Kafka {
