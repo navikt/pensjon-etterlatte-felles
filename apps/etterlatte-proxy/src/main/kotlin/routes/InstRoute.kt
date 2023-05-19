@@ -1,5 +1,6 @@
 package no.nav.etterlatte.routes
 
+import com.typesafe.config.ConfigFactory
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.ResponseException
 import io.ktor.client.request.header
@@ -16,13 +17,16 @@ import io.ktor.server.routing.get
 import io.ktor.server.routing.route
 import no.nav.etterlatte.NavCallId
 import no.nav.etterlatte.NavConsumerId
+import no.nav.etterlatte.getInstitusonsOppholdHttpklient
 import no.nav.etterlatte.pipeResponse
 import org.slf4j.LoggerFactory
 import java.util.*
 
-fun Route.institusjonsoppholdRoute(config: Config, institusjonsoppholdClient: HttpClient) {
+fun Route.institusjonsoppholdRoute(config: Config) {
     val logger = LoggerFactory.getLogger("no.pensjon.etterlatte")
     val inst2RouteSuffix = "api/v1/person/institusjonsopphold/"
+    val defaultConfig = ConfigFactory.load()
+    val httpKlient = getInstitusonsOppholdHttpklient(defaultConfig)
     route("/inst2/{oppholdId}") {
         val inst2Url = config.institusjonsoppholdUrl
 
@@ -31,7 +35,7 @@ fun Route.institusjonsoppholdRoute(config: Config, institusjonsoppholdClient: Ht
             val oppholdId =
                 call.parameters["oppholdId"] ?: return@get call.respond(HttpStatusCode.BadRequest, "Mangler oppholdsid")
             try {
-                val response = institusjonsoppholdClient.post(inst2Url.plus(inst2RouteSuffix.plus(oppholdId))) {
+                val response = httpKlient.post(inst2Url.plus(inst2RouteSuffix.plus(oppholdId))) {
                     header(HttpHeaders.NavConsumerId, "etterlatte-proxy")
                     header(HttpHeaders.NavCallId, callId)
                 }

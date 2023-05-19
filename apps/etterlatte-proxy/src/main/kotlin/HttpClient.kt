@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.databind.json.JsonMapper
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.KotlinModule
+import com.typesafe.config.Config
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.plugins.auth.Auth
@@ -16,6 +17,15 @@ import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import io.ktor.serialization.jackson.JacksonConverter
 import java.util.*
+
+fun getInstitusonsOppholdHttpklient(config: Config): HttpClient {
+    return httpClientClientCredentials(
+        azureAppClientId = config.getString("aad.clientId"),
+        azureAppJwk = config.getString("azure.app.jwk"),
+        azureAppWellKnownUrl = config.getString("aad.wellKnownUrl"),
+        azureAppScope = config.getString("institusjonsopphold.azure.scope")
+    )
+}
 
 fun httpClientClientCredentials(
     azureAppClientId: String,
