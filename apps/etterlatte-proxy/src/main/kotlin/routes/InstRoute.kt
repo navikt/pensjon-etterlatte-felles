@@ -29,7 +29,7 @@ import java.util.*
 
 fun Route.institusjonsoppholdRoute(config: Config) {
     val logger = LoggerFactory.getLogger("no.pensjon.etterlatte")
-    val inst2RouteSuffix = "api/v1/person/institusjonsopphold/"
+    val inst2RouteSuffix = "/api/v1/person/institusjonsopphold/"
     val defaultConfig = ConfigFactory.load()
     val inst2Url = config.institusjonsoppholdUrl
     val httpKlient = getInstitusonsOppholdHttpklient(defaultConfig).also {
