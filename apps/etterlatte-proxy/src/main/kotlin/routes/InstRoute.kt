@@ -1,7 +1,6 @@
 package no.nav.etterlatte.routes
 
 import com.typesafe.config.ConfigFactory
-import io.ktor.client.HttpClient
 import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.plugins.RedirectResponseException
 import io.ktor.client.plugins.ResponseException
@@ -61,7 +60,7 @@ fun Route.institusjonsoppholdRoute(config: Config) {
             val oppholdId =
                 call.parameters["oppholdId"] ?: return@get call.respond(HttpStatusCode.BadRequest, "Mangler oppholdsid")
             try {
-                val response = httpKlient.post(inst2Url.plus(inst2RouteSuffix.plus(oppholdId))) {
+                val response = httpKlient.get(inst2Url.plus(inst2RouteSuffix.plus(oppholdId))) {
                     header(HttpHeaders.NavConsumerId, "etterlatte-proxy")
                     header(HttpHeaders.NavCallId, callId)
                 }
