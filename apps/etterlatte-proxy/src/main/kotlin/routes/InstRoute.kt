@@ -1,6 +1,7 @@
 package no.nav.etterlatte.routes
 
 import com.typesafe.config.ConfigFactory
+import io.ktor.client.call.body
 import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.plugins.RedirectResponseException
 import io.ktor.client.plugins.ResponseException
@@ -42,6 +43,24 @@ fun Route.institusjonsoppholdRoute(config: Config) {
                             logger.info("Successfully pinged inst2-core")
                         } else {
                             logger.error("Couldnt not ping inst2-core, status: ${it.status}")
+                        }
+                    }
+                } catch (e: ClientRequestException ) {
+                    logger.error("Couldnt not ping inst2-core 4xx", e)
+                } catch (e: RedirectResponseException) {
+                    logger.error("Couldnt not ping inst2-core 3xx", e)
+                } catch (e: ServerResponseException) {
+                    logger.error("Couldnt not ping inst2-core 5xx", e)
+                }
+            }
+            runBlocking {
+                try {
+                    it.get(inst2Url.plus(inst2RouteSuffix.plus("200538129"))) {
+                        header(HttpHeaders.NavConsumerId, "etterlatte-proxy")
+                        header(HttpHeaders.NavCallId, UUID.randomUUID().toString())
+                    }.let {
+                        if (it.status == HttpStatusCode.OK) {
+                            logger.info("Got ok response på oppslag for oppholdid 200538129")
                         }
                     }
                 } catch (e: ClientRequestException ) {
