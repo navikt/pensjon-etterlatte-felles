@@ -28,10 +28,11 @@ fun Route.institusjonsoppholdRoute(config: Config) {
     val logger = LoggerFactory.getLogger("no.pensjon.etterlatte")
     val inst2RouteSuffix = "api/v1/person/institusjonsopphold/"
     val defaultConfig = ConfigFactory.load()
+    val inst2Url = config.institusjonsoppholdUrl
     val httpKlient = getInstitusonsOppholdHttpklient(defaultConfig).also {
         if(environment?.developmentMode == false) {
             runBlocking {
-                it.get("api/ping") {
+                it.get(inst2Url.plus("/api/ping")) {
                     header(HttpHeaders.NavConsumerId, "etterlatte-proxy")
                 }.let {
                     if (it.status == HttpStatusCode.OK) {
@@ -44,8 +45,6 @@ fun Route.institusjonsoppholdRoute(config: Config) {
         }
     }
     route("/inst2/{oppholdId}") {
-        val inst2Url = config.institusjonsoppholdUrl
-
         get {
             val callId = call.request.header(HttpHeaders.NavCallId) ?: UUID.randomUUID().toString()
             val oppholdId =
