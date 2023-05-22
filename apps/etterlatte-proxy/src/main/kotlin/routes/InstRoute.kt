@@ -2,7 +2,10 @@ package no.nav.etterlatte.routes
 
 import com.typesafe.config.ConfigFactory
 import io.ktor.client.HttpClient
+import io.ktor.client.plugins.ClientRequestException
+import io.ktor.client.plugins.RedirectResponseException
 import io.ktor.client.plugins.ResponseException
+import io.ktor.client.plugins.ServerResponseException
 import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.client.request.post
@@ -32,14 +35,22 @@ fun Route.institusjonsoppholdRoute(config: Config) {
     val httpKlient = getInstitusonsOppholdHttpklient(defaultConfig).also {
         if(environment?.developmentMode == false) {
             runBlocking {
-                it.get(inst2Url.plus("/api/ping")) {
-                    header(HttpHeaders.NavConsumerId, "etterlatte-proxy")
-                }.let {
-                    if (it.status == HttpStatusCode.OK) {
-                        logger.info("Successfully pinged inst2-core")
-                    } else {
-                        logger.error("Couldnt not ping inst2-core, status: ${it.status}")
+                try {
+                    it.get(inst2Url.plus("/api/ping")) {
+                        header(HttpHeaders.NavConsumerId, "etterlatte-proxy")
+                    }.let {
+                        if (it.status == HttpStatusCode.OK) {
+                            logger.info("Successfully pinged inst2-core")
+                        } else {
+                            logger.error("Couldnt not ping inst2-core, status: ${it.status}")
+                        }
                     }
+                } catch (e: ClientRequestException ) {
+                    logger.error("Couldnt not ping inst2-core 4xx", e)
+                } catch (e: RedirectResponseException) {
+                    logger.error("Couldnt not ping inst2-core 3xx", e)
+                } catch (e: ServerResponseException) {
+                    logger.error("Couldnt not ping inst2-core 5xx", e)
                 }
             }
         }
