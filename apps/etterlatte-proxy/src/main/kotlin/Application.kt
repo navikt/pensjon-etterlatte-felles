@@ -1,5 +1,8 @@
 package no.nav.etterlatte
 
+import com.typesafe.config.Config
+import com.typesafe.config.ConfigFactory
+import io.ktor.client.HttpClient
 import io.ktor.serialization.jackson.jackson
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
@@ -16,6 +19,7 @@ import no.nav.etterlatte.routes.aareg
 import no.nav.etterlatte.routes.internal
 import no.nav.etterlatte.routes.regoppslag
 import no.nav.etterlatte.routes.inntektskomponenten
+import no.nav.etterlatte.routes.institusjonsoppholdRoute
 import org.slf4j.event.Level
 import java.util.*
 
@@ -43,6 +47,7 @@ fun Application.module() {
                 inntektskomponenten(config, stsClient)
                 aareg(config, stsClient)
                 regoppslag(config, stsClient)
+                institusjonsoppholdRoute(config)
             }
         }
     }

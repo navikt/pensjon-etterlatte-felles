@@ -11,7 +11,8 @@ data class Config(
     val tokenX: TokenX,
     val inntektskomponenten: INNTEKTSKOMPONENTEN,
     val aareg: AAREG,
-    val regoppslag: REGOPPSLAG
+    val regoppslag: REGOPPSLAG,
+    val institusjonsoppholdUrl: String
 ) {
     data class INNTEKTSKOMPONENTEN(
         val url: String
@@ -62,6 +63,7 @@ data class Config(
 
 suspend fun ApplicationConfig.load() = Config(
     inntektskomponenten = Config.INNTEKTSKOMPONENTEN(url = property("inntektskomponenten.url").getString()),
+    institusjonsoppholdUrl = property("institusjonsopphold.url").getString(),
     aareg = Config.AAREG(url = property("aareg.url").getString()),
     regoppslag = Config.REGOPPSLAG(url = property("regoppslag.url").getString()),
     sts = Config.Sts(
