@@ -3,6 +3,7 @@ package no.nav.etterlatte.routes
 import com.typesafe.config.ConfigFactory
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.ResponseException
+import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.client.request.post
 import io.ktor.http.HttpHeaders
@@ -15,6 +16,7 @@ import no.nav.etterlatte.Config
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
 import io.ktor.server.routing.route
+import kotlinx.coroutines.runBlocking
 import no.nav.etterlatte.NavCallId
 import no.nav.etterlatte.NavConsumerId
 import no.nav.etterlatte.getInstitusonsOppholdHttpklient
@@ -26,7 +28,21 @@ fun Route.institusjonsoppholdRoute(config: Config) {
     val logger = LoggerFactory.getLogger("no.pensjon.etterlatte")
     val inst2RouteSuffix = "api/v1/person/institusjonsopphold/"
     val defaultConfig = ConfigFactory.load()
-    val httpKlient = getInstitusonsOppholdHttpklient(defaultConfig)
+    val httpKlient = getInstitusonsOppholdHttpklient(defaultConfig).also {
+        if(environment?.developmentMode == false) {
+            runBlocking {
+                it.get("api/ping") {
+                    header(HttpHeaders.NavConsumerId, "etterlatte-proxy")
+                }.let {
+                    if (it.status == HttpStatusCode.OK) {
+                        logger.info("Successfully pinged inst2-core")
+                    } else {
+                        logger.error("Couldnt not ping inst2-core, status: ${it.status}")
+                    }
+                }
+            }
+        }
+    }
     route("/inst2/{oppholdId}") {
         val inst2Url = config.institusjonsoppholdUrl
 
