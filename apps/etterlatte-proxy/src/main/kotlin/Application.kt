@@ -10,6 +10,7 @@ import io.ktor.server.auth.authenticate
 import io.ktor.server.plugins.callloging.CallLogging
 import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.server.request.header
+import io.ktor.server.request.httpMethod
 import io.ktor.server.request.path
 import io.ktor.server.routing.IgnoreTrailingSlash
 import io.ktor.server.routing.route
@@ -37,6 +38,11 @@ fun Application.module() {
     install(CallLogging) {
         level = Level.INFO
         filter { call -> !call.request.path().startsWith("/internal") }
+        format { call ->
+            skjulAllePotensielleFnr(
+                "<- ${call.response.status()?.value} ${call.request.httpMethod.value} ${call.request.path()}"
+            )
+        }
         mdc("correlation_id") { call -> call.request.header("x_correlation_id") ?: UUID.randomUUID().toString() }
     }
 
@@ -52,4 +58,11 @@ fun Application.module() {
         }
     }
 }
+
+/**
+ * Bruker en regex med negativ lookbehind (?<!) og negativ lookahead (?!) for å matche alle forekomster av
+ * nøyaktig 11 tall på rad ([ikke tall før, 11 tall, ikke tall etter] er tolkningen til regex'en), og bytte de
+ * ut med 11 *. Ser ikke på "gyldigheten" til det som er potensielle fnr, bare fjerner alle slike forekomster.
+ */
+fun skjulAllePotensielleFnr(url: String): String = url.replace(Regex("(?<!\\d)\\d{11}(?!\\d)"), "***********")
 
