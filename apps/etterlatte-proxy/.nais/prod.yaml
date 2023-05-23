@@ -75,4 +75,4 @@ spec:
           cluster: prod-gcp
         - application: etterlatte-institusjonsopphold
           namespace: etterlatte
-          cluster: dev-gcp
+          cluster: prod-gcp
