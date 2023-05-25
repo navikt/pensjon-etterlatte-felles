@@ -59,7 +59,7 @@ fun Route.institusjonsoppholdRoute(config: Config) {
             val oppholdId =
                 call.parameters["oppholdId"] ?: return@get call.respond(HttpStatusCode.BadRequest, "Mangler oppholdsid")
             try {
-                val response = httpKlient.get(inst2Url.plus(inst2RouteSuffix.plus(oppholdId))) {
+                val response = httpKlient.get(inst2Url.plus(inst2RouteSuffix.plus(oppholdId)).plus("?Med-Institusjonsinformasjon=true")) {
                     header(HttpHeaders.NavConsumerId, "etterlatte-proxy")
                     header(HttpHeaders.NavCallId, callId)
                 }
