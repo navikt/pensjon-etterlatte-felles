@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8"/>
+    {{> brev/partials/style}}
+    <title>Revurdering brev</title>
+</head>
+<body>
+
+<div class="container">
+    {{> brev/partials/header this}}
+    <h1>Vi har revurdert ytelsen din</h1>
+    {{> brev/partials/infotabell this}}
+    {{> brev/partials/endring this}}
+    {{> brev/partials/beregning}}
+    {{> brev/partials/endringer}}
+    {{> brev/partials/kontonummer}}
+    {{> brev/partials/skattetrekk}}
+    {{> brev/partials/klage}}
+    {{> brev/partials/innsyn}}
+    {{> brev/partials/sporsmaal}}
+    {{> brev/partials/signatur}}
+</div>
+
+{{> brev/partials/footer this}}
+
+</body>
+</html>
