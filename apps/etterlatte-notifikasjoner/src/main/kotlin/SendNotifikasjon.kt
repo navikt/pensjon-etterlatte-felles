@@ -41,6 +41,7 @@ class SendNotifikasjon(
         val tekst = when (soeknad.type) {
             SoeknadType.GJENLEVENDEPENSJON -> "Vi har mottatt søknaden din om gjenlevendepensjon"
             SoeknadType.BARNEPENSJON -> "Vi har mottatt søknaden din om barnepensjon"
+            SoeknadType.OMSTILLINGSSTOENAD -> "Vi har mottatt søknaden din om omstillingsstønad"
         }
 
         return BeskjedInputBuilder()
