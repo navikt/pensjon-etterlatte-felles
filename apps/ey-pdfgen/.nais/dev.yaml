@@ -23,4 +23,3 @@ spec:
     inbound:
       rules:
         - application: journalfoer-soeknad
-        - application: etterlatte-brev-api
