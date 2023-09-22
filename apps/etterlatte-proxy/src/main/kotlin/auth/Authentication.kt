@@ -1,4 +1,4 @@
-package no.nav.etterlatte
+package no.nav.etterlatte.auth
 
 import com.auth0.jwk.JwkProviderBuilder
 import io.ktor.server.application.Application
@@ -6,6 +6,7 @@ import io.ktor.server.application.install
 import io.ktor.server.auth.Authentication
 import io.ktor.server.auth.jwt.JWTPrincipal
 import io.ktor.server.auth.jwt.jwt
+import no.nav.etterlatte.config.Config
 import java.net.URL
 import java.util.concurrent.TimeUnit
 

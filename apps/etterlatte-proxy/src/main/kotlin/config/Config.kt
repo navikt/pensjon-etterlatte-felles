@@ -1,32 +1,26 @@
-package no.nav.etterlatte
+package no.nav.etterlatte.config
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.server.config.ApplicationConfig
+import no.nav.etterlatte.routes.httpClientWithProxy
+import no.nav.etterlatte.routes.jsonClient
 
 data class Config(
     val sts: Sts,
     val aad: AAD,
     val tokenX: TokenX,
-    val inntektskomponenten: INNTEKTSKOMPONENTEN,
-    val aareg: AAREG,
-    val regoppslag: REGOPPSLAG,
-    val institusjonsoppholdUrl: String
+    val inntektskomponentenUrl: String,
+    val aaregUrl: String,
+    val regoppslagUrl: String,
+    val institusjonsoppholdUrl: String,
+    val tilbakekrevingUrl: String
 ) {
-    data class INNTEKTSKOMPONENTEN(
-        val url: String
-    )
-    data class AAREG(
-        val url: String
-    )
-
-    data class REGOPPSLAG(
-        val url: String
-    )
 
     data class Sts(
-        val url: String,
+        val restUrl: String,
+        val soapUrl: String,
         val serviceuser: ServiceUser,
     ) {
         data class ServiceUser(
@@ -58,16 +52,17 @@ data class Config(
             @JsonProperty("jwks_uri") val jwksUri: String,
         )
     }
-
 }
 
 suspend fun ApplicationConfig.load() = Config(
-    inntektskomponenten = Config.INNTEKTSKOMPONENTEN(url = property("inntektskomponenten.url").getString()),
+    inntektskomponentenUrl = property("inntektskomponenten.url").getString(),
     institusjonsoppholdUrl = property("institusjonsopphold.url").getString(),
-    aareg = Config.AAREG(url = property("aareg.url").getString()),
-    regoppslag = Config.REGOPPSLAG(url = property("regoppslag.url").getString()),
+    aaregUrl = property("aareg.url").getString(),
+    regoppslagUrl = property("regoppslag.url").getString(),
+    tilbakekrevingUrl = property("tilbakekreving.url").getString(),
     sts = Config.Sts(
-        url = property("sts.url").getString(),
+        restUrl = property("sts.restUrl").getString(),
+        soapUrl = property("sts.soapUrl").getString(),
         serviceuser = Config.Sts.ServiceUser(
             name = property("serviceuser.name").getString(),
             password = property("serviceuser.password").getString(),

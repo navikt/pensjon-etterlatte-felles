@@ -1,4 +1,4 @@
-package no.nav.etterlatte
+package no.nav.etterlatte.config
 
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -16,6 +16,7 @@ import io.ktor.client.request.header
 import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import io.ktor.serialization.jackson.JacksonConverter
+import no.nav.etterlatte.auth.clientCredential
 import java.util.*
 
 fun getInstitusonsOppholdHttpklient(config: Config): HttpClient {

@@ -45,8 +45,10 @@ spec:
     enabled: true
   webproxy: true
   env:
-    - name: STS_URL
+    - name: STS_REST_URL
       value: http://security-token-service.default.svc.nais.local/rest/v1/sts/token
+    - name: STS_SOAP_URL
+      value: https://sts-q1.preprod.local/SecurityTokenServiceProvider/
     - name: INNTEKTSKOMPONENTEN_URL
       value: https://app-q2.adeo.no/inntektskomponenten-ws/rs/api/v1/hentinntektliste
     - name: AAREG_URL

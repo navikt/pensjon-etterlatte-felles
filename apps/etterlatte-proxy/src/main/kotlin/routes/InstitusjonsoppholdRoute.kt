@@ -13,15 +13,12 @@ import io.ktor.server.application.call
 import io.ktor.server.request.header
 import io.ktor.server.response.respond
 import io.ktor.server.response.respondText
-import no.nav.etterlatte.Config
+import no.nav.etterlatte.config.Config
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
 import io.ktor.server.routing.route
 import kotlinx.coroutines.runBlocking
-import no.nav.etterlatte.NavCallId
-import no.nav.etterlatte.NavConsumerId
-import no.nav.etterlatte.getInstitusonsOppholdHttpklient
-import no.nav.etterlatte.pipeResponse
+import no.nav.etterlatte.config.getInstitusonsOppholdHttpklient
 import org.slf4j.LoggerFactory
 import java.util.*
 

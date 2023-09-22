@@ -4,6 +4,7 @@ object NavFelles {
     const val BrukernotifikasjonSchemas = "com.github.navikt:brukernotifikasjon-schemas:v2.5.2"
     const val MockOauth2Server = "no.nav.security:mock-oauth2-server:0.5.4"
     const val NavFellesTokenClientCore = "no.nav.security:token-client-core:$navFellesToken"
+    const val TjenestespesifikasjonerTilbakekreving = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:tilbakekreving-v1-tjenestespesifikasjon:1.78ffd1e"
 }
 
 object Etterlatte {
@@ -61,6 +62,15 @@ object Micrometer {
 
 object MockK {
     const val MockK = "io.mockk:mockk:1.13.1"
+}
+
+object Cxf {
+    private const val version = "4.0.0"
+
+    const val cxfLogging = "org.apache.cxf:cxf-rt-features-logging:$version"
+    const val cxfJaxWs = "org.apache.cxf:cxf-rt-frontend-jaxws:$version"
+    const val cxfTransportsHttp = "org.apache.cxf:cxf-rt-transports-http:$version"
+    const val cxfWsSecurity = "org.apache.cxf:cxf-rt-ws-security:$version"
 }
 
 object Kotest {

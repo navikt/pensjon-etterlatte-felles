@@ -10,7 +10,7 @@ import io.ktor.server.routing.route
 import io.prometheus.client.CollectorRegistry
 import io.prometheus.client.exporter.common.TextFormat
 
-fun Route.internal() {
+fun Route.internalRoute() {
     route("/internal") {
         get("/is_alive") {
             call.respondText { "Alive" }

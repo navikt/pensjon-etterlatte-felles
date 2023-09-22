@@ -74,4 +74,17 @@ internal class ApplicationTest {
             }
         }
     }
+
+    @Test
+    fun `skal returnere unauthorized dersom aad-token mangler for tilbakekreving-route`() {
+        testApplication {
+            environment {
+                config = hoconApplicationConfig
+            }
+
+            client.post("aad/tilbakekreving/tilbakekrevingsvedtak").also {
+                assertEquals(HttpStatusCode.Unauthorized, it.status)
+            }
+        }
+    }
 }

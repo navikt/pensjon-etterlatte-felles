@@ -1,4 +1,4 @@
-package no.nav.etterlatte
+package no.nav.etterlatte.routes
 
 import com.fasterxml.jackson.databind.DeserializationFeature
 import io.ktor.client.HttpClient

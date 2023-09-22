@@ -1,4 +1,4 @@
-package no.nav.etterlatte
+package no.nav.etterlatte.auth
 
 import com.nimbusds.oauth2.sdk.auth.ClientAuthenticationMethod
 import io.ktor.client.plugins.auth.Auth

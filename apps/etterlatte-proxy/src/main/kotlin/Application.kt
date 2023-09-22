@@ -1,8 +1,5 @@
 package no.nav.etterlatte
 
-import com.typesafe.config.Config
-import com.typesafe.config.ConfigFactory
-import io.ktor.client.HttpClient
 import io.ktor.serialization.jackson.jackson
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
@@ -16,11 +13,16 @@ import io.ktor.server.routing.IgnoreTrailingSlash
 import io.ktor.server.routing.route
 import io.ktor.server.routing.routing
 import kotlinx.coroutines.runBlocking
-import no.nav.etterlatte.routes.aareg
-import no.nav.etterlatte.routes.internal
-import no.nav.etterlatte.routes.regoppslag
-import no.nav.etterlatte.routes.inntektskomponenten
+import no.nav.etterlatte.auth.installAuthentication
+import no.nav.etterlatte.auth.sts.StsClient
+import no.nav.etterlatte.config.TilbakekrevingConfig
+import no.nav.etterlatte.config.load
+import no.nav.etterlatte.routes.aaregRoute
+import no.nav.etterlatte.routes.inntektskomponentenRoute
 import no.nav.etterlatte.routes.institusjonsoppholdRoute
+import no.nav.etterlatte.routes.internalRoute
+import no.nav.etterlatte.routes.regoppslagRoute
+import no.nav.etterlatte.routes.tilbakekrevingRoute
 import org.slf4j.event.Level
 import java.util.*
 
@@ -30,11 +32,10 @@ fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 fun Application.module() {
     val config = runBlocking { environment.config.load() }
     val stsClient = StsClient(config.sts)
-    installAuthentication(config.aad, config.tokenX)
 
+    installAuthentication(config.aad, config.tokenX)
     install(ContentNegotiation) { jackson() }
     install(IgnoreTrailingSlash)
-
     install(CallLogging) {
         level = Level.INFO
         filter { call -> !call.request.path().startsWith("/internal") }
@@ -47,13 +48,15 @@ fun Application.module() {
     }
 
     routing {
-        internal()
+        internalRoute()
+
         authenticate("aad") {
             route("/aad") {
-                inntektskomponenten(config, stsClient)
-                aareg(config, stsClient)
-                regoppslag(config, stsClient)
+                inntektskomponentenRoute(config, stsClient)
+                aaregRoute(config, stsClient)
+                regoppslagRoute(config, stsClient)
                 institusjonsoppholdRoute(config)
+                tilbakekrevingRoute(TilbakekrevingConfig(config).createTilbakekrevingService())
             }
         }
     }

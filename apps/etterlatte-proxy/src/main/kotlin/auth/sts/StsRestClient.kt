@@ -1,4 +1,4 @@
-package no.nav.etterlatte
+package no.nav.etterlatte.auth.sts
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import io.ktor.client.HttpClient
@@ -13,6 +13,7 @@ import io.ktor.http.Parameters
 import io.ktor.serialization.jackson.jackson
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import no.nav.etterlatte.config.Config
 import java.time.Instant
 
 class StsClient(private val config: Config.Sts) {
@@ -43,7 +44,7 @@ class StsClient(private val config: Config.Sts) {
             append("grant_type", "client_credentials")
             append("scope", "openid")
         },
-        url = config.url,
+        url = config.restUrl,
     ).body<StsToken>()
 
     private suspend fun refreshIfNeeded() {
