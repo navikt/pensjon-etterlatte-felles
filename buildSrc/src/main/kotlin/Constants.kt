@@ -67,10 +67,10 @@ object MockK {
 object Cxf {
     private const val version = "4.0.0"
 
-    const val cxfLogging = "org.apache.cxf:cxf-rt-features-logging:$version"
-    const val cxfJaxWs = "org.apache.cxf:cxf-rt-frontend-jaxws:$version"
-    const val cxfTransportsHttp = "org.apache.cxf:cxf-rt-transports-http:$version"
-    const val cxfWsSecurity = "org.apache.cxf:cxf-rt-ws-security:$version"
+    const val CxfLogging = "org.apache.cxf:cxf-rt-features-logging:$version"
+    const val CxfJaxWs = "org.apache.cxf:cxf-rt-frontend-jaxws:$version"
+    const val CxfTransportsHttp = "org.apache.cxf:cxf-rt-transports-http:$version"
+    const val CxfWsSecurity = "org.apache.cxf:cxf-rt-ws-security:$version"
 }
 
 object Kotest {

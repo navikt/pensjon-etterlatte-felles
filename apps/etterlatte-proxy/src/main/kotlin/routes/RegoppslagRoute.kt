@@ -62,7 +62,7 @@ data class AdresseRequest(
     val tema: String = "PEN" // Todo: mulig bytte tema til et av de nye
 )
 
-val objectMapper: ObjectMapper = JsonMapper.builder()
+private val objectMapper: ObjectMapper = JsonMapper.builder()
     .addModule(KotlinModule())
     .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
     .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)

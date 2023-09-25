@@ -41,12 +41,8 @@ spec:
   azure:
     application:
       enabled: true
-  tokenx:
-    enabled: true
   webproxy: true
   env:
-    - name: AAREG_URL
-      value: https://aareg-services.intern.nav.no/api/v2
     - name: REGOPPSLAG_URL
       value: https://regoppslag.intern.nav.no/rest
     - name: STS_REST_URL
@@ -57,6 +53,8 @@ spec:
       value: https://inst2.intern.nav.no
     - name: INSTITUSJONSOPPHOLD_AZURE_SCOPE
       value: api://prod-fss.team-rocket.inst2/.default
+    - name: TILBAKEKREVING_URL
+      value: https://cics.adeo.no/oppdrag/K231CW80
   prometheus:
     enabled: true
     path: /internal/prometheus
@@ -76,5 +74,8 @@ spec:
           namespace: etterlatte
           cluster: prod-gcp
         - application: etterlatte-institusjonsopphold
+          namespace: etterlatte
+          cluster: prod-gcp
+        - application: etterlatte-tilbakekreving
           namespace: etterlatte
           cluster: prod-gcp

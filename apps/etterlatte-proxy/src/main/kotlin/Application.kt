@@ -17,8 +17,6 @@ import no.nav.etterlatte.auth.installAuthentication
 import no.nav.etterlatte.auth.sts.StsRestClient
 import no.nav.etterlatte.config.TilbakekrevingConfig
 import no.nav.etterlatte.config.load
-import no.nav.etterlatte.routes.aaregRoute
-import no.nav.etterlatte.routes.inntektskomponentenRoute
 import no.nav.etterlatte.routes.institusjonsoppholdRoute
 import no.nav.etterlatte.routes.internalRoute
 import no.nav.etterlatte.routes.regoppslagRoute
@@ -28,12 +26,11 @@ import java.util.*
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
-@Suppress("unused") // Referenced in application.conf
 fun Application.module() {
     val config = runBlocking { environment.config.load() }
     val stsClient = StsRestClient(config.sts)
 
-    installAuthentication(config.aad, config.tokenX)
+    installAuthentication(config.aad)
     install(ContentNegotiation) { jackson() }
     install(IgnoreTrailingSlash)
     install(CallLogging) {
@@ -52,8 +49,6 @@ fun Application.module() {
 
         authenticate("aad") {
             route("/aad") {
-                inntektskomponentenRoute(config, stsClient)
-                aaregRoute(config, stsClient)
                 regoppslagRoute(config, stsClient)
                 institusjonsoppholdRoute(config)
                 tilbakekrevingRoute(TilbakekrevingConfig(config).createTilbakekrevingService())

@@ -1,5 +1,3 @@
-import java.net.URI
-
 plugins {
     id("etterlatte.common")
 }
@@ -30,17 +28,13 @@ dependencies {
     implementation(Ktor.OkHttp)
     implementation(NavFelles.NavFellesTokenClientCore)
     implementation(NavFelles.TjenestespesifikasjonerTilbakekreving)
-    implementation(Cxf.cxfLogging)
-    implementation(Cxf.cxfJaxWs)
-    implementation(Cxf.cxfTransportsHttp)
-    implementation(Cxf.cxfWsSecurity)
-
+    implementation(Cxf.CxfLogging)
+    implementation(Cxf.CxfJaxWs)
+    implementation(Cxf.CxfTransportsHttp)
+    implementation(Cxf.CxfWsSecurity)
+    implementation(Micrometer.Prometheus)
     implementation(Jackson.jacksonDatatypejsr310)
 
     testImplementation(NavFelles.MockOauth2Server)
-
     testImplementation(Ktor.ServerTests)
-
-    implementation(Micrometer.Prometheus)
-    implementation("org.json:json:20180813")
 }

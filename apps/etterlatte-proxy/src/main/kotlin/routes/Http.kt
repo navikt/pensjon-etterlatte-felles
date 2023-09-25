@@ -27,11 +27,6 @@ import io.ktor.utils.io.copyAndClose
 import org.apache.http.impl.conn.SystemDefaultRoutePlanner
 import java.net.ProxySelector
 
-fun jsonClient() =  HttpClient(Apache) {
-    install(ContentNegotiation) {
-        jackson { configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false) }
-    }
-}
 
 fun httpClient() = HttpClient(Apache){
     install(Logging) {
