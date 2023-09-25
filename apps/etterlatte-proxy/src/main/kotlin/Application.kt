@@ -14,7 +14,7 @@ import io.ktor.server.routing.route
 import io.ktor.server.routing.routing
 import kotlinx.coroutines.runBlocking
 import no.nav.etterlatte.auth.installAuthentication
-import no.nav.etterlatte.auth.sts.StsClient
+import no.nav.etterlatte.auth.sts.StsRestClient
 import no.nav.etterlatte.config.TilbakekrevingConfig
 import no.nav.etterlatte.config.load
 import no.nav.etterlatte.routes.aaregRoute
@@ -31,7 +31,7 @@ fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 @Suppress("unused") // Referenced in application.conf
 fun Application.module() {
     val config = runBlocking { environment.config.load() }
-    val stsClient = StsClient(config.sts)
+    val stsClient = StsRestClient(config.sts)
 
     installAuthentication(config.aad, config.tokenX)
     install(ContentNegotiation) { jackson() }

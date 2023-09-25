@@ -16,7 +16,7 @@ import kotlinx.coroutines.sync.withLock
 import no.nav.etterlatte.config.Config
 import java.time.Instant
 
-class StsClient(private val config: Config.Sts) {
+class StsRestClient(private val config: Config.Sts) {
     private val httpClient = HttpClient(Apache) {
         install(Auth) {
             basic {

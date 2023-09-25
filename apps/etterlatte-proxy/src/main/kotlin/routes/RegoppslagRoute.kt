@@ -21,12 +21,12 @@ import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
 import io.ktor.server.routing.route
 import no.nav.etterlatte.config.Config
-import no.nav.etterlatte.auth.sts.StsClient
+import no.nav.etterlatte.auth.sts.StsRestClient
 import org.slf4j.LoggerFactory
 import java.util.UUID
 
 
-fun Route.regoppslagRoute(config: Config, stsClient: StsClient) {
+fun Route.regoppslagRoute(config: Config, stsClient: StsRestClient) {
     val logger = LoggerFactory.getLogger("no.pensjon.etterlatte")
     route("/regoppslag") {
         val httpClient = httpClient()

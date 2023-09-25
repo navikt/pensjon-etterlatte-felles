@@ -4,7 +4,7 @@ plugins {
     id("etterlatte.common")
 }
 
-val cxfVersion = "4.0.0"
+val cxfVersion = "4.0.2"
 
 repositories {
     maven("https://jitpack.io")
