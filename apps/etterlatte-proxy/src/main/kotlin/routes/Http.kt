@@ -30,7 +30,7 @@ import java.net.ProxySelector
 
 fun httpClient() = HttpClient(Apache){
     install(Logging) {
-        level = LogLevel.HEADERS
+        level = LogLevel.INFO
     }
 }.also { Runtime.getRuntime().addShutdownHook(Thread{it.close()}) }
 
