@@ -4,7 +4,9 @@ import no.nav.etterlatte.auth.sts.ServiceUserConfig
 import no.nav.etterlatte.auth.sts.wrapInStsClient
 import no.nav.okonomi.tilbakekrevingservice.TilbakekrevingPortType
 import org.apache.cxf.ext.logging.LoggingFeature
+import org.apache.cxf.feature.Feature
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean
+import org.apache.cxf.ws.addressing.WSAddressingFeature
 import org.slf4j.LoggerFactory
 import javax.xml.namespace.QName
 
@@ -12,11 +14,18 @@ class TilbakekrevingConfig(config: Config, private val enableLogging: Boolean = 
 
     private val tilbakekrevingUrl = config.tilbakekrevingUrl
     private val sts = config.sts
-
     private val logger = LoggerFactory.getLogger(javaClass)
 
     fun createTilbakekrevingService(): TilbakekrevingPortType {
         logger.info("Bruker tilbakekrevingService url $tilbakekrevingUrl")
+
+        val enabledFeatures = mutableListOf<Feature>().apply {
+            add(WSAddressingFeature())
+            if (enableLogging) add(LoggingFeature().apply {
+                setVerbose(true)
+                setPrettyLogging(true)
+            })
+        }
 
         return JaxWsProxyFactoryBean().apply {
             address = tilbakekrevingUrl
@@ -24,12 +33,7 @@ class TilbakekrevingConfig(config: Config, private val enableLogging: Boolean = 
             serviceName = SERVICE
             endpointName = PORT
             serviceClass = TilbakekrevingPortType::class.java
-            if (enableLogging) features = listOf(
-                LoggingFeature().apply {
-                    setVerbose(true)
-                    setPrettyLogging(true)
-                }
-            )
+            features = enabledFeatures
         }.wrapInStsClient(sts.soapUrl, ServiceUserConfig(sts.serviceuser.name, sts.serviceuser.password), true)
     }
 

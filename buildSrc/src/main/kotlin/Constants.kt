@@ -65,7 +65,7 @@ object MockK {
 }
 
 object Cxf {
-    private const val version = "4.0.0"
+    private const val version = "4.0.2"
 
     const val CxfLogging = "org.apache.cxf:cxf-rt-features-logging:$version"
     const val CxfJaxWs = "org.apache.cxf:cxf-rt-frontend-jaxws:$version"
