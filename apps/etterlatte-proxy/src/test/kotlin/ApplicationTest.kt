@@ -25,7 +25,6 @@ internal class ApplicationTest {
     fun beforeAll() {
         mockOAuth2.start()
         hoconApplicationConfig = HoconApplicationConfig(ConfigFactory.load()
-            .withValue("tokenx.wellKnownUrl", ConfigValueFactory.fromAnyRef(mockOAuth2.wellKnownUrl("tokenx").toString()))
             .withValue("aad.wellKnownUrl", ConfigValueFactory.fromAnyRef(mockOAuth2.wellKnownUrl("aad").toString()))
         )
 
@@ -36,7 +35,7 @@ internal class ApplicationTest {
     }
 
     @Test
-    fun testRoot() {
+    fun `skal ikke autentisere for routes innenfor internal`() {
         testApplication {
             environment {
                 config = hoconApplicationConfig
@@ -50,26 +49,39 @@ internal class ApplicationTest {
     }
 
     @Test
-    fun testAareg() {
+    fun `skal returnere unauthorized dersom aad-token mangler for regoppslag-route`() {
         testApplication {
             environment {
                 config = hoconApplicationConfig
             }
 
-            client.get("aad/aareg/arbeidstaker/arbeidsforhold").also {
+            client.get("aad/regoppslag/ident").also {
                 assertEquals(HttpStatusCode.Unauthorized, it.status)
             }
         }
     }
 
     @Test
-    fun testInntektskomponenten() {
+    fun `skal returnere unauthorized dersom aad-token mangler for institusjonsopphold-route`() {
         testApplication {
             environment {
                 config = hoconApplicationConfig
             }
 
-            client.post("aad/inntektskomponenten").also {
+            client.get("aad/inst2/1").also {
+                assertEquals(HttpStatusCode.Unauthorized, it.status)
+            }
+        }
+    }
+
+    @Test
+    fun `skal returnere unauthorized dersom aad-token mangler for tilbakekreving-route`() {
+        testApplication {
+            environment {
+                config = hoconApplicationConfig
+            }
+
+            client.post("aad/tilbakekreving/tilbakekrevingsvedtak").also {
                 assertEquals(HttpStatusCode.Unauthorized, it.status)
             }
         }

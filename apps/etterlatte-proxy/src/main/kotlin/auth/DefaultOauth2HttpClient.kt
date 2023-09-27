@@ -1,4 +1,4 @@
-package no.nav.etterlatte
+package no.nav.etterlatte.auth
 
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.DeserializationFeature

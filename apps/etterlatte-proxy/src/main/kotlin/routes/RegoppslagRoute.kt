@@ -20,20 +20,17 @@ import io.ktor.server.response.respondText
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
 import io.ktor.server.routing.route
-import no.nav.etterlatte.Config
-import no.nav.etterlatte.NavCallId
-import no.nav.etterlatte.StsClient
-import no.nav.etterlatte.httpClient
-import no.nav.etterlatte.pipeResponse
+import no.nav.etterlatte.config.Config
+import no.nav.etterlatte.auth.sts.StsRestClient
 import org.slf4j.LoggerFactory
 import java.util.UUID
 
 
-fun Route.regoppslag(config: Config, stsClient: StsClient) {
+fun Route.regoppslagRoute(config: Config, stsClient: StsRestClient) {
     val logger = LoggerFactory.getLogger("no.pensjon.etterlatte")
     route("/regoppslag") {
         val httpClient = httpClient()
-        val regoppslagUrl = config.regoppslag.url
+        val regoppslagUrl = config.regoppslagUrl
 
         get("{ident}") {
             val stsToken = stsClient.getToken()
@@ -42,7 +39,7 @@ fun Route.regoppslag(config: Config, stsClient: StsClient) {
                 val id = call.parameters["ident"]!!
                 val callId = call.request.header(HttpHeaders.NavCallId) ?: UUID.randomUUID().toString()
 
-                val response = httpClient.post(regoppslagUrl + "/postadresse") {
+                val response = httpClient.post("$regoppslagUrl/postadresse") {
                     header(HttpHeaders.Authorization, "Bearer $stsToken")
                     header("Nav_Callid", callId)
                     setBody(objectMapper.writeValueAsString(AdresseRequest(id)))
@@ -65,7 +62,7 @@ data class AdresseRequest(
     val tema: String = "PEN" // Todo: mulig bytte tema til et av de nye
 )
 
-val objectMapper: ObjectMapper = JsonMapper.builder()
+private val objectMapper: ObjectMapper = JsonMapper.builder()
     .addModule(KotlinModule())
     .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
     .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)

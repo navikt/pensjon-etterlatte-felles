@@ -8,7 +8,6 @@ metadata:
     team: etterlatte
 spec:
   image: {{ image }}
-  team: etterlatte
   port: 8080
   replicas:
     min: 1
@@ -41,20 +40,20 @@ spec:
   azure:
     application:
       enabled: true
-  tokenx:
-    enabled: true
   webproxy: true
   env:
-    - name: AAREG_URL
-      value: https://aareg-services.intern.nav.no/api/v2
     - name: REGOPPSLAG_URL
       value: https://regoppslag.intern.nav.no/rest
-    - name: STS_URL
+    - name: STS_REST_URL
       value: http://security-token-service.default.svc.nais.local/rest/v1/sts/token
+    - name: STS_SOAP_URL
+      value: https://sts.adeo.no/SecurityTokenServiceProvider/
     - name: INSTITUSJONSOPPHOLD_URL
       value: https://inst2.intern.nav.no
     - name: INSTITUSJONSOPPHOLD_AZURE_SCOPE
       value: api://prod-fss.team-rocket.inst2/.default
+    - name: TILBAKEKREVING_URL
+      value: https://cics.adeo.no/oppdrag/K231CW80
   prometheus:
     enabled: true
     path: /internal/prometheus
