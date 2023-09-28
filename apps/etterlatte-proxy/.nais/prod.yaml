@@ -75,3 +75,6 @@ spec:
         - application: etterlatte-institusjonsopphold
           namespace: etterlatte
           cluster: prod-gcp
+        - application: etterlatte-tilbakekreving
+          namespace: etterlatte
+          cluster: prod-gcp
