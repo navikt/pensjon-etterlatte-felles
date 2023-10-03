@@ -1,0 +1,72 @@
+<h2>
+    {{#eq spraak "en"}}
+        Information about the survivors current situation
+    {{else}}
+        {{#eq spraak "nn"}}
+            Opplysingar om attlevandes situasjon
+        {{else}}
+            Opplysninger om gjenlevendes situasjon
+        {{/eq}}
+    {{/eq}}
+</h2>
+
+{{#with soeker.arbeidOgUtdanning}}
+    {{> eypdfgen/partials_v2/omstillingsstoenad/gjenlevende/situasjon/arbeidstaker}}
+
+    {{> eypdfgen/partials_v2/omstillingsstoenad/gjenlevende/situasjon/selvstendig}}
+
+    {{> eypdfgen/partials_v2/omstillingsstoenad/gjenlevende/situasjon/etablerer}}
+
+    {{> eypdfgen/partials_v2/omstillingsstoenad/gjenlevende/situasjon/tilbud}}
+
+    {{> eypdfgen/partials_v2/omstillingsstoenad/gjenlevende/situasjon/arbeidssoeker}}
+
+    {{> eypdfgen/partials_v2/omstillingsstoenad/gjenlevende/situasjon/utdanning}}
+
+    {{#with soeker.arbeidOgUtdanning.annenSituasjon.svar}}
+        <div>
+            <h4>
+                {{#eq spraak "en"}}
+                    Other
+                {{else}}
+                    {{#eq spraak "nn"}}
+                        Anna
+                    {{else}}
+                        Annet
+                    {{/eq}}
+                {{/eq}}
+            </h4>
+
+            {{> eypdfgen/partials_v2/common/opplysning this.beskrivelse}}
+
+            {{#eq this.beskrivelse.svar.verdi "ANNET" }}
+                {{> eypdfgen/partials_v2/common/opplysning this.annet}}
+            {{/eq}}
+        </div>
+    {{/with}}
+{{/with}}
+
+{{#with soeker.fullfoertUtdanning}}
+    <div>
+        <h4>
+            {{#eq spraak "en"}}
+                Completed education
+            {{else}}
+                Fullført utdanning
+            {{/eq}}
+        </h4>
+
+        <div class="row opplysning">
+            <div class="col">
+                {{this.spoersmaal}}
+            </div>
+            <div class="col">
+                {{#each this.svar}}
+                    • {{this.innhold}} <br />
+                {{/each}}
+            </div>
+        </div>
+    </div>
+{{/with}}
+
+{{> eypdfgen/partials_v2/omstillingsstoenad/gjenlevende/situasjon/andreYtelser soeker.andreYtelser}}

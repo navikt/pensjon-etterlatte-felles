@@ -1,0 +1,42 @@
+<div>
+    {{#if soeker.arbeidOgUtdanning.utdanning.svar}}
+        <div>
+            <h4>
+                {{#eq spraak "en"}}
+                    Education
+                {{else}}
+                    Utdanning
+                {{/eq}}
+            </h4>
+            {{#with soeker.arbeidOgUtdanning.utdanning.svar }}
+                <div>
+                    {{> eypdfgen/partials_v2/common/opplysning this.studiested}}
+
+                    {{> eypdfgen/partials_v2/common/opplysning this.studie}}
+
+                    {{> eypdfgen/partials_v2/common/opplysning this.studieform}}
+
+                    {{#eq this.studieform.svar.verdi "DELTID" }}
+                        {{> eypdfgen/partials_v2/common/opplysning this.studieprosent}}
+                    {{/eq}}
+
+                    {{> eypdfgen/partials_v2/common/datoOpplysning this.startDato}}
+
+                    {{> eypdfgen/partials_v2/common/datoOpplysning this.sluttDato}}
+
+                    {{> eypdfgen/partials_v2/common/opplysning this.godkjentUtdanning}}
+                </div>
+            {{/with}}
+        </div>
+
+        <div>
+
+
+            {{> eypdfgen/partials_v2/common/opplysning this.navn}}
+
+
+        </div>
+
+    {{/if}}
+
+</div>
