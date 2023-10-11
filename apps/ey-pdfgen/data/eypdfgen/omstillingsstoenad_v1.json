@@ -73,122 +73,36 @@
     },
     "statsborgerskap": {
       "spoersmaal": "Statsborgerskap",
-      "svar": "Norsk"
+      "svar": "Statsborgerskap-mock"
     },
     "sivilstatus": {
       "spoersmaal": "Sivilstatus",
-      "svar": "Enslig"
+      "svar": "Gift"
     },
     "adresse": {
       "spoersmaal": "Bostedsadresse",
-      "svar": "Fyrstikkalleen 1A, 1024 Oslo"
+      "svar": "Adresse-mock 1, 0000 Poststed-mock"
     },
-    "bostedsAdresse": {
-      "spoersmaal": "Bor du på denne adressen?",
+    "kontaktinfo": {
+      "telefonnummer": {
+        "spoersmaal": "Telefonnummer",
+        "svar": {
+          "innhold": "11111111"
+        }
+      }
+    },
+    "oppholdUtland": {
+      "spoersmaal": "Har du oppholdt deg i Norge de siste 12 månedene?",
       "svar": {
         "verdi": "JA",
         "innhold": "Ja"
       }
     },
-    "kontaktinfo": {
-      "epost": {
-        "spoersmaal": "E-post (valgfri)",
-        "svar": {
-          "innhold": "test@nav.no"
-        }
-      },
-      "telefonnummer": {
-        "spoersmaal": "Telefonnummer (valgfri)",
-        "svar": {
-          "innhold": "+47 999 888 77"
-        }
-      }
-    },
-    "oppholdUtland": {
-      "spoersmaal": "Oppholder du deg for tiden i Norge?",
-      "svar": {
-        "verdi": "NEI",
-        "innhold": "Nei"
-      },
-      "opplysning": {
-        "land": {
-          "spoersmaal": "Oppgi land",
-          "svar": {
-            "innhold": "Polen"
-          }
-        },
-        "medlemFolketrygd": {
-          "spoersmaal": "Er du medlem i folketrygden under opphold i et annet land enn Norge?",
-          "svar": {
-            "verdi": "NEI",
-            "innhold": "Nei"
-          }
-        }
-      }
-    },
     "nySivilstatus": {
       "spoersmaal": "Sivilstanden din i dag",
       "svar": {
-        "verdi": "SAMBOERSKAP",
-        "innhold": "Samboer"
-      },
-      "opplysning": {
-        "type": "SAMBOER",
-        "fornavn": {
-          "spoersmaal": "Fornavn",
-          "svar": "Nyski"
-        },
-        "etternavn": {
-          "spoersmaal": "Etternavn",
-          "svar": "Polski"
-        },
-        "foedselsnummer": {
-          "spoersmaal": "Fødselsnummer",
-          "svar": "24014021406"
-        },
-        "fellesBarnEllertidligereGift": {
-          "spoersmaal": "Har eller hadde dere barn sammen eller var dere tidligere gift?",
-          "svar": {
-            "verdi": "NEI",
-            "innhold": "Nei"
-          }
-        },
-        "inntekt": {
-          "spoersmaal": "Har samboer inntekt?",
-          "svar": {
-            "verdi": "JA",
-            "innhold": "Ja"
-          },
-          "opplysning": {
-            "inntektstype": {
-              "spoersmaal": "Inntektstype",
-              "svar": [
-                {
-                  "verdi": "ANDRE_YTELSER",
-                  "innhold": "Andre ytelser"
-                },
-                {
-                  "verdi": "KAPITALINNTEKT",
-                  "innhold": "Kapitalinntekt"
-                },
-                {
-                  "verdi": "PENSJON",
-                  "innhold": "Pensjon"
-                },
-                {
-                  "verdi": "ARBEIDSINNTEKT",
-                  "innhold": "Arbeidsinntekt"
-                }
-              ]
-            },
-            "samletBruttoinntektPrAar": {
-              "spoersmaal": "Samlet årsinntekt før skatt",
-              "svar": {
-                "innhold": "250000"
-              }
-            }
-          }
-        }
+        "verdi": "ENSLIG",
+        "innhold": "Enslig"
       }
     },
     "arbeidOgUtdanning": {
@@ -196,193 +110,159 @@
         "spoersmaal": "Hva er situasjonen din nå?",
         "svar": [
           {
+            "verdi": "TILBUD",
+            "innhold": "Jeg har fått tilbud om jobb"
+          },
+          {
             "verdi": "UNDER_UTDANNING",
-            "innhold": "Jeg tar utdanning"
-          },
-          {
-            "verdi": "SELVSTENDIG",
-            "innhold": "Jeg er selvstendig næringsdrivende"
-          },
-          {
-            "verdi": "ARBEIDSTAKER",
-            "innhold": "Jeg er arbeidstaker"
+            "innhold": "Jeg tar eller skal ta utdanning"
           },
           {
             "verdi": "INGEN",
-            "innhold": "Annet"
+            "innhold": "Jeg er ikke i arbeid, utdanning eller arbeidssøker"
+          },
+          {
+            "verdi": "ARBEIDSSOEKER",
+            "innhold": "Jeg er arbeidssøker"
           }
         ]
       },
-      "arbeidsforhold": {
-        "spoersmaal": "Om arbeidsgiver",
-        "svar": [
-          {
-            "arbeidsgiver": {
-              "spoersmaal": "Hva heter arbeidsgiver?",
-              "svar": {
-                "innhold": "Norge AS"
-              }
-            },
-            "ansettelsesforhold": {
-              "spoersmaal": "Type ansettelse",
-              "svar": {
-                "verdi": "FAST",
-                "innhold": "Fast ansatt"
-              }
-            },
-            "stillingsprosent": {
-              "spoersmaal": "Hvor mye jobber du?",
-              "svar": {
-                "innhold": "100"
-              }
-            },
-            "endretInntekt": {
-              "spoersmaal": "Regner du med at inntekten din endrer seg de neste 12 månedene?",
-              "svar": {
-                "verdi": "JA",
-                "innhold": "Ja"
-              },
-              "opplysning": {
-                "spoersmaal": "Hva er grunnen til endringene?",
-                "svar": {
-                  "innhold": "Årlig lønnsøkning"
-                }
-              }
+      "tilbud": {
+        "spoersmaal": "Om arbeidsforholdet ditt",
+        "svar": {
+          "nyttArbeidssted": {
+            "spoersmaal": "Navn på nytt arbeidssted",
+            "svar": {
+              "innhold": "Tilbudssted 1"
+            }
+          },
+          "ansettelsesforhold": {
+            "spoersmaal": "Hva slags type ansettelsesforhold skal du ha?",
+            "svar": {
+              "verdi": "MIDLERTIDIG",
+              "innhold": "Midlertidig ansatt"
+            }
+          },
+          "harSluttdato": {
+            "spoersmaal": "Har du en sluttdato?",
+            "svar": {
+              "verdi": "JA",
+              "innhold": "Ja"
+            }
+          },
+          "sluttdato": {
+            "spoersmaal": "Sluttdato",
+            "svar": {
+              "innhold": "2023-10-12"
             }
           }
-        ]
+        }
       },
-      "selvstendig": {
-        "spoersmaal": "Om næringen",
-        "svar": [
-          {
-            "firmanavn": {
-              "spoersmaal": "Om næringen",
-              "svar": {
-                "innhold": "Plopp shit"
-              }
-            },
-            "orgnr": {
-              "spoersmaal": "Organisasjonsnummer",
-              "svar": {
-                "innhold": "999888777"
-              }
-            },
-            "endretInntekt": {
-              "spoersmaal": "Regner du med at inntekten din endrer seg de neste 12 månedene?",
-              "svar": {
-                "verdi": "JA",
-                "innhold": "Ja"
-              },
-              "opplysning": {
-                "spoersmaal": "Hva er grunnen til endringene?",
-                "svar": {
-                  "innhold": "Går til helvete"
-                }
-              }
+      "arbeidssoeker": {
+        "spoersmaal": "Arbeidssøker",
+        "svar": {
+          "registrertArbeidssoeker": {
+            "spoersmaal": "Er du registrert som arbeidssøker hos NAV?",
+            "svar": {
+              "verdi": "JA",
+              "innhold": "Ja"
+            }
+          },
+          "aktivitetsplan": {
+            "spoersmaal": "Har du en aktivitetsplan?",
+            "svar": {
+              "verdi": "JA",
+              "innhold": "Ja"
             }
           }
-        ]
+        }
       },
       "utdanning": {
-        "spoersmaal": "dinSituasjon.utdanning.naavaerendeUtdanning.tittel",
+        "spoersmaal": "Om utdanningen",
         "svar": {
-          "navn": {
-            "spoersmaal": "Navnet på utdanningen",
+          "studiested": {
+            "spoersmaal": "Navn på studiested",
             "svar": {
-              "innhold": "Frogner Videregående "
+              "innhold": "NTNU"
+            }
+          },
+          "studie": {
+            "spoersmaal": "Hva studerer du?",
+            "svar": {
+              "innhold": "Informatikk"
+            }
+          },
+          "studieform": {
+            "spoersmaal": "Studieform",
+            "svar": {
+              "innhold": "Deltid",
+              "verdi": "DELTID"
+            }
+          },
+          "studieprosent": {
+            "spoersmaal": "Hva er studieprosenten din?",
+            "svar": {
+              "innhold": "50%"
             }
           },
           "startDato": {
             "spoersmaal": "Fra dato",
             "svar": {
-              "innhold": "1990-01-01"
+              "innhold": "2023-10-01"
             }
           },
           "sluttDato": {
             "spoersmaal": "Til dato",
             "svar": {
-              "innhold": "1993-01-01"
+              "innhold": "2023-10-02"
+            }
+          },
+          "godkjentUtdanning": {
+            "spoersmaal": "Er utdanningen godkjent av lånekassen?",
+            "svar": {
+              "verdi": "NEI",
+              "innhold": "Nei"
             }
           }
         }
       },
-      "annet": {
-        "spoersmaal": "Gi en beskrivelse av situasjonen din",
+      "annenSituasjon": {
+        "spoersmaal": "Annet",
         "svar": {
-          "innhold": "Er syk",
-          "verdi": "SYK"
+          "beskrivelse": {
+            "spoersmaal": "Velg det som beskriver situasjonen din",
+            "svar": {
+              "innhold": "Annet",
+              "verdi": "ANNET"
+            }
+          },
+          "annet": {
+            "spoersmaal": "Hva er grunnen til endringene?",
+            "svar": {
+              "innhold": "Annen situasjon"
+            }
+          }
         }
       }
     },
     "fullfoertUtdanning": {
       "spoersmaal": "Hva er din høyeste fullførte utdanning?",
-      "svar": {
-        "verdi": "UNIVERSITET_OPPTIL_4_AAR",
-        "innhold": "Universitet eller høyskole til og med 4 år"
-      }
-    },
-    "andreYtelser": {
-      "kravOmAnnenStonad": {
-        "spoersmaal": "Har du søkt om andre ytelser som du ikke har fått svar på?",
-        "svar": {
-          "verdi": "JA",
-          "innhold": "Ja"
+      "svar": [
+        {
+          "verdi": "FAGBREV",
+          "innhold": "Fagbrev"
         },
-        "opplysning": {
-          "spoersmaal": "Hva har du søkt om?",
-          "svar": {
-            "verdi": "SYKEPENGER",
-            "innhold": "Sykepenger"
-          }
+        {
+          "verdi": "VIDEREGAAENDE",
+          "innhold": "Videregående"
         }
-      },
-      "annenPensjon": {
-        "spoersmaal": "Får du eller har du søkt om avtalefestet pensjon (AFP) eller annen pensjon fra andre enn NAV?",
-        "svar": {
-          "verdi": "JA",
-          "innhold": "Ja"
-        },
-        "opplysning": {
-          "spoersmaal": "Hvilken pensjonsordning?",
-          "svar": {
-            "innhold": "KLP og diverse"
-          }
-        }
-      },
-      "pensjonUtland": {
-        "spoersmaal": "Mottar du pensjon fra et annet land enn Norge?",
-        "svar": {
-          "verdi": "JA",
-          "innhold": "Ja"
-        },
-        "opplysning": {
-          "pensjonsType": {
-            "spoersmaal": "Hva slags pensjon?",
-            "svar": {
-              "innhold": "Alderspensjon"
-            }
-          },
-          "land": {
-            "spoersmaal": "Fra hvilket land?",
-            "svar": {
-              "innhold": "Polen"
-            }
-          },
-          "bruttobeloepPrAar": {
-            "spoersmaal": "Årlig beløp før skatt i landets valuta",
-            "svar": {
-              "innhold": "30000"
-            }
-          }
-        }
-      }
+      ]
     },
     "uregistrertEllerVenterBarn": {
-      "spoersmaal": "Venter du barn eller har du barn som enda ikke er registrert i folkeregisteret?",
+      "spoersmaal": "Venter du barn eller har du barn som ikke er registrert i folkeregisteret?",
       "svar": {
-        "verdi": "JA",
-        "innhold": "Ja"
+        "verdi": "NEI",
+        "innhold": "Nei"
       }
     },
     "forholdTilAvdoede": {
@@ -393,28 +273,8 @@
           "innhold": "Samboer"
         }
       },
-      "datoForInngaattPartnerskap": {
-        "spoersmaal": "Vi giftet oss",
-        "svar": {
-          "innhold": "2022-01-02"
-        }
-      },
       "fellesBarn": {
         "spoersmaal": "Har eller hadde dere felles barn?",
-        "svar": {
-          "verdi": "NEI",
-          "innhold": "Nei"
-        }
-      },
-      "tidligereGift": {
-        "spoersmaal": "Var du tidligere gift med avdøde?",
-        "svar": {
-          "verdi": "JA",
-          "innhold": "Ja"
-        }
-      },
-      "omsorgForBarn": {
-        "spoersmaal": "Hadde du omsorg for avdødes barn på dødstidspunktet?",
         "svar": {
           "verdi": "JA",
           "innhold": "Ja"

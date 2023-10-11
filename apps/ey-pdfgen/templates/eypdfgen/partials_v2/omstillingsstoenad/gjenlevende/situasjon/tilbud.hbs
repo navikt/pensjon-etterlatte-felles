@@ -1,0 +1,33 @@
+<div>
+    {{#if soeker.arbeidOgUtdanning.tilbud.svar}}
+        <div>
+            <h4>
+                {{#eq spraak "en"}}
+                    MANGLER TEKST
+                {{else}}
+                    {{#eq spraak "nn"}}
+                        MANGLER TEKST
+                    {{else}}
+                        Tilbud om jobb
+                    {{/eq}}
+                {{/eq}}
+            </h4>
+            {{#with soeker.arbeidOgUtdanning.tilbud.svar as | tilbud |}}
+                <div>
+                    {{> eypdfgen/partials_v2/common/opplysning tilbud.nyttArbeidssted}}
+
+                    {{> eypdfgen/partials_v2/common/opplysning tilbud.ansettelsesforhold}}
+
+                    {{#eq tilbud.ansettelsesforhold.svar.verdi "MIDLERTIDIG" }}
+                        {{> eypdfgen/partials_v2/common/opplysning tilbud.harSluttdato}}
+                    {{/eq}}
+
+                    {{#eq tilbud.harSluttdato.svar.verdi "JA" }}
+                        {{> eypdfgen/partials_v2/common/datoOpplysning tilbud.sluttdato}}
+                    {{/eq}}
+                </div>
+            {{/with}}
+        </div>
+    {{/if}}
+
+</div>

@@ -1,0 +1,31 @@
+<div>
+    {{#if soeker.arbeidOgUtdanning.etablererVirksomhet.svar}}
+        <div>
+            <h4>
+                {{#eq spraak "en"}}
+                    Establishing
+                {{else}}
+                    {{#eq spraak "nn"}}
+                        Etablerar virksomhet
+                    {{else}}
+                        Etablerer virksomhet
+                    {{/eq}}
+                {{/eq}}
+            </h4>
+            {{#with soeker.arbeidOgUtdanning.etablererVirksomhet.svar as | etablerer |}}
+                <div>
+                    {{> eypdfgen/partials_v2/common/opplysning etablerer.virksomheten}}
+
+                    {{> eypdfgen/partials_v2/common/opplysning etablerer.orgnr}}
+
+                    {{> eypdfgen/partials_v2/common/opplysning etablerer.forretningsplan}}
+
+                    {{#eq etablerer.forretningsplan.svar.verdi "JA" }}
+                        {{> eypdfgen/partials_v2/common/opplysning etablerer.samarbeidMedNav}}
+                    {{/eq}}
+                </div>
+            {{/with}}
+        </div>
+    {{/if}}
+
+</div>

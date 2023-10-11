@@ -1,0 +1,71 @@
+{{#if soeker.arbeidOgUtdanning.selvstendigENK.svar}}
+    <div>
+        <h4>
+            {{#eq spraak "en"}}
+                About your business
+            {{else}}
+                {{#eq spraak "nn"}}
+                    Om næringa (ENK)
+                {{else}}
+                    Om næringen (ENK)
+                {{/eq}}
+            {{/eq}}
+        </h4>
+
+        {{#with soeker.arbeidOgUtdanning.selvstendigENK.svar as | naeringer |}}
+            {{#each naeringer}}
+                <div class="{{#gt naeringer.length 1}}panel{{/gt}}">
+                    {{> eypdfgen/partials_v2/common/opplysning this.firmanavn}}
+
+                    {{> eypdfgen/partials_v2/common/opplysning this.orgnr}}
+
+                    {{> eypdfgen/partials_v2/common/opplysning this.typeArbeidsmengde}}
+
+                    {{> eypdfgen/partials_v2/common/opplysning this.arbeidsmengde}}
+
+                    {{> eypdfgen/partials_v2/common/opplysning this.endretArbeidssituasjon}}
+
+                    {{#eq this.endretArbeidssituasjon.svar.verdi "JA" }}
+                        {{> eypdfgen/partials_v2/common/opplysning this.endretArbeidssituasjon.opplysning}}
+                    {{/eq}}
+                </div>
+            {{/each}}
+        {{/with}}
+    </div>
+{{/if}}
+
+{{#if soeker.arbeidOgUtdanning.selvstendigAS.svar}}
+    <div>
+        <h4>
+            {{#eq spraak "en"}}
+                About your business
+            {{else}}
+                {{#eq spraak "nn"}}
+                    Om næringa (AS)
+                {{else}}
+                    Om næringen (AS)
+                {{/eq}}
+            {{/eq}}
+        </h4>
+
+        {{#with soeker.arbeidOgUtdanning.selvstendigAS.svar as | naeringer |}}
+            {{#each naeringer}}
+                <div class="{{#gt naeringer.length 1}}panel{{/gt}}">
+                    {{> eypdfgen/partials_v2/common/opplysning this.firmanavn}}
+
+                    {{> eypdfgen/partials_v2/common/opplysning this.orgnr}}
+
+                    {{> eypdfgen/partials_v2/common/opplysning this.typeArbeidsmengde}}
+
+                    {{> eypdfgen/partials_v2/common/opplysning this.arbeidsmengde}}
+
+                    {{> eypdfgen/partials_v2/common/opplysning this.endretArbeidssituasjon}}
+
+                    {{#eq this.endretArbeidssituasjon.svar.verdi "JA" }}
+                        {{> eypdfgen/partials_v2/common/opplysning this.endretArbeidssituasjon.opplysning}}
+                    {{/eq}}
+                </div>
+            {{/each}}
+        {{/with}}
+    </div>
+{{/if}}

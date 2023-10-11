@@ -18,9 +18,9 @@
 <div class="container">
     {{> eypdfgen/partials_v2/common/innsender this}}
     {{> eypdfgen/partials_v2/common/utbetalingsinformasjon/utbetalingsinformasjon this.utbetalingsInformasjon}}
-    {{> eypdfgen/partials_v2/gjenlevendepensjon/gjenlevende/gjenlevende this.soeker}}
+    {{> eypdfgen/partials_v2/omstillingsstoenad/gjenlevende/gjenlevende this.soeker}}
     {{> eypdfgen/partials_v2/common/avdoed/avdoed this.avdoed}}
-    {{> eypdfgen/partials_v2/gjenlevendepensjon/informasjonOmBarn this}}
+    {{> eypdfgen/partials_v2/omstillingsstoenad/informasjonOmBarn this}}
     {{#if this.andreStoenader}}
         {{> eypdfgen/partials_v2/gjenlevendepensjon/andreStoenader this.andreStoenader}}
     {{/if}}
