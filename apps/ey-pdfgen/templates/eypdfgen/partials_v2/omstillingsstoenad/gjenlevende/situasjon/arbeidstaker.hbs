@@ -35,8 +35,6 @@
 
                 {{> eypdfgen/partials_v2/common/opplysning this.arbeidsgiver}}
 
-                {{> eypdfgen/partials_v2/common/opplysning this.typeArbeidsmengde}}
-
                 {{> eypdfgen/partials_v2/common/opplysning this.arbeidsmengde}}
 
                 {{> eypdfgen/partials_v2/common/opplysning this.ansettelsesforhold}}
@@ -46,7 +44,7 @@
                 {{/eq}}
 
                 {{#eq this.harSluttdato.svar.verdi "JA" }}
-                    {{> eypdfgen/partials_v2/common/opplysning this.sluttdato}}
+                    {{> eypdfgen/partials_v2/common/datoOpplysning this.sluttdato}}
                 {{/eq}}
 
                 {{> eypdfgen/partials_v2/common/opplysning this.endretArbeidssituasjon}}
