@@ -280,6 +280,256 @@
           "innhold": "Ja"
         }
       }
+    },
+    "inntektOgPensjon":  {
+      "loennsinntekt": {
+        "spoersmaal": "Lønnsinntekt",
+        "svar": {
+          "arbeidsinntektAaretFoer": {
+            "spoersmaal": "Oppgi brutto arbeidsinntekt fra januar til desember",
+            "svar": {
+              "innhold": "10000"
+            }
+          },
+          "arbeidsinntektIAar": {
+            "tilDoedsfall": {
+              "spoersmaal": "Oppgi brutto arbeidsinntekt frem til dødsfallet",
+              "svar": {
+                "innhold": "20000"
+              }
+            },
+            "etterDoedsfall": {
+              "spoersmaal": "Oppgi brutto arbeidsinntekt etter dødsfallet",
+              "svar": {
+                "innhold": "30000"
+              }
+            }
+          },
+          "endringAvInntekt": {
+            "fremtidigEndringAvInntekt": {
+              "spoersmaal": "Regner du med at inntekten din endrer seg fremover i tid?",
+              "svar": {
+                "verdi": "JA",
+                "innhold": "Ja"
+              }
+            },
+            "grunn": {
+              "spoersmaal": "Hva er grunnen til endringene?",
+              "svar": {
+                "verdi": "ANNEN_GRUNN",
+                "innhold": "Annen grunn"
+              }
+            },
+            "annenGrunn": {
+              "spoersmaal": "Beskriv grunn",
+              "svar": {
+                "innhold": "arv"
+              }
+            }
+          }
+        }
+      },
+      "naeringsinntekt": {
+        "spoersmaal": "Næringsinntekt",
+        "svar": {
+          "arbeidsinntektAaretFoer": {
+            "spoersmaal": "Anslå brutto næringsinntekt i året før dødsfallet",
+            "svar": {
+              "innhold": "123"
+            }
+          },
+          "arbeidsinntektIAar": {
+            "tilDoedsfall": {
+              "spoersmaal": "Anslå brutto næringsinntekt frem til måneden før dødsfallet",
+              "svar": {
+                "innhold": "234"
+              }
+            },
+            "etterDoedsfall": {
+              "spoersmaal": "Anslå brutto næringsinntekt etter dødsfallet",
+              "svar": {
+                "innhold": "345"
+              }
+            }
+          },
+          "endringAvInntekt": {
+            "fremtidigEndringAvInntekt": {
+              "spoersmaal": "Regner du med at inntekten din endrer seg fremover i tid?",
+              "svar": {
+                "verdi": "JA",
+                "innhold": "Ja"
+              }
+            },
+            "grunn": {
+              "spoersmaal": "Hva er grunnen til endringene?",
+              "svar": {
+                "verdi": "ANNEN_GRUNN",
+                "innhold": "Annen grunn"
+              }
+            },
+            "annenGrunn": {
+              "spoersmaal": "Beskriv grunn",
+              "svar": {
+                "innhold": "ARver mye peng"
+              }
+            }
+          }
+        }
+      },
+      "pensjonEllerUfoere": {
+        "pensjonstype": {
+          "spoersmaal": "Hvilken pensjon eller trygd har du?",
+          "svar": [
+            {
+              "verdi": "UFOEREPENSJON_FRA_NAV",
+              "innhold": "Uføretrygd fra NAV"
+            },
+            {
+              "verdi": "ALDERSPENSJON_FRA_NAV",
+              "innhold": "Alderspensjon fra NAV"
+            },
+            {
+              "verdi": "TJENESTEPENSJONSORDNING",
+              "innhold": "Pensjon fra tjenestepensjonsordning"
+            }
+          ]
+        },
+        "tjenestepensjonsordning": {
+          "type": {
+            "spoersmaal": "Hva slags pensjon mottar du?",
+            "svar": {
+              "verdi": "SAERALDERSPENSJON",
+              "innhold": "Særalderspensjon"
+            }
+          },
+          "utbetaler": {
+            "spoersmaal": "Hvilken tjenestepensjonsordning utbetaler pensjonen din?",
+            "svar": {
+              "innhold": "Oslo pensjon"
+            }
+          }
+        },
+        "utland": {
+          "svar": {
+            "spoersmaal": "Mottar du pensjon fra utlandet?",
+            "svar": {
+              "verdi": "JA",
+              "innhold": "Ja"
+            }
+          },
+          "type": {
+            "spoersmaal": "Hva slags pensjon?",
+            "svar": {
+              "innhold": "Alders"
+            }
+          },
+          "land": {
+            "spoersmaal": "Hvilket land mottar du fra? ",
+            "svar": {
+              "innhold": "Jemen"
+            }
+          },
+          "beloepMedValuta": {
+            "spoersmaal": "Årlig beløp i landets valuta",
+            "svar": {
+              "innhold": "12120000 Euro"
+            }
+          }
+        }
+      },
+      "annenInntekt": {
+        "annenInntektEllerUtbetaling": {
+          "spoersmaal": "Hvilke andre inntekter eller utbetalinger har du?",
+          "svar": [
+            {
+              "verdi": "ANNEN",
+              "innhold": "Andre inntekter eller ytelser"
+            },
+            {
+              "verdi": "OMSORGSPENGER",
+              "innhold": "Omsorgspenger"
+            }
+          ]
+        },
+        "beloep": {
+          "spoersmaal": "Oppgi brutto inntekt eller ytelser",
+          "svar": {
+            "innhold": "12312312"
+          }
+        },
+        "endringAvInntekt": {
+          "fremtidigEndringAvInntekt": {
+            "spoersmaal": "Regner du med at inntekten din endrer seg fremover i tid?",
+            "svar": {
+              "verdi": "JA",
+              "innhold": "Ja"
+            }
+          },
+          "grunn": {
+            "spoersmaal": "Hva er grunnen til endringene?",
+            "svar": {
+              "verdi": "ANNEN_GRUNN",
+              "innhold": "Annen grunn"
+            }
+          },
+          "annenGrunn": {
+            "spoersmaal": "Beskriv grunn",
+            "svar": {
+              "innhold": "grunn"
+            }
+          }
+        }
+      },
+      "ytelserNAV": {
+        "soektOmYtelse": {
+          "spoersmaal": "Har du søkt om ytelser fra NAV som du ikke har fått svar på?",
+          "svar": {
+            "verdi": "JA",
+            "innhold": "Ja"
+          }
+        },
+        "soektYtelse": {
+          "spoersmaal": "Hva har du søkt om?",
+          "svar": [
+            {
+              "verdi": "UFOEREPENSJON",
+              "innhold": "Uførepensjon"
+            },
+            {
+              "verdi": "ALDERSPENSJON",
+              "innhold": "Alderspensjon"
+            }
+          ]
+        }
+      },
+      "ytelserAndre": {
+        "soektOmYtelse": {
+          "spoersmaal": "Har du søkt om ytelser fra andre enn NAV som du ikke har fått svar på?",
+          "svar": {
+            "verdi": "JA",
+            "innhold": "Ja"
+          }
+        },
+        "soektYtelse": {
+          "spoersmaal": "Hva har du søkt om?",
+          "svar": [
+            {
+              "verdi": "ALDERSPENSJON",
+              "innhold": "Alderspensjon"
+            },
+            {
+              "verdi": "SAERALDERSPENSJON",
+              "innhold": "Særalderspensjon"
+            }
+          ]
+        },
+        "pensjonsordning": {
+          "spoersmaal": "Oppgi hvilken pensjonsordning",
+          "svar": {
+            "innhold": "Test pensjonsordning"
+          }
+        }
+      }
     }
   },
   "avdoed": {

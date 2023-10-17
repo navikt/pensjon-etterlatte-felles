@@ -1,0 +1,33 @@
+{{#if this}}
+    <div>
+        {{> eypdfgen/partials_v2/common/opplysning this.soektOmYtelse}}
+
+        {{#if this.tjenestepensjonsordning}}
+            {{> eypdfgen/partials_v2/common/opplysning this.tjenestepensjonsordning.type}}
+            {{> eypdfgen/partials_v2/common/opplysning this.tjenestepensjonsordning.utbetaler}}
+        {{/if}}
+
+        {{> eypdfgen/partials_v2/common/opplysning this.utland.svar}}
+
+        {{#eq this.soektOmYtelse.svar.verdi "JA"}}
+            <div class="row opplysning">
+                <div class="col">
+                    {{this.soektYtelse.spoersmaal}}
+                </div>
+                <div class="col">
+                    {{#each this.soektYtelse.svar}}
+                        • {{this.innhold}} <br />
+                    {{/each}}
+                </div>
+            </div>
+        {{/eq}}
+
+        {{#eq this.svar.endringAvInntekt.grunn.svar.verdi "ANNEN_GRUNN"}}
+            {{> eypdfgen/partials_v2/common/opplysning this.svar.endringAvInntekt.annenGrunn}}
+        {{/eq}}
+
+        {{#if this.pensjonsordning}}
+            {{> eypdfgen/partials_v2/common/opplysning this.pensjonsordning}}
+        {{/if}}
+    </div>
+{{/if}}
