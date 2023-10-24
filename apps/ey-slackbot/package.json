@@ -10,7 +10,7 @@
     "cron": "^2.4.0"
   },
   "engines": {
-    "node": "20.x"
+    "node": "21.x"
   },
   "repository": {
     "url": "https://github.com/navikt/pensjon-etterlatte-felles"
