@@ -1,5 +1,6 @@
 package no.nav.etterlatte
 
+import io.ktor.http.ContentType
 import io.ktor.serialization.jackson.jackson
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
