@@ -32,6 +32,7 @@ dependencies {
     implementation(Cxf.CxfWsSecurity)
     implementation(Micrometer.Prometheus)
     implementation(Jackson.jacksonDatatypejsr310)
+    implementation(Jackson.jacksonXml)
 
     testImplementation(NavFelles.MockOauth2Server)
     testImplementation(Ktor.ServerTests)
