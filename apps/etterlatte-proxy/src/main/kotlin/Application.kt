@@ -52,7 +52,7 @@ fun Application.module() {
             route("/aad") {
                 regoppslagRoute(config, stsClient)
                 institusjonsoppholdRoute(config)
-                tilbakekrevingRoute(TilbakekrevingConfig(config, false).createTilbakekrevingService())
+                tilbakekrevingRoute(TilbakekrevingConfig(config, true).createTilbakekrevingService())
             }
         }
     }

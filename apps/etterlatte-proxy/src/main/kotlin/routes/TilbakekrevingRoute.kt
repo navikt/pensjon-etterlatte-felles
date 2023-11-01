@@ -35,6 +35,7 @@ fun Route.tilbakekrevingRoute(tilbakekrevingService: TilbakekrevingPortType) {
         val vedtakRequest: TilbakekrevingsvedtakRequest = xmlMapper.readValue(request)
         logger.info("Videresender tilbakekrevingsvedtak ${vedtakRequest.tilbakekrevingsvedtak.vedtakId} til on-prem")
 
+        logger.info(xmlMapper.writeValueAsString(vedtakRequest))
         val response = tilbakekrevingService.tilbakekrevingsvedtak(vedtakRequest)
         logger.info(xmlMapper.writeValueAsString(response))
 
