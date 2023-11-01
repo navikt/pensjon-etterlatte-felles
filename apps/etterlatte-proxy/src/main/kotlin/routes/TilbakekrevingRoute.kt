@@ -10,10 +10,9 @@ import com.fasterxml.jackson.dataformat.xml.JacksonXmlModule
 import com.fasterxml.jackson.dataformat.xml.XmlMapper
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.KotlinModule
-import com.fasterxml.jackson.module.kotlin.readValue
 import io.ktor.server.application.call
 import io.ktor.server.application.log
-import io.ktor.server.request.receiveText
+import io.ktor.server.request.receive
 import io.ktor.server.response.respond
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.application
@@ -29,21 +28,20 @@ fun Route.tilbakekrevingRoute(tilbakekrevingService: TilbakekrevingPortType) {
     val logger = application.log
 
     post("/tilbakekreving/tilbakekrevingsvedtak") {
-        val request = call.receiveText()
-        logger.info(request)
+        val request = call.receive<TilbakekrevingsvedtakRequest>()
 
-        val vedtakRequest: TilbakekrevingsvedtakRequest = xmlMapper.readValue(request)
-        logger.info("Videresender tilbakekrevingsvedtak ${vedtakRequest.tilbakekrevingsvedtak.vedtakId} til on-prem")
+        logger.info("Videresender tilbakekrevingsvedtak ${request.tilbakekrevingsvedtak.vedtakId} til on-prem")
 
-        logger.info(xmlMapper.writeValueAsString(vedtakRequest))
-        val response = tilbakekrevingService.tilbakekrevingsvedtak(vedtakRequest)
+        logger.info(xmlMapper.writeValueAsString(request))
+        val response = tilbakekrevingService.tilbakekrevingsvedtak(request)
         logger.info(xmlMapper.writeValueAsString(response))
 
         call.respond(response)
     }
 }
 
-val xmlMapper = XmlMapper(JacksonXmlModule().apply { setDefaultUseWrapper(false) }).apply {
+
+private val xmlMapper = XmlMapper(JacksonXmlModule().apply { setDefaultUseWrapper(false) }).apply {
     registerModule(KotlinModule.Builder().build())
     registerModule(JavaTimeModule())
     registerModule(CustomXMLGregorianCalendarModule())
@@ -53,14 +51,13 @@ val xmlMapper = XmlMapper(JacksonXmlModule().apply { setDefaultUseWrapper(false)
 
 private class CustomXMLGregorianCalendarModule : SimpleModule() {
     init {
-        addSerializer(XMLGregorianCalendar::class.java, CustomXMLGregorianCalendarSerializer())
-    }
-
-    private class CustomXMLGregorianCalendarSerializer : JsonSerializer<XMLGregorianCalendar>() {
-        override fun serialize(value: XMLGregorianCalendar?, gen: JsonGenerator, serializers: SerializerProvider) {
-            if (value != null) {
-                gen.writeString(value.toGregorianCalendar().toZonedDateTime().toLocalDate().toString())
+        addSerializer(XMLGregorianCalendar::class.java, object : JsonSerializer<XMLGregorianCalendar>() {
+            override fun serialize(value: XMLGregorianCalendar?, gen: JsonGenerator?, serializers: SerializerProvider?) {
+                if (value != null) {
+                    gen?.writeString(value.toGregorianCalendar().toZonedDateTime().toLocalDate().toString())
+                }
             }
-        }
+
+        })
     }
 }
