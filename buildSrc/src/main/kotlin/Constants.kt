@@ -34,7 +34,6 @@ object Ktor {
 
 object Jackson {
     const val jacksonDatatypejsr310 = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.0"
-    const val jacksonXml = "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.15.0"
 }
 
 object Kafka {

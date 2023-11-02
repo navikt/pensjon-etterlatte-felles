@@ -1,15 +1,5 @@
 package no.nav.etterlatte.routes
 
-import com.fasterxml.jackson.core.JsonGenerator
-import com.fasterxml.jackson.databind.DeserializationFeature
-import com.fasterxml.jackson.databind.JsonSerializer
-import com.fasterxml.jackson.databind.SerializationFeature
-import com.fasterxml.jackson.databind.SerializerProvider
-import com.fasterxml.jackson.databind.module.SimpleModule
-import com.fasterxml.jackson.dataformat.xml.JacksonXmlModule
-import com.fasterxml.jackson.dataformat.xml.XmlMapper
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
-import com.fasterxml.jackson.module.kotlin.KotlinModule
 import io.ktor.server.application.call
 import io.ktor.server.application.log
 import io.ktor.server.request.receive
@@ -19,7 +9,6 @@ import io.ktor.server.routing.application
 import io.ktor.server.routing.post
 import no.nav.okonomi.tilbakekrevingservice.TilbakekrevingPortType
 import no.nav.okonomi.tilbakekrevingservice.TilbakekrevingsvedtakRequest
-import javax.xml.datatype.XMLGregorianCalendar
 
 /**
  * Endepunkter for å integrere med tilbakekrevingstjenesten fra gcp til fss
@@ -30,34 +19,8 @@ fun Route.tilbakekrevingRoute(tilbakekrevingService: TilbakekrevingPortType) {
     post("/tilbakekreving/tilbakekrevingsvedtak") {
         val request = call.receive<TilbakekrevingsvedtakRequest>()
 
-        logger.info("Videresender tilbakekrevingsvedtak ${request.tilbakekrevingsvedtak.vedtakId} til on-prem")
-
-        logger.info(xmlMapper.writeValueAsString(request))
+        logger.info("Videresender tilbakekrevingsvedtak med vedtakId=${request.tilbakekrevingsvedtak.vedtakId} fra proxy")
         val response = tilbakekrevingService.tilbakekrevingsvedtak(request)
-        logger.info(xmlMapper.writeValueAsString(response))
-
         call.respond(response)
-    }
-}
-
-
-private val xmlMapper = XmlMapper(JacksonXmlModule().apply { setDefaultUseWrapper(false) }).apply {
-    registerModule(KotlinModule.Builder().build())
-    registerModule(JavaTimeModule())
-    registerModule(CustomXMLGregorianCalendarModule())
-    disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
-    disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
-}
-
-private class CustomXMLGregorianCalendarModule : SimpleModule() {
-    init {
-        addSerializer(XMLGregorianCalendar::class.java, object : JsonSerializer<XMLGregorianCalendar>() {
-            override fun serialize(value: XMLGregorianCalendar?, gen: JsonGenerator?, serializers: SerializerProvider?) {
-                if (value != null) {
-                    gen?.writeString(value.toGregorianCalendar().toZonedDateTime().toLocalDate().toString())
-                }
-            }
-
-        })
     }
 }
