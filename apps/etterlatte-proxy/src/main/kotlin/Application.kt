@@ -1,6 +1,5 @@
 package no.nav.etterlatte
 
-import io.ktor.http.ContentType
 import io.ktor.serialization.jackson.jackson
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
@@ -52,7 +51,7 @@ fun Application.module() {
             route("/aad") {
                 regoppslagRoute(config, stsClient)
                 institusjonsoppholdRoute(config)
-                tilbakekrevingRoute(TilbakekrevingConfig(config, true).createTilbakekrevingService())
+                tilbakekrevingRoute(TilbakekrevingConfig(config, false).createTilbakekrevingService())
             }
         }
     }
