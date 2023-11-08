@@ -1,0 +1,14 @@
+{{#if this}}
+    <h2>
+        {{#eq spraak "en"}}
+            Unknown parent
+        {{else}}
+            {{#eq spraak "nn"}}
+                Ukjent forelder
+            {{else}}
+                Ukjent forelder
+            {{/eq}}
+        {{/eq}}
+    </h2>
+    {{> eypdfgen/partials_v2/common/enkelOpplysning this}}
+{{/if}}
