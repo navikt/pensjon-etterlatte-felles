@@ -16,9 +16,15 @@
                 <div>
                     {{> eypdfgen/partials_v2/common/opplysning tilbud.nyttArbeidssted}}
 
+                    {{> eypdfgen/partials_v2/common/datoOpplysning tilbud.ansettelsesdato}}
+
                     {{> eypdfgen/partials_v2/common/opplysning tilbud.ansettelsesforhold}}
 
                     {{#eq tilbud.ansettelsesforhold.svar.verdi "MIDLERTIDIG" }}
+                        {{> eypdfgen/partials_v2/common/opplysning tilbud.harSluttdato}}
+                    {{/eq}}
+
+                    {{#eq tilbud.ansettelsesforhold.svar.verdi "TILKALLINGSVIKAR" }}
                         {{> eypdfgen/partials_v2/common/opplysning tilbud.harSluttdato}}
                     {{/eq}}
 

@@ -110,22 +110,233 @@
         "spoersmaal": "Hva er situasjonen din nå?",
         "svar": [
           {
-            "verdi": "TILBUD",
-            "innhold": "Jeg har fått tilbud om jobb"
+            "verdi": "INGEN",
+            "innhold": "Jeg er ikke i arbeid, utdanning eller arbeidssøker"
           },
           {
             "verdi": "UNDER_UTDANNING",
             "innhold": "Jeg tar eller skal ta utdanning"
           },
           {
-            "verdi": "INGEN",
-            "innhold": "Jeg er ikke i arbeid, utdanning eller arbeidssøker"
-          },
-          {
             "verdi": "ARBEIDSSOEKER",
             "innhold": "Jeg er arbeidssøker"
+          },
+          {
+            "verdi": "TILBUD",
+            "innhold": "Jeg har fått tilbud om jobb"
+          },
+          {
+            "verdi": "ETABLERER",
+            "innhold": "Jeg etablerer egen virksomhet"
+          },
+          {
+            "verdi": "SELVSTENDIG_AS",
+            "innhold": "Jeg er selvstendig næringsdrivende og ansatt i mitt eget aksjeselskap (AS)"
+          },
+          {
+            "verdi": "SELVSTENDIG_ENK",
+            "innhold": "Jeg er selvstendig næringsdrivende eller frilanser med enkeltpersonforetak"
+          },
+          {
+            "verdi": "ARBEIDSTAKER",
+            "innhold": "Jeg er arbeidstaker og/eller lønnsmottaker som frilanser"
           }
         ]
+      },
+      "arbeidsforhold": {
+        "spoersmaal": "Om arbeidsforholdet ditt",
+        "svar": [
+          {
+            "arbeidsgiver": {
+              "spoersmaal": "Navn på arbeidssted",
+              "svar": {
+                "innhold": "Ledelse AS"
+              }
+            },
+            "arbeidsmengde": {
+              "spoersmaal": "Fyll ut arbeidsmengden din",
+              "svar": {
+                "innhold": "50 Prosent"
+              }
+            },
+            "ansettelsesforhold": {
+              "spoersmaal": "Type ansettelse",
+              "svar": {
+                "verdi": "TILKALLINGSVIKAR",
+                "innhold": "Tilkallingsvikar eller lignende"
+              }
+            },
+            "harSluttdato": {
+              "spoersmaal": "Har du en sluttdato?",
+              "svar": {
+                "verdi": "JA",
+                "innhold": "Ja"
+              }
+            },
+            "sluttdato": {
+              "spoersmaal": "Sluttdato",
+              "svar": {
+                "innhold": "2023-10-17"
+              }
+            },
+            "endretArbeidssituasjon": {
+              "spoersmaal": "Forventer du endringer i arbeidssituasjonen din fremover i tid?",
+              "svar": {
+                "verdi": "JA",
+                "innhold": "Ja"
+              },
+              "opplysning": {
+                "spoersmaal": "Beskrivelse",
+                "svar": {
+                  "innhold": "Den endrer seg"
+                }
+              }
+            },
+            "sagtOppEllerRedusert": {
+              "spoersmaal": "Har du sagt opp jobben eller redusert arbeidstiden de siste 6 månedene?",
+              "svar": {
+                "verdi": "OPPSAGT",
+                "innhold": "Ja, jeg har sagt opp jobben eller tatt frivillig permisjon (ikke foreldrepermisjon)"
+              }
+            }
+          },
+          {
+            "arbeidsgiver": {
+              "spoersmaal": "Navn på arbeidssted",
+              "svar": {
+                "innhold": "Arbeidssted 2"
+              }
+            },
+            "arbeidsmengde": {
+              "spoersmaal": "Stillingsprosent",
+              "svar": {
+                "innhold": "100 Prosent"
+              }
+            },
+            "ansettelsesforhold": {
+              "spoersmaal": "Type ansettelse",
+              "svar": {
+                "verdi": "FAST",
+                "innhold": "Fast ansatt"
+              }
+            },
+            "endretArbeidssituasjon": {
+              "spoersmaal": "Forventer du endringer i arbeidssituasjonen din fremover i tid?",
+              "svar": {
+                "verdi": "NEI",
+                "innhold": "Nei"
+              }
+            },
+            "sagtOppEllerRedusert": {
+              "spoersmaal": "Har du sagt opp jobben eller redusert arbeidstiden de siste 6 månedene?",
+              "svar": {
+                "verdi": "NEI",
+                "innhold": "Nei"
+              }
+            }
+          }
+        ]
+      },
+      "selvstendigENK": {
+        "spoersmaal": "Om næringen (ENK)",
+        "svar": [
+          {
+            "firmanavn": {
+              "spoersmaal": "Om næringen",
+              "svar": {
+                "innhold": "Næring ENK"
+              }
+            },
+            "orgnr": {
+              "spoersmaal": "Organisasjonsnummer",
+              "svar": {
+                "innhold": "123456789"
+              }
+            },
+            "arbeidsmengde": {
+              "spoersmaal": "Fyll ut arbeidsmengden din",
+              "svar": {
+                "innhold": "12 Timer i uka"
+              }
+            },
+            "endretArbeidssituasjon": {
+              "spoersmaal": "Forventer du endringer i arbeidssituasjonen din fremover i tid?",
+              "svar": {
+                "verdi": "JA",
+                "innhold": "Ja"
+              },
+              "opplysning": {
+                "spoersmaal": "Beskrivelse",
+                "svar": {
+                  "innhold": "Øker"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "selvstendigAS": {
+        "spoersmaal": "Om næringen (AS)",
+        "svar": [
+          {
+            "firmanavn": {
+              "spoersmaal": "Om næringen",
+              "svar": {
+                "innhold": "Næring AS"
+              }
+            },
+            "orgnr": {
+              "spoersmaal": "Organisasjonsnummer",
+              "svar": {
+                "innhold": "987654321"
+              }
+            },
+            "arbeidsmengde": {
+              "spoersmaal": "Fyll ut arbeidsmengden din",
+              "svar": {
+                "innhold": "50 Prosent"
+              }
+            },
+            "endretArbeidssituasjon": {
+              "spoersmaal": "Forventer du endringer i arbeidssituasjonen din fremover i tid?",
+              "svar": {
+                "verdi": "NEI",
+                "innhold": "Nei"
+              }
+            }
+          }
+        ]
+      },
+      "etablererVirksomhet": {
+        "spoersmaal": "Om virksomheten",
+        "svar": {
+          "virksomheten": {
+            "spoersmaal": "Hva heter virksomheten?",
+            "svar": {
+              "innhold": "Virksomhet 123"
+            }
+          },
+          "orgnr": {
+            "spoersmaal": "Organisasjonsnummer",
+            "svar": {
+              "innhold": "555555555"
+            }
+          },
+          "forretningsplan": {
+            "spoersmaal": "Har du en forretningsplan?",
+            "svar": {
+              "verdi": "JA",
+              "innhold": "Ja"
+            }
+          },
+          "samarbeidMedNav": {
+            "spoersmaal": "Er dette i samarbeid med NAV for at du skal bli selvforsørget?",
+            "svar": {
+              "verdi": "JA",
+              "innhold": "Ja"
+            }
+          }
+        }
       },
       "tilbud": {
         "spoersmaal": "Om arbeidsforholdet ditt",
@@ -136,11 +347,23 @@
               "innhold": "Tilbudssted 1"
             }
           },
+          "ansettelsesdato": {
+            "spoersmaal": "Når skal du begynne å jobbe?",
+            "svar": {
+              "innhold": "2023-10-18"
+            }
+          },
           "ansettelsesforhold": {
             "spoersmaal": "Hva slags type ansettelsesforhold skal du ha?",
             "svar": {
-              "verdi": "MIDLERTIDIG",
-              "innhold": "Midlertidig ansatt"
+              "verdi": "TILKALLINGSVIKAR",
+              "innhold": "Tilkallingsvikar eller lignende"
+            }
+          },
+          "arbeidsmengde": {
+            "spoersmaal": "Arbeidsmengde",
+            "svar": {
+              "innhold": "16 Prosent"
             }
           },
           "harSluttdato": {
@@ -153,7 +376,7 @@
           "sluttdato": {
             "spoersmaal": "Sluttdato",
             "svar": {
-              "innhold": "2023-10-12"
+              "innhold": "2023-10-18"
             }
           }
         }
@@ -202,26 +425,26 @@
           "studieprosent": {
             "spoersmaal": "Hva er studieprosenten din?",
             "svar": {
-              "innhold": "50%"
+              "innhold": "99%"
             }
           },
           "startDato": {
             "spoersmaal": "Fra dato",
             "svar": {
-              "innhold": "2023-10-01"
+              "innhold": "2023-10-11"
             }
           },
           "sluttDato": {
             "spoersmaal": "Til dato",
             "svar": {
-              "innhold": "2023-10-02"
+              "innhold": "2023-10-27"
             }
           },
           "godkjentUtdanning": {
             "spoersmaal": "Er utdanningen godkjent av lånekassen?",
             "svar": {
-              "verdi": "NEI",
-              "innhold": "Nei"
+              "verdi": "JA",
+              "innhold": "Ja"
             }
           }
         }
