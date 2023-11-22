@@ -1,0 +1,22 @@
+{{#if this}}
+    <h4>
+        {{this.spoersmaal}}
+    </h4>
+    <div>
+        {{> eypdfgen/partials_v2/common/opplysning this.svar.arbeidsinntektAaretFoer}}
+
+        {{> eypdfgen/partials_v2/common/opplysning this.svar.arbeidsinntektIAar.tilDoedsfall}}
+
+        {{> eypdfgen/partials_v2/common/opplysning this.svar.arbeidsinntektIAar.etterDoedsfall}}
+
+        {{> eypdfgen/partials_v2/common/opplysning this.svar.endringAvInntekt.fremtidigEndringAvInntekt}}
+
+        {{#eq this.svar.endringAvInntekt.fremtidigEndringAvInntekt.svar.verdi "JA"}}
+            {{> eypdfgen/partials_v2/common/opplysning this.svar.endringAvInntekt.grunn}}
+        {{/eq}}
+
+        {{#eq this.svar.endringAvInntekt.grunn.svar.verdi "ANNEN_GRUNN"}}
+            {{> eypdfgen/partials_v2/common/opplysning this.svar.endringAvInntekt.annenGrunn}}
+        {{/eq}}
+    </div>
+{{/if}}

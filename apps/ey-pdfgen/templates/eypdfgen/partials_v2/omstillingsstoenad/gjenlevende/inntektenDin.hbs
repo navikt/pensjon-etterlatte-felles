@@ -1,0 +1,48 @@
+<h2>
+    {{#eq spraak "en"}}
+        Information about the survivors current income
+    {{else}}
+        {{#eq spraak "nn"}}
+            Opplysingar om attlevandes inntekt
+        {{else}}
+            Opplysninger om gjenlevendes inntekt
+        {{/eq}}
+    {{/eq}}
+</h2>
+
+{{#with soeker.inntektOgPensjon}}
+    {{> eypdfgen/partials_v2/omstillingsstoenad/gjenlevende/inntekt/inntekt this.loennsinntekt}}
+
+    {{> eypdfgen/partials_v2/omstillingsstoenad/gjenlevende/inntekt/inntekt this.naeringsinntekt}}
+
+    {{> eypdfgen/partials_v2/omstillingsstoenad/gjenlevende/inntekt/pensjon this.pensjonEllerUfoere}}
+
+    {{> eypdfgen/partials_v2/omstillingsstoenad/gjenlevende/inntekt/annenInntekt this.annenInntekt}}
+
+    <h4>
+        {{#eq spraak "en"}}
+            MANGlER TEKST
+        {{else}}
+            {{#eq spraak "nn"}}
+                MANGlER TEKST
+            {{else}}
+                Opplysninger om ytelser fra NAV
+            {{/eq}}
+        {{/eq}}
+    </h4>
+    {{> eypdfgen/partials_v2/omstillingsstoenad/gjenlevende/inntekt/ytelser this.ytelserNAV}}
+
+    <h4>
+        {{#eq spraak "en"}}
+            MANGlER TEKST
+        {{else}}
+            {{#eq spraak "nn"}}
+                MANGlER TEKST
+            {{else}}
+                Opplysninger om ytelser fra andre
+            {{/eq}}
+        {{/eq}}
+    </h4>
+    {{> eypdfgen/partials_v2/omstillingsstoenad/gjenlevende/inntekt/ytelser this.ytelserAndre}}
+{{/with}}
+

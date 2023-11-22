@@ -1,0 +1,37 @@
+{{#if this}}
+    <h4>
+        {{#eq spraak "en"}}
+            Information about the survivors other income
+        {{else}}
+            {{#eq spraak "nn"}}
+                Opplysingar om attlevandes MANGLER TEKST
+            {{else}}
+                Opplysninger om gjenlevendes andre inntekter
+            {{/eq}}
+        {{/eq}}
+    </h4>
+    <div>
+        <div class="row opplysning">
+            <div class="col">
+                {{this.annenInntektEllerUtbetaling.spoersmaal}}
+            </div>
+            <div class="col">
+                {{#each this.annenInntektEllerUtbetaling.svar}}
+                    • {{this.innhold}} <br />
+                {{/each}}
+            </div>
+        </div>
+
+        {{> eypdfgen/partials_v2/common/opplysning this.beloep}}
+
+        {{> eypdfgen/partials_v2/common/opplysning this.endringAvInntekt.fremtidigEndringAvInntekt}}
+
+        {{#eq this.endringAvInntekt.fremtidigEndringAvInntekt.svar.verdi "JA" }}
+            {{> eypdfgen/partials_v2/common/opplysning this.endringAvInntekt.grunn}}
+        {{/eq}}
+
+        {{#eq this.endringAvInntekt.grunn.svar.verdi "ANNEN_GRUNN" }}
+            {{> eypdfgen/partials_v2/common/opplysning this.endringAvInntekt.annenGrunn}}
+        {{/eq}}
+    </div>
+{{/if}}
