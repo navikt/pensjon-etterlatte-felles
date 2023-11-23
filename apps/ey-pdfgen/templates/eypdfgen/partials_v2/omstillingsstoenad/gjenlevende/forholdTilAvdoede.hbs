@@ -27,3 +27,9 @@
 {{> eypdfgen/partials_v2/common/opplysning this.tidligereGift}}
 
 {{> eypdfgen/partials_v2/common/opplysning this.omsorgForBarn}}
+
+{{> eypdfgen/partials_v2/common/opplysning this.mottokBidrag}}
+
+{{#eq this.mottokBidrag.svar.verdi "JA" }}
+    {{> eypdfgen/partials_v2/common/opplysning this.mottokBidrag.opplysning}}
+{{/eq}}

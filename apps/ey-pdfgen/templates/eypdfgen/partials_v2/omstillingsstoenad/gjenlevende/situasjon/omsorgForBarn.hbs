@@ -1,0 +1,15 @@
+<h4>
+    {{#eq spraak "en"}}
+        MANGLER TEKST
+    {{else}}
+        {{#eq spraak "nn"}}
+            MANGLER TEKST
+        {{else}}
+            Omsorg for barn
+        {{/eq}}
+    {{/eq}}
+</h4>
+
+{{> eypdfgen/partials_v2/common/opplysning this.omsorgForBarn}}
+
+{{> eypdfgen/partials_v2/common/opplysning this.uregistrertEllerVenterBarn}}

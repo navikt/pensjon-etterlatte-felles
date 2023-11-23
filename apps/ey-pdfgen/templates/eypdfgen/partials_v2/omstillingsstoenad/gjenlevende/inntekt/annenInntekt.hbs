@@ -23,15 +23,5 @@
         </div>
 
         {{> eypdfgen/partials_v2/common/opplysning this.beloep}}
-
-        {{> eypdfgen/partials_v2/common/opplysning this.endringAvInntekt.fremtidigEndringAvInntekt}}
-
-        {{#eq this.endringAvInntekt.fremtidigEndringAvInntekt.svar.verdi "JA" }}
-            {{> eypdfgen/partials_v2/common/opplysning this.endringAvInntekt.grunn}}
-        {{/eq}}
-
-        {{#eq this.endringAvInntekt.grunn.svar.verdi "ANNEN_GRUNN" }}
-            {{> eypdfgen/partials_v2/common/opplysning this.endringAvInntekt.annenGrunn}}
-        {{/eq}}
     </div>
 {{/if}}

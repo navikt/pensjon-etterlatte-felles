@@ -12,6 +12,21 @@
 
 {{> eypdfgen/partials_v2/common/opplysning this}}
 
+{{#eq this.svar.verdi "JA"}}
+    {{> eypdfgen/partials_v2/common/opplysning this.opplysning.oppholderSegIUtlandet}}
+{{/eq}}
+
+{{#eq this.opplysning.oppholderSegIUtlandet.svar.verdi "JA"}}
+    {{> eypdfgen/partials_v2/common/opplysning this.opplysning.oppholdsland}}
+    {{#if this.opplysning.oppholdFra}}
+        {{> eypdfgen/partials_v2/common/datoopplysning this.opplysning.oppholdFra}}
+    {{/if}}
+
+    {{#if this.opplysning.oppholdTil}}
+        {{> eypdfgen/partials_v2/common/datoopplysning this.opplysning.oppholdTil}}
+    {{/if}}
+{{/eq}}
+
 {{#eq this.svar.verdi "NEI"}}
-    {{> eypdfgen/partials_v2/common/opplysning this.opplysning.land}}
+    {{> eypdfgen/partials_v2/common/opplysning this.opplysning.bosattLand}}
 {{/eq}}
