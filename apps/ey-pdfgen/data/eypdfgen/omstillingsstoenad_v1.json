@@ -92,17 +92,66 @@
       }
     },
     "oppholdUtland": {
-      "spoersmaal": "Har du oppholdt deg i Norge de siste 12 månedene?",
+      "spoersmaal": "Er du bosatt i Norge?",
       "svar": {
         "verdi": "JA",
         "innhold": "Ja"
+      },
+      "opplysning": {
+        "oppholderSegIUtlandet": {
+          "spoersmaal": "Har du bodd eller oppholdt deg i utlandet de siste 12 månedene?",
+          "svar": {
+            "verdi": "JA",
+            "innhold": "Ja"
+          }
+        },
+        "oppholdsland": {
+          "spoersmaal": "Oppgi hvilket land du oppholdt deg i",
+          "svar": {
+            "innhold": "India"
+          }
+        },
+        "oppholdFra": {
+          "spoersmaal": "Fra dato",
+          "svar": {
+            "innhold": "2023-11-08"
+          }
+        },
+        "oppholdTil": {
+          "spoersmaal": "Til dato",
+          "svar": {
+            "innhold": "2023-11-17"
+          }
+        }
       }
     },
     "nySivilstatus": {
       "spoersmaal": "Sivilstanden din i dag",
       "svar": {
-        "verdi": "ENSLIG",
-        "innhold": "Enslig"
+        "verdi": "SAMBOERSKAP",
+        "innhold": "Samboer"
+      },
+      "opplysning": {
+        "type": "SAMBOER",
+        "fornavn": {
+          "spoersmaal": "Fornavn",
+          "svar": "Samb"
+        },
+        "etternavn": {
+          "spoersmaal": "Etternavn",
+          "svar": "Boer"
+        },
+        "foedselsnummer": {
+          "spoersmaal": "Fødselsnummer",
+          "svar": "25027702638"
+        },
+        "fellesBarnEllertidligereGift": {
+          "spoersmaal": "Har eller har dere hatt felles barn, eller har dere tidligere vært gift?",
+          "svar": {
+            "verdi": "NEI",
+            "innhold": "Nei"
+          }
+        }
       }
     },
     "arbeidOgUtdanning": {
@@ -488,6 +537,13 @@
         "innhold": "Nei"
       }
     },
+    "omsorgForBarn" : {
+      "spoersmaal": "Har du minst 50 prosent omsorg for barn under 18 år på dødsfallstidspunktet?",
+      "svar": {
+        "verdi": "JA",
+        "innhold": "Ja"
+      }
+    },
     "forholdTilAvdoede": {
       "relasjon": {
         "spoersmaal": "Relasjonen din til avdøde da dødsfallet skjedde",
@@ -855,19 +911,6 @@
             "verdi": "JA",
             "innhold": "Ja"
           }
-        }
-      }
-    },
-    "militaertjeneste": {
-      "spoersmaal": "Har han eller hun gjennomført militær eller sivil førstegangstjeneste som varte minst 30 dager?",
-      "svar": {
-        "verdi": "JA",
-        "innhold": "Ja"
-      },
-      "opplysning": {
-        "spoersmaal": "Hvilke(-t) år? (valgfri)",
-        "svar": {
-          "innhold": "1984"
         }
       }
     },
