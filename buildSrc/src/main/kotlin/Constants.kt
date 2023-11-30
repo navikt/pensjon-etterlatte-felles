@@ -8,8 +8,8 @@ object NavFelles {
 }
 
 object Etterlatte {
-    const val Common = "no.nav.etterlatte:common:2023.03.28-16.21.c37f68b0da69"
-    const val CommonTest = "no.nav.etterlatte:common-test:2023.03.28-13.28.4f49c60d85e4"
+    const val Common = "no.nav.etterlatte:common:dev.d4c53e677f2b.dev"
+    const val CommonTest = "no.nav.etterlatte:common-test:dev.d4c53e677f2b.dev"
     const val KtorClientAuth = "no.nav.etterlatte:ktor-client-auth:2022.09.28-10.09.cce630926582"
 }
 
