@@ -8,8 +8,8 @@ object NavFelles {
 }
 
 object Etterlatte {
-    const val Common = "no.nav.etterlatte:common:2023.03.28-16.21.c37f68b0da69"
-    const val CommonTest = "no.nav.etterlatte:common-test:2023.03.28-13.28.4f49c60d85e4"
+    const val Common = "no.nav.etterlatte:common:2023.12.01-19.28.04ed855ae6eb"
+    const val CommonTest = "no.nav.etterlatte:common-test:2023.12.01-19.28.04ed855ae6eb"
     const val KtorClientAuth = "no.nav.etterlatte:ktor-client-auth:2022.09.28-10.09.cce630926582"
 }
 
@@ -71,10 +71,4 @@ object Cxf {
     const val CxfJaxWs = "org.apache.cxf:cxf-rt-frontend-jaxws:$version"
     const val CxfTransportsHttp = "org.apache.cxf:cxf-rt-transports-http:$version"
     const val CxfWsSecurity = "org.apache.cxf:cxf-rt-ws-security:$version"
-}
-
-object Kotest {
-    private const val version = "5.4.2"
-
-    const val AssertionsCore = "io.kotest:kotest-assertions-core:$version"
 }

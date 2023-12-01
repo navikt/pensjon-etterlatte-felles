@@ -51,6 +51,23 @@ class SendNotifikasjonTest {
         assertEquals(4, beskjed.getSikkerhetsnivaa())
         assertEquals(false, beskjed.getEksternVarsling())
     }
+
+    @Test
+    fun `skal opprette melding for omstillingsstoenad`() {
+        val beskjed = sendNotifikasjon.opprettBeskjed(InnsendtSoeknadFixtures.omstillingsSoeknad())
+        assertEquals(false, beskjed.getEksternVarsling())
+        assertEquals("Vi har mottatt søknaden din om omstillingsstønad", beskjed.getTekst())
+        assertEquals(true, isWithin10Seconds(beskjed.getTidspunkt().toLocalDateTime()))
+        assertEquals(
+            true,
+            isWithin10Seconds(
+                beskjed.getSynligFremTil().toLocalDateTime(),
+                LocalDateTime.now(ZoneOffset.UTC).plusDays(7)
+            )
+        )
+        assertEquals(4, beskjed.getSikkerhetsnivaa())
+        assertEquals(false, beskjed.getEksternVarsling())
+    }
 }
 
 fun isWithin10Seconds(actual: LocalDateTime, expected: LocalDateTime = LocalDateTime.now(ZoneOffset.UTC)): Boolean =
