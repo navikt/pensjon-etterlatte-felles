@@ -124,6 +124,46 @@ internal class NotifikasjonTest {
         )
     }
 
+    @Test
+    fun `Skal opprette notifikasjon til innsender ved innsending av omstillingsstoenad`() {
+        val omstillingsstoenadSoeknad = InnsendtSoeknadFixtures.omstillingsSoeknad()
+        val soeknad: String = mapper.writeValueAsString(omstillingsstoenadSoeknad)
+        val inspector = TestRapid()
+            .apply {
+                Notifikasjon(
+                    sendMelding,
+                    this
+                )
+            }
+            .apply {
+                sendTestMessage(
+                    JsonMessage.newMessage(
+                        mapOf(
+                            "@event_name" to "soeknad_innsendt",
+                            "@dokarkivRetur" to "123456",
+                            "@fnr_soeker" to "07106123912",
+                            "@skjema_info" to mapper.readTree(soeknad),
+                            "@lagret_soeknad_id" to "4",
+                            "@dokarkivRetur" to (mapOf("journalpostId" to "5"))
+                        )
+                    )
+                        .toJson()
+                )
+            }.inspektør
+
+        assertEquals("notifikasjon_sendt", inspector.message(0).get("@event_name").asText())
+        assertEquals("Notifikasjon sendt", inspector.message(0).get("@notifikasjon").asText())
+        assertEquals("5", inspector.message(0).get("@journalpostId").asText())
+        assertEquals("4", inspector.message(0).get("@lagret_soeknad_id").asText())
+        assertEquals("SendNotifikasjon 5", inspector.key(0))
+        assertEquals(mockKafkaProducer.history().size, 1)
+        assertEquals(mockKafkaProducer.history()[0].value().getTekst(), "Vi har mottatt søknaden din om omstillingsstønad")
+        assertEquals(
+            omstillingsstoenadSoeknad.innsender.foedselsnummer.svar.value,
+            mockKafkaProducer.history()[0].key().getFodselsnummer()
+        )
+    }
+
     @AfterAll
     fun tearDown() {
         kafkaContainer.stop()
