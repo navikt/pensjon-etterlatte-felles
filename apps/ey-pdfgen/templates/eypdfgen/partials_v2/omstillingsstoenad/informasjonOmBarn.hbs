@@ -24,4 +24,16 @@
             {{> eypdfgen/partials_v2/common/barn/barn barnet}}
         </div>
     {{/each}}
+    {{else}}
+        <i>
+            {{#eq spraak "en"}}
+                The sender/applicant have not supplied any information regarding children.
+            {{else}}
+                {{#eq spraak "nn"}}
+                    Innsender/søkar har ikkje gitt opplysingar om eventuelle barn.
+                {{else}}
+                    Innsender/søker har ikke opplyst om eventuelle barn.
+                {{/eq}}
+            {{/eq}}
+        </i>
 {{/with}}
