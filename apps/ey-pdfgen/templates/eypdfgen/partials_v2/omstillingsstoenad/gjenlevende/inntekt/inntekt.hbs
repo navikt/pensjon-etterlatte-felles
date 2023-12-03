@@ -3,20 +3,66 @@
         {{this.spoersmaal}}
     </h4>
     <div>
-        {{> eypdfgen/partials_v2/common/opplysning this.svar.arbeidsinntektAaretFoer}}
+        {{#if this.svar.norge}}
+            <h5>
+                {{#eq spraak "en"}}
+                    Norway
+                {{else}}
+                    {{#eq spraak "nn"}}
+                        Noreg
+                    {{else}}
+                        Norge
+                    {{/eq}}
+                {{/eq}}
+            </h5>
+            {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.arbeidsinntektAaretFoer}}
 
-        {{> eypdfgen/partials_v2/common/opplysning this.svar.arbeidsinntektIAar.tilDoedsfall}}
+            {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.arbeidsinntektIAar.tilDoedsfall}}
 
-        {{> eypdfgen/partials_v2/common/opplysning this.svar.arbeidsinntektIAar.etterDoedsfall}}
+            {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.arbeidsinntektIAar.etterDoedsfall}}
+        {{/if}}
 
-        {{> eypdfgen/partials_v2/common/opplysning this.svar.endringAvInntekt.fremtidigEndringAvInntekt}}
+        {{#if this.svar.utland}}
+            <h5>
+                {{#eq spraak "en"}}
+                    Abroad
+                {{else}}
+                    {{#eq spraak "nn"}}
+                        Utland
+                    {{else}}
+                        Utland
+                    {{/eq}}
+                {{/eq}}
+            </h5>
 
-        {{#eq this.svar.endringAvInntekt.fremtidigEndringAvInntekt.svar.verdi "JA"}}
-            {{> eypdfgen/partials_v2/common/opplysning this.svar.endringAvInntekt.grunn}}
-        {{/eq}}
+            {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.arbeidsinntektAaretFoer}}
 
-        {{#eq this.svar.endringAvInntekt.grunn.svar.verdi "ANNEN_GRUNN"}}
-            {{> eypdfgen/partials_v2/common/opplysning this.svar.endringAvInntekt.annenGrunn}}
-        {{/eq}}
+            {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.arbeidsinntektIAar.tilDoedsfall}}
+
+            {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.arbeidsinntektIAar.etterDoedsfall}}
+        {{/if}}
+
+        <div>
+            <h5>
+                {{#eq spraak "en"}}
+                    More about {{this.spoersmaal}}
+                {{else}}
+                    {{#eq spraak "nn"}}
+                        Mer om {{this.spoersmaal}}
+                    {{else}}
+                        Mer om {{this.spoersmaal}}
+                    {{/eq}}
+                {{/eq}}
+            </h5>
+            {{> eypdfgen/partials_v2/common/opplysning this.svar.endringAvInntekt.fremtidigEndringAvInntekt}}
+
+            {{#eq this.svar.endringAvInntekt.fremtidigEndringAvInntekt.svar.verdi "JA"}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.endringAvInntekt.grunn}}
+            {{/eq}}
+
+            {{#eq this.svar.endringAvInntekt.grunn.svar.verdi "ANNEN_GRUNN"}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.endringAvInntekt.annenGrunn}}
+            {{/eq}}
+        </div>
     </div>
 {{/if}}

@@ -23,10 +23,32 @@
         </div>
 
         {{#if this.tjenestepensjonsordning}}
+            <h5>
+                {{#eq spraak "en"}}
+                    Tjenestepensjonsordning
+                {{else}}
+                    {{#eq spraak "nn"}}
+                        Tjenestepensjonsordning
+                    {{else}}
+                        Tjenestepensjonsordning
+                    {{/eq}}
+                {{/eq}}
+            </h5>
             {{> eypdfgen/partials_v2/common/opplysning this.tjenestepensjonsordning.type}}
             {{> eypdfgen/partials_v2/common/opplysning this.tjenestepensjonsordning.utbetaler}}
         {{/if}}
 
+        <h5>
+            {{#eq spraak "en"}}
+                Pension from abroad
+            {{else}}
+                {{#eq spraak "nn"}}
+                    Pensjon fra utland
+                {{else}}
+                    Pensjon fra utland
+                {{/eq}}
+            {{/eq}}
+        </h5>
         {{> eypdfgen/partials_v2/common/opplysning this.utland.svar}}
 
         {{#eq this.utland.svar.svar.verdi "JA"}}
