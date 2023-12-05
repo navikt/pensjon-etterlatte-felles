@@ -26,6 +26,12 @@ spec:
     cpuThresholdPercentage: 90
     max: 1
     min: 1
+  resources:
+    limits:
+      memory: 512Mi
+    requests:
+      cpu: 20m
+      memory: 256Mi
   env:
     - name: KAFKA_RAPID_TOPIC
       value: etterlatte.dodsmelding
