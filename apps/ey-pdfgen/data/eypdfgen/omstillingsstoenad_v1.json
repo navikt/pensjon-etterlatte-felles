@@ -58,36 +58,36 @@
     }
   },
   "soeker": {
-    "type": "GJENLEVENDE",
+    "type": "GJENLEVENDE_OMS",
     "fornavn": {
       "spoersmaal": "Fornavn",
-      "svar": "STOR"
+      "svar": "TØFF"
     },
     "etternavn": {
       "spoersmaal": "Etternavn",
-      "svar": "SNERK"
+      "svar": "DAL"
     },
     "foedselsnummer": {
       "spoersmaal": "Fødselsnummer",
-      "svar": "11057523044"
+      "svar": "14838099980"
     },
     "statsborgerskap": {
       "spoersmaal": "Statsborgerskap",
-      "svar": "Statsborgerskap-mock"
+      "svar": "Norge"
     },
     "sivilstatus": {
       "spoersmaal": "Sivilstatus",
-      "svar": "Gift"
+      "svar": "Enke eller enkemann"
     },
     "adresse": {
       "spoersmaal": "Bostedsadresse",
-      "svar": "Adresse-mock 1, 0000 Poststed-mock"
+      "svar": "Nøsterudveien 48, 3060 Svelvik"
     },
     "kontaktinfo": {
       "telefonnummer": {
         "spoersmaal": "Telefonnummer",
         "svar": {
-          "innhold": "11111111"
+          "innhold": "+4799999999"
         }
       }
     },
@@ -108,19 +108,19 @@
         "oppholdsland": {
           "spoersmaal": "Oppgi hvilket land du oppholdt deg i",
           "svar": {
-            "innhold": "India"
+            "innhold": "Anguilla"
           }
         },
         "oppholdFra": {
           "spoersmaal": "Fra dato",
           "svar": {
-            "innhold": "2023-11-08"
+            "innhold": "2023-12-01"
           }
         },
         "oppholdTil": {
           "spoersmaal": "Til dato",
           "svar": {
-            "innhold": "2023-11-17"
+            "innhold": "2023-12-02"
           }
         }
       }
@@ -179,12 +179,8 @@
             "innhold": "Jeg etablerer egen virksomhet"
           },
           {
-            "verdi": "SELVSTENDIG_AS",
-            "innhold": "Jeg er selvstendig næringsdrivende og ansatt i mitt eget aksjeselskap (AS)"
-          },
-          {
-            "verdi": "SELVSTENDIG_ENK",
-            "innhold": "Jeg er selvstendig næringsdrivende eller frilanser med enkeltpersonforetak"
+            "verdi": "SELVSTENDIG",
+            "innhold": "Jeg er selvstendig næringsdrivende"
           },
           {
             "verdi": "ARBEIDSTAKER",
@@ -203,109 +199,54 @@
               }
             },
             "arbeidsmengde": {
-              "spoersmaal": "Fyll ut arbeidsmengden din",
+              "spoersmaal": "Fyll ut stillingsprosenten din",
               "svar": {
                 "innhold": "50 Prosent"
               }
             },
             "ansettelsesforhold": {
-              "spoersmaal": "Type ansettelse",
-              "svar": {
-                "verdi": "TILKALLINGSVIKAR",
-                "innhold": "Tilkallingsvikar eller lignende"
-              }
-            },
-            "harSluttdato": {
-              "spoersmaal": "Har du en sluttdato?",
-              "svar": {
-                "verdi": "JA",
-                "innhold": "Ja"
-              }
-            },
-            "sluttdato": {
-              "spoersmaal": "Sluttdato",
-              "svar": {
-                "innhold": "2023-10-17"
-              }
-            },
-            "endretArbeidssituasjon": {
-              "spoersmaal": "Forventer du endringer i arbeidssituasjonen din fremover i tid?",
-              "svar": {
-                "verdi": "JA",
-                "innhold": "Ja"
-              },
-              "opplysning": {
-                "spoersmaal": "Beskrivelse",
-                "svar": {
-                  "innhold": "Den endrer seg"
-                }
-              }
-            },
-            "sagtOppEllerRedusert": {
-              "spoersmaal": "Har du sagt opp jobben eller redusert arbeidstiden de siste 6 månedene?",
-              "svar": {
-                "verdi": "OPPSAGT",
-                "innhold": "Ja, jeg har sagt opp jobben eller tatt frivillig permisjon (ikke foreldrepermisjon)"
-              }
-            }
-          },
-          {
-            "arbeidsgiver": {
-              "spoersmaal": "Navn på arbeidssted",
-              "svar": {
-                "innhold": "Arbeidssted 2"
-              }
-            },
-            "arbeidsmengde": {
-              "spoersmaal": "Stillingsprosent",
-              "svar": {
-                "innhold": "100 Prosent"
-              }
-            },
-            "ansettelsesforhold": {
-              "spoersmaal": "Type ansettelse",
+              "spoersmaal": "Hva slags type ansettelsesforhold har du?",
               "svar": {
                 "verdi": "FAST",
                 "innhold": "Fast ansatt"
               }
             },
             "endretArbeidssituasjon": {
-              "spoersmaal": "Forventer du endringer i arbeidssituasjonen din fremover i tid?",
+              "spoersmaal": "Forventer du endringer i arbeidsforholdet ditt fremover i tid?",
               "svar": {
-                "verdi": "NEI",
-                "innhold": "Nei"
-              }
-            },
-            "sagtOppEllerRedusert": {
-              "spoersmaal": "Har du sagt opp jobben eller redusert arbeidstiden de siste 6 månedene?",
-              "svar": {
-                "verdi": "NEI",
-                "innhold": "Nei"
+                "verdi": "JA",
+                "innhold": "Ja"
+              },
+              "opplysning": {
+                "spoersmaal": "Gi en kort beskrivelse av endringene",
+                "svar": {
+                  "innhold": "Blir CEO"
+                }
               }
             }
           }
         ]
       },
-      "selvstendigENK": {
-        "spoersmaal": "Om næringen (ENK)",
+      "selvstendig": {
+        "spoersmaal": "Om næringen",
         "svar": [
           {
             "firmanavn": {
               "spoersmaal": "Om næringen",
               "svar": {
-                "innhold": "Næring ENK"
+                "innhold": "Selvstengind as"
               }
             },
             "orgnr": {
               "spoersmaal": "Organisasjonsnummer",
               "svar": {
-                "innhold": "123456789"
+                "innhold": "999999999"
               }
             },
             "arbeidsmengde": {
               "spoersmaal": "Fyll ut arbeidsmengden din",
               "svar": {
-                "innhold": "12 Timer i uka"
+                "innhold": "15 Timer i uka"
               }
             },
             "endretArbeidssituasjon": {
@@ -315,42 +256,10 @@
                 "innhold": "Ja"
               },
               "opplysning": {
-                "spoersmaal": "Beskrivelse",
+                "spoersmaal": "Gi en kort beskrivelse av endringene",
                 "svar": {
-                  "innhold": "Øker"
+                  "innhold": "Blir mye overtid"
                 }
-              }
-            }
-          }
-        ]
-      },
-      "selvstendigAS": {
-        "spoersmaal": "Om næringen (AS)",
-        "svar": [
-          {
-            "firmanavn": {
-              "spoersmaal": "Om næringen",
-              "svar": {
-                "innhold": "Næring AS"
-              }
-            },
-            "orgnr": {
-              "spoersmaal": "Organisasjonsnummer",
-              "svar": {
-                "innhold": "987654321"
-              }
-            },
-            "arbeidsmengde": {
-              "spoersmaal": "Fyll ut arbeidsmengden din",
-              "svar": {
-                "innhold": "50 Prosent"
-              }
-            },
-            "endretArbeidssituasjon": {
-              "spoersmaal": "Forventer du endringer i arbeidssituasjonen din fremover i tid?",
-              "svar": {
-                "verdi": "NEI",
-                "innhold": "Nei"
               }
             }
           }
@@ -360,7 +269,7 @@
         "spoersmaal": "Om virksomheten",
         "svar": {
           "virksomheten": {
-            "spoersmaal": "Hva heter virksomheten?",
+            "spoersmaal": "Hva heter den nye virksomheten?",
             "svar": {
               "innhold": "Virksomhet 123"
             }
@@ -368,7 +277,7 @@
           "orgnr": {
             "spoersmaal": "Organisasjonsnummer",
             "svar": {
-              "innhold": "555555555"
+              "innhold": "Jeg har ikke organisasjonsnummer"
             }
           },
           "forretningsplan": {
@@ -399,14 +308,14 @@
           "ansettelsesdato": {
             "spoersmaal": "Når skal du begynne å jobbe?",
             "svar": {
-              "innhold": "2023-10-18"
+              "innhold": "2023-12-07"
             }
           },
           "ansettelsesforhold": {
             "spoersmaal": "Hva slags type ansettelsesforhold skal du ha?",
             "svar": {
-              "verdi": "TILKALLINGSVIKAR",
-              "innhold": "Tilkallingsvikar eller lignende"
+              "verdi": "MIDLERTIDIG",
+              "innhold": "Midlertidig ansatt"
             }
           },
           "arbeidsmengde": {
@@ -425,13 +334,13 @@
           "sluttdato": {
             "spoersmaal": "Sluttdato",
             "svar": {
-              "innhold": "2023-10-18"
+              "innhold": "2023-12-14"
             }
           }
         }
       },
       "arbeidssoeker": {
-        "spoersmaal": "Arbeidssøker",
+        "spoersmaal": "Om arbeidssøkingen",
         "svar": {
           "registrertArbeidssoeker": {
             "spoersmaal": "Er du registrert som arbeidssøker hos NAV?",
@@ -480,13 +389,13 @@
           "startDato": {
             "spoersmaal": "Fra dato",
             "svar": {
-              "innhold": "2023-10-11"
+              "innhold": "2023-12-01"
             }
           },
           "sluttDato": {
             "spoersmaal": "Til dato",
             "svar": {
-              "innhold": "2023-10-27"
+              "innhold": "2023-12-03"
             }
           },
           "godkjentUtdanning": {
@@ -511,7 +420,7 @@
           "annet": {
             "spoersmaal": "Hva er grunnen til endringene?",
             "svar": {
-              "innhold": "Annen situasjon"
+              "innhold": "Annen situasjon beskrivelse"
             }
           }
         }
@@ -521,66 +430,73 @@
       "spoersmaal": "Hva er din høyeste fullførte utdanning?",
       "svar": [
         {
-          "verdi": "FAGBREV",
-          "innhold": "Fagbrev"
-        },
-        {
           "verdi": "VIDEREGAAENDE",
           "innhold": "Videregående"
+        },
+        {
+          "verdi": "FAGBREV",
+          "innhold": "Fagbrev"
         }
       ]
     },
-    "uregistrertEllerVenterBarn": {
-      "spoersmaal": "Venter du barn eller har du barn som ikke er registrert i folkeregisteret?",
-      "svar": {
-        "verdi": "NEI",
-        "innhold": "Nei"
-      }
-    },
-    "omsorgForBarn" : {
-      "spoersmaal": "Har du minst 50 prosent omsorg for barn under 18 år på dødsfallstidspunktet?",
-      "svar": {
-        "verdi": "JA",
-        "innhold": "Ja"
-      }
-    },
-    "forholdTilAvdoede": {
-      "relasjon": {
-        "spoersmaal": "Relasjonen din til avdøde da dødsfallet skjedde",
-        "svar": {
-          "verdi": "SAMBOER",
-          "innhold": "Samboer"
-        }
-      },
-      "fellesBarn": {
-        "spoersmaal": "Har eller hadde dere felles barn?",
-        "svar": {
-          "verdi": "JA",
-          "innhold": "Ja"
-        }
-      }
-    },
-    "inntektOgPensjon":  {
+    "inntektOgPensjon": {
       "loennsinntekt": {
-        "spoersmaal": "Lønnsinntekt",
+        "spoersmaal": "Arbeidsinntekt",
         "svar": {
-          "arbeidsinntektAaretFoer": {
-            "spoersmaal": "Oppgi brutto arbeidsinntekt fra januar til desember",
-            "svar": {
-              "innhold": "10000"
-            }
+          "norgeEllerUtland": {
+            "spoersmaal": "Hvor har du arbeidsinntekt fra?",
+            "svar": [
+              {
+                "verdi": "NORGE",
+                "innhold": "Norge"
+              },
+              {
+                "verdi": "UTLAND",
+                "innhold": "Utland"
+              }
+            ]
           },
-          "arbeidsinntektIAar": {
-            "tilDoedsfall": {
-              "spoersmaal": "Oppgi brutto arbeidsinntekt frem til dødsfallet",
+          "norge": {
+            "arbeidsinntektAaretFoer": {
+              "spoersmaal": "Hva var brutto årsinntekt året før dødsfallet?",
               "svar": {
-                "innhold": "20000"
+                "innhold": "123123"
               }
             },
-            "etterDoedsfall": {
-              "spoersmaal": "Oppgi brutto arbeidsinntekt etter dødsfallet",
+            "arbeidsinntektIAar": {
+              "tilDoedsfall": {
+                "spoersmaal": "Hva var brutto arbeidsinntekt frem til dødsfallet?",
+                "svar": {
+                  "innhold": "123123"
+                }
+              },
+              "etterDoedsfall": {
+                "spoersmaal": "Hva forventer du i brutto årsinntekt til neste år?",
+                "svar": {
+                  "innhold": "123123"
+                }
+              }
+            }
+          },
+          "utland": {
+            "arbeidsinntektAaretFoer": {
+              "spoersmaal": "Hva var brutto årsinntekt året før dødsfallet?",
               "svar": {
-                "innhold": "30000"
+                "innhold": "123123"
+              }
+            },
+            "arbeidsinntektIAar": {
+              "tilDoedsfall": {
+                "spoersmaal": "Hva var brutto arbeidsinntekt frem til dødsfallet?",
+                "svar": {
+                  "innhold": "234"
+                }
+              },
+              "etterDoedsfall": {
+                "spoersmaal": "Hva forventer du i brutto årsinntekt til neste år?",
+                "svar": {
+                  "innhold": "123123"
+                }
               }
             }
           },
@@ -600,9 +516,9 @@
               }
             },
             "annenGrunn": {
-              "spoersmaal": "Beskriv grunn",
+              "spoersmaal": "Gi en kort beskrivelse av endringene",
               "svar": {
-                "innhold": "arv"
+                "innhold": "Endring beskrivelse"
               }
             }
           }
@@ -611,23 +527,60 @@
       "naeringsinntekt": {
         "spoersmaal": "Næringsinntekt",
         "svar": {
-          "arbeidsinntektAaretFoer": {
-            "spoersmaal": "Anslå brutto næringsinntekt i året før dødsfallet",
-            "svar": {
-              "innhold": "123"
-            }
+          "norgeEllerUtland": {
+            "spoersmaal": "Hvor har du næringsinntekt fra?",
+            "svar": [
+              {
+                "verdi": "NORGE",
+                "innhold": "Norge"
+              },
+              {
+                "verdi": "UTLAND",
+                "innhold": "Utland"
+              }
+            ]
           },
-          "arbeidsinntektIAar": {
-            "tilDoedsfall": {
-              "spoersmaal": "Anslå brutto næringsinntekt frem til måneden før dødsfallet",
+          "norge": {
+            "arbeidsinntektAaretFoer": {
+              "spoersmaal": "Hva var brutto årsinntekt året før dødsfallet?",
               "svar": {
-                "innhold": "234"
+                "innhold": "3123"
               }
             },
-            "etterDoedsfall": {
-              "spoersmaal": "Anslå brutto næringsinntekt etter dødsfallet",
+            "arbeidsinntektIAar": {
+              "tilDoedsfall": {
+                "spoersmaal": "Hva er brutto næringsinntekt i år?",
+                "svar": {
+                  "innhold": "12312"
+                }
+              },
+              "etterDoedsfall": {
+                "spoersmaal": "Hva forventer du i brutto årsinntekt til neste år?",
+                "svar": {
+                  "innhold": "123"
+                }
+              }
+            }
+          },
+          "utland": {
+            "arbeidsinntektAaretFoer": {
+              "spoersmaal": "Hva var brutto årsinntekt året før dødsfallet?",
               "svar": {
-                "innhold": "345"
+                "innhold": "23423"
+              }
+            },
+            "arbeidsinntektIAar": {
+              "tilDoedsfall": {
+                "spoersmaal": "Hva er brutto næringsinntekt i år?",
+                "svar": {
+                  "innhold": "123"
+                }
+              },
+              "etterDoedsfall": {
+                "spoersmaal": "Hva forventer du i brutto årsinntekt til neste år?",
+                "svar": {
+                  "innhold": "2342"
+                }
               }
             }
           },
@@ -647,9 +600,9 @@
               }
             },
             "annenGrunn": {
-              "spoersmaal": "Beskriv grunn",
+              "spoersmaal": "Gi en kort beskrivelse av endringene",
               "svar": {
-                "innhold": "ARver mye peng"
+                "innhold": "Endring beskrivelse"
               }
             }
           }
@@ -677,8 +630,8 @@
           "type": {
             "spoersmaal": "Hva slags pensjon mottar du?",
             "svar": {
-              "verdi": "SAERALDERSPENSJON",
-              "innhold": "Særalderspensjon"
+              "verdi": "ALDERSPENSJON",
+              "innhold": "Alderspensjon"
             }
           },
           "utbetaler": {
@@ -705,7 +658,7 @@
           "land": {
             "spoersmaal": "Hvilket land mottar du fra? ",
             "svar": {
-              "innhold": "Jemen"
+              "innhold": "Antigua og barbuda"
             }
           },
           "beloepMedValuta": {
@@ -721,42 +674,14 @@
           "spoersmaal": "Hvilke andre inntekter eller utbetalinger har du?",
           "svar": [
             {
-              "verdi": "ANNEN",
-              "innhold": "Andre inntekter eller ytelser"
+              "verdi": "DAGSPENGER",
+              "innhold": "Dagpenger"
             },
             {
-              "verdi": "OMSORGSPENGER",
-              "innhold": "Omsorgspenger"
+              "verdi": "ARBEIDSAVKLARINGSPENGER",
+              "innhold": "Arbeidsavklaringspenger"
             }
           ]
-        },
-        "beloep": {
-          "spoersmaal": "Oppgi brutto inntekt eller ytelser",
-          "svar": {
-            "innhold": "12312312"
-          }
-        },
-        "endringAvInntekt": {
-          "fremtidigEndringAvInntekt": {
-            "spoersmaal": "Regner du med at inntekten din endrer seg fremover i tid?",
-            "svar": {
-              "verdi": "JA",
-              "innhold": "Ja"
-            }
-          },
-          "grunn": {
-            "spoersmaal": "Hva er grunnen til endringene?",
-            "svar": {
-              "verdi": "ANNEN_GRUNN",
-              "innhold": "Annen grunn"
-            }
-          },
-          "annenGrunn": {
-            "spoersmaal": "Beskriv grunn",
-            "svar": {
-              "innhold": "grunn"
-            }
-          }
         }
       },
       "ytelserNAV": {
@@ -771,12 +696,12 @@
           "spoersmaal": "Hva har du søkt om?",
           "svar": [
             {
-              "verdi": "UFOEREPENSJON",
-              "innhold": "Uførepensjon"
+              "verdi": "FOSTERHJEMSGODTGJOERING",
+              "innhold": "Fosterhjemsgodtgjøring"
             },
             {
-              "verdi": "ALDERSPENSJON",
-              "innhold": "Alderspensjon"
+              "verdi": "KVALIFISERINGSSTOENAD",
+              "innhold": "Kvalifiseringsstønad"
             }
           ]
         }
@@ -793,12 +718,12 @@
           "spoersmaal": "Hva har du søkt om?",
           "svar": [
             {
-              "verdi": "ALDERSPENSJON",
-              "innhold": "Alderspensjon"
-            },
-            {
               "verdi": "SAERALDERSPENSJON",
               "innhold": "Særalderspensjon"
+            },
+            {
+              "verdi": "ALDERSPENSJON",
+              "innhold": "Alderspensjon"
             }
           ]
         },
@@ -808,6 +733,42 @@
             "innhold": "Test pensjonsordning"
           }
         }
+      }
+    },
+    "uregistrertEllerVenterBarn": {
+      "spoersmaal": "Venter du barn eller har du barn som ikke er registrert i folkeregisteret?",
+      "svar": {
+        "verdi": "NEI",
+        "innhold": "Nei"
+      }
+    },
+    "forholdTilAvdoede": {
+      "relasjon": {
+        "spoersmaal": "Relasjonen din til avdøde da dødsfallet skjedde",
+        "svar": {
+          "verdi": "SEPARERT",
+          "innhold": "Separert"
+        }
+      },
+      "datoForInngaattPartnerskap": {
+        "spoersmaal": "Vi giftet oss",
+        "svar": {
+          "innhold": "2022-11-10"
+        }
+      },
+      "fellesBarn": {
+        "spoersmaal": "Har eller har dere hatt felles barn?",
+        "svar": {
+          "verdi": "NEI",
+          "innhold": "Nei"
+        }
+      }
+    },
+    "omsorgForBarn": {
+      "spoersmaal": "Har du minst 50 prosent omsorg for barn under 18 år på dødsfallstidspunktet?",
+      "svar": {
+        "verdi": "JA",
+        "innhold": "Ja"
       }
     }
   },
