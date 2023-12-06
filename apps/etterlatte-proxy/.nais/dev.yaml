@@ -24,10 +24,9 @@ spec:
     timeout: 1
   resources:
     limits:
-      cpu: 500m
       memory: 2Gi
     requests:
-      cpu: 100m
+      cpu: 50m
       memory: 512Mi
   ingresses:
     - "https://etterlatte-proxy.dev-fss-pub.nais.io"
