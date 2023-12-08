@@ -7,10 +7,14 @@ on:
         description: 'Lenke til docker image'
         required: true
         type: string
+      cluster:
+        description: 'Cluster. gcp eller fss'
+        required: true
+        type: string
 
 jobs:
-  deploy-to-dev-gcp:
-    name: dev-gcp
+  deploy-to-dev-cluster:
+    name: dev-cluster
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -18,14 +22,14 @@ jobs:
       - uses: nais/deploy/actions/deploy@v1
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: dev-gcp
+          CLUSTER: dev-$${{ inputs.cluster }}
           RESOURCE: apps/${{ github.workflow }}/.nais/dev.yaml
           VAR: image=${{ inputs.image }}
 
-  deploy-to-prod-gcp:
-    name: prod-gcp
+  deploy-to-prod-cluster:
+    name: prod-cluster
     if: ${{ github.ref == 'refs/heads/main' || github.event.inputs.deploy-prod == 'true' }}
-    needs: deploy-to-dev-gcp
+    needs: deploy-to-dev-cluster
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -38,6 +42,6 @@ jobs:
         if: steps.check_files.outputs.files_exists == 'true'
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: prod-gcp
+          CLUSTER: prod-${{ inputs.cluster }}
           RESOURCE: apps/${{ github.workflow }}/.nais/prod.yaml
           VAR: image=${{ inputs.image }}
