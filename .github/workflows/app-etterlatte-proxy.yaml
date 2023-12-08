@@ -1,9 +1,5 @@
 name: etterlatte-proxy
 
-env:
-  IMAGE: ghcr.io/${{ github.repository }}/${{ github.workflow }}:${{ github.sha }}
-  APP_NAME: ${{ github.workflow }}
-
 on:
   workflow_dispatch: # Allow manually triggered workflow run
     inputs:
@@ -20,7 +16,7 @@ on:
     branches:
       - main
     paths:
-      - apps/etterlatte-notifikasjoner/**
+      - apps/etterlatte-proxy/**
 
 jobs:
   test:

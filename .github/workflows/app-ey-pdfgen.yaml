@@ -1,9 +1,5 @@
 name: ey-pdfgen
 
-env:
-  IMAGE: ghcr.io/${{ github.repository }}/${{ github.workflow }}:${{ github.sha }}
-  APP_NAME: ${{ github.workflow }}
-
 on:
   workflow_dispatch: # Allow manually triggered workflow run
     inputs:
@@ -18,26 +14,9 @@ on:
       - apps/ey-pdfgen/**
 
 jobs:
-  build-and-publish:
-    name: Build, test, and publish
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Build and publish docker image
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          docker login ghcr.io -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
-          docker build --tag ${IMAGE} apps/${APP_NAME}
-          docker push ${IMAGE}
-
   build:
     if: github.event_name != 'pull_request'
-    uses: ./.github/workflows/.build.yaml
+    uses: ./.github/workflows/.build-frontend.yaml
     secrets: inherit
     permissions:
       contents: 'read'
