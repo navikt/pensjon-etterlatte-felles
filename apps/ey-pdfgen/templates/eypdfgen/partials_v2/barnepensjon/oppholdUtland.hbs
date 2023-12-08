@@ -1,0 +1,25 @@
+<h4>
+    {{#eq spraak "en"}}
+        Stays abroad
+    {{else}}
+        {{#eq spraak "nn"}}
+            Opphald utland
+        {{else}}
+            Opphold utland
+        {{/eq}}
+    {{/eq}}
+</h4>
+
+{{> eypdfgen/partials_v2/common/opplysning this}}
+
+{{#eq this.svar.verdi "JA"}}
+    {{> eypdfgen/partials_v2/common/opplysning this.opplysning.oppholdLand}}
+
+    {{#if this.opplysning.oppholdFra}}
+        {{> eypdfgen/partials_v2/common/datoOpplysning this.opplysning.oppholdFra}}
+    {{/if}}
+
+    {{#if this.opplysning.oppholdTil}}
+        {{> eypdfgen/partials_v2/common/datoOpplysning this.opplysning.oppholdTil}}
+    {{/if}}
+{{/eq}}

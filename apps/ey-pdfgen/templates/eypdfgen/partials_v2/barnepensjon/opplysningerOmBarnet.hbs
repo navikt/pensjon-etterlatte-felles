@@ -11,3 +11,7 @@
 </h2>
 
 {{> eypdfgen/partials_v2/common/barn/barn this}}
+
+{{#if this.bosattNorge}}
+    {{> eypdfgen/partials_v2/barnepensjon/oppholdUtland this.bosattNorge}}
+{{/if}}

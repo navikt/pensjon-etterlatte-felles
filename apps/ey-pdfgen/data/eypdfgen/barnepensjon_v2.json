@@ -70,6 +70,33 @@
       "spoersmaal": "Statsborgerskap",
       "svar": "Norge"
     },
+    "bosattNorge" : {
+      "spoersmaal": "Have you lived or stayed abroad in the last 12 months?",
+      "svar": {
+        "innhold": "Yes",
+        "verdi": "JA"
+      },
+      "opplysning": {
+        "oppholdLand": {
+          "spoersmaal": "State which country",
+          "svar": {
+            "innhold": "Grønland"
+          }
+        },
+        "oppholdFra": {
+          "spoersmaal": "From date",
+          "svar": {
+            "innhold": "2023-01-01"
+          }
+        },
+        "oppholdTil": {
+          "spoersmaal": "To date",
+          "svar": {
+            "innhold": "2023-01-02"
+          }
+        }
+      }
+    },
     "utenlandsAdresse": {
       "spoersmaal": "Bor barnet i et annet land enn Norge?",
       "svar": {
