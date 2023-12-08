@@ -35,27 +35,19 @@ jobs:
           docker build --tag ${IMAGE} apps/${APP_NAME}
           docker push ${IMAGE}
 
-  deploy-to-dev-gcp:
-    name: Deploy to dev-gcp
-    needs: build-and-publish
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: nais/deploy/actions/deploy@v1
-        env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: dev-gcp
-          RESOURCE: apps/${{ env.APP_NAME }}/.nais/dev.yaml
+  build:
+    if: github.event_name != 'pull_request'
+    uses: ./.github/workflows/.build.yaml
+    secrets: inherit
+    permissions:
+      contents: 'read'
+      id-token: 'write'
 
-  deploy-to-prod-gcp:
-    name: Deploy to prod-gcp
-    if: ${{ github.ref == 'refs/heads/main' || github.event.inputs.deploy-prod == 'true' }}
-    needs: deploy-to-dev-gcp
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: nais/deploy/actions/deploy@v1
-        env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: prod-gcp
-          RESOURCE: apps/${{ env.APP_NAME }}/.nais/prod.yaml
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    uses: ./.github/workflows/.deploy.yaml
+    with:
+      image: ${{ needs.build.outputs.image }}
+      cluster: 'gcp'
+    secrets: inherit
