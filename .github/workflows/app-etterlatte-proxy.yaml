@@ -16,60 +16,31 @@ on:
       - main
     paths:
       - apps/etterlatte-proxy/**
+  pull_request:
+    branches:
+      - main
+    paths:
+      - apps/etterlatte-notifikasjoner/**
 
 jobs:
-  build-and-publish:
-    name: Build, test, and publish
-    runs-on: ubuntu-latest
+  test:
+    if: github.event_name == 'pull_request'
+    uses: ./.github/workflows/.test.yaml
+    secrets: inherit
+
+  build:
+    if: github.event_name != 'pull_request'
+    uses: ./.github/workflows/.build.yaml
+    secrets: inherit
     permissions:
-      contents: read
-      packages: write
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Setup Java v17.x
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: 17.x
-          cache: gradle
-      - name: Gradle test and build
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          chmod +x ./gradlew
-          ./gradlew :apps:${APP_NAME}:test :apps:${APP_NAME}:build
-      - name: Build and publish docker image
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          docker login ghcr.io -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
-          docker build --tag ${IMAGE} apps/${APP_NAME}
-          docker push ${IMAGE}
+      contents: 'read'
+      id-token: 'write'
 
-  deploy-to-dev-fss:
-    name: Deploy to dev-fss
-    needs: build-and-publish
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: nais/deploy/actions/deploy@v1
-        env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: dev-fss
-          RESOURCE: apps/${{ env.APP_NAME }}/.nais/dev.yaml
-
-  deploy-to-prod-fss:
-    name: Deploy to prod-fss
-    if: ${{ github.ref == 'refs/heads/main' || github.event.inputs.deploy-prod == 'true' }}
-    needs: deploy-to-dev-fss
-    runs-on: ubuntu-latest
-    timeout-minutes: 3
-    continue-on-error: true
-    steps:
-      - uses: actions/checkout@v4
-      - uses: nais/deploy/actions/deploy@v1
-        env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: prod-fss
-          RESOURCE: apps/${{ env.APP_NAME }}/.nais/prod.yaml
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    uses: ./.github/workflows/.deploy.yaml
+    with:
+      image: ${{ needs.build.outputs.image }}
+      cluster: 'fss'
+    secrets: inherit
