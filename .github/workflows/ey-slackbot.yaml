@@ -1,9 +1,5 @@
 name: ey-slackbot
 
-env:
-  IMAGE: ghcr.io/${{ github.repository }}/${{ github.workflow }}:${{ github.sha }}
-  APP_NAME: ${{ github.workflow }}
-
 on:
   workflow_dispatch: # Allow manually triggered workflow run
   push:
@@ -13,30 +9,19 @@ on:
       - apps/ey-slackbot/**
 
 jobs:
-  build-and-publish:
-    name: Build & publish
-    runs-on: ubuntu-latest
+  build:
+    if: github.event_name != 'pull_request'
+    uses: ./.github/workflows/.build-frontend.yaml
+    secrets: inherit
     permissions:
-      packages: write
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Build and publish docker image
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          docker login ghcr.io -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
-          docker build --tag ${IMAGE} apps/${APP_NAME}
-          docker push ${IMAGE}
+      contents: 'read'
+      id-token: 'write'
 
   deploy:
-    name: Deploy
-    needs: build-and-publish
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: nais/deploy/actions/deploy@v1
-        env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: dev-gcp
-          RESOURCE: apps/${{ env.APP_NAME }}/.nais/dev.yaml
+    if: github.event_name != 'pull_request'
+    needs: build
+    uses: ./.github/workflows/.deploy.yaml
+    with:
+      image: ${{ needs.build.outputs.image }}
+      cluster: 'gcp'
+    secrets: inherit
