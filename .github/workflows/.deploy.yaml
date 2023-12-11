@@ -22,7 +22,7 @@ jobs:
       - uses: nais/deploy/actions/deploy@v1
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: dev-$${{ inputs.cluster }}
+          CLUSTER: dev-${{ inputs.cluster }}
           RESOURCE: apps/${{ github.workflow }}/.nais/dev.yaml
           VAR: image=${{ inputs.image }}
 
