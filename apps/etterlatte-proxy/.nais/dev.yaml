@@ -30,7 +30,6 @@ spec:
       memory: 512Mi
   ingresses:
     - "https://etterlatte-proxy.dev-fss-pub.nais.io"
-    - "https://etterlatte-proxy.intern.dev.nav.no"
   vault:
     enabled: true
     paths:
