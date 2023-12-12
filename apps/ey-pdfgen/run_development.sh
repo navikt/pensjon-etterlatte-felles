@@ -12,4 +12,4 @@ docker run \
         -e DISABLE_PDF_GET=false \
         -it \
         --rm \
-        ghcr.io/navikt/pdfgen:1.5.0
+        ghcr.io/navikt/pdfgen:2.0.21
