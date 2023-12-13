@@ -1,4 +1,7 @@
 import org.gradle.api.tasks.testing.logging.TestLogEvent
+import org.gradle.accessors.dm.LibrariesForLibs
+
+val libs = the<LibrariesForLibs>()
 
 plugins {
     kotlin("jvm")
@@ -8,6 +11,7 @@ plugins {
 repositories {
     mavenCentral()
     maven("https://packages.confluent.io/maven/")
+    maven("https://jitpack.io")
     maven {
         url = uri("https://maven.pkg.github.com/navikt/pensjon-etterlatte-libs")
         credentials {
@@ -21,14 +25,14 @@ dependencies {
     implementation(kotlin("stdlib"))
 
     // Logging
-    implementation(Logging.Slf4jApi)
-    implementation(Logging.LogbackClassic)
-    implementation(Logging.LogstashLogbackEncoder)
+    implementation(libs.logging.slf4jApi)
+    implementation(libs.logging.logbackClassic)
+    implementation(libs.logging.logstashLogbackEncoder)
 
     // JUnit Testing
-    testImplementation(Jupiter.Api)
-    testImplementation(Jupiter.Params)
-    testRuntimeOnly(Jupiter.Engine)
+    testImplementation(libs.jupiter.api)
+    testImplementation(libs.jupiter.params)
+    testRuntimeOnly(libs.jupiter.engine)
 }
 
 tasks {

@@ -7,19 +7,19 @@ repositories {
 }
 
 dependencies {
-    implementation(Ktor.Jackson)
-    implementation(NavFelles.RapidAndRivers)
+    implementation(libs.ktor.jackson)
+    implementation(libs.rapidAndRivers)
 
-    implementation(Etterlatte.Common)
-    implementation(Etterlatte.KtorClientAuth)
+    implementation(libs.etterlatte.common)
+    implementation(libs.etterlatte.ktorClientAuth)
 
-    implementation(NavFelles.BrukernotifikasjonSchemas)
-    implementation(Kafka.AvroSerializer) {
+    implementation(libs.brukernotifikasjonSchemas)
+    implementation(libs.kafka.avro.serializer) {
         exclude(group = "org.slf4j", module = "slf4j-log4j12")
     }
-    implementation(Kafka.Clients)
+    implementation(libs.kafka.clients)
 
-    testImplementation(Kafka.TestContainer)
-    testImplementation(MockK.MockK)
-    testImplementation(Etterlatte.CommonTest)
+    testImplementation(libs.kafka.testcontainer)
+    testImplementation(libs.mockk)
+    testImplementation(libs.etterlatte.commonTest)
 }
