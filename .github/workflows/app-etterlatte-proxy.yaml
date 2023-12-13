@@ -12,11 +12,13 @@ on:
       - main
     paths:
       - apps/etterlatte-proxy/**
+      - gradle/libs.versions.toml
   pull_request:
     branches:
       - main
     paths:
       - apps/etterlatte-proxy/**
+      - gradle/libs.versions.toml
 
 jobs:
   test:
