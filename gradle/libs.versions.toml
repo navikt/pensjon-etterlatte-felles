@@ -1,0 +1,65 @@
+[versions]
+navfelles-token-version = "3.0.11"
+ktor-version = "2.1.1"
+jupiter-version = "5.9.1"
+cxf-version = "4.0.2"
+
+[libraries]
+
+#NavFelles
+rapidAndRivers = { module = "com.github.navikt:rapids-and-rivers", version = "2022100711511665136276.49acbaae4ed4" }
+brukernotifikasjonSchemas = { module = "com.github.navikt:brukernotifikasjon-schemas", version = "2.5.2"}
+mockOauth2Server = { module = "no.nav.security:mock-oauth2-server", version = "0.5.4"}
+navFellesTokenClientCore = { module = "no.nav.security:token-client-core", version.ref = "navfelles-token-version"}
+tjenestespesifikasjonerTilbakekreving = { module = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:tilbakekreving-v1-tjenestespesifikasjon", version = "1.78ffd1e"}
+
+#Etterlatte
+common = { module = "no.nav.etterlatte:common", version = "2023.12.01-19.28.04ed855ae6eb"}
+commonTest = { module = "no.nav.etterlatte:common-test", version = "2023.12.01-19.28.04ed855ae6eb"}
+ktorClientAuth = { module = "no.nav.etterlatte:ktor-client-auth", version = "2022.09.28-10.09.cce630926582"}
+
+#Ktor
+ktor-callLogging = { module = "io.ktor:ktor-server-call-logging", version.ref = "ktor-version"}
+ktor-clientCore = { module = "io.ktor:ktor-client-core", version.ref = "ktor-version"}
+ktor-clientApache = { module = "io.ktor:ktor-client-apache", version.ref = "ktor-version"}
+ktor-clientAuth = { module = "io.ktor:ktor-client-auth", version.ref = "ktor-version"}
+ktor-clientContentNegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor-version"}
+ktor-clientLogging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor-version" }
+ktor-jackson = { module = "io.ktor:ktor-serialization-jackson", version.ref = "ktor-version" }
+ktor-serverAuth = { module = "io.ktor:ktor-server-auth", version.ref = "ktor-version" }
+ktor-serverAuthJwt = { module = "io.ktor:ktor-server-auth-jwt", version.ref = "ktor-version" }
+ktor-serverCore = { module = "io.ktor:ktor-server-core", version.ref = "ktor-version" }
+ktor-serverContentNegotiation = { module = "io.ktor:ktor-server-content-negotiation", version.ref = "ktor-version" }
+ktor-serverNetty = { module = "io.ktor:ktor-server-netty", version.ref = "ktor-version" }
+ktor-okHttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor-version" }
+ktor-serverTests = { module = "io.ktor:ktor-server-tests", version.ref = "ktor-version" }
+
+#Jackson
+jacksonDatatypejsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version = "2.15.0" }
+
+#Kafka
+kafka-clients = { module = "org.apache.kafka:kafka-clients", version = "3.2.3"}
+kafka-avro-serializer = { module = "io.confluent:kafka-avro-serializer", version = "6.2.2"}
+kafka-testcontainer = { module = "org.testcontainers:kafka", version = "1.17.3" }
+
+#Jupiter
+jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter-version" }
+jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "jupiter-version" }
+jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "jupiter-version" }
+
+#Logging
+logging-slf4jApi = { module = "org.slf4j:slf4j-api", version = "2.0.2" }
+logging-logbackClassic = { module = "ch.qos.logback:logback-classic", version = "1.4.1" }
+logging-logstashLogbackEncoder = { module = "net.logstash.logback:logstash-logback-encoder", version = "7.2"}
+
+#Micrometer
+micrometer-prometheus = { module = "io.micrometer:micrometer-registry-prometheus", version = "1.9.4"}
+
+#MockK
+mockk = { module = "io.mockk:mockk", version = "1.13.1" }
+
+#Cxf
+cxf-logging = { module = "org.apache.cxf:cxf-rt-features-logging", version.ref = "cxf-version" }
+cxf-jax-ws = { module = "org.apache.cxf:cxf-rt-frontend-jaxws", version.ref = "cxf-version" }
+cxf-transports-http = { module = "org.apache.cxf:cxf-rt-transports-http", version.ref = "cxf-version" }
+cxf-ws-security = { module = "org.apache.cxf:cxf-rt-ws-security", version.ref = "cxf-version" }
