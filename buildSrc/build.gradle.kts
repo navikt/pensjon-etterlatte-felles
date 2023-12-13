@@ -1,5 +1,5 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import ca.cutterslade.gradle.analyze.AnalyzeDependenciesTask
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     `kotlin-dsl`
@@ -23,7 +23,7 @@ dependencies {
 
 tasks {
     withType<Wrapper> {
-        gradleVersion = "7.5.1"
+        gradleVersion = "8.0"
     }
 
     withType<KotlinCompile> {
