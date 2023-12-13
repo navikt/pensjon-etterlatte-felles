@@ -1,3 +1,7 @@
+[plugins]
+cutterslade-analyze = { id = "ca.cutterslade.analyze", version = "1.9.0" }
+
+
 [versions]
 navfelles-token-version = "3.0.11"
 ktor-version = "2.1.1"
@@ -14,9 +18,9 @@ navFellesTokenClientCore = { module = "no.nav.security:token-client-core", versi
 tjenestespesifikasjonerTilbakekreving = { module = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:tilbakekreving-v1-tjenestespesifikasjon", version = "1.78ffd1e"}
 
 #Etterlatte
-common = { module = "no.nav.etterlatte:common", version = "2023.12.01-19.28.04ed855ae6eb"}
-commonTest = { module = "no.nav.etterlatte:common-test", version = "2023.12.01-19.28.04ed855ae6eb"}
-ktorClientAuth = { module = "no.nav.etterlatte:ktor-client-auth", version = "2022.09.28-10.09.cce630926582"}
+etterlatte-common = { module = "no.nav.etterlatte:common", version = "2023.12.01-19.28.04ed855ae6eb"}
+etterlatte-commonTest = { module = "no.nav.etterlatte:common-test", version = "2023.12.01-19.28.04ed855ae6eb"}
+etterlatte-ktorClientAuth = { module = "no.nav.etterlatte:ktor-client-auth", version = "2022.09.28-10.09.cce630926582"}
 
 #Ktor
 ktor-callLogging = { module = "io.ktor:ktor-server-call-logging", version.ref = "ktor-version"}
