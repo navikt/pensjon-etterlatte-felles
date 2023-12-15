@@ -3,36 +3,34 @@ plugins {
 }
 
 repositories {
-    maven("https://jitpack.io")
-
     // org.apache.cxf:cxf-rt-ws-security:4.0.2 er avhengig av opensaml-xacml-saml-impl:4.2.0
     // som i skrivende stund ikke er tilgjengelig på maven central, men i shibboleth
     maven("https://build.shibboleth.net/maven/releases/")
 }
 
 dependencies {
-    implementation(Ktor.ServerAuth)
-    implementation(Ktor.ClientCore)
-    implementation(Ktor.CallLogging)
-    implementation(Ktor.ClientApache)
-    implementation(Ktor.ClientAuth)
-    implementation(Ktor.ClientLogging)
-    implementation(Ktor.Jackson)
-    implementation(Ktor.ServerContentNegotiation)
-    implementation(Ktor.ClientContentNegotiation)
-    implementation(Ktor.ServerCore)
-    implementation(Ktor.ServerNetty)
-    implementation(Ktor.ServerAuthJwt)
-    implementation(Ktor.OkHttp)
-    implementation(NavFelles.NavFellesTokenClientCore)
-    implementation(NavFelles.TjenestespesifikasjonerTilbakekreving)
-    implementation(Cxf.CxfLogging)
-    implementation(Cxf.CxfJaxWs)
-    implementation(Cxf.CxfTransportsHttp)
-    implementation(Cxf.CxfWsSecurity)
-    implementation(Micrometer.Prometheus)
-    implementation(Jackson.jacksonDatatypejsr310)
+    implementation(libs.ktor.serverAuth)
+    implementation(libs.ktor.clientCore)
+    implementation(libs.ktor.callLogging)
+    implementation(libs.ktor.clientApache)
+    implementation(libs.ktor.clientAuth)
+    implementation(libs.ktor.clientLogging)
+    implementation(libs.ktor.jackson)
+    implementation(libs.ktor.serverContentNegotiation)
+    implementation(libs.ktor.clientContentNegotiation)
+    implementation(libs.ktor.serverCore)
+    implementation(libs.ktor.serverNetty)
+    implementation(libs.ktor.serverAuthJwt)
+    implementation(libs.ktor.okHttp)
+    implementation(libs.navFellesTokenClientCore)
+    implementation(libs.tjenestespesifikasjonerTilbakekreving)
+    implementation(libs.cxf.logging)
+    implementation(libs.cxf.jax.ws)
+    implementation(libs.cxf.transports.http)
+    implementation(libs.cxf.ws.security)
+    implementation(libs.micrometer.prometheus)
+    implementation(libs.jacksonDatatypejsr310)
 
-    testImplementation(NavFelles.MockOauth2Server)
-    testImplementation(Ktor.ServerTests)
+    testImplementation(libs.mockOauth2Server)
+    testImplementation(libs.ktor.serverTests)
 }

@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     `kotlin-dsl`
-    id("ca.cutterslade.analyze") version "1.9.0" apply true
+    alias(libs.plugins.cutterslade.analyze) apply true
 }
 
 group = "no.nav.etterlatte"
@@ -19,6 +19,8 @@ repositories {
 
 dependencies {
     implementation(kotlin("gradle-plugin"))
+
+    implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
 }
 
 tasks {
