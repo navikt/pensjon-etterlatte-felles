@@ -3,25 +3,20 @@ updates:
   - package-ecosystem: "npm"
     directory: "/apps/ey-slackbot"
     schedule:
-      interval: "daily"
+      interval: "monthly"
     open-pull-requests-limit: 10
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-patch"]
   - package-ecosystem: "gradle"
-    directory: "/apps/etterlatte-notifikasjoner"
+    directory: "/"
     schedule:
-      interval: "daily"
-    open-pull-requests-limit: 10
-  - package-ecosystem: "gradle"
-    directory: "/apps/etterlatte-proxy"
-    schedule:
-      interval: "daily"
+      interval: "monthly"
     open-pull-requests-limit: 10
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "monthly"
     open-pull-requests-limit: 10
   - package-ecosystem: "docker"
     directory: "/apps/etterlatte-notifikasjoner"
