@@ -3,7 +3,7 @@ cutterslade-analyze = { id = "ca.cutterslade.analyze", version = "1.9.0" }
 
 
 [versions]
-navfelles-token-version = "3.0.11"
+navfelles-token-version = "3.2.0"
 ktor-version = "2.1.1"
 jupiter-version = "5.9.1"
 cxf-version = "4.0.2"
