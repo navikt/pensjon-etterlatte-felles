@@ -26,20 +26,20 @@ updates:
   - package-ecosystem: "docker"
     directory: "/apps/etterlatte-notifikasjoner"
     schedule:
-      interval: "monthly"
+      interval: "daily"
     open-pull-requests-limit: 10
   - package-ecosystem: "docker"
     directory: "/apps/etterlatte-proxy"
     schedule:
-      interval: "monthly"
+      interval: "daily"
     open-pull-requests-limit: 10
   - package-ecosystem: "docker"
     directory: "/apps/ey-pdfgen"
     schedule:
-      interval: "monthly"
+      interval: "daily"
     open-pull-requests-limit: 10
   - package-ecosystem: "docker"
     directory: "/apps/ey-slackbot"
     schedule:
-      interval: "monthly"
+      interval: "daily"
     open-pull-requests-limit: 10
