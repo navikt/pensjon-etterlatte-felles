@@ -44,7 +44,7 @@ jacksonDatatypejsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datat
 #Kafka
 kafka-clients = { module = "org.apache.kafka:kafka-clients", version = "3.2.3"}
 kafka-avro-serializer = { module = "io.confluent:kafka-avro-serializer", version = "6.2.2"}
-kafka-testcontainer = { module = "org.testcontainers:kafka", version = "1.17.3" }
+kafka-testcontainer = { module = "org.testcontainers:kafka", version = "1.19.3" }
 
 #Jupiter
 jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter-version" }
