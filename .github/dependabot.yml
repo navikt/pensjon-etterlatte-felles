@@ -9,12 +9,7 @@ updates:
       - dependency-name: "*"
         update-types: ["version-update:semver-patch"]
   - package-ecosystem: "gradle"
-    directory: "/apps/etterlatte-notifikasjoner"
-    schedule:
-      interval: "monthly"
-    open-pull-requests-limit: 10
-  - package-ecosystem: "gradle"
-    directory: "/apps/etterlatte-proxy"
+    directory: "/"
     schedule:
       interval: "monthly"
     open-pull-requests-limit: 10
