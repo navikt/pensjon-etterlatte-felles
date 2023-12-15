@@ -2,10 +2,6 @@ plugins {
     id("etterlatte.common")
 }
 
-repositories {
-    maven("https://jitpack.io")
-}
-
 dependencies {
     implementation(libs.ktor.jackson)
     implementation(libs.rapidAndRivers)
