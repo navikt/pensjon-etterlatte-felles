@@ -39,7 +39,7 @@ ktor-okHttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor-versi
 ktor-serverTests = { module = "io.ktor:ktor-server-tests", version.ref = "ktor-version" }
 
 #Jackson
-jacksonDatatypejsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version = "2.15.0" }
+jacksonDatatypejsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version = "2.16.0" }
 
 #Kafka
 kafka-clients = { module = "org.apache.kafka:kafka-clients", version = "3.2.3"}
