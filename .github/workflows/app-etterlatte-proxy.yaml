@@ -42,3 +42,6 @@ jobs:
       image: ${{ needs.build.outputs.image }}
       cluster: 'fss'
     secrets: inherit
+    permissions:
+      contents: 'read'
+      id-token: 'write'
