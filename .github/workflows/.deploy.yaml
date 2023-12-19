@@ -40,7 +40,6 @@ jobs:
       - uses: nais/deploy/actions/deploy@v1
         if: steps.check_files.outputs.files_exists == 'true'
         env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: prod-${{ inputs.cluster }}
           RESOURCE: apps/${{ github.workflow }}/.nais/prod.yaml
           VAR: image=${{ inputs.image }}
