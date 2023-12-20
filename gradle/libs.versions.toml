@@ -42,7 +42,7 @@ ktor-serverTests = { module = "io.ktor:ktor-server-tests", version.ref = "ktor-v
 jacksonDatatypejsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version = "2.16.0" }
 
 #Kafka
-kafka-clients = { module = "org.apache.kafka:kafka-clients", version = "3.2.3"}
+kafka-clients = { module = "org.apache.kafka:kafka-clients", version = "3.6.1"}
 kafka-avro-serializer = { module = "io.confluent:kafka-avro-serializer", version = "6.2.2"}
 kafka-testcontainer = { module = "org.testcontainers:kafka", version = "1.19.3" }
 
