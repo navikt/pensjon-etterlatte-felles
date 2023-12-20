@@ -7,11 +7,11 @@ import io.ktor.server.auth.Authentication
 import io.ktor.server.auth.jwt.JWTPrincipal
 import io.ktor.server.auth.jwt.jwt
 import no.nav.etterlatte.config.Config
-import java.net.URL
+import java.net.URI
 import java.util.concurrent.TimeUnit
 
 fun Application.installAuthentication(configAad: Config.AAD) {
-    val jwkProviderAad = JwkProviderBuilder(URL(configAad.metadata.jwksUri))
+    val jwkProviderAad = JwkProviderBuilder(URI(configAad.metadata.jwksUri).toURL())
         // cache up to 10 JWKs for 24 hours
         .cached(10, 24, TimeUnit.HOURS)
         // if not cached, only allow max 10 different keys per minute to be fetched from external provider
