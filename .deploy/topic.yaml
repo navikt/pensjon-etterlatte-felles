@@ -99,3 +99,6 @@ spec:
     - team: etterlatte
       application: etterlatte-migrering
       access: readwrite
+    - team: etterlatte
+      application: etterlatte-hendelser-samordning
+      access: readwrite

@@ -90,3 +90,6 @@ spec:
     - team: etterlatte
       application: start-regulering
       access: write
+    - team: etterlatte
+      application: etterlatte-hendelser-samordning
+      access: readwrite
