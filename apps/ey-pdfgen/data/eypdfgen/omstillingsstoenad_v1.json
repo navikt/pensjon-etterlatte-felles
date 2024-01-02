@@ -533,53 +533,42 @@
               {
                 "verdi": "NORGE",
                 "innhold": "Norge"
-              },
-              {
-                "verdi": "UTLAND",
-                "innhold": "Utland"
               }
             ]
           },
           "norge": {
-            "arbeidsinntektAaretFoer": {
-              "spoersmaal": "Hva var brutto årsinntekt året før dødsfallet?",
+            "sesongbasertNaeringsinntekt": {
               "svar": {
-                "innhold": "3123"
+                "spoersmaal": "Er arbeidet sesongbasert?",
+                "svar": {
+                  "verdi": "JA",
+                  "innhold": "Ja"
+                }
+              },
+              "beskrivelse": {
+                "spoersmaal": "Gi en kort beskrivelse av arbeidet",
+                "svar": {
+                  "innhold": "jevnt arbeid"
+                }
+              }
+            },
+            "arbeidsinntektAaretFoer": {
+              "spoersmaal": "Hva var brutto årsinntekt i dødsfallsåret?",
+              "svar": {
+                "innhold": "123"
               }
             },
             "arbeidsinntektIAar": {
-              "tilDoedsfall": {
-                "spoersmaal": "Hva er brutto næringsinntekt i år?",
+              "aarsinntekt": {
+                "spoersmaal": "Hva forventer du å ha i brutto næringsinntekt i år?",
                 "svar": {
-                  "innhold": "12312"
+                  "innhold": "999"
                 }
               },
               "etterDoedsfall": {
                 "spoersmaal": "Hva forventer du i brutto årsinntekt til neste år?",
                 "svar": {
                   "innhold": "123"
-                }
-              }
-            }
-          },
-          "utland": {
-            "arbeidsinntektAaretFoer": {
-              "spoersmaal": "Hva var brutto årsinntekt året før dødsfallet?",
-              "svar": {
-                "innhold": "23423"
-              }
-            },
-            "arbeidsinntektIAar": {
-              "tilDoedsfall": {
-                "spoersmaal": "Hva er brutto næringsinntekt i år?",
-                "svar": {
-                  "innhold": "123"
-                }
-              },
-              "etterDoedsfall": {
-                "spoersmaal": "Hva forventer du i brutto årsinntekt til neste år?",
-                "svar": {
-                  "innhold": "2342"
                 }
               }
             }
@@ -588,21 +577,8 @@
             "fremtidigEndringAvInntekt": {
               "spoersmaal": "Regner du med at inntekten din endrer seg fremover i tid?",
               "svar": {
-                "verdi": "JA",
-                "innhold": "Ja"
-              }
-            },
-            "grunn": {
-              "spoersmaal": "Hva er grunnen til endringene?",
-              "svar": {
-                "verdi": "ANNEN_GRUNN",
-                "innhold": "Annen grunn"
-              }
-            },
-            "annenGrunn": {
-              "spoersmaal": "Gi en kort beskrivelse av endringene",
-              "svar": {
-                "innhold": "Endring beskrivelse"
+                "verdi": "NEI",
+                "innhold": "Nei"
               }
             }
           }
