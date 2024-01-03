@@ -26,7 +26,7 @@ spec:
     limits:
       memory: 2Gi
     requests:
-      cpu: 50m
+      cpu: 10m
       memory: 512Mi
   ingresses:
     - "https://etterlatte-proxy.dev-fss-pub.nais.io"
