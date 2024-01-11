@@ -12,10 +12,10 @@ spec:
     max: 1
   resources:
     limits:
-      memory: 512Mi
+      memory: 768Mi
     requests:
       cpu: 10m
-      memory: 320Mi
+      memory: 384Mi
   liveness:
     path: /internal/is_alive
   readiness:
