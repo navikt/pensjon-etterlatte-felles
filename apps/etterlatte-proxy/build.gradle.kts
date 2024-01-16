@@ -33,4 +33,6 @@ dependencies {
 
     testImplementation(libs.mockOauth2Server)
     testImplementation(libs.ktor.serverTests)
+
+    implementation(libs.guava)
 }
