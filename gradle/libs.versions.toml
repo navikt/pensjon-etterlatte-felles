@@ -18,9 +18,9 @@ navFellesTokenClientCore = { module = "no.nav.security:token-client-core", versi
 tjenestespesifikasjonerTilbakekreving = { module = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:tilbakekreving-v1-tjenestespesifikasjon", version = "1.78ffd1e"}
 
 #Etterlatte
-etterlatte-common = { module = "pensjon-etterlatte-libs:common", version = "2024.01.05-09.38.6f5ada710f9f"}
-etterlatte-commonTest = { module = "pensjon-etterlatte-libs:common-test", version = "2024.01.05-09.38.6f5ada710f9f"}
-etterlatte-ktorClientAuth = { module = "no.nav.etterlatte:ktor-client-auth", version = "2022.09.28-10.09.cce630926582"}
+etterlatte-common = { module = "pensjon-etterlatte-libs:common", version = "2024.01.17-13.26.695db1c36957"}
+etterlatte-commonTest = { module = "pensjon-etterlatte-libs:common-test", version = "2024.01.17-13.25.695db1c36957"}
+etterlatte-ktorClientAuth = { module = "pensjon-etterlatte-libs:ktor-client-auth", version = "2024.01.17-13.28.695db1c36957"}
 
 #Ktor
 ktor-callLogging = { module = "io.ktor:ktor-server-call-logging", version.ref = "ktor-version"}
