@@ -14,7 +14,6 @@ data class Config(
 ) {
 
     data class Sts(
-        val restUrl: String,
         val soapUrl: String,
         val serviceuser: ServiceUser,
     ) {
@@ -43,7 +42,6 @@ suspend fun ApplicationConfig.load() = Config(
     institusjonsoppholdUrl = property("institusjonsopphold.url").getString(),
     tilbakekrevingUrl = property("tilbakekreving.url").getString(),
     sts = Config.Sts(
-        restUrl = property("sts.restUrl").getString(),
         soapUrl = property("sts.soapUrl").getString(),
         serviceuser = Config.Sts.ServiceUser(
             name = property("serviceuser.name").getString(),

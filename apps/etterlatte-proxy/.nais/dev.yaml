@@ -40,8 +40,6 @@ spec:
       enabled: true
   webproxy: true
   env:
-    - name: STS_REST_URL
-      value: http://security-token-service.default.svc.nais.local/rest/v1/sts/token
     - name: STS_SOAP_URL
       value: https://sts-q1.preprod.local/SecurityTokenServiceProvider/
     - name: INSTITUSJONSOPPHOLD_URL
