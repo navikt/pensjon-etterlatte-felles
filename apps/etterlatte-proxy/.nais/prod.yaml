@@ -41,10 +41,6 @@ spec:
       enabled: true
   webproxy: true
   env:
-    - name: REGOPPSLAG_URL
-      value: https://regoppslag.intern.nav.no/rest
-    - name: STS_REST_URL
-      value: http://security-token-service.default.svc.nais.local/rest/v1/sts/token
     - name: STS_SOAP_URL
       value: https://sts.adeo.no/SecurityTokenServiceProvider/
     - name: INSTITUSJONSOPPHOLD_URL
@@ -66,9 +62,6 @@ spec:
           namespace: etterlatte
           cluster: prod-gcp
         - application: sjekk-adressebeskyttelse
-          namespace: etterlatte
-          cluster: prod-gcp
-        - application: etterlatte-brev-api
           namespace: etterlatte
           cluster: prod-gcp
         - application: etterlatte-institusjonsopphold
