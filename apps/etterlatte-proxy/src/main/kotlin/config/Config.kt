@@ -9,7 +9,6 @@ import no.nav.etterlatte.routes.httpClientWithProxy
 data class Config(
     val sts: Sts,
     val aad: AAD,
-    val regoppslagUrl: String,
     val institusjonsoppholdUrl: String,
     val tilbakekrevingUrl: String
 ) {
@@ -42,7 +41,6 @@ data class Config(
 
 suspend fun ApplicationConfig.load() = Config(
     institusjonsoppholdUrl = property("institusjonsopphold.url").getString(),
-    regoppslagUrl = property("regoppslag.url").getString(),
     tilbakekrevingUrl = property("tilbakekreving.url").getString(),
     sts = Config.Sts(
         restUrl = property("sts.restUrl").getString(),

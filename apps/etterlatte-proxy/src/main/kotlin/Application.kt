@@ -19,7 +19,6 @@ import no.nav.etterlatte.config.TilbakekrevingConfig
 import no.nav.etterlatte.config.load
 import no.nav.etterlatte.routes.institusjonsoppholdRoute
 import no.nav.etterlatte.routes.internalRoute
-import no.nav.etterlatte.routes.regoppslagRoute
 import no.nav.etterlatte.routes.tilbakekrevingRoute
 import org.slf4j.event.Level
 import java.util.*
@@ -49,7 +48,6 @@ fun Application.module() {
 
         authenticate("aad") {
             route("/aad") {
-                regoppslagRoute(config, stsClient)
                 institusjonsoppholdRoute(config)
                 tilbakekrevingRoute(TilbakekrevingConfig(config, false).createTilbakekrevingService())
             }
