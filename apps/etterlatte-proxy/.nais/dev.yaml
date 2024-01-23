@@ -63,9 +63,6 @@ spec:
         - application: sjekk-adressebeskyttelse
           namespace: etterlatte
           cluster: dev-gcp
-        - application: etterlatte-brev-api
-          namespace: etterlatte
-          cluster: dev-gcp
         - application: etterlatte-institusjonsopphold
           namespace: etterlatte
           cluster: dev-gcp
