@@ -49,19 +49,6 @@ internal class ApplicationTest {
     }
 
     @Test
-    fun `skal returnere unauthorized dersom aad-token mangler for institusjonsopphold-route`() {
-        testApplication {
-            environment {
-                config = hoconApplicationConfig
-            }
-
-            client.get("aad/inst2/1").also {
-                assertEquals(HttpStatusCode.Unauthorized, it.status)
-            }
-        }
-    }
-
-    @Test
     fun `skal returnere unauthorized dersom aad-token mangler for tilbakekreving-route`() {
         testApplication {
             environment {

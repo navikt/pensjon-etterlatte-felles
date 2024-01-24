@@ -16,7 +16,6 @@ import kotlinx.coroutines.runBlocking
 import no.nav.etterlatte.auth.installAuthentication
 import no.nav.etterlatte.config.TilbakekrevingConfig
 import no.nav.etterlatte.config.load
-import no.nav.etterlatte.routes.institusjonsoppholdRoute
 import no.nav.etterlatte.routes.internalRoute
 import no.nav.etterlatte.routes.tilbakekrevingRoute
 import org.slf4j.event.Level
@@ -46,7 +45,6 @@ fun Application.module() {
 
         authenticate("aad") {
             route("/aad") {
-                institusjonsoppholdRoute(config)
                 tilbakekrevingRoute(TilbakekrevingConfig(config, false).createTilbakekrevingService())
             }
         }
