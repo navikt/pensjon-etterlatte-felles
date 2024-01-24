@@ -9,7 +9,6 @@ import no.nav.etterlatte.routes.httpClientWithProxy
 data class Config(
     val sts: Sts,
     val aad: AAD,
-    val institusjonsoppholdUrl: String,
     val tilbakekrevingUrl: String
 ) {
 
@@ -39,7 +38,6 @@ data class Config(
 }
 
 suspend fun ApplicationConfig.load() = Config(
-    institusjonsoppholdUrl = property("institusjonsopphold.url").getString(),
     tilbakekrevingUrl = property("tilbakekreving.url").getString(),
     sts = Config.Sts(
         soapUrl = property("sts.soapUrl").getString(),

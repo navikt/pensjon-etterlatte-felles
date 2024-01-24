@@ -43,10 +43,6 @@ spec:
   env:
     - name: STS_SOAP_URL
       value: https://sts.adeo.no/SecurityTokenServiceProvider/
-    - name: INSTITUSJONSOPPHOLD_URL
-      value: https://inst2.intern.nav.no
-    - name: INSTITUSJONSOPPHOLD_AZURE_SCOPE
-      value: api://prod-fss.team-rocket.inst2/.default
     - name: TILBAKEKREVING_URL
       value: https://cics.adeo.no/oppdrag/K231CW80
   prometheus:
@@ -55,18 +51,6 @@ spec:
   accessPolicy:
     inbound:
       rules:
-        - application: selvbetjening-api
-          namespace: etterlatte
-          cluster: prod-gcp
-        - application: journalfoer-soeknad
-          namespace: etterlatte
-          cluster: prod-gcp
-        - application: sjekk-adressebeskyttelse
-          namespace: etterlatte
-          cluster: prod-gcp
-        - application: etterlatte-institusjonsopphold
-          namespace: etterlatte
-          cluster: prod-gcp
         - application: etterlatte-tilbakekreving
           namespace: etterlatte
           cluster: prod-gcp
