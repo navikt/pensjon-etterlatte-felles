@@ -11,7 +11,7 @@ cxf-version = "4.0.2"
 [libraries]
 
 #NavFelles
-rapidAndRivers = { module = "com.github.navikt:rapids-and-rivers", version = "2022100711511665136276.49acbaae4ed4" }
+rapidAndRivers = { module = "com.github.navikt:rapids-and-rivers", version = "2024010209171704183456.6d035b91ffb4" }
 brukernotifikasjonSchemas = { module = "com.github.navikt:brukernotifikasjon-schemas", version = "2.5.2"}
 mockOauth2Server = { module = "no.nav.security:mock-oauth2-server", version = "2.1.0"}
 navFellesTokenClientCore = { module = "no.nav.security:token-client-core", version.ref = "navfelles-token-version"}
@@ -43,7 +43,7 @@ jacksonDatatypejsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datat
 
 #Kafka
 kafka-clients = { module = "org.apache.kafka:kafka-clients", version = "3.6.1"}
-kafka-avro-serializer = { module = "io.confluent:kafka-avro-serializer", version = "6.2.2"}
+kafka-avro-serializer = { module = "io.confluent:kafka-avro-serializer", version = "7.3.1"}
 kafka-testcontainer = { module = "org.testcontainers:kafka", version = "1.19.3" }
 
 #Jupiter
