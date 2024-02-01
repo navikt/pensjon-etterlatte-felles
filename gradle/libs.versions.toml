@@ -13,7 +13,7 @@ cxf-version = "4.0.2"
 #NavFelles
 rapidAndRivers = { module = "com.github.navikt:rapids-and-rivers", version = "2022100711511665136276.49acbaae4ed4" }
 brukernotifikasjonSchemas = { module = "com.github.navikt:brukernotifikasjon-schemas", version = "2.5.2"}
-mockOauth2Server = { module = "no.nav.security:mock-oauth2-server", version = "2.1.0"}
+mockOauth2Server = { module = "no.nav.security:mock-oauth2-server", version = "2.1.1"}
 navFellesTokenClientCore = { module = "no.nav.security:token-client-core", version.ref = "navfelles-token-version"}
 tjenestespesifikasjonerTilbakekreving = { module = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:tilbakekreving-v1-tjenestespesifikasjon", version = "1.78ffd1e"}
 
