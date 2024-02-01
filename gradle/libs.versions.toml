@@ -1,5 +1,5 @@
 [plugins]
-cutterslade-analyze = { id = "ca.cutterslade.analyze", version = "1.9.1" }
+cutterslade-analyze = { id = "ca.cutterslade.analyze", version = "1.9.2" }
 
 
 [versions]
