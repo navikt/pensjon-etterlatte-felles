@@ -1,10 +1,10 @@
 [plugins]
-cutterslade-analyze = { id = "ca.cutterslade.analyze", version = "1.9.1" }
+cutterslade-analyze = { id = "ca.cutterslade.analyze", version = "1.9.2" }
 
 
 [versions]
-navfelles-token-version = "4.1.0"
-ktor-version = "2.3.7"
+navfelles-token-version = "4.1.3"
+ktor-version = "2.3.8"
 jupiter-version = "5.10.1"
 cxf-version = "4.0.2"
 
@@ -52,12 +52,12 @@ jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.re
 jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "jupiter-version" }
 
 #Logging
-logging-slf4jApi = { module = "org.slf4j:slf4j-api", version = "2.0.10" }
+logging-slf4jApi = { module = "org.slf4j:slf4j-api", version = "2.0.11" }
 logging-logbackClassic = { module = "ch.qos.logback:logback-classic", version = "1.4.14" }
 logging-logstashLogbackEncoder = { module = "net.logstash.logback:logstash-logback-encoder", version = "7.4"}
 
 #Micrometer
-micrometer-prometheus = { module = "io.micrometer:micrometer-registry-prometheus", version = "1.12.1"}
+micrometer-prometheus = { module = "io.micrometer:micrometer-registry-prometheus", version = "1.12.2"}
 
 #MockK
 mockk = { module = "io.mockk:mockk", version = "1.13.9" }
