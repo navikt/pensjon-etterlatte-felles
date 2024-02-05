@@ -24,8 +24,6 @@
                 {{/eq}}
             {{/if}}
 
-            {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.arbeidsinntektAaretFoer}}
-
             {{#if this.svar.norge.inntektAaretFoerDoedsfall}}
                 {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.inntektAaretFoerDoedsfall}}
             {{/if}}
@@ -47,7 +45,7 @@
             {{/if}}
 
             {{#if this.svar.norge.inntektNesteAar.aarsinntekt}}
-                {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.inntektIAar.aarsinntekt}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.inntektNesteAar.aarsinntekt}}
             {{/if}}
 
         {{/if}}
@@ -72,8 +70,6 @@
                     {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.jevntOpptjentNaeringsinntekt.beskrivelse}}
                 {{/eq}}
             {{/if}}
-
-            {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.arbeidsinntektAaretFoer}}
 
             {{#if this.svar.utland.inntektAaretFoerDoedsfall}}
                 {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.inntektAaretFoerDoedsfall}}
