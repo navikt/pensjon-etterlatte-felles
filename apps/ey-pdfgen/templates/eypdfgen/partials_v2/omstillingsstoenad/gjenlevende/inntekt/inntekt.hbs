@@ -16,6 +16,34 @@
                 {{/eq}}
             </h5>
 
+            <!-- DENNE SKAL FJERNES 72 TIMER ETTER DEPLOY -->
+            {{#if this.svar.norge.sesongbasertNaeringsinntekt.svar}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.sesongbasertNaeringsinntekt.svar}}
+
+                {{#eq this.svar.norge.sesongbasertNaeringsinntekt.svar.svar.verdi "JA"}}
+                    {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.sesongbasertNaeringsinntekt.beskrivelse}}
+                {{/eq}}
+            {{/if}}
+
+            {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.arbeidsinntektAaretFoer}}
+
+            {{#if this.svar.norge.inntektEtterDoedsfall}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.inntektEtterDoedsfall}}
+            {{/if}}
+
+            {{#if this.svar.norge.arbeidsinntektIAar.tilDoedsfall}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.arbeidsinntektIAar.tilDoedsfall}}
+            {{/if}}
+
+            {{#if this.svar.norge.arbeidsinntektIAar.aarsinntekt}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.arbeidsinntektIAar.aarsinntekt}}
+            {{/if}}
+
+            {{#if this.svar.norge.arbeidsinntektIAar.etterDoedsfall}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.arbeidsinntektIAar.etterDoedsfall}}
+            {{/if}}
+            <!-- DENNE SKAL FJERNES 72 TIMER ETTER DEPLOY -->
+
             {{#if this.svar.norge.jevntOpptjentNaeringsinntekt.svar}}
                 {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.jevntOpptjentNaeringsinntekt.svar}}
 
@@ -62,6 +90,34 @@
                     {{/eq}}
                 {{/eq}}
             </h5>
+
+            <!-- DENNE SKAL FJERNES 72 TIMER ETTER DEPLOY -->
+            {{#if this.svar.utland.sesongbasertNaeringsinntekt.svar}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.sesongbasertNaeringsinntekt.svar}}
+
+                {{#eq this.svar.utland.sesongbasertNaeringsinntekt.svar.svar.verdi "JA"}}
+                    {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.sesongbasertNaeringsinntekt.beskrivelse}}
+                {{/eq}}
+            {{/if}}
+
+            {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.arbeidsinntektAaretFoer}}
+
+            {{#if this.svar.utland.inntektEtterDoedsfall}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.inntektEtterDoedsfall}}
+            {{/if}}
+
+            {{#if this.svar.utland.arbeidsinntektIAar.tilDoedsfall}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.arbeidsinntektIAar.tilDoedsfall}}
+            {{/if}}
+
+            {{#if this.svar.utland.arbeidsinntektIAar.aarsinntekt}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.arbeidsinntektIAar.aarsinntekt}}
+            {{/if}}
+
+            {{#if this.svar.utland.arbeidsinntektIAar.etterDoedsfall}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.arbeidsinntektIAar.etterDoedsfall}}
+            {{/if}}
+            <!-- DENNE SKAL FJERNES 72 TIMER ETTER DEPLOY -->
 
             {{#if this.svar.utland.jevntOpptjentNaeringsinntekt.svar}}
                 {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.jevntOpptjentNaeringsinntekt.svar}}
