@@ -457,20 +457,42 @@
             ]
           },
           "norge": {
-            "arbeidsinntektAaretFoer": {
+            "inntektAaretFoerDoedsfall": {
               "spoersmaal": "Hva var brutto årsinntekt året før dødsfallet?",
               "svar": {
                 "innhold": "123123"
               }
             },
-            "arbeidsinntektIAar": {
+            "inntektIFjor": {
+              "tilDoedsfall": {
+                "spoersmaal": "Hva var brutto arbeidsinntekt frem til dødsfallet?",
+                "svar": {
+                  "innhold": "234"
+                }
+              },
+              "aarsinntekt": {
+                "spoersmaal": "Hva var brutto årsinntekt i fjor?",
+                "svar": {
+                  "innhold": "123123"
+                }
+              }
+            },
+            "inntektIAar": {
               "tilDoedsfall": {
                 "spoersmaal": "Hva var brutto arbeidsinntekt frem til dødsfallet?",
                 "svar": {
                   "innhold": "123123"
                 }
               },
-              "etterDoedsfall": {
+              "aarsinntekt": {
+                "spoersmaal": "Hva forventer du i brutto årsinntekt til neste år?",
+                "svar": {
+                  "innhold": "123123"
+                }
+              }
+            },
+            "inntektNestAar": {
+              "aarsinntekt": {
                 "spoersmaal": "Hva forventer du i brutto årsinntekt til neste år?",
                 "svar": {
                   "innhold": "123123"
@@ -479,20 +501,34 @@
             }
           },
           "utland": {
-            "arbeidsinntektAaretFoer": {
+            "inntektAaretFoerDoedsfall": {
               "spoersmaal": "Hva var brutto årsinntekt året før dødsfallet?",
               "svar": {
                 "innhold": "123123"
               }
             },
-            "arbeidsinntektIAar": {
+            "inntektIFjor": {
               "tilDoedsfall": {
                 "spoersmaal": "Hva var brutto arbeidsinntekt frem til dødsfallet?",
                 "svar": {
                   "innhold": "234"
                 }
               },
-              "etterDoedsfall": {
+              "aarsinntekt": {
+                "spoersmaal": "Hva var brutto årsinntekt i fjor?",
+                "svar": {
+                  "innhold": "123123"
+                }
+              }
+            },
+            "inntektIAar": {
+              "tilDoedsfall": {
+                "spoersmaal": "Hva var brutto arbeidsinntekt frem til dødsfallet?",
+                "svar": {
+                  "innhold": "234"
+                }
+              },
+              "aarsinntekt": {
                 "spoersmaal": "Hva forventer du i brutto årsinntekt til neste år?",
                 "svar": {
                   "innhold": "123123"
@@ -537,12 +573,12 @@
             ]
           },
           "norge": {
-            "sesongbasertNaeringsinntekt": {
+            "jevntOpptjentNaeringsinntekt": {
               "svar": {
                 "spoersmaal": "Er arbeidet sesongbasert?",
                 "svar": {
-                  "verdi": "JA",
-                  "innhold": "Ja"
+                  "verdi": "NEI",
+                  "innhold": "Nei"
                 }
               },
               "beskrivelse": {
@@ -552,23 +588,31 @@
                 }
               }
             },
-            "arbeidsinntektAaretFoer": {
-              "spoersmaal": "Hva var brutto årsinntekt i dødsfallsåret?",
+            "inntektAaretFoerDoedsfall": {
+              "spoersmaal": "Hva var brutto årsinntekt året før dødsfallet?",
               "svar": {
                 "innhold": "123"
               }
             },
-            "arbeidsinntektIAar": {
+            "inntektIFjor": {
+              "tilDoedsfall": {
+                "spoersmaal": "Hva var brutto næringsinntekt frem til dødsfallet?",
+                "svar": {
+                  "innhold": "234"
+                }
+              },
+              "aarsinntekt": {
+                "spoersmaal": "Hva var brutto årsinntekt i fjor?",
+                "svar": {
+                  "innhold": "123123"
+                }
+              }
+            },
+            "inntektIAar": {
               "aarsinntekt": {
                 "spoersmaal": "Hva forventer du å ha i brutto næringsinntekt i år?",
                 "svar": {
                   "innhold": "999"
-                }
-              },
-              "etterDoedsfall": {
-                "spoersmaal": "Hva forventer du i brutto årsinntekt til neste år?",
-                "svar": {
-                  "innhold": "123"
                 }
               }
             }
