@@ -57,6 +57,23 @@ const blocks = [
         "type": "section",
         "text": {
             "type": "mrkdwn",
+            "text": ":face_with_thermometer: Syk"
+        },
+        "accessory": {
+            "type": "button",
+            "text": {
+                "type": "plain_text",
+                "text": ":face_with_thermometer:",
+                "emoji": true
+            },
+            "value": "sick",
+            "action_id": "button_select_workplace"
+        }
+    },
+    {
+        "type": "section",
+        "text": {
+            "type": "mrkdwn",
             "text": ":shrug: Vet ikke ..."
         },
         "accessory": {
