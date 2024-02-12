@@ -8,7 +8,6 @@ metadata:
     team: etterlatte
 spec:
   image: {{ image }}
-  team: etterlatte
   port: 8080
   replicas:
     min: 1
