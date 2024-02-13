@@ -1,0 +1,25 @@
+{{#if this}}
+    <h4>
+        {{#eq spraak "en"}}
+            Information about the survivors incomes or disbursements from benefits from NAV
+        {{else}}
+            {{#eq spraak "nn"}}
+                Opplysingar om attlevandes inntekter eller utbetalingar frå ytingar frå NAV
+            {{else}}
+                Opplysninger om gjenlevendes inntekter eller utbetalinger fra ytelser fra NAV
+            {{/eq}}
+        {{/eq}}
+    </h4>
+    <div>
+        <div class="row opplysning">
+            <div class="col">
+                {{this.ytelser.spoersmaal}}
+            </div>
+            <div class="col">
+                {{#each this.ytelser.svar}}
+                    • {{this.innhold}} <br />
+                {{/each}}
+            </div>
+        </div>
+    </div>
+{{/if}}
