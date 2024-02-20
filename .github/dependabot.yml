@@ -22,6 +22,7 @@ updates:
           - "org.jetbrains.kotlinx*"
           - "no.nav.security:token*"
           - "org.slf4j*"
+          - "ch.qos.logback*"
       test:
         patterns:
           - "org.junit*"
