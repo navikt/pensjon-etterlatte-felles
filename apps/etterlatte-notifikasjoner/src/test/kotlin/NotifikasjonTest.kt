@@ -8,14 +8,10 @@ import no.nav.etterlatte.mapper
 import no.nav.helse.rapids_rivers.JsonMessage
 import no.nav.helse.rapids_rivers.testsupport.TestRapid
 import org.apache.kafka.clients.producer.MockProducer
-import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
-import org.testcontainers.containers.KafkaContainer
-import org.testcontainers.utility.DockerImageName
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class NotifikasjonTest {
@@ -30,13 +26,6 @@ internal class NotifikasjonTest {
             "NAIS_NAME" to "etterlatte-notifikasjoner"
         ), mockKafkaProducer
     )
-
-    private val kafkaContainer = KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.2.1"))
-
-    @BeforeAll
-    fun setUp() {
-        kafkaContainer.start()
-    }
 
     @BeforeEach
     fun before() {
@@ -157,15 +146,13 @@ internal class NotifikasjonTest {
         assertEquals("4", inspector.message(0).get("@lagret_soeknad_id").asText())
         assertEquals("SendNotifikasjon 5", inspector.key(0))
         assertEquals(mockKafkaProducer.history().size, 1)
-        assertEquals(mockKafkaProducer.history()[0].value().getTekst(), "Vi har mottatt søknaden din om omstillingsstønad")
+        assertEquals(
+            mockKafkaProducer.history()[0].value().getTekst(),
+            "Vi har mottatt søknaden din om omstillingsstønad"
+        )
         assertEquals(
             omstillingsstoenadSoeknad.innsender.foedselsnummer.svar.value,
             mockKafkaProducer.history()[0].key().getFodselsnummer()
         )
-    }
-
-    @AfterAll
-    fun tearDown() {
-        kafkaContainer.stop()
     }
 }

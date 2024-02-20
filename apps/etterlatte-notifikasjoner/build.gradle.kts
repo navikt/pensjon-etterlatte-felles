@@ -15,7 +15,6 @@ dependencies {
     }
     implementation(libs.kafka.clients)
 
-    testImplementation(libs.kafka.testcontainer)
     testImplementation(libs.mockk)
     testImplementation(libs.etterlatte.commonTest)
 }
