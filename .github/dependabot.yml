@@ -24,7 +24,6 @@ updates:
           - "org.slf4j*"
       test:
         patterns:
-          - "org.testcontainers*"
           - "org.junit*"
           - "io.mockk:mockk"
           - "no.nav.security:mock-oauth2-server"
