@@ -27,7 +27,9 @@ dependencies {
     implementation(libs.cxf.logging)
     implementation(libs.cxf.jax.ws)
     implementation(libs.cxf.transports.http)
-    implementation(libs.cxf.ws.security)
+    implementation(libs.cxf.ws.security) {
+        exclude("com.google.guava:guava")
+    }
     implementation(libs.micrometer.prometheus)
     implementation(libs.jacksonDatatypejsr310)
 
