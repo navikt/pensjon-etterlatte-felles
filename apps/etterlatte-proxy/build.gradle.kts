@@ -29,6 +29,10 @@ dependencies {
     implementation(libs.cxf.transports.http)
     implementation(libs.cxf.ws.security) {
         exclude("com.google.guava:guava")
+        exclude("org.bouncycastle:bcprov-jdk18on")
+        exclude("org.bouncycastle:bcpkix-jdk18on")
+        exclude("org.bouncycastle:bcutil-jdk18on")
+        exclude("org.apache.santuario:xmlsec")
     }
     implementation(libs.micrometer.prometheus)
     implementation(libs.jacksonDatatypejsr310)
@@ -37,4 +41,8 @@ dependencies {
     testImplementation(libs.ktor.serverTests)
 
     implementation(libs.guava)
+    implementation(libs.bcprov)
+    implementation(libs.bcpkix)
+    implementation(libs.bcutil)
+    implementation(libs.xmlsec)
 }
