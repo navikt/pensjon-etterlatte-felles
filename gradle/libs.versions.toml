@@ -8,6 +8,7 @@ ktor-version = "2.3.8"
 jupiter-version = "5.10.2"
 cxf-version = "4.0.3" # Obs: Når vi oppgraderer denne, bør vi også kunne rydde bort guava og guava-workarounden
 bcprov-version = "1.74"
+angus-version = "1.1.0"
 
 [libraries]
 
@@ -75,3 +76,5 @@ bcprov = { module = "org.bouncycastle:bcprov-jdk18on", version.ref = "bcprov-ver
 bcpkix = { module = "org.bouncycastle:bcpkix-jdk18on", version.ref = "bcprov-version"}
 bcutil = { module = "org.bouncycastle:bcutil-jdk18on", version.ref = "bcprov-version"}
 xmlsec = { module = "org.apache.santuario:xmlsec", version = "3.0.3"}
+angus-core = { module = "org.eclipse.angus:angus-core", version.ref="angus-version"}
+angus-mail = { module = "org.eclipse.angus:angus-mail", version.ref="angus-version"}
