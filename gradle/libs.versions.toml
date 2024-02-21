@@ -1,26 +1,26 @@
 [plugins]
-cutterslade-analyze = { id = "ca.cutterslade.analyze", version = "1.9.1" }
+cutterslade-analyze = { id = "ca.cutterslade.analyze", version = "1.9.2" }
 
 
 [versions]
-navfelles-token-version = "3.2.0"
-ktor-version = "2.3.7"
-jupiter-version = "5.10.1"
+navfelles-token-version = "4.1.3"
+ktor-version = "2.3.8"
+jupiter-version = "5.10.2"
 cxf-version = "4.0.3"
 
 [libraries]
 
 #NavFelles
-rapidAndRivers = { module = "com.github.navikt:rapids-and-rivers", version = "2022100711511665136276.49acbaae4ed4" }
+rapidAndRivers = { module = "com.github.navikt:rapids-and-rivers", version = "2024010209171704183456.6d035b91ffb4" }
 brukernotifikasjonSchemas = { module = "com.github.navikt:brukernotifikasjon-schemas", version = "2.5.2"}
-mockOauth2Server = { module = "no.nav.security:mock-oauth2-server", version = "2.1.0"}
+mockOauth2Server = { module = "no.nav.security:mock-oauth2-server", version = "2.1.2"}
 navFellesTokenClientCore = { module = "no.nav.security:token-client-core", version.ref = "navfelles-token-version"}
 tjenestespesifikasjonerTilbakekreving = { module = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:tilbakekreving-v1-tjenestespesifikasjon", version = "1.78ffd1e"}
 
 #Etterlatte
-etterlatte-common = { module = "pensjon-etterlatte-libs:common", version = "2024.01.05-09.38.6f5ada710f9f"}
-etterlatte-commonTest = { module = "pensjon-etterlatte-libs:common-test", version = "2024.01.05-09.38.6f5ada710f9f"}
-etterlatte-ktorClientAuth = { module = "no.nav.etterlatte:ktor-client-auth", version = "2022.09.28-10.09.cce630926582"}
+etterlatte-common = { module = "pensjon-etterlatte-libs:common", version = "2024.02.20-09.34.d73dc559506b"}
+etterlatte-commonTest = { module = "pensjon-etterlatte-libs:common-test", version = "2024.02.20-09.34.d73dc559506b"}
+etterlatte-ktorClientAuth = { module = "pensjon-etterlatte-libs:ktor-client-auth", version = "2024.01.17-13.28.695db1c36957"}
 
 #Ktor
 ktor-callLogging = { module = "io.ktor:ktor-server-call-logging", version.ref = "ktor-version"}
@@ -43,8 +43,8 @@ jacksonDatatypejsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datat
 
 #Kafka
 kafka-clients = { module = "org.apache.kafka:kafka-clients", version = "3.6.1"}
-kafka-avro-serializer = { module = "io.confluent:kafka-avro-serializer", version = "6.2.2"}
-kafka-testcontainer = { module = "org.testcontainers:kafka", version = "1.19.3" }
+kafka-avro-serializer = { module = "io.confluent:kafka-avro-serializer", version = "7.6.0"}
+commons-compress = { module = "org.apache.commons:commons-compress", version = "1.26.0" }
 
 #Jupiter
 jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter-version" }
@@ -52,15 +52,15 @@ jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.re
 jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "jupiter-version" }
 
 #Logging
-logging-slf4jApi = { module = "org.slf4j:slf4j-api", version = "2.0.10" }
-logging-logbackClassic = { module = "ch.qos.logback:logback-classic", version = "1.4.14" }
+logging-slf4jApi = { module = "org.slf4j:slf4j-api", version = "2.0.12" }
+logging-logbackClassic = { module = "ch.qos.logback:logback-classic", version = "1.5.0" }
 logging-logstashLogbackEncoder = { module = "net.logstash.logback:logstash-logback-encoder", version = "7.4"}
 
 #Micrometer
-micrometer-prometheus = { module = "io.micrometer:micrometer-registry-prometheus", version = "1.12.1"}
+micrometer-prometheus = { module = "io.micrometer:micrometer-registry-prometheus", version = "1.12.3"}
 
 #MockK
-mockk = { module = "io.mockk:mockk", version = "1.13.8" }
+mockk = { module = "io.mockk:mockk", version = "1.13.9" }
 
 #Cxf
 cxf-logging = { module = "org.apache.cxf:cxf-rt-features-logging", version.ref = "cxf-version" }

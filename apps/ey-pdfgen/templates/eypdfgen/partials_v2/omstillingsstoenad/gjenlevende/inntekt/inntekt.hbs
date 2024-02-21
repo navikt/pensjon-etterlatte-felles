@@ -16,31 +16,38 @@
                 {{/eq}}
             </h5>
 
-            {{#if this.svar.norge.sesongbasertNaeringsinntekt.svar}}
-                {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.sesongbasertNaeringsinntekt.svar}}
+            {{#if this.svar.norge.jevntOpptjentNaeringsinntekt.svar}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.jevntOpptjentNaeringsinntekt.svar}}
 
-                {{#eq this.svar.norge.sesongbasertNaeringsinntekt.svar.svar.verdi "JA"}}
-                    {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.sesongbasertNaeringsinntekt.beskrivelse}}
+                {{#eq this.svar.norge.jevntOpptjentNaeringsinntekt.svar.svar.verdi "NEI"}}
+                    {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.jevntOpptjentNaeringsinntekt.beskrivelse}}
                 {{/eq}}
             {{/if}}
 
-            {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.arbeidsinntektAaretFoer}}
-
-            {{#if this.svar.norge.inntektEtterDoedsfall}}
-                {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.inntektEtterDoedsfall}}
+            {{#if this.svar.norge.inntektAaretFoerDoedsfall}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.inntektAaretFoerDoedsfall}}
             {{/if}}
 
-            {{#if this.svar.norge.arbeidsinntektIAar.tilDoedsfall}}
-                {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.arbeidsinntektIAar.tilDoedsfall}}
+            {{#if this.svar.norge.inntektIFjor.tilDoedsfall}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.inntektIFjor.tilDoedsfall}}
             {{/if}}
 
-            {{#if this.svar.norge.arbeidsinntektIAar.aarsinntekt}}
-                {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.arbeidsinntektIAar.aarsinntekt}}
+            {{#if this.svar.norge.inntektIFjor.aarsinntekt}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.inntektIFjor.aarsinntekt}}
             {{/if}}
 
-            {{#if this.svar.norge.arbeidsinntektIAar.etterDoedsfall}}
-                {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.arbeidsinntektIAar.etterDoedsfall}}
+            {{#if this.svar.norge.inntektIAar.tilDoedsfall}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.inntektIAar.tilDoedsfall}}
             {{/if}}
+
+            {{#if this.svar.norge.inntektIAar.aarsinntekt}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.inntektIAar.aarsinntekt}}
+            {{/if}}
+
+            {{#if this.svar.norge.inntektNesteAar.aarsinntekt}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.norge.inntektNesteAar.aarsinntekt}}
+            {{/if}}
+
         {{/if}}
 
         {{#if this.svar.utland}}
@@ -56,31 +63,38 @@
                 {{/eq}}
             </h5>
 
-            {{#if this.svar.utland.sesongbasertNaeringsinntekt.svar}}
-                {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.sesongbasertNaeringsinntekt.svar}}
+            {{#if this.svar.utland.jevntOpptjentNaeringsinntekt.svar}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.jevntOpptjentNaeringsinntekt.svar}}
 
-                {{#eq this.svar.utland.sesongbasertNaeringsinntekt.svar.svar.verdi "JA"}}
-                    {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.sesongbasertNaeringsinntekt.beskrivelse}}
+                {{#eq this.svar.utland.jevntOpptjentNaeringsinntekt.svar.svar.verdi "NEI"}}
+                    {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.jevntOpptjentNaeringsinntekt.beskrivelse}}
                 {{/eq}}
             {{/if}}
 
-            {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.arbeidsinntektAaretFoer}}
-
-            {{#if this.svar.utland.inntektEtterDoedsfall}}
-                {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.inntektEtterDoedsfall}}
+            {{#if this.svar.utland.inntektAaretFoerDoedsfall}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.inntektAaretFoerDoedsfall}}
             {{/if}}
 
-            {{#if this.svar.utland.arbeidsinntektIAar.tilDoedsfall}}
-                {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.arbeidsinntektIAar.tilDoedsfall}}
+            {{#if this.svar.utland.inntektIFjor.tilDoedsfall}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.inntektIFjor.tilDoedsfall}}
             {{/if}}
 
-            {{#if this.svar.utland.arbeidsinntektIAar.aarsinntekt}}
-                {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.arbeidsinntektIAar.aarsinntekt}}
+            {{#if this.svar.utland.inntektIFjor.aarsinntekt}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.inntektIFjor.aarsinntekt}}
             {{/if}}
 
-            {{#if this.svar.utland.arbeidsinntektIAar.etterDoedsfall}}
-                {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.arbeidsinntektIAar.etterDoedsfall}}
+            {{#if this.svar.utland.inntektIAar.tilDoedsfall}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.inntektIAar.tilDoedsfall}}
             {{/if}}
+
+            {{#if this.svar.utland.inntektIAar.aarsinntekt}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.inntektIAar.aarsinntekt}}
+            {{/if}}
+
+            {{#if this.svar.utland.inntektNesteAar.aarsinntekt}}
+                {{> eypdfgen/partials_v2/common/opplysning this.svar.utland.inntektNesteAar.aarsinntekt}}
+            {{/if}}
+
         {{/if}}
 
         <div>

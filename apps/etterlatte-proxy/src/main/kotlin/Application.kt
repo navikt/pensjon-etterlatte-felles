@@ -14,12 +14,9 @@ import io.ktor.server.routing.route
 import io.ktor.server.routing.routing
 import kotlinx.coroutines.runBlocking
 import no.nav.etterlatte.auth.installAuthentication
-import no.nav.etterlatte.auth.sts.StsRestClient
 import no.nav.etterlatte.config.TilbakekrevingConfig
 import no.nav.etterlatte.config.load
-import no.nav.etterlatte.routes.institusjonsoppholdRoute
 import no.nav.etterlatte.routes.internalRoute
-import no.nav.etterlatte.routes.regoppslagRoute
 import no.nav.etterlatte.routes.tilbakekrevingRoute
 import org.slf4j.event.Level
 import java.util.*
@@ -28,7 +25,6 @@ fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
 fun Application.module() {
     val config = runBlocking { environment.config.load() }
-    val stsClient = StsRestClient(config.sts)
 
     installAuthentication(config.aad)
     install(ContentNegotiation) { jackson() }
@@ -49,8 +45,6 @@ fun Application.module() {
 
         authenticate("aad") {
             route("/aad") {
-                regoppslagRoute(config, stsClient)
-                institusjonsoppholdRoute(config)
                 tilbakekrevingRoute(TilbakekrevingConfig(config, false).createTilbakekrevingService())
             }
         }

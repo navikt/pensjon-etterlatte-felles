@@ -14,11 +14,20 @@ updates:
       interval: "monthly"
     open-pull-requests-limit: 10
     groups:
+      backend:
+        patterns:
+          - "io.micrometer*"
+          - "ca.cutterslade.analyze"
+          - "io.ktor*"
+          - "org.jetbrains.kotlinx*"
+          - "no.nav.security:token*"
+          - "org.slf4j*"
+          - "ch.qos.logback*"
       test:
         patterns:
-          - "org.testcontainers*"
           - "org.junit*"
           - "io.mockk:mockk"
+          - "no.nav.security:mock-oauth2-server"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
