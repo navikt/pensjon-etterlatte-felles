@@ -662,13 +662,6 @@
           }
         },
         "utland": {
-          "svar": {
-            "spoersmaal": "Mottar du pensjon fra utlandet?",
-            "svar": {
-              "verdi": "JA",
-              "innhold": "Ja"
-            }
-          },
           "type": {
             "spoersmaal": "Hva slags pensjon?",
             "svar": {
