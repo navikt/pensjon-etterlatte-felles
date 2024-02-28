@@ -1,8 +1,8 @@
 package no.nav.etterlatte
 
+import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.module.kotlin.readValue
 import kotlinx.coroutines.runBlocking
-import no.nav.etterlatte.libs.common.innsendtsoeknad.common.InnsendtSoeknad
 import no.nav.helse.rapids_rivers.JsonMessage
 import no.nav.helse.rapids_rivers.MessageContext
 import no.nav.helse.rapids_rivers.RapidsConnection
@@ -30,7 +30,7 @@ class Notifikasjon(private val sendNotifikasjon: SendNotifikasjon, rapidsConnect
 
     override fun onPacket(packet: JsonMessage, context: MessageContext) {
         runBlocking {
-            val soeknad: InnsendtSoeknad = mapper.readValue(packet["@skjema_info"].toString())
+            val soeknad = mapper.readValue<Soeknad>(packet["@skjema_info"].toString())
 
             sendNotifikasjon.sendMessage(soeknad)
 
