@@ -62,4 +62,4 @@ cxf-logging = { module = "org.apache.cxf:cxf-rt-features-logging", version.ref =
 cxf-jax-ws = { module = "org.apache.cxf:cxf-rt-frontend-jaxws", version.ref = "cxf-version" }
 cxf-transports-http = { module = "org.apache.cxf:cxf-rt-transports-http", version.ref = "cxf-version" }
 cxf-ws-security = { module = "org.apache.cxf:cxf-rt-ws-security", version.ref = "cxf-version" }
-guava = { module = "com.google.guava:guava", version = "32.1.2-jre"} # workaround for å omgå https://github.com/google/guava/issues/6657
+guava = { module = "com.google.guava:guava", version = "33.0.0-jre"} # workaround for å omgå https://github.com/google/guava/issues/6657
