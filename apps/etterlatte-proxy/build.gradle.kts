@@ -27,14 +27,10 @@ dependencies {
     implementation(libs.cxf.logging)
     implementation(libs.cxf.jax.ws)
     implementation(libs.cxf.transports.http)
-    implementation(libs.cxf.ws.security) {
-        exclude("com.google.guava:guava")
-    }
+    implementation(libs.cxf.ws.security)
     implementation(libs.micrometer.prometheus)
     implementation(libs.jacksonDatatypejsr310)
 
     testImplementation(libs.mockOauth2Server)
     testImplementation(libs.ktor.serverTests)
-
-    implementation(libs.guava)
 }
