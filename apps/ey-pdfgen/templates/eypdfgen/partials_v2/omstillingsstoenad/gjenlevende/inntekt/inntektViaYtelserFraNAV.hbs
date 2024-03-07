@@ -21,5 +21,8 @@
                 {{/each}}
             </div>
         </div>
+        {{#if this.aktivitetsplan.svar}}
+            {{> eypdfgen/partials_v2/common/opplysning this.aktivitetsplan}}
+        {{/if}}
     </div>
 {{/if}}

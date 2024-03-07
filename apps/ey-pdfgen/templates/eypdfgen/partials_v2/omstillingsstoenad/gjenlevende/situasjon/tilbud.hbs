@@ -33,6 +33,8 @@
                     {{#eq tilbud.harSluttdato.svar.verdi "JA" }}
                         {{> eypdfgen/partials_v2/common/datoOpplysning tilbud.sluttdato}}
                     {{/eq}}
+
+                    {{> eypdfgen/partials_v2/common/opplysning tilbud.aktivitetsplan}}
                 </div>
             {{/with}}
         </div>
