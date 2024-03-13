@@ -29,10 +29,7 @@ dependencies {
     implementation(libs.cxf.transports.http)
     implementation(libs.cxf.ws.security) {
         exclude("com.google.guava:guava")
-        exclude("org.bouncycastle:bcprov-jdk18on")
         exclude("org.bouncycastle:bcpkix-jdk18on")
-        exclude("org.bouncycastle:bcutil-jdk18on")
-        exclude("org.apache.santuario:xmlsec")
         exclude("org.eclipse.angus:angus-core")
         exclude("org.eclipse.angus:angus-mail")
     }
@@ -45,10 +42,7 @@ dependencies {
     // Avhengigheter fra patching av sårbarheter i Apache CXF.
     // Vi bør kunne ta bort alle disse og exclude-lista for neste CXF-versjon
     implementation(libs.guava)
-    implementation(libs.bcprov)
     implementation(libs.bcpkix)
-    implementation(libs.bcutil)
-    implementation(libs.xmlsec)
     implementation(libs.angus.core)
     implementation(libs.angus.mail)
 }
