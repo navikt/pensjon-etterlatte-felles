@@ -336,6 +336,13 @@
             "svar": {
               "innhold": "2023-12-14"
             }
+          },
+          "aktivitetsplan": {
+            "spoersmaal": "Har du en aktivitetsplan i samarbeid med NAV?",
+            "svar": {
+              "verdi": "JA",
+              "innhold": "Ja"
+            }
           }
         }
       },
@@ -400,6 +407,13 @@
           },
           "godkjentUtdanning": {
             "spoersmaal": "Er utdanningen godkjent av lånekassen?",
+            "svar": {
+              "verdi": "JA",
+              "innhold": "Ja"
+            }
+          },
+          "aktivitetsplan": {
+            "spoersmaal": "Har du en aktivitetsplan i samarbeid med NAV?",
             "svar": {
               "verdi": "JA",
               "innhold": "Ja"
@@ -662,13 +676,6 @@
           }
         },
         "utland": {
-          "svar": {
-            "spoersmaal": "Mottar du pensjon fra utlandet?",
-            "svar": {
-              "verdi": "JA",
-              "innhold": "Ja"
-            }
-          },
           "type": {
             "spoersmaal": "Hva slags pensjon?",
             "svar": {
@@ -702,6 +709,13 @@
               "innhold": "Arbeidsavklaringspenger"
             }
           ]
+        },
+        "aktivitetsplan": {
+          "spoersmaal": "Har du en aktivitetsplan?",
+          "svar": {
+            "verdi": "JA",
+            "innhold": "Ja"
+          }
         }
       },
       "ingenInntekt":{

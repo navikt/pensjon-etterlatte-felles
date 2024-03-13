@@ -2,7 +2,7 @@ import io.mockk.mockk
 import no.nav.brukernotifikasjon.schemas.input.BeskjedInput
 import no.nav.brukernotifikasjon.schemas.input.NokkelInput
 import no.nav.etterlatte.SendNotifikasjon
-import no.nav.etterlatte.libs.common.test.InnsendtSoeknadFixtures
+import no.nav.etterlatte.Soeknad
 import org.apache.kafka.clients.producer.Producer
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -10,7 +10,7 @@ import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 
-class SendNotifikasjonTest {
+internal class SendNotifikasjonTest {
     private val mockKafkaProducer = mockk<Producer<NokkelInput, BeskjedInput>>()
     private val sendNotifikasjon = SendNotifikasjon(
         mapOf(
@@ -20,7 +20,7 @@ class SendNotifikasjonTest {
 
     @Test
     fun `skal opprette melding for gjenlevendepensjon`() {
-        val beskjed = sendNotifikasjon.opprettBeskjed(InnsendtSoeknadFixtures.gjenlevendepensjon())
+        val beskjed = sendNotifikasjon.opprettBeskjed(Soeknad.Type.GJENLEVENDEPENSJON)
         assertEquals(false, beskjed.getEksternVarsling())
         assertEquals("Vi har mottatt søknaden din om gjenlevendepensjon", beskjed.getTekst())
         assertEquals(true, isWithin10Seconds(beskjed.getTidspunkt().toLocalDateTime()))
@@ -37,7 +37,7 @@ class SendNotifikasjonTest {
 
     @Test
     fun `skal opprette melding for barnepensjon`() {
-        val beskjed = sendNotifikasjon.opprettBeskjed(InnsendtSoeknadFixtures.barnepensjon())
+        val beskjed = sendNotifikasjon.opprettBeskjed(Soeknad.Type.BARNEPENSJON)
         assertEquals(false, beskjed.getEksternVarsling())
         assertEquals("Vi har mottatt søknaden din om barnepensjon", beskjed.getTekst())
         assertEquals(true, isWithin10Seconds(beskjed.getTidspunkt().toLocalDateTime()))
@@ -54,7 +54,7 @@ class SendNotifikasjonTest {
 
     @Test
     fun `skal opprette melding for omstillingsstoenad`() {
-        val beskjed = sendNotifikasjon.opprettBeskjed(InnsendtSoeknadFixtures.omstillingsSoeknad())
+        val beskjed = sendNotifikasjon.opprettBeskjed(Soeknad.Type.OMSTILLINGSSTOENAD)
         assertEquals(false, beskjed.getEksternVarsling())
         assertEquals("Vi har mottatt søknaden din om omstillingsstønad", beskjed.getTekst())
         assertEquals(true, isWithin10Seconds(beskjed.getTidspunkt().toLocalDateTime()))

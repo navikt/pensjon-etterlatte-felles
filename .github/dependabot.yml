@@ -23,6 +23,9 @@ updates:
           - "no.nav.security:token*"
           - "org.slf4j*"
           - "ch.qos.logback*"
+          - "org.apache.commons*"
+          - "com.fasterxml*"
+          - "org.apache.kafka*"
       test:
         patterns:
           - "org.junit*"

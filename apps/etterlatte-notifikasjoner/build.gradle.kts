@@ -6,9 +6,6 @@ dependencies {
     implementation(libs.ktor.jackson)
     implementation(libs.rapidAndRivers)
 
-    implementation(libs.etterlatte.common)
-    implementation(libs.etterlatte.ktorClientAuth)
-
     implementation(libs.brukernotifikasjonSchemas) {
         exclude("org.apache.commons", "commons-compress")
     }
@@ -19,5 +16,4 @@ dependencies {
     implementation(libs.kafka.clients)
 
     testImplementation(libs.mockk)
-    testImplementation(libs.etterlatte.commonTest)
 }

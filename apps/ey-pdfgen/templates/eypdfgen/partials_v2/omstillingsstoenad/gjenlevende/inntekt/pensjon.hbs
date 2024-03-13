@@ -38,24 +38,23 @@
             {{> eypdfgen/partials_v2/common/opplysning this.tjenestepensjonsordning.utbetaler}}
         {{/if}}
 
-        <h5>
-            {{#eq spraak "en"}}
-                Pension from abroad
-            {{else}}
-                {{#eq spraak "nn"}}
-                    Pensjon fra utland
+        {{#if this.utland}}
+            <h5>
+                {{#eq spraak "en"}}
+                    Pension from abroad
                 {{else}}
-                    Pensjon fra utland
+                    {{#eq spraak "nn"}}
+                        Pensjon fra utland
+                    {{else}}
+                        Pensjon fra utland
+                    {{/eq}}
                 {{/eq}}
-            {{/eq}}
-        </h5>
-        {{> eypdfgen/partials_v2/common/opplysning this.utland.svar}}
+            </h5>
 
-        {{#eq this.utland.svar.svar.verdi "JA"}}
             {{> eypdfgen/partials_v2/common/opplysning this.utland.type}}
             {{> eypdfgen/partials_v2/common/opplysning this.utland.land}}
             {{> eypdfgen/partials_v2/common/opplysning this.utland.beloepMedValuta}}
-        {{/eq}}
+        {{/if}}
 
         {{#eq this.svar.endringAvInntekt.grunn.svar.verdi "ANNEN_GRUNN"}}
             {{> eypdfgen/partials_v2/common/opplysning this.svar.endringAvInntekt.annenGrunn}}

@@ -4,9 +4,9 @@ cutterslade-analyze = { id = "ca.cutterslade.analyze", version = "1.9.2" }
 
 [versions]
 navfelles-token-version = "4.1.3"
-ktor-version = "2.3.8"
+ktor-version = "2.3.9"
 jupiter-version = "5.10.2"
-cxf-version = "4.0.3" # Obs: Når vi oppgraderer denne, bør vi også kunne rydde bort guava og guava-workarounden
+cxf-version = "4.0.4" # Obs: Når vi oppgraderer denne, bør vi også kunne rydde bort guava og guava-workarounden
 bcprov-version = "1.74"
 angus-version = "1.1.0"
 
@@ -18,11 +18,6 @@ brukernotifikasjonSchemas = { module = "com.github.navikt:brukernotifikasjon-sch
 mockOauth2Server = { module = "no.nav.security:mock-oauth2-server", version = "2.1.2"}
 navFellesTokenClientCore = { module = "no.nav.security:token-client-core", version.ref = "navfelles-token-version"}
 tjenestespesifikasjonerTilbakekreving = { module = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:tilbakekreving-v1-tjenestespesifikasjon", version = "1.78ffd1e"}
-
-#Etterlatte
-etterlatte-common = { module = "pensjon-etterlatte-libs:common", version = "2024.02.20-09.34.d73dc559506b"}
-etterlatte-commonTest = { module = "pensjon-etterlatte-libs:common-test", version = "2024.02.20-09.34.d73dc559506b"}
-etterlatte-ktorClientAuth = { module = "pensjon-etterlatte-libs:ktor-client-auth", version = "2024.01.17-13.28.695db1c36957"}
 
 #Ktor
 ktor-callLogging = { module = "io.ktor:ktor-server-call-logging", version.ref = "ktor-version"}
@@ -55,14 +50,14 @@ jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.re
 
 #Logging
 logging-slf4jApi = { module = "org.slf4j:slf4j-api", version = "2.0.12" }
-logging-logbackClassic = { module = "ch.qos.logback:logback-classic", version = "1.5.0" }
+logging-logbackClassic = { module = "ch.qos.logback:logback-classic", version = "1.5.3" }
 logging-logstashLogbackEncoder = { module = "net.logstash.logback:logstash-logback-encoder", version = "7.4"}
 
 #Micrometer
 micrometer-prometheus = { module = "io.micrometer:micrometer-registry-prometheus", version = "1.12.3"}
 
 #MockK
-mockk = { module = "io.mockk:mockk", version = "1.13.9" }
+mockk = { module = "io.mockk:mockk", version = "1.13.10" }
 
 #Cxf
 cxf-logging = { module = "org.apache.cxf:cxf-rt-features-logging", version.ref = "cxf-version" }
