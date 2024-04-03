@@ -3,7 +3,7 @@ cutterslade-analyze = { id = "ca.cutterslade.analyze", version = "1.9.2" }
 
 
 [versions]
-navfelles-token-version = "4.1.3"
+navfelles-token-version = "4.1.4"
 ktor-version = "2.3.9"
 jupiter-version = "5.10.2"
 cxf-version = "4.0.4" # Obs: Når vi oppgraderer denne, bør vi også kunne rydde bort guava og guava-workarounden
@@ -36,12 +36,12 @@ ktor-okHttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor-versi
 ktor-serverTests = { module = "io.ktor:ktor-server-tests", version.ref = "ktor-version" }
 
 #Jackson
-jacksonDatatypejsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version = "2.16.1" }
+jacksonDatatypejsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version = "2.17.0" }
 
 #Kafka
-kafka-clients = { module = "org.apache.kafka:kafka-clients", version = "3.6.1"}
+kafka-clients = { module = "org.apache.kafka:kafka-clients", version = "3.7.0"}
 kafka-avro-serializer = { module = "io.confluent:kafka-avro-serializer", version = "7.6.0"}
-commons-compress = { module = "org.apache.commons:commons-compress", version = "1.26.0" }
+commons-compress = { module = "org.apache.commons:commons-compress", version = "1.26.1" }
 
 #Jupiter
 jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter-version" }
@@ -54,7 +54,7 @@ logging-logbackClassic = { module = "ch.qos.logback:logback-classic", version = 
 logging-logstashLogbackEncoder = { module = "net.logstash.logback:logstash-logback-encoder", version = "7.4"}
 
 #Micrometer
-micrometer-prometheus = { module = "io.micrometer:micrometer-registry-prometheus", version = "1.12.3"}
+micrometer-prometheus = { module = "io.micrometer:micrometer-registry-prometheus", version = "1.12.4"}
 
 #MockK
 mockk = { module = "io.mockk:mockk", version = "1.13.10" }
