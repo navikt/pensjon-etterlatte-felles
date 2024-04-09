@@ -14,9 +14,11 @@ import io.ktor.server.routing.route
 import io.ktor.server.routing.routing
 import kotlinx.coroutines.runBlocking
 import no.nav.etterlatte.auth.installAuthentication
+import no.nav.etterlatte.config.SimuleringOppdragConfig
 import no.nav.etterlatte.config.TilbakekrevingConfig
 import no.nav.etterlatte.config.load
 import no.nav.etterlatte.routes.internalRoute
+import no.nav.etterlatte.routes.simuleringOppdragRoute
 import no.nav.etterlatte.routes.tilbakekrevingRoute
 import org.slf4j.event.Level
 import java.util.*
@@ -46,6 +48,7 @@ fun Application.module() {
         authenticate("aad") {
             route("/aad") {
                 tilbakekrevingRoute(TilbakekrevingConfig(config, false).createTilbakekrevingService())
+                simuleringOppdragRoute(SimuleringOppdragConfig(config, true).createSimuleringOppdragService())
             }
         }
     }

@@ -45,6 +45,8 @@ spec:
       value: https://sts.adeo.no/SecurityTokenServiceProvider/
     - name: TILBAKEKREVING_URL
       value: https://cics.adeo.no/oppdrag/K231CW80
+    - name: SIMULERING_OPPDRAG_URL
+      value: https://wasapp.adeo.no/cics/services/simulerFpServiceWSBinding
   prometheus:
     enabled: true
     path: /internal/prometheus
