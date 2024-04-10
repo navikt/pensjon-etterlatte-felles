@@ -12,13 +12,6 @@ repositories {
     mavenCentral()
     maven("https://packages.confluent.io/maven/")
     maven("https://jitpack.io")
-    maven {
-        url = uri("https://maven.pkg.github.com/navikt/pensjon-etterlatte-libs")
-        credentials {
-            username = "token"
-            password = System.getenv("GITHUB_TOKEN")
-        }
-    }
 }
 
 dependencies {
