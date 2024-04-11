@@ -18,7 +18,7 @@ import org.junit.jupiter.api.TestInstance
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class ApplicationTest {
 
-    val mockOAuth2 = MockOAuth2Server()
+    private val mockOAuth2 = MockOAuth2Server()
     private lateinit var hoconApplicationConfig: HoconApplicationConfig
 
     @BeforeAll

@@ -17,7 +17,8 @@ rapidAndRivers = { module = "com.github.navikt:rapids-and-rivers", version = "20
 brukernotifikasjonSchemas = { module = "com.github.navikt:brukernotifikasjon-schemas", version = "2.5.2"}
 mockOauth2Server = { module = "no.nav.security:mock-oauth2-server", version = "2.1.2"}
 navFellesTokenClientCore = { module = "no.nav.security:token-client-core", version.ref = "navfelles-token-version"}
-tjenestespesifikasjonerTilbakekreving = { module = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:tilbakekreving-v1-tjenestespesifikasjon", version = "1.78ffd1e"}
+tjenestespesifikasjonerTilbakekreving = { module = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:tilbakekreving-v1-tjenestespesifikasjon", version = "1.d27898d"}
+tjenestespesifikasjonerOppdragSimulering = { module = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:nav-system-os-simuler-fp-service-tjenestespesifikasjon", version = "1.d27898d"}
 
 #Ktor
 ktor-callLogging = { module = "io.ktor:ktor-server-call-logging", version.ref = "ktor-version"}

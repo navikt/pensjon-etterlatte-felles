@@ -24,6 +24,7 @@ dependencies {
     implementation(libs.ktor.okHttp)
     implementation(libs.navFellesTokenClientCore)
     implementation(libs.tjenestespesifikasjonerTilbakekreving)
+    implementation(libs.tjenestespesifikasjonerOppdragSimulering)
     implementation(libs.cxf.logging)
     implementation(libs.cxf.jax.ws)
     implementation(libs.cxf.transports.http)
