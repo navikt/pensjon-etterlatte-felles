@@ -56,3 +56,6 @@ spec:
         - application: etterlatte-tilbakekreving
           namespace: etterlatte
           cluster: prod-gcp
+        - application: etterlatte-vedtaksvurdering
+          namespace: etterlatte
+          cluster: prod-gcp
