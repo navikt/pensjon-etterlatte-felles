@@ -33,8 +33,8 @@ spec:
   vault:
     enabled: true
     paths:
-      - kvPath: "serviceuser/data/dev/srvbarnepensjon"
-        mountPath: "/secrets/srvbarnepensjon"
+      - kvPath: "serviceuser/data/dev/srvetterlatte"
+        mountPath: "/secrets/srvetterlatte"
   azure:
     application:
       enabled: true
