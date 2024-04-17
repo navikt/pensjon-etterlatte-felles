@@ -31,6 +31,7 @@ dependencies {
     implementation(libs.cxf.ws.security) {
         exclude("com.google.guava:guava")
         exclude("org.bouncycastle:bcpkix-jdk18on")
+        exclude("org.bouncycastle:bcprov-jdk18on")
         exclude("org.eclipse.angus:angus-core")
         exclude("org.eclipse.angus:angus-mail")
     }
@@ -44,6 +45,7 @@ dependencies {
     // Vi bør kunne ta bort alle disse og exclude-lista for neste CXF-versjon
     implementation(libs.guava)
     implementation(libs.bcpkix)
+    implementation(libs.bcprov)
     implementation(libs.angus.core)
     implementation(libs.angus.mail)
 }

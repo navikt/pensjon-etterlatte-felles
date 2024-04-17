@@ -7,7 +7,7 @@ navfelles-token-version = "4.1.4"
 ktor-version = "2.3.9"
 jupiter-version = "5.10.2"
 cxf-version = "4.0.4" # Obs: Når vi oppgraderer denne, bør vi også kunne rydde bort guava og guava-workarounden
-bcpkix-version = "1.74"
+bcpkix-version = "1.78"
 angus-version = "1.1.0"
 
 [libraries]
@@ -69,5 +69,6 @@ cxf-ws-security = { module = "org.apache.cxf:cxf-rt-ws-security", version.ref = 
 #Cxf-workarounds
 guava = { module = "com.google.guava:guava", version = "32.1.2-jre"} # workaround for å omgå https://github.com/google/guava/issues/6657
 bcpkix = { module = "org.bouncycastle:bcpkix-jdk18on", version.ref = "bcpkix-version"}
+bcprov = { module = "org.bouncycastle:bcprov-jdk18on", version.ref = "bcpkix-version"}
 angus-core = { module = "org.eclipse.angus:angus-core", version.ref="angus-version"}
 angus-mail = { module = "org.eclipse.angus:angus-mail", version.ref="angus-version"}
