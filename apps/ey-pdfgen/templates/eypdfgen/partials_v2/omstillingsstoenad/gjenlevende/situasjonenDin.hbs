@@ -37,11 +37,18 @@
                 {{/eq}}
             </h4>
 
-            {{> eypdfgen/partials_v2/common/opplysning this.beskrivelse}}
+            <div class="row opplysning">
+                <div class="col">
+                    {{this.beskrivelse.spoersmaal}}
+                </div>
+                <div class="col">
+                    {{#each this.beskrivelse.svar}}
+                        • {{this.innhold}} <br />
+                    {{/each}}
+                </div>
+            </div>
 
-            {{#eq this.beskrivelse.svar.verdi "ANNET" }}
-                {{> eypdfgen/partials_v2/common/opplysning this.annet}}
-            {{/eq}}
+            {{> eypdfgen/partials_v2/common/opplysning this.annet}}
         </div>
     {{/with}}
 {{/with}}
