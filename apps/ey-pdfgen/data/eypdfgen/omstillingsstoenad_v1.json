@@ -426,10 +426,16 @@
         "svar": {
           "beskrivelse": {
             "spoersmaal": "Velg det som beskriver situasjonen din",
-            "svar": {
-              "innhold": "Annet",
-              "verdi": "ANNET"
-            }
+            "svar": [
+              {
+                "innhold": "Er syk",
+                "verdi": "SYK"
+              },
+              {
+                "innhold": "Annet",
+                "verdi": "ANNET"
+              }
+            ]
           },
           "annet": {
             "spoersmaal": "Hva er grunnen til endringene?",
