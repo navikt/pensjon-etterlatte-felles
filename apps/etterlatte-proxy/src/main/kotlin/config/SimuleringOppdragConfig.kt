@@ -22,8 +22,10 @@ class SimuleringOppdragConfig(config: Config, private val enableLogging: Boolean
         val enabledFeatures = mutableListOf<Feature>().apply {
             add(WSAddressingFeature())
             if (enableLogging) add(LoggingFeature().apply {
+                setSensitiveDataHelper(SoapSecurityMaskSensitiveHelper())
                 setVerbose(true)
                 setPrettyLogging(true)
+                setSensitiveElementNames(setOf("oppdragGjelderId", "utbetalesTilId"))
             })
         }
 
