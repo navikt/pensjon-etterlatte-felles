@@ -55,6 +55,6 @@ spec:
         - application: etterlatte-tilbakekreving
           namespace: etterlatte
           cluster: dev-gcp
-        - application: etterlatte-vedtaksvurdering
+        - application: etterlatte-utbetaling
           namespace: etterlatte
           cluster: dev-gcp
