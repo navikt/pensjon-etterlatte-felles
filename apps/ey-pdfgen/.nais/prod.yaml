@@ -31,3 +31,4 @@ spec:
     inbound:
       rules:
         - application: journalfoer-soeknad
+        - application: etterlatte-gyldig-soeknad
