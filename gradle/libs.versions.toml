@@ -7,7 +7,7 @@ navfelles-token-version = "4.1.4"
 ktor-version = "2.3.9"
 jupiter-version = "5.10.2"
 cxf-version = "4.0.4" # Obs: Når vi oppgraderer denne, bør vi også kunne rydde bort guava og guava-workarounden
-bcpkix-version = "1.78"
+bcpkix-version = "1.78.1"
 angus-version = "1.1.0"
 
 [libraries]
