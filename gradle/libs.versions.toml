@@ -15,7 +15,7 @@ angus-version = "1.1.0"
 #NavFelles
 rapidAndRivers = { module = "com.github.navikt:rapids-and-rivers", version = "2024010209171704183456.6d035b91ffb4" }
 brukernotifikasjonSchemas = { module = "com.github.navikt:brukernotifikasjon-schemas", version = "2.5.2"}
-mockOauth2Server = { module = "no.nav.security:mock-oauth2-server", version = "2.1.2"}
+mockOauth2Server = { module = "no.nav.security:mock-oauth2-server", version = "2.1.5"}
 navFellesTokenClientCore = { module = "no.nav.security:token-client-core", version.ref = "navfelles-token-version"}
 tjenestespesifikasjonerTilbakekreving = { module = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:tilbakekreving-v1-tjenestespesifikasjon", version = "1.d27898d"}
 tjenestespesifikasjonerOppdragSimulering = { module = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:nav-system-os-simuler-fp-service-tjenestespesifikasjon", version = "1.d27898d"}
