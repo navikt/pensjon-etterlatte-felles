@@ -25,7 +25,16 @@ class SimuleringOppdragConfig(config: Config, private val enableLogging: Boolean
                 setSensitiveDataHelper(SoapSecurityMaskSensitiveHelper())
                 setVerbose(true)
                 setPrettyLogging(true)
-                setSensitiveElementNames(setOf("oppdragGjelderId", "utbetalesTilId"))
+                setSensitiveElementNames(setOf(
+                    /* request */
+                    "oppdragGjelderId",
+                    "utbetalesTilId",
+                    /* response */
+                    "gjelderId",
+                    "gjelderNavn",
+                    "utbetalesTilId",
+                    "utbetalesTilNavn",
+                ))
             })
         }
 
