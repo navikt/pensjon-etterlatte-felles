@@ -43,10 +43,16 @@
           "verdi": "JA",
           "innhold": "Ja"
         },
-        "opplysning": {
-          "spoersmaal": "Oppgi ønsket skattetrekk",
+        "trekk": {
+          "spoersmaal": "Frivillig skattetrekk i prosent per måned",
           "svar": {
             "innhold": "30%"
+          }
+        },
+        "beskrivelse": {
+          "spoersmaal": "Vi trenger beskjed hvis det ikke skal være trekk i desember eller andre deler av året (valgfritt)",
+          "svar": {
+            "innhold": "Ikke i desember"
           }
         }
       }
