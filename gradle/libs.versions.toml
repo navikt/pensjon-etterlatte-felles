@@ -58,7 +58,7 @@ logging-logstashLogbackEncoder = { module = "net.logstash.logback:logstash-logba
 micrometer-prometheus = { module = "io.micrometer:micrometer-registry-prometheus", version = "1.12.5"}
 
 #MockK
-mockk = { module = "io.mockk:mockk", version = "1.13.10" }
+mockk = { module = "io.mockk:mockk", version = "1.13.11" }
 
 #Cxf
 cxf-logging = { module = "org.apache.cxf:cxf-rt-features-logging", version.ref = "cxf-version" }
