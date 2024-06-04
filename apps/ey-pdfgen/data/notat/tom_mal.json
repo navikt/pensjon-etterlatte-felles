@@ -1,0 +1,73 @@
+{
+  "tittel" : "En slags tittel",
+  "payload" : [
+    {
+      "type" : "heading-three",
+      "children" : [
+        {
+          "type" : "paragraph",
+          "text" : "En tittel"
+        }
+      ]
+    },
+    {
+      "type" : "paragraph",
+      "children" : [
+        {
+          "type" : "paragraph",
+          "text" : "Med litt diverse tekst. Ikke mye spennende her. "
+        }
+      ]
+    },
+    {
+      "type" : "heading-three",
+      "children" : [
+        {
+          "type" : "paragraph",
+          "text" : "Tittel over liste"
+        }
+      ]
+    },
+    {
+      "type" : "bulleted-list",
+      "children" : [
+        {
+          "type" : "list-item",
+          "children" : [
+            {
+              "type" : "paragraph",
+              "text" : "Her"
+            }
+          ]
+        },
+        {
+          "type" : "list-item",
+          "children" : [
+            {
+              "type" : "paragraph",
+              "text" : "er"
+            }
+          ]
+        },
+        {
+          "type" : "list-item",
+          "children" : [
+            {
+              "type" : "paragraph",
+              "text" : "en"
+            }
+          ]
+        },
+        {
+          "type" : "list-item",
+          "children" : [
+            {
+              "type" : "paragraph",
+              "text" : "liste"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

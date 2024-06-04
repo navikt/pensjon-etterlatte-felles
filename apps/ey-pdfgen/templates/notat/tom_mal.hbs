@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8"/>
+    {{> eypdfgen/partials_v2/style}}
+    <title>{{ tittel }}</title>
+</head>
+<body>
+
+<div id="header">
+    <img class="navlogo" src="{{ image "Navlogo.png" }}"/>
+
+    <h1 class="title">
+        {{ tittel }}
+    </h1>
+</div>
+
+<div class="container">
+    {{#each payload}}
+        {{#eq type "heading-two"}}
+            {{#each this.children}}
+                <h2>{{ this.text }}</h2>
+            {{/each}}
+        {{/eq}}
+
+        {{#eq type "heading-three"}}
+            {{#each this.children}}
+                <h3>{{ this.text }}</h3>
+            {{/each}}
+        {{/eq}}
+
+        {{#eq type "paragraph"}}
+            {{#each this.children}}
+                {{#eq this.type "bulleted-list"}}
+                    <ul>
+                        {{#each this.children}}
+                            <li>{{this.text}}</li>
+                        {{/each}}
+                    </ul>
+                {{else}}
+                    <p>{{this.text}}</p>
+                {{/eq}}
+            {{/each}}
+        {{/eq}}
+
+        {{#eq type "bulleted-list"}}
+            {{#each this.children}}
+                <ul>
+                    {{#each this.children}}
+                        <li>{{this.text}}</li>
+                    {{/each}}
+                </ul>
+            {{/each}}
+        {{/eq}}
+    {{/each}}
+</div>
+
+</body>
+</html>
