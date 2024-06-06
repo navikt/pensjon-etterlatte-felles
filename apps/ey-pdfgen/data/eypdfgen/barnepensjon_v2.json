@@ -38,15 +38,23 @@
         }
       },
       "skattetrekk": {
-        "spoersmaal": "Ønsker du at vi legger inn et skattetrekk for barnepensjonen?",
         "svar": {
-          "verdi": "JA",
-          "innhold": "Ja"
+          "svar": {
+            "verdi": "JA",
+            "innhold": "Ja"
+          },
+          "spoersmaal": "Ønsker du at vi legger inn et skattetrekk for barnepensjonen?"
         },
-        "opplysning": {
-          "spoersmaal": "Oppgi ønsket skattetrekk",
+        "trekk": {
+          "spoersmaal": "Frivillig skattetrekk i prosent per måned",
           "svar": {
             "innhold": "30%"
+          }
+        },
+        "beskrivelse": {
+          "spoersmaal": "Vi trenger beskjed hvis det ikke skal være trekk i desember eller andre deler av året (valgfritt)",
+          "svar": {
+            "innhold": "Ikke i desember"
           }
         }
       }
