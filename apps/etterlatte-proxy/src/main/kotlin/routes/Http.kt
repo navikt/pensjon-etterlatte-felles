@@ -27,71 +27,106 @@ import io.ktor.utils.io.copyAndClose
 import org.apache.http.impl.conn.SystemDefaultRoutePlanner
 import java.net.ProxySelector
 
+fun httpClient() =
+    HttpClient(Apache) {
+        install(Logging) {
+            level = LogLevel.INFO
+        }
+    }.also { Runtime.getRuntime().addShutdownHook(Thread { it.close() }) }
 
-fun httpClient() = HttpClient(Apache){
-    install(Logging) {
-        level = LogLevel.INFO
-    }
-}.also { Runtime.getRuntime().addShutdownHook(Thread{it.close()}) }
-
-fun httpClientWithProxy() = HttpClient(Apache) {
-    install(ContentNegotiation) {
-        jackson { configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false) }
-    }
-    engine {
-        customizeClient {
-            setRoutePlanner(SystemDefaultRoutePlanner(ProxySelector.getDefault()))
+fun httpClientWithProxy() =
+    HttpClient(Apache) {
+        install(ContentNegotiation) {
+            jackson { configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false) }
+        }
+        engine {
+            customizeClient {
+                setRoutePlanner(SystemDefaultRoutePlanner(ProxySelector.getDefault()))
+            }
         }
     }
-}
 
-val proxiedContenHeaders = listOf(
-    HttpHeaders.ContentType,
-    HttpHeaders.ContentLength,
-    HttpHeaders.TransferEncoding,
-)
-fun filterContenHeaders(requestHeaders: Headers): Headers{
-    return Headers.build { appendAll(requestHeaders.filter { key, _ -> proxiedContenHeaders.any{it.equals(key, true)} }) }
-}
+val proxiedContenHeaders =
+    listOf(
+        HttpHeaders.ContentType,
+        HttpHeaders.ContentLength,
+        HttpHeaders.TransferEncoding
+    )
 
-class ProxiedContent(private val proxiedHeaders: Headers, private val content: ByteReadChannel, override val status: HttpStatusCode? = null): OutgoingContent.WriteChannelContent(){
-    companion object{
-        private val ignoredHeaders = listOf(HttpHeaders.ContentType, HttpHeaders.ContentLength, HttpHeaders.TransferEncoding, HttpHeaders.Authorization)
+fun filterContenHeaders(requestHeaders: Headers): Headers =
+    Headers.build {
+        appendAll(requestHeaders.filter { key, _ -> proxiedContenHeaders.any { it.equals(key, true) } })
     }
+
+class ProxiedContent(
+    private val proxiedHeaders: Headers,
+    private val content: ByteReadChannel,
+    override val status: HttpStatusCode? = null
+) : OutgoingContent.WriteChannelContent() {
+    companion object {
+        private val ignoredHeaders =
+            listOf(
+                HttpHeaders.ContentType,
+                HttpHeaders.ContentLength,
+                HttpHeaders.TransferEncoding,
+                HttpHeaders.Authorization
+            )
+    }
+
     override val contentLength: Long? = proxiedHeaders[HttpHeaders.ContentLength]?.toLong()
     override val contentType: ContentType? = proxiedHeaders[HttpHeaders.ContentType]?.let { ContentType.parse(it) }
-    override val headers: Headers = Headers.build {
-        appendAll(proxiedHeaders.filter { key, _ ->
-            ignoredHeaders.none { it.equals(key, ignoreCase = true) }
-        })
-    }
+    override val headers: Headers =
+        Headers.build {
+            appendAll(
+                proxiedHeaders.filter { key, _ ->
+                    ignoredHeaders.none { it.equals(key, ignoreCase = true) }
+                }
+            )
+        }
+
     override suspend fun writeTo(channel: ByteWriteChannel) {
         content.copyAndClose(channel)
     }
 }
 
-suspend fun HttpRequestBuilder.pipeRequest(call: ApplicationCall, customHeaders: List<String> = emptyList()){
-    val requestHeadersToProxy = listOf(
-        HttpHeaders.Accept,
-        HttpHeaders.AcceptCharset,
-        HttpHeaders.AcceptEncoding,
-    ) + customHeaders
-    headers.appendAll(call.request.headers.filter { key, _ ->
-        requestHeadersToProxy.any{it.equals(key, true)}
-    })
+suspend fun HttpRequestBuilder.pipeRequest(
+    call: ApplicationCall,
+    customHeaders: List<String> = emptyList()
+) {
+    val requestHeadersToProxy =
+        listOf(
+            HttpHeaders.Accept,
+            HttpHeaders.AcceptCharset,
+            HttpHeaders.AcceptEncoding
+        ) + customHeaders
+    headers.appendAll(
+        call.request.headers.filter { key, _ ->
+            requestHeadersToProxy.any { it.equals(key, true) }
+        }
+    )
     setBody(ProxiedContent(filterContenHeaders(call.request.headers), call.receiveChannel()))
 }
 
 @OptIn(InternalAPI::class)
 suspend fun ApplicationCall.pipeResponse(response: HttpResponse) {
-    respond(ProxiedContent(response.headers, if(response.content.isClosedForRead) { response.body() } else { response.content }, response.status))
+    respond(
+        ProxiedContent(
+            response.headers,
+            if (response.content.isClosedForRead) {
+                response.body()
+            } else {
+                response.content
+            },
+            response.status
+        )
+    )
 }
 
 val HttpHeaders.NavCallId: String
     get() = "Nav-Call-Id"
 val HttpHeaders.NavConsumerId: String
     get() = "Nav-Consumer-Id"
-val HttpHeaders.NavPersonident : String
+val HttpHeaders.NavPersonident: String
     get() = "Nav-Personident"
-val HttpHeaders.NavConsumerToken : String
+val HttpHeaders.NavConsumerToken: String
     get() = "Nav-Consumer-Token"

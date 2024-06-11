@@ -10,8 +10,10 @@ import org.apache.cxf.ws.addressing.WSAddressingFeature
 import org.slf4j.LoggerFactory
 import javax.xml.namespace.QName
 
-class TilbakekrevingConfig(config: Config, private val enableLogging: Boolean = false) {
-
+class TilbakekrevingConfig(
+    config: Config,
+    private val enableLogging: Boolean = false
+) {
     private val tilbakekrevingUrl = config.tilbakekrevingUrl
     private val sts = config.sts
     private val logger = LoggerFactory.getLogger(javaClass)
@@ -19,23 +21,29 @@ class TilbakekrevingConfig(config: Config, private val enableLogging: Boolean = 
     fun createTilbakekrevingService(): TilbakekrevingPortType {
         logger.info("Bruker tilbakekrevingService url $tilbakekrevingUrl")
 
-        val enabledFeatures = mutableListOf<Feature>().apply {
-            add(WSAddressingFeature())
-            if (enableLogging) add(LoggingFeature().apply {
-                setSensitiveDataHelper(SoapSecurityMaskSensitiveHelper())
-                setVerbose(true)
-                setPrettyLogging(true)
-            })
-        }
+        val enabledFeatures =
+            mutableListOf<Feature>().apply {
+                add(WSAddressingFeature())
+                if (enableLogging) {
+                    add(
+                        LoggingFeature().apply {
+                            setSensitiveDataHelper(SoapSecurityMaskSensitiveHelper())
+                            setVerbose(true)
+                            setPrettyLogging(true)
+                        }
+                    )
+                }
+            }
 
-        return JaxWsProxyFactoryBean().apply {
-            address = tilbakekrevingUrl
-            wsdlURL = WSDL
-            serviceName = SERVICE
-            endpointName = PORT
-            serviceClass = TilbakekrevingPortType::class.java
-            features = enabledFeatures
-        }.wrapInStsClient(sts.soapUrl, ServiceUserConfig(sts.serviceuser.name, sts.serviceuser.password), true)
+        return JaxWsProxyFactoryBean()
+            .apply {
+                address = tilbakekrevingUrl
+                wsdlURL = WSDL
+                serviceName = SERVICE
+                endpointName = PORT
+                serviceClass = TilbakekrevingPortType::class.java
+                features = enabledFeatures
+            }.wrapInStsClient(sts.soapUrl, ServiceUserConfig(sts.serviceuser.name, sts.serviceuser.password), true)
     }
 
     private companion object {

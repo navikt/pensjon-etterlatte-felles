@@ -12,11 +12,13 @@ import java.time.ZoneOffset
 
 internal class SendNotifikasjonTest {
     private val mockKafkaProducer = mockk<Producer<NokkelInput, BeskjedInput>>()
-    private val sendNotifikasjon = SendNotifikasjon(
-        mapOf(
-            "BRUKERNOTIFIKASJON_BESKJED_TOPIC" to "test_topic",
-        ), mockKafkaProducer
-    )
+    private val sendNotifikasjon =
+        SendNotifikasjon(
+            mapOf(
+                "BRUKERNOTIFIKASJON_BESKJED_TOPIC" to "test_topic"
+            ),
+            mockKafkaProducer
+        )
 
     @Test
     fun `skal opprette melding for gjenlevendepensjon`() {
@@ -70,7 +72,9 @@ internal class SendNotifikasjonTest {
     }
 }
 
-fun isWithin10Seconds(actual: LocalDateTime, expected: LocalDateTime = LocalDateTime.now(ZoneOffset.UTC)): Boolean =
-    actual.isBefore(expected.plusSeconds(10)) && actual.isAfter(expected.minusSeconds(10))
+fun isWithin10Seconds(
+    actual: LocalDateTime,
+    expected: LocalDateTime = LocalDateTime.now(ZoneOffset.UTC)
+): Boolean = actual.isBefore(expected.plusSeconds(10)) && actual.isAfter(expected.minusSeconds(10))
 
 fun Long.toLocalDateTime(): LocalDateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(this), ZoneOffset.UTC)
