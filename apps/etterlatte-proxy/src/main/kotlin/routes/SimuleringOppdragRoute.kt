@@ -21,7 +21,9 @@ fun Route.simuleringOppdragRoute(simulerFpService: SimulerFpService) {
     post("/simuleringoppdrag/simulerberegning") {
         val request = call.receive<SimulerBeregningRequest>()
 
-        logger.info("Videresender simuleringsberegning for fagsystemId=${request.request.oppdrag.fagsystemId} fra proxy")
+        logger.info(
+            "Videresender simuleringsberegning for fagsystemId=${request.request.oppdrag.fagsystemId} fra proxy"
+        )
         try {
             val response = simulerFpService.simulerBeregning(request)
             call.respond(response)

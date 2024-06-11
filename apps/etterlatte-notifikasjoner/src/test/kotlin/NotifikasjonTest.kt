@@ -1,4 +1,3 @@
-import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.module.kotlin.readValue
 import io.mockk.mockk
 import no.nav.brukernotifikasjon.schemas.input.BeskjedInput
@@ -20,14 +19,16 @@ internal class NotifikasjonTest {
     private val mockKafkaProducer =
         MockProducer<NokkelInput, BeskjedInput>(true, mockk(relaxed = true), mockk(relaxed = true))
 
-    private val sendMelding = SendNotifikasjon(
-        mapOf(
-            "BRUKERNOTIFIKASJON_BESKJED_TOPIC" to "test_topic",
-            "BRUKERNOTIFIKASJON_KAFKA_GROUP_ID" to "bah",
-            "NAIS_NAMESPACE" to "etterlatte",
-            "NAIS_NAME" to "etterlatte-notifikasjoner"
-        ), mockKafkaProducer
-    )
+    private val sendMelding =
+        SendNotifikasjon(
+            mapOf(
+                "BRUKERNOTIFIKASJON_BESKJED_TOPIC" to "test_topic",
+                "BRUKERNOTIFIKASJON_KAFKA_GROUP_ID" to "bah",
+                "NAIS_NAMESPACE" to "etterlatte",
+                "NAIS_NAME" to "etterlatte-notifikasjoner"
+            ),
+            mockKafkaProducer
+        )
 
     @BeforeEach
     fun before() {
@@ -39,28 +40,28 @@ internal class NotifikasjonTest {
         val json = this::class.java.getResource("gjenlevendepensjon.json")!!.readText()
         val soeknad: Soeknad = mapper.readValue(json)
 
-        val inspector = TestRapid()
-            .apply {
-                Notifikasjon(
-                    sendMelding,
-                    this
-                )
-            }
-            .apply {
-                sendTestMessage(
-                    JsonMessage.newMessage(
-                        mapOf(
-                            "@event_name" to "soeknad_innsendt",
-                            "@dokarkivRetur" to "123456",
-                            "@fnr_soeker" to "07106123912",
-                            "@skjema_info" to mapper.readTree(json),
-                            "@lagret_soeknad_id" to "4",
-                            "@dokarkivRetur" to (mapOf("journalpostId" to "3"))
-                        )
+        val inspector =
+            TestRapid()
+                .apply {
+                    Notifikasjon(
+                        sendMelding,
+                        this
                     )
-                        .toJson()
-                )
-            }.inspektør
+                }.apply {
+                    sendTestMessage(
+                        JsonMessage
+                            .newMessage(
+                                mapOf(
+                                    "@event_name" to "soeknad_innsendt",
+                                    "@dokarkivRetur" to "123456",
+                                    "@fnr_soeker" to "07106123912",
+                                    "@skjema_info" to mapper.readTree(json),
+                                    "@lagret_soeknad_id" to "4",
+                                    "@dokarkivRetur" to (mapOf("journalpostId" to "3"))
+                                )
+                            ).toJson()
+                    )
+                }.inspektør
 
         assertEquals("notifikasjon_sendt", inspector.message(0).get("@event_name").asText())
         assertEquals("Notifikasjon sendt", inspector.message(0).get("@notifikasjon").asText())
@@ -83,28 +84,28 @@ internal class NotifikasjonTest {
         val json = this::class.java.getResource("barnepensjon.json")!!.readText()
         val soeknad: Soeknad = mapper.readValue(json)
 
-        val inspector = TestRapid()
-            .apply {
-                Notifikasjon(
-                    sendMelding,
-                    this
-                )
-            }
-            .apply {
-                sendTestMessage(
-                    JsonMessage.newMessage(
-                        mapOf(
-                            "@event_name" to "soeknad_innsendt",
-                            "@dokarkivRetur" to "123456",
-                            "@fnr_soeker" to "07106123912",
-                            "@skjema_info" to mapper.readTree(json),
-                            "@lagret_soeknad_id" to "4",
-                            "@dokarkivRetur" to (mapOf("journalpostId" to "5"))
-                        )
+        val inspector =
+            TestRapid()
+                .apply {
+                    Notifikasjon(
+                        sendMelding,
+                        this
                     )
-                        .toJson()
-                )
-            }.inspektør
+                }.apply {
+                    sendTestMessage(
+                        JsonMessage
+                            .newMessage(
+                                mapOf(
+                                    "@event_name" to "soeknad_innsendt",
+                                    "@dokarkivRetur" to "123456",
+                                    "@fnr_soeker" to "07106123912",
+                                    "@skjema_info" to mapper.readTree(json),
+                                    "@lagret_soeknad_id" to "4",
+                                    "@dokarkivRetur" to (mapOf("journalpostId" to "5"))
+                                )
+                            ).toJson()
+                    )
+                }.inspektør
 
         assertEquals("notifikasjon_sendt", inspector.message(0).get("@event_name").asText())
         assertEquals("Notifikasjon sendt", inspector.message(0).get("@notifikasjon").asText())
@@ -124,28 +125,28 @@ internal class NotifikasjonTest {
         val json = this::class.java.getResource("omstillingsstoenad.json")!!.readText()
         val soeknad: Soeknad = mapper.readValue(json)
 
-        val inspector = TestRapid()
-            .apply {
-                Notifikasjon(
-                    sendMelding,
-                    this
-                )
-            }
-            .apply {
-                sendTestMessage(
-                    JsonMessage.newMessage(
-                        mapOf(
-                            "@event_name" to "soeknad_innsendt",
-                            "@dokarkivRetur" to "123456",
-                            "@fnr_soeker" to "07106123912",
-                            "@skjema_info" to mapper.readTree(json),
-                            "@lagret_soeknad_id" to "4",
-                            "@dokarkivRetur" to (mapOf("journalpostId" to "5"))
-                        )
+        val inspector =
+            TestRapid()
+                .apply {
+                    Notifikasjon(
+                        sendMelding,
+                        this
                     )
-                        .toJson()
-                )
-            }.inspektør
+                }.apply {
+                    sendTestMessage(
+                        JsonMessage
+                            .newMessage(
+                                mapOf(
+                                    "@event_name" to "soeknad_innsendt",
+                                    "@dokarkivRetur" to "123456",
+                                    "@fnr_soeker" to "07106123912",
+                                    "@skjema_info" to mapper.readTree(json),
+                                    "@lagret_soeknad_id" to "4",
+                                    "@dokarkivRetur" to (mapOf("journalpostId" to "5"))
+                                )
+                            ).toJson()
+                    )
+                }.inspektør
 
         assertEquals("notifikasjon_sendt", inspector.message(0).get("@event_name").asText())
         assertEquals("Notifikasjon sendt", inspector.message(0).get("@notifikasjon").asText())

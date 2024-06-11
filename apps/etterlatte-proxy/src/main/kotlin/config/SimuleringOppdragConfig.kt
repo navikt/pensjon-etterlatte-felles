@@ -10,8 +10,10 @@ import org.apache.cxf.ws.addressing.WSAddressingFeature
 import org.slf4j.LoggerFactory
 import javax.xml.namespace.QName
 
-class SimuleringOppdragConfig(config: Config, private val enableLogging: Boolean = false) {
-
+class SimuleringOppdragConfig(
+    config: Config,
+    private val enableLogging: Boolean = false
+) {
     private val simuleringOppdragUrl = config.simuleringOppdragUrl
     private val sts = config.sts
     private val logger = LoggerFactory.getLogger(javaClass)
@@ -19,33 +21,41 @@ class SimuleringOppdragConfig(config: Config, private val enableLogging: Boolean
     fun createSimuleringOppdragService(): SimulerFpService {
         logger.info("Bruker simuleringOppdrag url $simuleringOppdragUrl")
 
-        val enabledFeatures = mutableListOf<Feature>().apply {
-            add(WSAddressingFeature())
-            if (enableLogging) add(LoggingFeature().apply {
-                setSensitiveDataHelper(SoapSecurityMaskSensitiveHelper())
-                setVerbose(true)
-                setPrettyLogging(true)
-                setSensitiveElementNames(setOf(
-                    /* request */
-                    "oppdragGjelderId",
-                    "utbetalesTilId",
-                    /* response */
-                    "gjelderId",
-                    "gjelderNavn",
-                    "utbetalesTilId",
-                    "utbetalesTilNavn",
-                ))
-            })
-        }
+        val enabledFeatures =
+            mutableListOf<Feature>().apply {
+                add(WSAddressingFeature())
+                if (enableLogging) {
+                    add(
+                        LoggingFeature().apply {
+                            setSensitiveDataHelper(SoapSecurityMaskSensitiveHelper())
+                            setVerbose(true)
+                            setPrettyLogging(true)
+                            setSensitiveElementNames(
+                                setOf(
+                                    // request
+                                    "oppdragGjelderId",
+                                    "utbetalesTilId",
+                                    // response
+                                    "gjelderId",
+                                    "gjelderNavn",
+                                    "utbetalesTilId",
+                                    "utbetalesTilNavn"
+                                )
+                            )
+                        }
+                    )
+                }
+            }
 
-        return JaxWsProxyFactoryBean().apply {
-            address = simuleringOppdragUrl
-            wsdlURL = WSDL
-            serviceName = SERVICE
-            endpointName = PORT
-            serviceClass = SimulerFpService::class.java
-            features = enabledFeatures
-        }.wrapInStsClient(sts.soapUrl, ServiceUserConfig(sts.serviceuser.name, sts.serviceuser.password), true)
+        return JaxWsProxyFactoryBean()
+            .apply {
+                address = simuleringOppdragUrl
+                wsdlURL = WSDL
+                serviceName = SERVICE
+                endpointName = PORT
+                serviceClass = SimulerFpService::class.java
+                features = enabledFeatures
+            }.wrapInStsClient(sts.soapUrl, ServiceUserConfig(sts.serviceuser.name, sts.serviceuser.password), true)
     }
 
     private companion object {

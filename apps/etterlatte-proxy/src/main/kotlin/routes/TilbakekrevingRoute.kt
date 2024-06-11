@@ -19,7 +19,9 @@ fun Route.tilbakekrevingRoute(tilbakekrevingService: TilbakekrevingPortType) {
     post("/tilbakekreving/tilbakekrevingsvedtak") {
         val request = call.receive<TilbakekrevingsvedtakRequest>()
 
-        logger.info("Videresender tilbakekrevingsvedtak med vedtakId=${request.tilbakekrevingsvedtak.vedtakId} fra proxy")
+        logger.info(
+            "Videresender tilbakekrevingsvedtak med vedtakId=${request.tilbakekrevingsvedtak.vedtakId} fra proxy"
+        )
         val response = tilbakekrevingService.tilbakekrevingsvedtak(request)
         call.respond(response)
     }

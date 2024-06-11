@@ -1,6 +1,5 @@
 package no.nav.etterlatte
 
-import com.fasterxml.jackson.databind.JsonNode
 import no.nav.brukernotifikasjon.schemas.builders.BeskjedInputBuilder
 import no.nav.brukernotifikasjon.schemas.builders.NokkelInputBuilder
 import no.nav.brukernotifikasjon.schemas.input.BeskjedInput
@@ -37,11 +36,12 @@ class SendNotifikasjon(
     internal fun opprettBeskjed(type: Soeknad.Type): BeskjedInput {
         val now = LocalDateTime.now(ZoneOffset.UTC)
         val weekFromNow = now.plusDays(7)
-        val tekst = when (type) {
-            Soeknad.Type.GJENLEVENDEPENSJON -> "Vi har mottatt søknaden din om gjenlevendepensjon"
-            Soeknad.Type.BARNEPENSJON -> "Vi har mottatt søknaden din om barnepensjon"
-            Soeknad.Type.OMSTILLINGSSTOENAD -> "Vi har mottatt søknaden din om omstillingsstønad"
-        }
+        val tekst =
+            when (type) {
+                Soeknad.Type.GJENLEVENDEPENSJON -> "Vi har mottatt søknaden din om gjenlevendepensjon"
+                Soeknad.Type.BARNEPENSJON -> "Vi har mottatt søknaden din om barnepensjon"
+                Soeknad.Type.OMSTILLINGSSTOENAD -> "Vi har mottatt søknaden din om omstillingsstønad"
+            }
 
         return BeskjedInputBuilder()
             .withTidspunkt(LocalDateTime.now(ZoneOffset.UTC))
@@ -52,15 +52,19 @@ class SendNotifikasjon(
             .build()
     }
 
-    private fun opprettNokkel(ident: String) = NokkelInputBuilder()
-        .withEventId(UUID.randomUUID().toString())
-        .withGrupperingsId(grupperingsId)
-        .withNamespace(namespace)
-        .withAppnavn(appname)
-        .withFodselsnummer(ident)
-        .build()
+    private fun opprettNokkel(ident: String) =
+        NokkelInputBuilder()
+            .withEventId(UUID.randomUUID().toString())
+            .withGrupperingsId(grupperingsId)
+            .withNamespace(namespace)
+            .withAppnavn(appname)
+            .withFodselsnummer(ident)
+            .build()
 
-    private fun send(nokkel: NokkelInput, beskjed: BeskjedInput) = try {
+    private fun send(
+        nokkel: NokkelInput,
+        beskjed: BeskjedInput
+    ) = try {
         producer.send(ProducerRecord(brukernotifikasjontopic, nokkel, beskjed)).get(10, TimeUnit.SECONDS)
     } catch (e: Exception) {
         logger.error(

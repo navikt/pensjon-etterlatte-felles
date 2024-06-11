@@ -17,20 +17,25 @@ import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class ApplicationTest {
-
     private val mockOAuth2 = MockOAuth2Server()
     private lateinit var hoconApplicationConfig: HoconApplicationConfig
 
     @BeforeAll
     fun beforeAll() {
         mockOAuth2.start()
-        hoconApplicationConfig = HoconApplicationConfig(ConfigFactory.load()
-            .withValue("aad.wellKnownUrl", ConfigValueFactory.fromAnyRef(mockOAuth2.wellKnownUrl("aad").toString()))
-        )
-
+        hoconApplicationConfig =
+            HoconApplicationConfig(
+                ConfigFactory
+                    .load()
+                    .withValue(
+                        "aad.wellKnownUrl",
+                        ConfigValueFactory.fromAnyRef(mockOAuth2.wellKnownUrl("aad").toString())
+                    )
+            )
     }
+
     @AfterAll
-    fun tearDown(){
+    fun tearDown() {
         mockOAuth2.shutdown()
     }
 

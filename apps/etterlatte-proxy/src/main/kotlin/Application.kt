@@ -23,7 +23,9 @@ import no.nav.etterlatte.routes.tilbakekrevingRoute
 import org.slf4j.event.Level
 import java.util.*
 
-fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
+fun main(args: Array<String>): Unit =
+    io.ktor.server.netty.EngineMain
+        .main(args)
 
 fun Application.module() {
     val config = runBlocking { environment.config.load() }
@@ -60,4 +62,3 @@ fun Application.module() {
  * ut med 11 *. Ser ikke på "gyldigheten" til det som er potensielle fnr, bare fjerner alle slike forekomster.
  */
 fun skjulAllePotensielleFnr(url: String): String = url.replace(Regex("(?<!\\d)\\d{11}(?!\\d)"), "***********")
-

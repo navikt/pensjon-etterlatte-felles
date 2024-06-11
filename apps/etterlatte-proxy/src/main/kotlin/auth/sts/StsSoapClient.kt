@@ -16,7 +16,10 @@ import org.apache.cxf.ws.security.SecurityConstants
 import org.apache.cxf.ws.security.trust.STSClient
 import org.apache.neethi.Policy
 
-data class ServiceUserConfig(val username: String, val password: String)
+data class ServiceUserConfig(
+    val username: String,
+    val password: String
+)
 
 internal const val STS_CLIENT_AUTHENTICATION_POLICY = "classpath:untPolicy.xml"
 internal const val STS_SAML_POLICY = "classpath:requestSamlPolicy.xml"
@@ -24,34 +27,36 @@ internal const val STS_SAML_POLICY = "classpath:requestSamlPolicy.xml"
 internal inline fun <reified T> ClientProxyFactoryBean.wrapInStsClient(
     stsSoapUrl: String,
     serviceUser: ServiceUserConfig,
-    disableCNCheck: Boolean,
-): T {
-    return this.create(T::class.java).apply {
+    disableCNCheck: Boolean
+): T =
+    this.create(T::class.java).apply {
         val bus: Bus = ExtensionManagerBus()
-        val sts = STSClient(bus).apply {
-            isEnableAppliesTo = false
-            isAllowRenewing = false
+        val sts =
+            STSClient(bus).apply {
+                isEnableAppliesTo = false
+                isAllowRenewing = false
 
-            location = stsSoapUrl
-            properties = mapOf(
-                SecurityConstants.USERNAME to serviceUser.username,
-                SecurityConstants.PASSWORD to serviceUser.password,
-            )
-            setPolicy(bus.resolvePolicy(STS_CLIENT_AUTHENTICATION_POLICY))
-        }
+                location = stsSoapUrl
+                properties =
+                    mapOf(
+                        SecurityConstants.USERNAME to serviceUser.username,
+                        SecurityConstants.PASSWORD to serviceUser.password
+                    )
+                setPolicy(bus.resolvePolicy(STS_CLIENT_AUTHENTICATION_POLICY))
+            }
         ClientProxy.getClient(this).apply {
             requestContext[SecurityConstants.STS_CLIENT] = sts
             requestContext[SecurityConstants.CACHE_ISSUED_TOKEN_IN_ENDPOINT] = true
             setClientEndpointPolicy(bus.resolvePolicy(STS_SAML_POLICY))
             if (disableCNCheck) {
                 val conduit = conduit as HTTPConduit
-                conduit.tlsClientParameters = TLSClientParameters().apply {
-                    isDisableCNCheck = true
-                }
+                conduit.tlsClientParameters =
+                    TLSClientParameters().apply {
+                        isDisableCNCheck = true
+                    }
             }
         }
     }
-}
 
 internal fun Bus.resolvePolicy(policyUri: String): Policy {
     val registry = getExtension(PolicyEngine::class.java).registry
