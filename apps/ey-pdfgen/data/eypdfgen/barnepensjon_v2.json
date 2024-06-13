@@ -179,6 +179,20 @@
           "svar": "30106519672"
         }
       }
+    },
+    "ufoeretrygd": {
+      "spoersmaal": "Får du uføretrygd?",
+      "svar": {
+        "verdi": "JA",
+        "innhold": "Ja"
+      }
+    },
+    "arbeidsavklaringspenger": {
+      "spoersmaal": "Får du arbeidsavklaringspenger?",
+      "svar": {
+        "verdi": "NEI",
+        "innhold": "Nei"
+      }
     }
   },
   "foreldre": [
