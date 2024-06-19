@@ -28,13 +28,19 @@ fun Route.tilbakekrevingRoute(tilbakekrevingService: TilbakekrevingPortType) {
         call.respond(response)
     }
 
-    get("/tilbakekreving/kravgrunnlag") {
-        val request = call.receive<KravgrunnlagHentDetaljRequest>()
+    post("/tilbakekreving/kravgrunnlag") {
+        try {
+            logger.info("Starter uthenting av kravgrunnlag")
+            val request = call.receive<KravgrunnlagHentDetaljRequest>()
 
-        logger.info(
-            "Videresender henting av kravgrunnlag med kravgrunnlagId=${request.hentkravgrunnlag.kravgrunnlagId} fra proxy"
-        )
-        val response = tilbakekrevingService.kravgrunnlagHentDetalj(request)
-        call.respond(response)
+            logger.info(
+                "Videresender henting av kravgrunnlag med kravgrunnlagId=${request.hentkravgrunnlag.kravgrunnlagId} fra proxy"
+            )
+            val response = tilbakekrevingService.kravgrunnlagHentDetalj(request)
+            call.respond(response)
+
+        } catch (e: Exception) {
+            logger.error("Feilet under uthenting av kravgrunnlag: ${e.message}", e)
+        }
     }
 }
