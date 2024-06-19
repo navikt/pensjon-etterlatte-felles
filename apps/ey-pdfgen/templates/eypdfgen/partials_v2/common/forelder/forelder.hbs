@@ -10,6 +10,11 @@
     <div class="col">
         {{capitalize_names this.fornavn.svar}}
         {{capitalize_names this.etternavn.svar}}
-        ({{this.foedselsnummer.svar}})
+
+        {{#if this.foedselsnummer}}
+            ({{this.foedselsnummer.svar}})
+        {{else}}
+            ({{this.foedselsdato.svar}})
+        {{/if}}
     </div>
 </div>
