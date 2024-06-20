@@ -40,7 +40,12 @@
             <div>
                 {{this.soeker.fornavn.svar}}
                 {{this.soeker.etternavn.svar}}
-                ({{this.soeker.foedselsnummer.svar}})
+
+                {{#if this.soeker.foedselsnummer}}
+                    ({{this.soeker.foedselsnummer.svar}})
+                {{else}}
+                    ({{this.soeker.foedselsdato.svar}})
+                {{/if}}
             </div>
         </div>
     {{/not_eq}}
