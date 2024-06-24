@@ -3,7 +3,7 @@ cutterslade-analyze = { id = "ca.cutterslade.analyze", version = "1.9.2" }
 
 
 [versions]
-navfelles-token-version = "4.1.8"
+navfelles-token-version = "5.0.1"
 ktor-version = "2.3.12"
 jupiter-version = "5.10.2"
 cxf-version = "4.0.4" # Obs: Når vi oppgraderer denne, bør vi også kunne rydde bort guava og guava-workarounden
@@ -55,7 +55,7 @@ logging-logbackClassic = { module = "ch.qos.logback:logback-classic", version = 
 logging-logstashLogbackEncoder = { module = "net.logstash.logback:logstash-logback-encoder", version = "7.4"}
 
 #Micrometer
-micrometer-prometheus = { module = "io.micrometer:micrometer-registry-prometheus", version = "1.12.5"}
+micrometer-prometheus = { module = "io.micrometer:micrometer-registry-prometheus", version = "1.13.1"}
 
 #MockK
 mockk = { module = "io.mockk:mockk", version = "1.13.11" }
