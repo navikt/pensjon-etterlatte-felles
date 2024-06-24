@@ -4,7 +4,7 @@ cutterslade-analyze = { id = "ca.cutterslade.analyze", version = "1.9.2" }
 
 [versions]
 navfelles-token-version = "4.1.8"
-ktor-version = "2.3.11"
+ktor-version = "2.3.12"
 jupiter-version = "5.10.2"
 cxf-version = "4.0.4" # Obs: Når vi oppgraderer denne, bør vi også kunne rydde bort guava og guava-workarounden
 bcpkix-version = "1.78.1"
