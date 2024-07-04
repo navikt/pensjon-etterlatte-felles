@@ -6,7 +6,7 @@ metadata:
   labels:
     team: etterlatte
 spec:
-  image: europe-north1-docker.pkg.dev/nais-management-233d/poao/kafka-manager:2024.06.12-12.11-da6b230
+  image: europe-north1-docker.pkg.dev/nais-management-233d/poao/kafka-manager:2024.07.04-07.33-95a395b
   port: 8080
   webproxy: true
   ingresses:
