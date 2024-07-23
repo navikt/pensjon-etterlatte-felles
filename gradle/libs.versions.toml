@@ -1,5 +1,5 @@
 [plugins]
-cutterslade-analyze = { id = "ca.cutterslade.analyze", version = "1.9.2" }
+cutterslade-analyze = { id = "ca.cutterslade.analyze", version = "1.10.0" }
 
 
 [versions]
@@ -37,7 +37,7 @@ ktor-okHttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor-versi
 ktor-serverTests = { module = "io.ktor:ktor-server-tests", version.ref = "ktor-version" }
 
 #Jackson
-jacksonDatatypejsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version = "2.17.1" }
+jacksonDatatypejsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version = "2.17.2" }
 
 #Kafka
 kafka-clients = { module = "org.apache.kafka:kafka-clients", version = "3.7.1"}
