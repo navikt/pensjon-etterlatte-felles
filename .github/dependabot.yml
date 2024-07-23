@@ -16,7 +16,6 @@ updates:
     groups:
       backend:
         patterns:
-          - "io.micrometer*"
           - "ca.cutterslade.analyze"
           - "io.ktor*"
           - "org.jetbrains.kotlinx*"
@@ -31,6 +30,9 @@ updates:
           - "org.junit*"
           - "io.mockk:mockk"
           - "no.nav.security:mock-oauth2-server"
+      micrometer:
+        patterns:
+          - "io.micrometer*"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
