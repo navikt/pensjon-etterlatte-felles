@@ -55,7 +55,7 @@ logging-logbackClassic = { module = "ch.qos.logback:logback-classic", version = 
 logging-logstashLogbackEncoder = { module = "net.logstash.logback:logstash-logback-encoder", version = "7.4"}
 
 #Micrometer
-micrometer-prometheus = { module = "io.micrometer:micrometer-registry-prometheus", version = "1.12.5"}
+micrometer-prometheus = { module = "io.micrometer:micrometer-registry-prometheus", version = "1.13.2"}
 
 #MockK
 mockk = { module = "io.mockk:mockk", version = "1.13.12" }
