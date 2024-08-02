@@ -5,6 +5,9 @@ import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.server.config.ApplicationConfig
 import no.nav.etterlatte.routes.httpClientWithProxy
+import java.nio.file.Files
+import java.nio.file.Paths
+import kotlin.io.path.exists
 
 data class Config(
     val sts: Sts,
@@ -44,8 +47,8 @@ suspend fun ApplicationConfig.load() =
                 soapUrl = property("sts.soapUrl").getString(),
                 serviceuser =
                     Config.Sts.ServiceUser(
-                        name = property("serviceuser.name").getString(),
-                        password = property("serviceuser.password").getString()
+                        name = name(),
+                        password = password()
                     )
             ),
         aad =
@@ -54,3 +57,14 @@ suspend fun ApplicationConfig.load() =
                 clientId = property("aad.clientId").getString()
             )
     )
+
+private fun name() =
+    Paths.get("/secrets/srvetterlatte/username")
+        .takeIf { it.exists() }
+        ?.let { Files.readString(it) }
+        ?: "srvetterlatte"
+
+private fun password() = Paths.get("/secrets/srvetterlatte/password")
+    .takeIf { it.exists() }
+    ?.let { Files.readString(it) }
+    ?: "srv-password"
