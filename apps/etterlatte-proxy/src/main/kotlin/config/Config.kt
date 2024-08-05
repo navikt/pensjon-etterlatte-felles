@@ -7,7 +7,6 @@ import io.ktor.server.config.ApplicationConfig
 import no.nav.etterlatte.routes.httpClientWithProxy
 import java.nio.file.Files
 import java.nio.file.Paths
-import kotlin.io.path.exists
 
 data class Config(
     val sts: Sts,
@@ -38,33 +37,47 @@ data class Config(
     }
 }
 
-suspend fun ApplicationConfig.load() =
-    Config(
+suspend fun ApplicationConfig.load(): Config {
+    val brukernavnOgPassordProvider = if (erLokalUtvikling()) {
+        LokalUtvikling()
+    } else {
+        DevOgProd()
+    }
+    return Config(
         tilbakekrevingUrl = property("tilbakekreving.url").getString(),
         simuleringOppdragUrl = property("simuleringOppdrag.url").getString(),
         sts =
-            Config.Sts(
-                soapUrl = property("sts.soapUrl").getString(),
-                serviceuser =
-                    Config.Sts.ServiceUser(
-                        name = name(),
-                        password = password()
-                    )
-            ),
-        aad =
-            Config.AAD(
-                metadata = httpClientWithProxy().use { it.get(property("aad.wellKnownUrl").getString()).body() },
-                clientId = property("aad.clientId").getString()
+        Config.Sts(
+            soapUrl = property("sts.soapUrl").getString(),
+            serviceuser =
+            Config.Sts.ServiceUser(
+                name = brukernavnOgPassordProvider.navn(),
+                password = brukernavnOgPassordProvider.passord(),
             )
+        ),
+        aad =
+        Config.AAD(
+            metadata = httpClientWithProxy().use { it.get(property("aad.wellKnownUrl").getString()).body() },
+            clientId = property("aad.clientId").getString()
+        )
     )
+}
 
-private fun name() =
-    Paths.get("/secrets/srvetterlatte/username")
-        .takeIf { it.exists() }
-        ?.let { Files.readString(it) }
-        ?: "srvetterlatte"
+fun erLokalUtvikling() = System.getenv("NAIS_CLUSTER_NAME") !in listOf("dev-fss", "prod-fss")
 
-private fun password() = Paths.get("/secrets/srvetterlatte/password")
-    .takeIf { it.exists() }
-    ?.let { Files.readString(it) }
-    ?: "srv-password"
+interface BrukernavnOgPassordProvider {
+    fun navn(): String
+    fun passord(): String
+}
+
+class LokalUtvikling : BrukernavnOgPassordProvider {
+    override fun navn() = "srvetterlatte"
+    override fun passord() = "srv-password"
+}
+
+class DevOgProd : BrukernavnOgPassordProvider {
+    override fun navn(): String = lesFil("/secrets/srvetterlatte/username")
+    override fun passord(): String = lesFil("/secrets/srvetterlatte/password")
+
+    private fun lesFil(sti: String) = Paths.get(sti).let { Files.readString(it) }
+}
