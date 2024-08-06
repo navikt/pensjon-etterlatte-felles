@@ -108,3 +108,6 @@ spec:
     - team: etterlatte
       application: etterlatte-hendelser-samordning
       access: readwrite
+    - team: etterlatte
+      application: selvbetjening-backend 
+      access: readwrite
