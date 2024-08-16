@@ -1,0 +1,49 @@
+<h3>Formkrav og klagefrist</h3>
+
+{{#if formkrav.vedtaketKlagenGjelder}}
+    <div class="row opplysning">
+        <div class="col">Dato vedtak attestert</div>
+        <div class="col">{{iso_to_nor_date formkrav.vedtaketKlagenGjelder.datoAttestert}}</div>
+    </div>
+    <div class="row opplysning">
+        <div class="col">Type vedtak</div>
+        <div class="col">{{vedtakTypeFormatert}}</div>
+    </div>
+{{else}}
+    <div class="row opplysning">
+        <div class="col">Vedtak som klages på</div>
+        <div class="col">Det klages ikke på et konkret vedtak</div>
+    </div>
+{{/if}}
+
+<div class="row opplysning">
+    <div class="col">Er klagen signert?</div>
+    <div class="col">
+        {{> notat/klageblankett/erKravetOppfylt formkrav.erKlagenSignert}}
+    </div>
+</div>
+<div class="row opplysning">
+    <div class="col">Er klager part i saken?</div>
+    <div class="col">
+        {{> notat/klageblankett/erKravetOppfylt formkrav.erKlagerPartISaken}}
+    </div>
+</div>
+<div class="row opplysning">
+    <div class="col">Er klagen framsatt innen frist?</div>
+    <div class="col">
+        {{> notat/klageblankett/erKravetOppfylt formkrav.erKlagenFramsattInnenFrist}}
+    </div>
+</div>
+<div class="row opplysning">
+    <div class="col">Klages det på konkrete elementer i vedtaket?</div>
+    <div class="col">
+        {{> notat/klageblankett/erKravetOppfylt formkrav.gjelderKlagenNoeKonkretIVedtaket}}
+    </div>
+</div>
+
+{{#if formkrav.begrunnelse}}
+    <div class="row opplysning">
+        <div class="col">Begrunnelse</div>
+        <div class="col">{{breaklines formkrav.begrunnelse}}</div>
+    </div>
+{{/if}}

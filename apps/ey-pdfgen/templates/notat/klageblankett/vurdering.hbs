@@ -1,0 +1,21 @@
+<h3>Vurdering</h3>
+
+<div class="row opplysning">
+    <div class="col">Utfall</div>
+    <div class="col">Oppretthold vedtak</div>
+</div>
+<div class="row opplysning">
+    <div class="col">Hjemmel</div>
+    <div class="col">{{hjemmel}}</div>
+</div>
+<div class="row opplysning">
+    <div class="col">Innstilling til NAV Klageinstans</div>
+    <div class="col">{{breaklines ovesendelseTekst}}</div>
+</div>
+
+{{#if internKommentar}}
+    <div class="row opplysning">
+        <div class="col">Intern kommentar</div>
+        <div class="col">{{breaklines internKommentar}}</div>
+    </div>
+{{/if}}

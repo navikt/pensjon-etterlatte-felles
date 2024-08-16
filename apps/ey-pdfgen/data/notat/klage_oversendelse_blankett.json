@@ -1,0 +1,28 @@
+{
+  "tittel": "Klage oversendelsesblankett",
+  "payload": {
+    "formkrav": {
+      "vedtaketKlagenGjelder": {
+        "datoAttestert": "2023-06-14",
+        "vedtakType": "INNVILGELSE"
+      },
+      "erKlagenSignert": true,
+      "gjelderKlagenNoeKonkretIVedtaket": true,
+      "erKlagerPartISaken": true,
+      "erKlagenFramsattInnenFrist": true,
+      "erFormkraveneOppfylt": true,
+      "begrunnelse": "En større totalvurdering. \n\nMed linjeskift.\n\nMen fungerer det???"
+    },
+    "hjemmel": "Ftrl. § 18-3",
+    "sakId": 494,
+    "sakType": "BARNEPENSJON",
+    "sakGjelder": "Hemmelighetsfull Løvetann (15121263421)",
+    "internKommentar": "Intern kommentar til KA. \n\nSkal også støtte linjeskift. \n1.\n2.\n3.",
+    "ovesendelseTekst": "En veldig viktig innstilling. Burde også støtte linjeskift. \n\nHer er et linjeskift. Men vises det mon tro? ",
+    "klager": "15121263421",
+    "klageDato": "2024-08-13",
+    "innhold": [],
+    "sakTypeFormatert": "Barnepensjon",
+    "vedtakTypeFormatert": "Innvilgelse"
+  }
+}
