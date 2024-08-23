@@ -1,0 +1,8 @@
+{
+  "sakId": 123,
+  "arbeidsinntekt": 111,
+  "naeringsinntekt": 222,
+  "arbeidsinntektUtland": 333,
+  "naeringsinntektUtland": 444,
+  "tidsunkt": "2022-01-31T00:00:00Z"
+}
