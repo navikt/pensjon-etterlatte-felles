@@ -1,8 +1,9 @@
 {
   "sakId": 123,
+  "aar": 2025,
   "arbeidsinntekt": 111,
   "naeringsinntekt": 222,
   "arbeidsinntektUtland": 333,
   "naeringsinntektUtland": 444,
-  "tidsunkt": "2022-01-31T00:00:00Z"
+  "tidspunkt": "2022-01-31T00:00:00Z"
 }
