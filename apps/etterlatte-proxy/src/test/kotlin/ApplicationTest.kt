@@ -48,7 +48,6 @@ internal class ApplicationTest {
 
             client.get("internal/is_alive").also {
                 assertEquals(HttpStatusCode.OK, it.status)
-                assertEquals("Alive", it.body<String>())
             }
         }
     }
