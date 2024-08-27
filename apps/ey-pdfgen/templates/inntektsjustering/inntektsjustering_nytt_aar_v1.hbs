@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8" />
+    {{> eypdfgen/partials_v2/style}}
+    <title>Inntektsjustering {{ aar }}</title>
+</head>
+<body>
+
+<div id="header">
+    <img class="navlogo" src="{{ image "Navlogo.png" }}" />
+    <h1 class="title" >Inntektsjustering {{ aar }}</h1>
+</div>
+<div>
+    <h3>
+        Inntekt for sak {{ sakId }} ble mottatt {{ tidspunkt }}
+    </h3>
+    <p>
+        Arbeidsinntekt: {{ arbeidsinntekt }}
+    </p>
+    <p>
+        Næringsinntekt: {{ naeringsinntekt }}
+    </p>
+     <p>
+         Arbeidsinntekt utland: {{ arbeidsinntektUtland }}
+     </p>
+     <p>
+         Næringsinntekt utland: {{ naeringsinntektUtland }}
+     </p>
+</div>
+
+</body>
+</html>
