@@ -10,19 +10,14 @@ repositories {
 
 dependencies {
     implementation(libs.ktor.serverAuth)
-    implementation(libs.ktor.clientCore)
     implementation(libs.ktor.callLogging)
     implementation(libs.ktor.clientApache)
-    implementation(libs.ktor.clientAuth)
     implementation(libs.ktor.clientLogging)
     implementation(libs.ktor.jackson)
     implementation(libs.ktor.serverContentNegotiation)
     implementation(libs.ktor.clientContentNegotiation)
-    implementation(libs.ktor.serverCore)
     implementation(libs.ktor.serverNetty)
     implementation(libs.ktor.serverAuthJwt)
-    implementation(libs.ktor.okHttp)
-    implementation(libs.navFellesTokenClientCore)
     implementation(libs.tjenestespesifikasjonerTilbakekreving)
     implementation(libs.tjenestespesifikasjonerOppdragSimulering)
     implementation(libs.cxf.logging)
@@ -36,7 +31,6 @@ dependencies {
         exclude("org.eclipse.angus:angus-mail")
     }
     implementation(libs.micrometer.prometheus)
-    implementation(libs.jacksonDatatypejsr310)
 
     testImplementation(libs.mockOauth2Server)
     testImplementation(libs.ktor.serverTests)
