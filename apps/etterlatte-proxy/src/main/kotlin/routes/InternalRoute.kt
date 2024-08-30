@@ -6,8 +6,21 @@ import io.ktor.server.response.respond
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
 import io.ktor.server.routing.route
+import io.micrometer.core.instrument.Clock
 import io.micrometer.prometheusmetrics.PrometheusConfig
 import io.micrometer.prometheusmetrics.PrometheusMeterRegistry
+import io.prometheus.metrics.model.registry.PrometheusRegistry
+
+object Metrikker {
+    private val collectorRegistry = PrometheusRegistry.defaultRegistry
+
+    val registry =
+        PrometheusMeterRegistry(
+            PrometheusConfig.DEFAULT,
+            collectorRegistry,
+            Clock.SYSTEM,
+        )
+}
 
 fun Route.internalRoute() {
     route("/internal") {
@@ -18,7 +31,7 @@ fun Route.internalRoute() {
             call.respond(HttpStatusCode.OK)
         }
         get("/metrics") {
-            call.respond(PrometheusMeterRegistry(PrometheusConfig.DEFAULT))
+            call.respond(Metrikker.registry)
         }
     }
 }
