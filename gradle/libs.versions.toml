@@ -3,7 +3,7 @@ cutterslade-analyze = { id = "ca.cutterslade.analyze", version = "1.10.0" }
 
 
 [versions]
-navfelles-token-version = "5.0.1"
+navfelles-token-version = "5.0.5"
 ktor-version = "2.3.12"
 jupiter-version = "5.11.0"
 cxf-version = "4.0.5" # Obs: Når vi oppgraderer denne, bør vi også kunne rydde bort guava og guava-workarounden
@@ -42,7 +42,7 @@ jacksonDatatypejsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datat
 #Kafka
 kafka-clients = { module = "org.apache.kafka:kafka-clients", version = "3.8.0"}
 kafka-avro-serializer = { module = "io.confluent:kafka-avro-serializer", version = "7.6.0"}
-commons-compress = { module = "org.apache.commons:commons-compress", version = "1.26.2" }
+commons-compress = { module = "org.apache.commons:commons-compress", version = "1.27.1" }
 
 #Jupiter
 jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter-version" }
@@ -50,8 +50,8 @@ jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.re
 jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "jupiter-version" }
 
 #Logging
-logging-slf4jApi = { module = "org.slf4j:slf4j-api", version = "2.0.13" }
-logging-logbackClassic = { module = "ch.qos.logback:logback-classic", version = "1.5.6" }
+logging-slf4jApi = { module = "org.slf4j:slf4j-api", version = "2.0.16" }
+logging-logbackClassic = { module = "ch.qos.logback:logback-classic", version = "1.5.7" }
 logging-logstashLogbackEncoder = { module = "net.logstash.logback:logstash-logback-encoder", version = "8.0"}
 
 #Micrometer
