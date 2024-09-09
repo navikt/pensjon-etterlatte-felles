@@ -1,31 +1,37 @@
 package no.nav.etterlatte.routes
 
-import io.ktor.http.ContentType
+import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.call
-import io.ktor.server.response.respondText
-import io.ktor.server.response.respondTextWriter
+import io.ktor.server.response.respond
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
 import io.ktor.server.routing.route
-import io.prometheus.client.CollectorRegistry
-import io.prometheus.client.exporter.common.TextFormat
+import io.micrometer.core.instrument.Clock
+import io.micrometer.prometheusmetrics.PrometheusConfig
+import io.micrometer.prometheusmetrics.PrometheusMeterRegistry
+import io.prometheus.metrics.model.registry.PrometheusRegistry
+
+object Metrikker {
+    private val collectorRegistry = PrometheusRegistry.defaultRegistry
+
+    val registry =
+        PrometheusMeterRegistry(
+            PrometheusConfig.DEFAULT,
+            collectorRegistry,
+            Clock.SYSTEM,
+        )
+}
 
 fun Route.internalRoute() {
     route("/internal") {
         get("/is_alive") {
-            call.respondText { "Alive" }
+            call.respond(HttpStatusCode.OK)
         }
         get("/is_ready") {
-            call.respondText { "Ready" }
+            call.respond(HttpStatusCode.OK)
         }
         get("/metrics") {
-            val names =
-                call.request.queryParameters
-                    .getAll("name[]")
-                    ?.toSet() ?: emptySet()
-            call.respondTextWriter(ContentType.parse(TextFormat.CONTENT_TYPE_004)) {
-                TextFormat.write004(this, CollectorRegistry.defaultRegistry.filteredMetricFamilySamples(names))
-            }
+            call.respond(Metrikker.registry)
         }
     }
 }
