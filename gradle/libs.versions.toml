@@ -4,7 +4,7 @@ cutterslade-analyze = { id = "ca.cutterslade.analyze", version = "1.10.0" }
 
 [versions]
 ktor-version = "2.3.12"
-jupiter-version = "5.10.3"
+jupiter-version = "5.11.0"
 cxf-version = "4.0.5" # Obs: Når vi oppgraderer denne, bør vi også kunne rydde bort guava og guava-workarounden
 bcpkix-version = "1.78.1"
 angus-version = "1.1.0"
@@ -14,7 +14,7 @@ angus-version = "1.1.0"
 #NavFelles
 rapidAndRivers = { module = "com.github.navikt:rapids-and-rivers", version = "2024082313161724411773.1db923f4402d" }
 brukernotifikasjonSchemas = { module = "com.github.navikt:brukernotifikasjon-schemas", version = "2.5.2"}
-mockOauth2Server = { module = "no.nav.security:mock-oauth2-server", version = "2.1.8"}
+mockOauth2Server = { module = "no.nav.security:mock-oauth2-server", version = "2.1.9"}
 tjenestespesifikasjonerTilbakekreving = { module = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:tilbakekreving-v1-tjenestespesifikasjon", version = "1.d27898d"}
 tjenestespesifikasjonerOppdragSimulering = { module = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:nav-system-os-simuler-fp-service-tjenestespesifikasjon", version = "1.d27898d"}
 
@@ -39,8 +39,8 @@ jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.re
 jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "jupiter-version" }
 
 #Logging
-logging-slf4jApi = { module = "org.slf4j:slf4j-api", version = "2.0.13" }
-logging-logbackClassic = { module = "ch.qos.logback:logback-classic", version = "1.5.6" }
+logging-slf4jApi = { module = "org.slf4j:slf4j-api", version = "2.0.16" }
+logging-logbackClassic = { module = "ch.qos.logback:logback-classic", version = "1.5.7" }
 logging-logstashLogbackEncoder = { module = "net.logstash.logback:logstash-logback-encoder", version = "8.0"}
 
 #Micrometer
