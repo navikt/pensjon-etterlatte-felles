@@ -32,6 +32,7 @@ ktor-serverTests = { module = "io.ktor:ktor-server-tests", version.ref = "ktor-v
 
 #Kafka
 kafka-avro-serializer = { module = "io.confluent:kafka-avro-serializer", version = "7.6.0"}
+commons-compress = { module = "org.apache.commons:commons-compress", version = "1.27.1" }
 
 #Jupiter
 jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter-version" }
