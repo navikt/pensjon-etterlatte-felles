@@ -6,6 +6,9 @@ Monorepo med apper som er felles for Team Etterlatte
 Legg inn appen i `.deploy/topic.yaml` for dev, `.deploy/topic-prod.yaml` for prod. Etter at det er lagt inn
 kan du oppdatere topicet ved å kjøre 
 
+## For å oppdatere endringer i topic yamler kjør dette:
+### Obs: Må stå samme path som filen(e)
+https://docs.nais.io/persistence/kafka/how-to/create/?h=kafka+topic#apply-the-topic-resource
 ```
 kubectl apply -f .deploy/topic.yaml
 ```
