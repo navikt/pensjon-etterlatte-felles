@@ -29,13 +29,6 @@ tasks {
         gradleVersion = "8.10"
     }
 
-    withType<Test> {
-        useJUnitPlatform()
-        testLogging {
-            events(TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED)
-        }
-    }
-
     withType<KotlinCompile> {
         kotlinOptions.jvmTarget = JavaVersion.VERSION_21.toString()
     }
