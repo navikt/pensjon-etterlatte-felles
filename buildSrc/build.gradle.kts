@@ -1,9 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import ca.cutterslade.gradle.analyze.AnalyzeDependenciesTask
 
 plugins {
     `kotlin-dsl`
-    alias(libs.plugins.cutterslade.analyze) apply true
 }
 
 group = "no.nav.etterlatte"
@@ -30,10 +28,5 @@ tasks {
 
     withType<KotlinCompile> {
         kotlinOptions.jvmTarget = JavaVersion.VERSION_21.toString()
-    }
-
-    withType<AnalyzeDependenciesTask> {
-        warnUsedUndeclared = true
-        warnUnusedDeclared = true
     }
 }
