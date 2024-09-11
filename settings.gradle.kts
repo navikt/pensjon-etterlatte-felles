@@ -6,5 +6,6 @@ plugins {
 
 include(
     "apps:etterlatte-proxy",
-    "apps:etterlatte-notifikasjoner"
+    "apps:etterlatte-notifikasjoner",
+    "common"
 )
