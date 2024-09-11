@@ -1,4 +1,4 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     `kotlin-dsl`
@@ -26,7 +26,9 @@ tasks {
         gradleVersion = "8.10"
     }
 
-    withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = JavaVersion.VERSION_21.toString()
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_21)
+        }
     }
 }
