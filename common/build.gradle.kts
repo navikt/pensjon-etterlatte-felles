@@ -1,6 +1,12 @@
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+
 plugins {
+    kotlin("jvm")
     id("maven-publish")
-    id("etterlatte")
+}
+
+repositories {
+    mavenCentral()
 }
 
 dependencies {
@@ -14,6 +20,15 @@ dependencies {
     testImplementation(libs.jupiter.api)
     testImplementation(libs.test.kotest.assertionscore)
     testImplementation(libs.mockk)
+}
+
+tasks {
+    withType<Test> {
+        useJUnitPlatform()
+        testLogging {
+            events(TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED)
+        }
+    }
 }
 
 publishing {
