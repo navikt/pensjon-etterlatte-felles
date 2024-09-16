@@ -1,11 +1,18 @@
-name: CI
+name: bygg-tjenestespesifikasjoner
 
 on:
+  workflow_dispatch: # Allow manually triggered workflow run
   push:
     branches:
-      - *
+      - '**'
     paths:
-      - tjenestespesifikasjoner/
+      - tjenestespesifikasjoner/**
+  pull_request:
+    branches:
+      - main
+    paths:
+      - tjenestespesifikasjoner/**
+
 jobs:
   build:
     runs-on: ubuntu-latest
