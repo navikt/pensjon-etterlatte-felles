@@ -16,7 +16,6 @@ updates:
     groups:
       backend:
         patterns:
-          - "ca.cutterslade.analyze"
           - "io.ktor*"
           - "org.jetbrains.kotlinx*"
           - "no.nav.security:token*"

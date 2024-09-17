@@ -22,7 +22,7 @@ jobs:
 
       # Build
       - name: Test and build
-        run: ./gradlew :common:build
+        run: ./gradlew :common:build --configuration-cache
 
   release-dev:
     name: Create Release - Dev
