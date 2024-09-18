@@ -1,0 +1,60 @@
+name: Release (Github Package Registry)
+
+on:
+  push:
+    branches:
+    - 'main'
+
+jobs:
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set release tag
+        run: |
+          COMMIT_COUNT=$(git rev-list --all --count)
+          TAG_NAME="$(echo $GITHUB_SHA | cut -c1-7)"
+          echo "RELEASE_TAG=tjenestespesifikasjoner-${COMMIT_COUNT}.${TAG_NAME}" >> $GITHUB_ENV
+      - name: Set changelog
+        # (Escape newlines see https://github.com/actions/create-release/issues/25)
+        run: |
+          text="$(git --no-pager log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%h %s")"
+          text="${text//$'%'/%25}"
+          text="${text//$'\n'/%0A}"
+          text="${text//$'\r'/%0D}"
+          echo "CHANGELOG=$text" >> $GITHUB_ENV
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: maven
+      - name: Deploy artifacts to github maven repository
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mvn -f tjenestespesifikasjoner -B versions:set -DnewVersion="$RELEASE_TAG"
+          mvn -f tjenestespesifikasjoner -B versions:commit
+          echo "Running release"
+          mvn -f tjenestespesifikasjoner -B --settings maven-settings.xml deploy -Dmaven.wagon.http.pool=false
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.RELEASE_TAG }}
+          release_name: ${{ env.RELEASE_TAG }}
+          body: |
+            Changes in this Release
+
+            ${{ env.CHANGELOG }}
+          draft: false
+          prerelease: false

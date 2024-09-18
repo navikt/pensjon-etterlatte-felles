@@ -1,0 +1,28 @@
+name: bygg-tjenestespesifikasjoner
+
+on:
+  workflow_dispatch: # Allow manually triggered workflow run
+  push:
+    branches:
+      - '**'
+    paths:
+      - tjenestespesifikasjoner/**
+  pull_request:
+    branches:
+      - main
+    paths:
+      - tjenestespesifikasjoner/**
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: maven
+      - name: Build with Maven
+        run: mvn -f tjenestespesifikasjoner -B install

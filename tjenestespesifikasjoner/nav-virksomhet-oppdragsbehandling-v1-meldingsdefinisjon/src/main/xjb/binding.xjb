@@ -1,0 +1,11 @@
+<jaxb:bindings xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="3.0"
+               xmlns:aa="https://gitlab.com/virtual-machinist/any-annotate"
+               extensionBindingPrefixes="aa"
+>
+    <jaxb:bindings schemaLocation="../xsd/no/trygdeetaten/skjema/oppdrag/oppdragskjema-1.xsd" node="/xs:schema">
+        <jaxb:bindings node="xs:complexType[@name='oppdrag']">
+            <aa:any-annotate>@jakarta.xml.bind.annotation.XmlRootElement(name = "oppdrag")</aa:any-annotate>
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+</jaxb:bindings>

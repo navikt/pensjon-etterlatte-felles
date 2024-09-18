@@ -11,6 +11,7 @@ out/
 node_modules/
 yarn-error.log
 /apps/journalfoer-soeknad/pdf.pdf
+target/
 
 **/cypress/videos/
 **/cypress/screenshots/
