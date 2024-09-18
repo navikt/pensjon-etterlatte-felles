@@ -20,9 +20,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Set release tag
         run: |
-          COMMIT_COUNT=$(git rev-list --all --count)
-          TAG_NAME="$(echo $GITHUB_SHA | cut -c1-7)"
-          echo "RELEASE_TAG=tjenestespesifikasjoner-${COMMIT_COUNT}.${TAG_NAME}" >> $GITHUB_ENV
+          TAG_NAME="$(TZ="Europe/Oslo" date +%Y.%m.%d-%H.%M).$(echo $GITHUB_SHA | cut -c 1-12)"
+          echo "RELEASE_TAG=tjenestespesifikasjoner-${TAG_NAME}" >> $GITHUB_ENV
       - name: Set changelog
         # (Escape newlines see https://github.com/actions/create-release/issues/25)
         run: |
