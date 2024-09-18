@@ -39,10 +39,13 @@ Konfigurasjon av slackbot for teamet.
 - [common](common)
 
 
+common er kode som er felles for Gjenny og søknadsdialogene. Dette er flytta over fra [pensjon-etterlatte-felles](https://github.com/navikt/pensjon-etterlatte-felles)-repoet.
+
+
 # Tjenestespesifikasjoner
 
 Dette repoet  inneholder tjenestespesifikasjoner for de tjenestene som NAV tilbyr internt, og som vi bruker i Team Etterlatte.
-Dette er flytta over fra [pensjon-etterlatte-tjenestespesifiksajoner](https://github.com/navikt/pensjon-etterlatte-tjenestespesifikasjoner)-repoet.
+Dette er flytta over fra [pensjon-etterlatte-tjenestespesifikasjoner](https://github.com/navikt/pensjon-etterlatte-tjenestespesifikasjoner)-repoet.
 
 De er maskinlesbare i form av WSDL/XSD/JSON-filer, og disse brukes som utgangspunkt for å
 generere Javakode. Denne autogenererte koden blir kompilert og siden publisert, slik at konsumenter
