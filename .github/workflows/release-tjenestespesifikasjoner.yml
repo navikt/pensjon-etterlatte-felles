@@ -49,15 +49,8 @@ jobs:
 
       - name: Create Release
         id: create_release
-        uses: actions/create-release@latest
+        uses: elgohr/Github-Release-Action@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ env.RELEASE_TAG }}
-          release_name: ${{ env.RELEASE_TAG }}
-          body: |
-            Changes in this Release
-
-            ${{ env.CHANGELOG }}
-          draft: false
-          prerelease: false
+          title: ${{ env.RELEASE_TAG }}
