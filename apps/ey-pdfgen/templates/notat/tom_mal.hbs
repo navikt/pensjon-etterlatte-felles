@@ -16,7 +16,7 @@
 </div>
 
 <div class="container">
-    {{#each payload}}
+    {{#each this.payload.slate}}
         {{#eq type "heading-two"}}
             {{#each this.children}}
                 <h2>{{ this.text }}</h2>
