@@ -181,11 +181,6 @@ data class Utenlandsopphold(
     val pensjonsutbetaling: Opplysning<FritekstSvar>?,
 )
 
-data class Naeringsinntekt(
-    val naeringsinntektPrAarFoerDoedsfall: Opplysning<FritekstSvar>?,
-    val naeringsinntektVedDoedsfall: Opplysning<EnumSvar<JaNeiVetIkke>>?,
-)
-
 typealias AarstallForMilitaerTjeneste = FritekstSvar
 
 data class ArbeidOgUtdanning(

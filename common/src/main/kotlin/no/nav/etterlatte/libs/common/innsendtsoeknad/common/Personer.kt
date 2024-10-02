@@ -13,7 +13,6 @@ import no.nav.etterlatte.libs.common.innsendtsoeknad.ForholdTilAvdoedeOMS
 import no.nav.etterlatte.libs.common.innsendtsoeknad.HoeyesteUtdanning
 import no.nav.etterlatte.libs.common.innsendtsoeknad.InntektOgPensjon
 import no.nav.etterlatte.libs.common.innsendtsoeknad.Kontaktinfo
-import no.nav.etterlatte.libs.common.innsendtsoeknad.Naeringsinntekt
 import no.nav.etterlatte.libs.common.innsendtsoeknad.OmsorgspersonType
 import no.nav.etterlatte.libs.common.innsendtsoeknad.OppholdUtland
 import no.nav.etterlatte.libs.common.innsendtsoeknad.OppholdUtlandInformasjon
@@ -167,8 +166,7 @@ data class Avdoed(
     val statsborgerskap: Opplysning<FritekstSvar>,
     val utenlandsopphold: BetingetOpplysning<EnumSvar<JaNeiVetIkke>, List<Utenlandsopphold>>,
     val doedsaarsakSkyldesYrkesskadeEllerYrkessykdom: Opplysning<EnumSvar<JaNeiVetIkke>>,
-    // Næringsinntekt og militærtjeneste er kun relevant dersom begge foreldrene er døde.
-    val naeringsInntekt: BetingetOpplysning<EnumSvar<JaNeiVetIkke>, Naeringsinntekt?>?,
+    // Militærtjeneste er kun relevant dersom begge foreldrene er døde.
     val militaertjeneste: BetingetOpplysning<EnumSvar<JaNeiVetIkke>, Opplysning<AarstallForMilitaerTjeneste>?>?,
 ) : Person {
     override val type = PersonType.AVDOED

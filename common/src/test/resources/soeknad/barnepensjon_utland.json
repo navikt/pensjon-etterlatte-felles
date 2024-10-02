@@ -273,28 +273,6 @@
         },
         "spoersmaal": "Skyldes dødsfallet yrkesskade eller yrkessykdom?"
       },
-      "naeringsInntekt": {
-        "svar": {
-          "verdi": "JA",
-          "innhold": "Ja"
-        },
-        "spoersmaal": "Var han eller hun selvstendig næringsdrivende?",
-        "opplysning": {
-          "naeringsinntektPrAarFoerDoedsfall": {
-            "svar": {
-              "innhold": "130 000"
-            },
-            "spoersmaal": "Oppgi næringsinntekt fra kalenderåret før dødsfallet (valgfri)"
-          },
-          "naeringsinntektVedDoedsfall": {
-            "svar": {
-              "verdi": "JA",
-              "innhold": "Ja"
-            },
-            "spoersmaal": "Hadde han eller hun næringsinntekt når dødsfallet skjedde?"
-          }
-        }
-      },
       "militaertjeneste": null,
       "type": "AVDOED"
     }

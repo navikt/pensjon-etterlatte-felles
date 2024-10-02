@@ -314,28 +314,6 @@
           }
         ]
       },
-      "naeringsInntekt": {
-        "spoersmaal": "Var han eller hun selvstendig næringsdrivende?",
-        "svar": {
-          "verdi": "JA",
-          "innhold": "Ja"
-        },
-        "opplysning": {
-          "naeringsinntektPrAarFoerDoedsfall": {
-            "spoersmaal": "Oppgi næringsinntekt fra kalenderåret før dødsfallet (valgfri)",
-            "svar": {
-              "innhold": "15135"
-            }
-          },
-          "naeringsinntektVedDoedsfall": {
-            "spoersmaal": "Hadde han eller hun næringsinntekt når dødsfallet skjedde?",
-            "svar": {
-              "verdi": "JA",
-              "innhold": "Ja"
-            }
-          }
-        }
-      },
       "militaertjeneste": {
         "spoersmaal": "Har han eller hun gjennomført militær eller sivil førstegangstjeneste som varte minst 30 dager?",
         "svar": {
