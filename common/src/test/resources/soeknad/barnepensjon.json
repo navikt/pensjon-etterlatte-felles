@@ -190,14 +190,6 @@
         },
         "spoersmaal": "Skyldes dødsfallet yrkesskade eller yrkessykdom?"
       },
-      "naeringsInntekt": {
-        "svar": {
-          "verdi": "NEI",
-          "innhold": "Nei"
-        },
-        "spoersmaal": "Var han eller hun selvstendig næringsdrivende?",
-        "opplysning": null
-      },
       "militaertjeneste": null,
       "type": "AVDOED"
     }
