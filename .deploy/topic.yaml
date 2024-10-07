@@ -111,3 +111,6 @@ spec:
     - team: etterlatte
       application: selvbetjening-backend 
       access: readwrite
+    - team: etterlatte
+      application: etterlatte-brev-kafka
+      access: readwrite
