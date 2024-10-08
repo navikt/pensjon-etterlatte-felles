@@ -96,3 +96,6 @@ spec:
     - team: etterlatte
       application: etterlatte-hendelser-samordning
       access: readwrite
+    - team: etterlatte
+      application: etterlatte-brev-kafka
+      access: readwrite
