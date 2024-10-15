@@ -10,7 +10,7 @@ spec:
   config: # optional; all fields are optional too; defaults shown
     cleanupPolicy: delete  # delete, compact
     minimumInSyncReplicas: 1
-    partitions: 1
+    partitions: 1 #OBS: skal denne økes så må man sjekke at alle rapids og andre kafka apper som leser denne har satt recreate strategy på poden, sjekk også at min max passer med ønsket strategi
     replication: 3  # see min/max requirements
     retentionBytes: -1  # -1 means unlimited
     retentionHours: 336  # 2 uker
