@@ -14,6 +14,6 @@ data class Inntektsjustering(
     val AFPInntekt: Int,
     val AFPTjenesteordning: String?,
     val skalGaaAvMedAlderspensjon: String,
-    val datoForAaGaaAvMedAlderspensjon: LocalDate,
+    val datoForAaGaaAvMedAlderspensjon: LocalDate?,
     val tidspunkt: Instant
 )
