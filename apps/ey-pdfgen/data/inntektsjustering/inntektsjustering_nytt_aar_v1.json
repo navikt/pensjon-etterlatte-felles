@@ -3,7 +3,10 @@
   "aar": 2025,
   "arbeidsinntekt": 111,
   "naeringsinntekt": 222,
-  "arbeidsinntektUtland": 333,
-  "naeringsinntektUtland": 444,
-  "tidspunkt": "2022-01-31T00:00:00Z"
+  "inntektFraUtland": 333,
+  "afpInntekt": 444,
+  "afpTjenesteordning": "tjenesteordning",
+  "skalGaaAvMedAlderspensjon": "JA",
+  "datoForAaGaaAvMedAlderspensjon": "10.06.2025",
+  "tidspunkt": "20.11.2024 05:06:07"
 }
