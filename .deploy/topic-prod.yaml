@@ -22,7 +22,7 @@ spec:
       application: journalfoer-soeknad
       access: readwrite
     - team: etterlatte
-      application: selvbetjening-api
+      application: selvbetjening-backend
       access: readwrite
     - team: etterlatte
       application: innsendt-soeknad
