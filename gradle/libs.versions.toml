@@ -1,6 +1,6 @@
 [versions]
 ktor-version = "2.3.12"
-jupiter-version = "5.11.1"
+jupiter-version = "5.11.3"
 cxf-version = "4.0.5" # Obs: Når vi oppgraderer denne, bør vi også kunne rydde bort guava og guava-workarounden
 bcpkix-version = "1.78.1"
 angus-version = "1.1.0"
@@ -11,7 +11,7 @@ jackson-version = "2.18.0"
 #NavFelles
 rapidAndRivers = { module = "com.github.navikt:rapids-and-rivers", version = "2024082313161724411773.1db923f4402d" }
 brukernotifikasjonSchemas = { module = "com.github.navikt:brukernotifikasjon-schemas", version = "2.5.2"}
-mockOauth2Server = { module = "no.nav.security:mock-oauth2-server", version = "2.1.9"}
+mockOauth2Server = { module = "no.nav.security:mock-oauth2-server", version = "2.1.10"}
 tjenestespesifikasjonerTilbakekreving = { module = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:tilbakekreving-v1-tjenestespesifikasjon", version = "1.d27898d"}
 tjenestespesifikasjonerOppdragSimulering = { module = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:nav-system-os-simuler-fp-service-tjenestespesifikasjon", version = "1.d27898d"}
 
@@ -50,7 +50,7 @@ logging-logstashLogbackEncoder = { module = "net.logstash.logback:logstash-logba
 micrometer-prometheus = { module = "io.micrometer:micrometer-registry-prometheus", version = "1.13.4"}
 
 #MockK
-mockk = { module = "io.mockk:mockk", version = "1.13.12" }
+mockk = { module = "io.mockk:mockk", version = "1.13.13" }
 
 # Kotest
 test-kotest-assertionscore = { module = "io.kotest:kotest-assertions-core", version = "5.9.1" }
