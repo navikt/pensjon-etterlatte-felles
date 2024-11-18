@@ -3,39 +3,63 @@
 <head>
     <meta charset="UTF-8" />
     {{> eypdfgen/partials_v2/style}}
-    <title>Inntektsjustering {{ aar }}</title>
+    <title>Omstillingsstønad inntektsjustering {{ aar }}</title>
 </head>
 <body>
 
 <div id="header">
     <img class="navlogo" src="{{ image "Navlogo.png" }}" />
-    <h1 class="title" >Inntektsjustering {{ aar }}</h1>
+    <h1 class="title" >Omstillingsstønad inntektsjustering {{ aar }}</h1>
 </div>
 <div>
-    <h3>
-        Inntekt for sak {{ sakId }} ble mottatt {{ tidspunkt }}
-    </h3>
-    <p>
-        Arbeidsinntekt: {{ arbeidsinntekt }}
-    </p>
-    <p>
-        Næringsinntekt: {{ naeringsinntekt }}
-    </p>
-    <p>
-        Inntekt fra utland: {{ inntektFraUtland }}
-    </p>
-    <p>
-        Inntekt AFP: {{ afpInntekt }}
-    </p>
-    <p>
-        Tjenesteordning AFP : {{ afpTjenesteordning }}
-    </p>
-    <p>
-        Skal gå av med alderspensjon: {{ skalGaaAvMedAlderspensjon }}
-    </p>
-    <p>
-        Dato for å gå av med alderspensjon: {{ datoForAaGaaAvMedAlderspensjon }}
-    </p>
+    <h2>
+        Dette er det du har oppgitt som inntekt i {{ aar }}
+    </h2>
+    <h4>
+        Det ble oppgitt {{ tidspunkt }}
+    </h4>
+
+    {{#if arbeidsinntekt includeZero=true}}
+        <div class="row opplysning">
+            <div class="col">Arbeidsinntekter og andre utbetalinger</div>
+            <div class="col">{{ arbeidsinntekt }} kr</div>
+        </div>
+    {{/if}}
+    {{#if naeringsinntekt includeZero=true}}
+        <div class="row opplysning">
+            <div class="col">Næringsinntekt</div>
+            <div class="col">{{ naeringsinntekt }} kr</div>
+        </div>
+    {{/if}}
+    {{#if inntektFraUtland includeZero=true}}
+        <div class="row opplysning">
+            <div class="col">Inntekt fra utland</div>
+            <div class="col">{{ inntektFraUtland }} kr</div>
+        </div>
+    {{/if}}
+    {{#if afpInntekt includeZero=true }}
+        <div class="row opplysning">
+            <div class="col">AFP</div>
+            <div class="col">{{ afpInntekt }} kr</div>
+        </div>
+
+        <div class="row opplysning">
+            <div class="col">Tjenesteordning du får AFP fra</div>
+            <div class="col">{{ afpTjenesteordning }}</div>
+        </div>
+    {{/if}}
+    {{#if skalGaaAvMedAlderspensjon }}
+        <div class="row opplysning">
+            <div class="col">Skal gå av med alderspensjon neste år</div>
+            <div class="col">{{ skalGaaAvMedAlderspensjon }}</div>
+        </div>
+        {{#eq skalGaaAvMedAlderspensjon "JA"}}
+            <div class="row opplysning">
+                <div class="col">Når du planlegger å gå av med alderspensjon</div>
+                <div class="col">{{ datoForAaGaaAvMedAlderspensjon }}</div>
+            </div>
+        {{/eq}}
+    {{/if}}
 </div>
 
 </body>
