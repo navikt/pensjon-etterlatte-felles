@@ -14,11 +14,11 @@ data class BetingetOpplysning<T, R>(
 )
 
 interface Svar {
-    val innhold: Any
+    val innhold: Any?
 }
 
 data class FritekstSvar(
-    override val innhold: String,
+    override val innhold: String? = null,
 ) : Svar
 
 data class DatoSvar(
