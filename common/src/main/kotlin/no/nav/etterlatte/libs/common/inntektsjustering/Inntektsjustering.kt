@@ -8,7 +8,6 @@ import java.util.UUID
 data class Inntektsjustering(
     val id: UUID,
     val fnr: String,
-    val mottattDato: LocalDateTime,
     val inntektsaar: Int,
     val arbeidsinntekt: Int,
     val naeringsinntekt: Int,
