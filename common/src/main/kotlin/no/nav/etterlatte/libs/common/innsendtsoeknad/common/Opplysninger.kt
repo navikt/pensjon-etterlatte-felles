@@ -26,13 +26,6 @@ data class UtbetalingsInformasjon(
     val utenlandskBankAdresse: Opplysning<FritekstSvar>? = null,
     val iban: Opplysning<FritekstSvar>? = null,
     val swift: Opplysning<FritekstSvar>? = null,
-    val skattetrekk: Skattetrekk? = null,
-)
-
-data class Skattetrekk(
-    val svar: Opplysning<EnumSvar<JaNeiVetIkke>>? = null,
-    val trekk: Opplysning<FritekstSvar>? = null,
-    val beskrivelse: Opplysning<FritekstSvar>? = null,
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
