@@ -36,28 +36,7 @@
       "utenlandskBankNavn": null,
       "utenlandskBankAdresse": null,
       "iban": null,
-      "swift": null,
-      "skattetrekk": {
-        "svar": {
-          "svar": {
-            "verdi": "NEI",
-            "innhold": "Nei"
-          },
-          "spoersmaal": "Ønsker du at vi legger inn et skattetrekk for barnepensjonen?"
-        },
-        "trekk": {
-          "svar": {
-            "innhold": "20%"
-          },
-          "spoersmaal": "Frivillig skattetrekk i prosent per måned"
-        },
-        "beskrivelse": {
-          "svar": {
-            "innhold": "Ikke i desember"
-          },
-          "spoersmaal": "Vi trenger beskjed hvis det ikke skal være trekk i desember eller andre deler av året (valgfritt)"
-        }
-      }
+      "swift": null
     }
   },
   "soeker": {
