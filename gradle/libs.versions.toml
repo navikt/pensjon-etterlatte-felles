@@ -1,6 +1,6 @@
 [versions]
 ktor-version = "2.3.13"
-jupiter-version = "5.11.3"
+jupiter-version = "5.11.4"
 cxf-version = "4.0.5" # Obs: Når vi oppgraderer denne, bør vi også kunne rydde bort guava og guava-workarounden
 bcpkix-version = "1.79"
 angus-version = "1.1.0"
@@ -50,7 +50,7 @@ logging-logstashLogbackEncoder = { module = "net.logstash.logback:logstash-logba
 micrometer-prometheus = { module = "io.micrometer:micrometer-registry-prometheus", version = "1.14.2"}
 
 #MockK
-mockk = { module = "io.mockk:mockk", version = "1.13.13" }
+mockk = { module = "io.mockk:mockk", version = "1.13.14" }
 
 # Kotest
 test-kotest-assertionscore = { module = "io.kotest:kotest-assertions-core", version = "5.9.1" }
