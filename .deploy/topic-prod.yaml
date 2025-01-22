@@ -48,8 +48,12 @@ spec:
     - team: etterlatte
       application: etterlatte-behandling
       access: readwrite
+    # Skal erstattes av etterlatte-behandling-kafka
     - team: etterlatte
       application: etterlatte-oppdater-behandling
+      access: readwrite
+    - team: etterlatte
+      application: etterlatte-behandling-kafka
       access: readwrite
     - team: etterlatte
       application: etterlatte-vedtaksvurdering
