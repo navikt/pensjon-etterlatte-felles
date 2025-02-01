@@ -2,7 +2,7 @@
 ktor-version = "2.3.13"
 jupiter-version = "5.11.4"
 cxf-version = "4.0.5" # Obs: Når vi oppgraderer denne, bør vi også kunne rydde bort guava og guava-workarounden
-bcpkix-version = "1.79"
+bcpkix-version = "1.80"
 angus-version = "1.1.0"
 jackson-version = "2.18.2"
 
