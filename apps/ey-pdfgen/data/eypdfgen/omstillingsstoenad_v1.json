@@ -674,6 +674,20 @@
               "innhold": "Alderspensjon"
             }
           },
+          "afpOffentlig": {
+            "innvilget": {
+              "spoersmaal": "Når fikk du innvilget AFP?",
+              "svar": {
+                "innhold": "2024-12-03"
+              }
+            },
+            "beloep": {
+              "spoersmaal": "Hva er din forventede AFP-utbetaling i år, før skatt?",
+              "svar": {
+                "innhold": "123123"
+              }
+            }
+          },
           "utbetaler": {
             "spoersmaal": "Hvilken tjenestepensjonsordning utbetaler pensjonen din?",
             "svar": {
