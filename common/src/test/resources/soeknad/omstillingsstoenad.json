@@ -415,10 +415,10 @@
         "tjenestepensjonsordning": {
           "type": {
             "spoersmaal": "Hva slags pensjon mottar du?",
-            "svar": {
+            "svar": [{
               "verdi": "AVTALEFESTET_PENSJON_OFFENTLIG",
               "innhold": "Avtalefestet pensjon i offentlig sektor"
-            }
+            }]
           },
           "utbetaler": {
             "spoersmaal": "Hvilken tjenestepensjonsordning utbetaler pensjonen din?",
