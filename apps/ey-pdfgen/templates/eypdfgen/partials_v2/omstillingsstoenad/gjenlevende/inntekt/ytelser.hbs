@@ -5,10 +5,6 @@
         {{#if this.tjenestepensjonsordning}}
             {{> eypdfgen/partials_v2/common/opplysning this.tjenestepensjonsordning.type}}
             {{> eypdfgen/partials_v2/common/opplysning this.tjenestepensjonsordning.utbetaler}}
-            {{#if this.tjenestepensjonsordning.afpOffentlig}}
-                {{> eypdfgen/partials_v2/common/opplysning this.tjenestepensjonsordning.afpOffentlig.innvilget}}
-                {{> eypdfgen/partials_v2/common/opplysning this.tjenestepensjonsordning.afpOffentlig.beloep}}
-            {{/if}}
         {{/if}}
 
         {{> eypdfgen/partials_v2/common/opplysning this.utland.svar}}
