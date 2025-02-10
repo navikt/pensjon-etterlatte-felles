@@ -669,10 +669,16 @@
         "tjenestepensjonsordning": {
           "type": {
             "spoersmaal": "Hva slags pensjon mottar du?",
-            "svar": {
-              "verdi": "ALDERSPENSJON",
-              "innhold": "Alderspensjon"
-            }
+            "svar": [
+              {
+                "verdi": "ALDERSPENSJON",
+                "innhold": "Alderspensjon"
+              },
+              {
+                "verdi": "AVTALEFESTET_PENSJON_OFFENTLIG",
+                "innhold": "Avtalefestet pensjon offentlig"
+              }
+            ]
           },
           "afpOffentlig": {
             "innvilget": {
