@@ -335,8 +335,14 @@ data class PensjonEllerUfoere(
 )
 
 data class Tjenestepensjonsordning(
-    val type: Opplysning<EnumSvar<PensjonsYtelseType>>,
+    val type: Opplysning<List<EnumSvar<PensjonsYtelseType>>>,
+    val afpOffentlig: AfpOffentlig?,
     val utbetaler: Opplysning<FritekstSvar>,
+)
+
+data class AfpOffentlig(
+    val innvilget: Opplysning<DatoSvar>,
+    val beloep: Opplysning<FritekstSvar>
 )
 
 data class Utland(

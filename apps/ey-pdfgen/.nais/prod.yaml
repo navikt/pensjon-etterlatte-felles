@@ -36,3 +36,4 @@ spec:
       rules:
         - application: etterlatte-gyldig-soeknad
         - application: etterlatte-brev-api
+        - application: etterlatte-behandling-kafka

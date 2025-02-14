@@ -34,8 +34,32 @@
                     {{/eq}}
                 {{/eq}}
             </h5>
-            {{> eypdfgen/partials_v2/common/opplysning this.tjenestepensjonsordning.type}}
+            <div class="row opplysning">
+                <div class="col">
+                    {{this.tjenestepensjonsordning.type.spoersmaal}}
+                </div>
+                <div class="col">
+                    {{#each this.tjenestepensjonsordning.type.svar}}
+                        • {{this.innhold}} <br />
+                    {{/each}}
+                </div>
+            </div>
             {{> eypdfgen/partials_v2/common/opplysning this.tjenestepensjonsordning.utbetaler}}
+            {{#if this.tjenestepensjonsordning.afpOffentlig}}
+                <h5>
+                    {{#eq spraak "en"}}
+                        AFP contractual pension in the public sector
+                    {{else}}
+                        {{#eq spraak "nn"}}
+                            Avtalefesta pensjon i offentleg sektor
+                        {{else}}
+                            Avtalefestet pensjon i offentlig sektor
+                        {{/eq}}
+                    {{/eq}}
+                </h5>
+                {{> eypdfgen/partials_v2/common/datoOpplysning this.tjenestepensjonsordning.afpOffentlig.innvilget}}
+                {{> eypdfgen/partials_v2/common/opplysning this.tjenestepensjonsordning.afpOffentlig.beloep}}
+            {{/if}}
         {{/if}}
 
         {{#if this.utland}}
