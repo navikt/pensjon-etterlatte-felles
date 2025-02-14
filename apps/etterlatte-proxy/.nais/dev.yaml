@@ -41,11 +41,11 @@ spec:
   webproxy: true
   env:
     - name: STS_SOAP_URL
-      value: https://sts-q1.preprod.local/SecurityTokenServiceProvider/
+      value: https://sts-q2.preprod.local/SecurityTokenServiceProvider/
     - name: TILBAKEKREVING_URL
-      value: https://cics-q1.adeo.no/oppdrag/K231CW80
+      value: https://cics-q2.adeo.no/oppdrag/K231CW80
     - name: SIMULERING_OPPDRAG_URL
-      value: https://cics-q1.adeo.no/oppdrag/simulerFpServiceWSBinding
+      value: https://cics-q2.adeo.no/oppdrag/simulerFpServiceWSBinding
   prometheus:
     enabled: true
     path: /internal/prometheus
