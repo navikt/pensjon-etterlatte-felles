@@ -23,23 +23,9 @@ dependencies {
     implementation(libs.cxf.logging)
     implementation(libs.cxf.jax.ws)
     implementation(libs.cxf.transports.http)
-    implementation(libs.cxf.ws.security) {
-        exclude("com.google.guava:guava")
-        exclude("org.bouncycastle:bcpkix-jdk18on")
-        exclude("org.bouncycastle:bcprov-jdk18on")
-        exclude("org.eclipse.angus:angus-core")
-        exclude("org.eclipse.angus:angus-mail")
-    }
+    implementation(libs.cxf.ws.security)
     implementation(libs.micrometer.prometheus)
 
     testImplementation(libs.mockOauth2Server)
     testImplementation(libs.ktor.serverTests)
-
-    // Avhengigheter fra patching av sårbarheter i Apache CXF.
-    // Vi bør kunne ta bort alle disse og exclude-lista for neste CXF-versjon
-    implementation(libs.guava)
-    implementation(libs.bcpkix)
-    implementation(libs.bcprov)
-    implementation(libs.angus.core)
-    implementation(libs.angus.mail)
 }
