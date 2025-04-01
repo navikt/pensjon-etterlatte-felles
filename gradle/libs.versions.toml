@@ -1,7 +1,7 @@
 [versions]
 ktor-version = "2.3.13"
 jupiter-version = "5.11.4"
-cxf-version = "4.1.0"
+cxf-version = "4.1.1"
 jackson-version = "2.18.2"
 
 [libraries]
