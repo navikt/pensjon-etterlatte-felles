@@ -28,4 +28,5 @@ dependencies {
 
     testImplementation(libs.mockOauth2Server)
     testImplementation(libs.ktor.serverTests)
+    testRuntimeOnly(libs.junit.platform.launcher)
 }
