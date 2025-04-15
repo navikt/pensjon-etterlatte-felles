@@ -14,4 +14,5 @@ dependencies {
     }
 
     testImplementation(libs.mockk)
+    testRuntimeOnly(libs.junit.platform.launcher)
 }

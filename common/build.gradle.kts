@@ -18,6 +18,7 @@ dependencies {
     api(libs.jackson.modulekotlin)
 
     testImplementation(libs.jupiter.api)
+    testRuntimeOnly(libs.junit.platform.launcher)
     testImplementation(libs.test.kotest.assertionscore)
     testImplementation(libs.mockk)
 }
