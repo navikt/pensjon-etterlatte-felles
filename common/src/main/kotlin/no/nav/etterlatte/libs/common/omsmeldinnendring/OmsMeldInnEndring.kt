@@ -21,6 +21,7 @@ data class OmsMeldtInnEndring(
 enum class OmsEndring {
     INNTEKT,
     AKTIVITET_OG_INNTEKT,
+    SVAR_PAA_ETTEROPPGJOER,
     ANNET,
 }
 
