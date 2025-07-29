@@ -1,4 +1,4 @@
-FROM node:24-bookworm-slim as base
+FROM node:22-bookworm-slim as base
 
 WORKDIR /usr/src/app
 
@@ -10,7 +10,7 @@ ENV NODE_ENV="production"
 RUN yarn
 
 
-FROM gcr.io/distroless/nodejs20-debian12 as prod
+FROM gcr.io/distroless/nodejs22-debian12 as prod
 COPY --from=base /usr/src/app /app
 
 USER nonroot
