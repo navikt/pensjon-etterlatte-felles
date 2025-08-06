@@ -284,6 +284,12 @@ data class AnnenSituasjon(
 )
 
 data class InntektOgPensjon(
+    // TODO NY DATASTRUKTUR FOR INNTEKT
+    val skalGaaAvMedAlderspensjon: SkalGaaAvMedAlderspensjon?,
+    val inntektFremTilDoedsfallet: Opplysning<InntektFremTilDoedsfallet>?,
+    val forventetInntektIAar: Opplysning<ForventetInntektIAar>?,
+    val forventetInntektTilNesteAar: Opplysning<ForventetInntektTilNesteAar>?,
+    // TODO GAMMEL DATASTRUKTUR FOR INNTEKT
     val loennsinntekt: Opplysning<Loennsinntekt>?,
     val naeringsinntekt: Opplysning<Loennsinntekt>?,
     val pensjonEllerUfoere: PensjonEllerUfoere?,
@@ -293,6 +299,66 @@ data class InntektOgPensjon(
     val ytelserAndre: YtelserAndre,
 )
 
+// TODO NY DATASTRUKTUR FOR INNTEKT
+data class SkalGaaAvMedAlderspensjon(
+    val valg: Opplysning<EnumSvar<JaNeiVetIkke>>?,
+    val datoForAaGaAvMedAlderspensjon: Opplysning<DatoSvar>?
+)
+
+data class InntektFremTilDoedsfallet(
+    val arbeidsinntekt: Opplysning<FritekstSvar>?,
+    val naeringsinntekt: Naeringsinntekt?,
+    val afpInntekt: AfpInntekt?,
+    val inntektFraUtland: Opplysning<FritekstSvar>?,
+    val andreInntekter: AndreInntekter?
+)
+
+data class ForventetInntektIAar(
+    val arbeidsinntekt: Opplysning<FritekstSvar>?,
+    val naeringsinntekt: Naeringsinntekt?,
+    val afpInntekt: AfpInntekt?,
+    val inntektFraUtland: Opplysning<FritekstSvar>?,
+    val andreInntekter: AndreInntekter?,
+    val noeSomKanPaavirkeInntekten: NoeSomKanPaavirkeInntekten?
+)
+
+data class ForventetInntektTilNesteAar(
+    val arbeidsinntekt: Opplysning<FritekstSvar>?,
+    val naeringsinntekt: Naeringsinntekt?,
+    val afpInntekt: AfpInntekt?,
+    val inntektFraUtland: Opplysning<FritekstSvar>?,
+    val andreInntekter: AndreInntekter?,
+    val noeSomKanPaavirkeInntekten: NoeSomKanPaavirkeInntekten?
+)
+
+data class Naeringsinntekt(
+    val inntekt: Opplysning<FritekstSvar>?,
+    val erNaeringsinntektOpptjentJevt: ErNaeringsinntektOpptjentJevt
+)
+
+data class ErNaeringsinntektOpptjentJevt(
+    val valg: Opplysning<EnumSvar<JaNeiVetIkke>>?,
+    val beskrivelse: Opplysning<FritekstSvar>?
+)
+
+data class AfpInntekt(
+    val inntekt: Opplysning<FritekstSvar>?,
+    val tjenesteordning: Opplysning<FritekstSvar>?
+)
+
+data class AndreInntekter(
+    val valg: Opplysning<EnumSvar<JaNeiVetIkke>>?,
+    val inntekt: Opplysning<FritekstSvar>?,
+    val beskrivelse: Opplysning<FritekstSvar>?
+)
+
+data class NoeSomKanPaavirkeInntekten(
+    val valg: Opplysning<EnumSvar<JaNeiVetIkke>>?,
+    val grunnTilPaavirkelseAvInntekt: Opplysning<EnumSvar<EndringAvInntektGrunnType>>?,
+    val beskrivelse: Opplysning<FritekstSvar>?
+)
+
+// TODO GAMMEL DATASTRUKTUR FOR INNTEKT
 data class Loennsinntekt(
     val norgeEllerUtland: Opplysning<List<EnumSvar<NorgeEllerUtlandType>>>,
     val norge: InntektSamlet?,
