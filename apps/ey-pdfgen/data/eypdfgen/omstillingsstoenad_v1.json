@@ -460,6 +460,286 @@
       ]
     },
     "inntektOgPensjon": {
+      "skalGaaAvMedAlderspensjon": {
+        "valg": {
+          "spoersmaal": "Skal du gå av med alderspensjon i år?",
+          "svar": {
+            "verdi": "JA",
+            "innhold": "Ja"
+          }
+        },
+        "datoForAaGaaAvMedAlderspensjon": {
+          "spoersmaal": "Når planlegger du å ta ut alderspensjon?",
+          "svar": {
+            "innhold": "2024-12-03"
+          }
+        }
+      },
+      "inntektFremTilDoedsfallet": {
+        "spoersmaal": "Inntekt frem til dødsfallet",
+        "svar": {
+          "arbeidsinntekt": {
+            "spoersmaal": "Arbeidsinntekt og andre utbetalinger",
+            "svar": {
+              "innhold": "123"
+            }
+          },
+          "naeringsinntekt": {
+            "inntekt": {
+              "spoersmaal": "Næringsinntekt",
+              "svar": {
+                "innhold": "123"
+              }
+            },
+            "erNaeringsinntektOpptjentJevnt": {
+              "valg": {
+                "spoersmaal": "Er næringsinntekten opptjent jevnt i løpet av året?",
+                "svar": {
+                  "verdi": "NEI",
+                  "innhold": "Nei"
+                }
+              },
+              "beskrivelse": {
+                "spoersmaal": "Skriv kort om hvordan inntekten varierer gjennom året",
+                "svar": {
+                  "innhold": "Den varierer veldig"
+                }
+              }
+            }
+          },
+          "afpInntekt": {
+            "inntekt": {
+              "spoersmaal": "Avtalefestet pensjon (AFP) offentlig eller privat",
+              "svar": {
+                "innhold": "123"
+              }
+            },
+            "tjenesteordning": {
+              "spoersmaal": "Hvilken tjenesteordning får du AFP fra?",
+              "svar": {
+                "innhold": "KLP"
+              }
+            }
+          },
+          "inntektFraUtland": {
+            "spoersmaal": "Alle inntekter fra utland",
+            "svar": {
+              "innhold": "123"
+            }
+          },
+          "andreInntekter": {
+            "valg": {
+              "spoersmaal": "Hadde du andre inntekter?",
+              "svar": {
+                "verdi": "JA",
+                "innhold": "Ja"
+              }
+            },
+            "inntekt": {
+              "spoersmaal": "Andre inntekter",
+              "svar": {
+                "innhold": "123"
+              }
+            },
+            "beskrivelse": {
+              "spoersmaal": "Hva slags inntekt var det?",
+              "svar": {
+                "innhold": "En hel haug av andre inntekter"
+              }
+            }
+          }
+        }
+      },
+      "forventetInntektIAar": {
+        "spoersmaal": "Forventet årsinntekt i år",
+        "svar": {
+          "arbeidsinntekt": {
+            "spoersmaal": "Arbeidsinntekt og andre utbetalinger",
+            "svar": {
+              "innhold": "123"
+            }
+          },
+          "naeringsinntekt": {
+            "inntekt": {
+              "spoersmaal": "Næringsinntekt",
+              "svar": {
+                "innhold": "123"
+              }
+            },
+            "erNaeringsinntektOpptjentJevnt": {
+              "valg": {
+                "spoersmaal": "Er næringsinntekten opptjent jevnt i løpet av året?",
+                "svar": {
+                  "verdi": "NEI",
+                  "innhold": "Nei"
+                }
+              },
+              "beskrivelse": {
+                "spoersmaal": "Skriv kort om hvordan inntekten varierer gjennom året",
+                "svar": {
+                  "innhold": "Den varierer veldig"
+                }
+              }
+            },
+            "afpInntekt": {
+              "inntekt": {
+                "spoersmaal": "Avtalefestet pensjon (AFP) offentlig eller privat",
+                "svar": {
+                  "innhold": "123"
+                }
+              },
+              "tjenesteordning": {
+                "spoersmaal": "Hvilken tjenesteordning får du AFP fra?",
+                "svar": {
+                  "innhold": "KLP"
+                }
+              }
+            },
+            "inntektFraUtland": {
+              "spoersmaal": "Alle inntekter fra utland",
+              "svar": {
+                "innhold": "123"
+              }
+            },
+            "andreInntekter": {
+              "valg": {
+                "spoersmaal": "Har du andre inntekter?",
+                "svar": {
+                  "verdi": "JA",
+                  "innhold": "Ja"
+                }
+              },
+              "inntekt": {
+                "spoersmaal": "Andre inntekter",
+                "svar": "123"
+              },
+              "beskrivelse": {
+                "spoersmaal": "Hva slags inntekt er det?",
+                "svar": {
+                  "innhold": "Masse rare intekter"
+                }
+              }
+            },
+            "noeSomKanPaavirkeInntekten": {
+              "valg": {
+                "spoersmaal": "Er det noe du vet om i dag som kan påvirke inntekten din fremover?",
+                "svar": {
+                  "verdi": "JA",
+                  "innhold": "Ja"
+                }
+              },
+              "grunnTilPaavirkelseAvInntekt": {
+                "spoersmaal": "Hva er grunnen til at inntekten endrer seg?",
+                "svar": {
+                  "verdi": "ANNEN_GRUNN",
+                  "innhold": "Annen grunn"
+                }
+              },
+              "beskrivelse": {
+                "spoersmaal": "Beskriv endringen",
+                "svar": {
+                  "innhold": "Endringen endrer seg endelig"
+                }
+              }
+            }
+          }
+        }
+      },
+      "forventetInntektTilNesteAar": {
+        "spoersmaal": "Forventet inntekt til neste år",
+        "svar": {
+          "arbeidsinntekt": {
+            "spoersmaal": "Arbeidsinntekt og andre utbetalinger",
+            "svar": {
+              "innhold": "123"
+            }
+          },
+          "naeringsinntekt": {
+            "inntekt": {
+              "spoersmaal": "Næringsinntekt",
+              "svar": {
+                "innhold": "123"
+              }
+            },
+            "erNaeringsinntektOpptjentJevnt": {
+              "valg": {
+                "spoersmaal": "Er næringsinntekten opptjent jevnt i løpet av året?",
+                "svar": {
+                  "verdi": "NEI",
+                  "innhold": "Nei"
+                }
+              },
+              "beskrivelse": {
+                "spoersmaal": "Skriv kort om hvordan inntekten varierer gjennom året",
+                "svar": {
+                  "innhold": "Den varierer veldig"
+                }
+              }
+            },
+            "afpInntekt": {
+              "inntekt": {
+                "spoersmaal": "Avtalefestet pensjon (AFP) offentlig eller privat",
+                "svar": {
+                  "innhold": "123"
+                }
+              },
+              "tjenesteordning": {
+                "spoersmaal": "Hvilken tjenesteordning får du AFP fra?",
+                "svar": {
+                  "innhold": "KLP"
+                }
+              }
+            },
+            "inntektFraUtland": {
+              "spoersmaal": "Alle inntekter fra utland",
+              "svar": {
+                "innhold": "123"
+              }
+            },
+            "andreInntekter": {
+              "valg": {
+                "spoersmaal": "Har du andre inntekter?",
+                "svar": {
+                  "verdi": "JA",
+                  "innhold": "Ja"
+                }
+              },
+              "inntekt": {
+                "spoersmaal": "Andre inntekter",
+                "svar": "123"
+              },
+              "beskrivelse": {
+                "spoersmaal": "Hva slags inntekt er det?",
+                "svar": {
+                  "innhold": "Masse rare intekter"
+                }
+              }
+            },
+            "noeSomKanPaavirkeInntekten": {
+              "valg": {
+                "spoersmaal": "Er det noe du vet om i dag som kan påvirke inntekten din fremover?",
+                "svar": {
+                  "verdi": "JA",
+                  "innhold": "Ja"
+                }
+              },
+              "grunnTilPaavirkelseAvInntekt": {
+                "spoersmaal": "Hva er grunnen til at inntekten endrer seg?",
+                "svar": {
+                  "verdi": "ANNEN_GRUNN",
+                  "innhold": "Annen grunn"
+                }
+              },
+              "beskrivelse": {
+                "spoersmaal": "Beskriv endringen",
+                "svar": {
+                  "innhold": "Endringen endrer seg endelig"
+                }
+              }
+            }
+          }
+        }
+      },
       "loennsinntekt": {
         "spoersmaal": "Arbeidsinntekt",
         "svar": {
