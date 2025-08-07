@@ -11,6 +11,8 @@
 </h2>
 
 {{#with soeker.inntektOgPensjon}}
+    {{> eypdfgen/partials_v2/omstillingsstoenad/gjenlevende/inntekt/skalGaaAvMedAlderspensjon this.skalGaaAvMedAlderspensjon}}
+
     {{> eypdfgen/partials_v2/omstillingsstoenad/gjenlevende/inntekt/inntekt this.loennsinntekt}}
 
     {{> eypdfgen/partials_v2/omstillingsstoenad/gjenlevende/inntekt/inntekt this.naeringsinntekt}}

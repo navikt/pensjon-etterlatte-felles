@@ -1,0 +1,18 @@
+{{#if this}}
+    <h4>
+        {{#eq spraak "en"}}
+            Information about retirement pension
+        {{else}}
+            {{#eq spraak "nn"}}
+                Opplysingar om alderspensjon
+            {{else}}
+                Opplysninger om alderspensjon
+            {{/eq}}
+        {{/eq}}
+    </h4>
+
+    {{> eypdfgen/partials_v2/common/opplysning this.valg }}
+    {{#eq this.valg.svar.verdi "JA"}}
+        {{> eypdfgen/partials_v2/common/datoOpplysning this.datoForAaGaaAvMedAlderspensjon }}
+    {{/eq}}
+{{/if}}
