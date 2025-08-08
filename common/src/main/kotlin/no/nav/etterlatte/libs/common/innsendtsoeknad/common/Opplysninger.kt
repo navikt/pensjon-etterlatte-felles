@@ -333,10 +333,10 @@ data class ForventetInntektTilNesteAar(
 
 data class Naeringsinntekt(
     val inntekt: Opplysning<FritekstSvar>?,
-    val erNaeringsinntektOpptjentJevnt: ErNaeringsinntektOpptjentJevt?
+    val erNaeringsinntektOpptjentJevnt: ErNaeringsinntektOpptjentJevnt?
 )
 
-data class ErNaeringsinntektOpptjentJevt(
+data class ErNaeringsinntektOpptjentJevnt(
     val valg: Opplysning<EnumSvar<JaNeiVetIkke>>?,
     val beskrivelse: Opplysning<FritekstSvar>?
 )
