@@ -1,0 +1,30 @@
+{{#if this}}
+    <h4>
+        {{this.spoersmaal}}
+    </h4>
+
+    {{> eypdfgen/partials_v2/common/opplysning this.svar.arbeidsinntekt}}
+
+    {{> eypdfgen/partials_v2/common/opplysning this.svar.naeringsinntekt.inntekt}}
+    {{#not_eq this.svar.naeringsinntekt.inntekt.svar.innhold "0"}}
+        {{> eypdfgen/partials_v2/common/opplysning this.svar.naeringsinntekt.erNaeringsinntektOpptjentJevnt.valg}}
+        {{#eq this.svar.naeringsinntekt.erNaeringsinntektOpptjentJevnt.valg.svar.verdi "NEI"}}
+              {{> eypdfgen/partials_v2/common/opplysning this.svar.naeringsinntekt.erNaeringsinntektOpptjentJevnt.beskrivelse}}
+        {{/eq}}
+    {{/not_eq}}
+
+    {{#if this.svar.afpInntekt}}
+        {{> eypdfgen/partials_v2/common/opplysning this.svar.afpInntekt.inntekt}}
+        {{#not_eq this.svar.afpInntekt.inntekt.svar.innhold "0"}}
+            {{> eypdfgen/partials_v2/common/opplysning this.svar.afpInntekt.tjenesteordning}}
+        {{/not_eq}}
+    {{/if}}
+
+    {{> eypdfgen/partials_v2/common/opplysning this.svar.inntektFraUtland}}
+
+    {{> eypdfgen/partials_v2/common/opplysning this.svar.andreInntekter.valg}}
+    {{#eq this.svar.andreInntekter.valg.svar.verdi "JA"}}
+        {{> eypdfgen/partials_v2/common/opplysning this.svar.andreInntekter.inntekt}}
+        {{> eypdfgen/partials_v2/common/opplysning this.svar.andreInntekter.beskrivelse}}
+    {{/eq}}
+{{/if}}
