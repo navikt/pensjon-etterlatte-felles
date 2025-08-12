@@ -284,22 +284,14 @@ data class AnnenSituasjon(
 )
 
 data class InntektOgPensjon(
-    // TODO NY DATASTRUKTUR FOR INNTEKT
     val skalGaaAvMedAlderspensjon: SkalGaaAvMedAlderspensjon?,
     val inntektFremTilDoedsfallet: Opplysning<InntektFremTilDoedsfallet>?,
     val forventetInntektIAar: Opplysning<ForventetInntektIAar>?,
     val forventetInntektTilNesteAar: Opplysning<ForventetInntektTilNesteAar>?,
-    // TODO GAMMEL DATASTRUKTUR FOR INNTEKT
-    val loennsinntekt: Opplysning<Loennsinntekt>?,
-    val naeringsinntekt: Opplysning<Loennsinntekt>?,
-    val pensjonEllerUfoere: PensjonEllerUfoere?,
-    val inntektViaYtelserFraNAV: InntektViaYtelserFraNAV?,
-    val ingenInntekt: IngenInntekt?,
     val ytelserNAV: YtelserNav,
     val ytelserAndre: YtelserAndre,
 )
 
-// TODO NY DATASTRUKTUR FOR INNTEKT
 data class SkalGaaAvMedAlderspensjon(
     val valg: Opplysning<EnumSvar<JaNeiVetIkke>>?,
     val datoForAaGaAvMedAlderspensjon: Opplysning<DatoSvar>?
@@ -356,76 +348,6 @@ data class NoeSomKanPaavirkeInntekten(
     val valg: Opplysning<EnumSvar<JaNeiVetIkke>>?,
     val grunnTilPaavirkelseAvInntekt: Opplysning<EnumSvar<EndringAvInntektGrunnType>>?,
     val beskrivelse: Opplysning<FritekstSvar>?
-)
-
-// TODO GAMMEL DATASTRUKTUR FOR INNTEKT
-data class Loennsinntekt(
-    val norgeEllerUtland: Opplysning<List<EnumSvar<NorgeEllerUtlandType>>>,
-    val norge: InntektSamlet?,
-    val utland: InntektSamlet?,
-    val endringAvInntekt: EndringAvInntekt,
-)
-
-data class InntektSamlet(
-    val inntektAaretFoerDoedsfall: Opplysning<FritekstSvar>?,
-    val inntektIFjor: TilDoedsfallOgAarsinntekt?,
-    val inntektIAar: TilDoedsfallOgAarsinntekt?,
-    val inntektNesteAar: Aarsinntekt?,
-    val jevntOpptjentNaeringsinntekt: JevntOpptjentNaeringsinntekt?,
-)
-
-data class TilDoedsfallOgAarsinntekt(
-    val tilDoedsfall: Opplysning<FritekstSvar>?,
-    val aarsinntekt: Opplysning<FritekstSvar>?,
-)
-
-data class Aarsinntekt(
-    val aarsinntekt: Opplysning<FritekstSvar>?,
-)
-
-data class JevntOpptjentNaeringsinntekt(
-    val svar: Opplysning<EnumSvar<JaNeiVetIkke>>,
-    val beskrivelse: Opplysning<FritekstSvar>?,
-)
-
-data class EndringAvInntekt(
-    val fremtidigEndringAvInntekt: Opplysning<EnumSvar<JaNeiVetIkke>>,
-    val grunn: Opplysning<EnumSvar<EndringAvInntektGrunnType>>?,
-    val annenGrunn: Opplysning<FritekstSvar>?,
-)
-
-data class PensjonEllerUfoere(
-    val pensjonstype: Opplysning<List<EnumSvar<PensjonEllerTrygdType>>>,
-    val tjenestepensjonsordning: Tjenestepensjonsordning?,
-    val utland: Utland?,
-)
-
-data class Tjenestepensjonsordning(
-    val type: Opplysning<List<EnumSvar<PensjonsYtelseType>>>,
-    val afpOffentlig: AfpOffentlig?,
-    val utbetaler: Opplysning<FritekstSvar>,
-)
-
-data class AfpOffentlig(
-    val innvilget: Opplysning<DatoSvar>,
-    val beloep: Opplysning<FritekstSvar>
-)
-
-data class Utland(
-    val type: Opplysning<FritekstSvar>?,
-    val land: Opplysning<FritekstSvar>?,
-    val beloepMedValuta: Opplysning<FritekstSvar>?,
-)
-
-data class InntektViaYtelserFraNAV(
-    val ytelser: Opplysning<List<EnumSvar<InntektEllerUtbetalingType>>>,
-    val aktivitetsplan: Opplysning<EnumSvar<JaNeiVetIkke>>?,
-)
-
-data class IngenInntekt(
-    val svar: Opplysning<EnumSvar<JaNeiVetIkke>>,
-    val beloep: Opplysning<FritekstSvar>?,
-    val beskrivelse: Opplysning<FritekstSvar>?,
 )
 
 data class YtelserNav(
