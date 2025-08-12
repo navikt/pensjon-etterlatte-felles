@@ -361,6 +361,13 @@ data class YtelserAndre(
     val pensjonsordning: Opplysning<FritekstSvar>?,
 )
 
+enum class Stoenader {
+    BARNETILSYN,
+    SKOLEPENGER,
+    TILLEGGSSTOENAD_BARNEPASS,
+    TILLEGGSSTOENAD_UTDANNING,
+}
+
 enum class Ytelser {
     DAGPENGER,
     SYKEPENGER,
