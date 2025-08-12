@@ -294,7 +294,7 @@ data class InntektOgPensjon(
 
 data class SkalGaaAvMedAlderspensjon(
     val valg: Opplysning<EnumSvar<JaNeiVetIkke>>?,
-    val datoForAaGaAvMedAlderspensjon: Opplysning<DatoSvar>?
+    val datoForAaGaaAvMedAlderspensjon: Opplysning<DatoSvar>?
 )
 
 data class InntektFremTilDoedsfallet(
