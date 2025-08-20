@@ -2,7 +2,7 @@
 ktor-version = "2.3.13"
 jupiter-version = "5.13.2"
 cxf-version = "4.1.2"
-jackson-version = "2.19.1"
+jackson-version = "2.19.2"
 
 [libraries]
 
@@ -32,7 +32,7 @@ jackson-modulekotlin = { module = "com.fasterxml.jackson.module:jackson-module-k
 
 #Kafka
 kafka-avro-serializer = { module = "io.confluent:kafka-avro-serializer", version = "7.6.0"}
-commons-compress = { module = "org.apache.commons:commons-compress", version = "1.27.1" }
+commons-compress = { module = "org.apache.commons:commons-compress", version = "1.28.0" }
 
 #Jupiter
 jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter-version" }
