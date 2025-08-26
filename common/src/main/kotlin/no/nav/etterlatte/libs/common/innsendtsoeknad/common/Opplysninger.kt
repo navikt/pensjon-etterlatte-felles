@@ -292,8 +292,15 @@ data class InntektOgPensjon(
     val ytelserAndre: YtelserAndre,
 )
 
+enum class SkalGaaAvMedAlderspensjonValg {
+    JA,
+    NEI,
+    VET_IKKE,
+    TAR_ALLEREDE_UT_ALDERSPENSJON
+}
+
 data class SkalGaaAvMedAlderspensjon(
-    val valg: Opplysning<EnumSvar<JaNeiVetIkke>>?,
+    val valg: Opplysning<EnumSvar<SkalGaaAvMedAlderspensjonValg>>?,
     val datoForAaGaaAvMedAlderspensjon: Opplysning<DatoSvar>?
 )
 
