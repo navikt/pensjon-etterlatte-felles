@@ -15,4 +15,8 @@
     {{#eq this.valg.svar.verdi "JA"}}
         {{> eypdfgen/partials_v2/common/datoOpplysning this.datoForAaGaaAvMedAlderspensjon }}
     {{/eq}}
+
+    {{#eq this.valg.svar.verdi "TAR_ALLEREDE_UT_ALDERSPENSJON"}}
+        {{> eypdfgen/partials_v2/common/datoOpplysning this.datoForAaGaaAvMedAlderspensjon }}
+    {{/eq}}
 {{/if}}
