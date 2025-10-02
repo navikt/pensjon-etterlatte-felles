@@ -28,7 +28,7 @@ jobs:
       - name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@v5
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
+        uses: gradle/actions/setup-gradle@v5
         with:
           cache-encryption-key: ${{ secrets.gradlekey }}
           dependency-graph: generate-and-submit
