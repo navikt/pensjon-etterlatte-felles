@@ -1,6 +1,6 @@
 [versions]
 ktor-version = "2.3.13"
-jupiter-version = "5.13.4"
+jupiter-version = "6.0.0"
 cxf-version = "4.1.3"
 jackson-version = "2.20.0"
 
@@ -9,7 +9,7 @@ jackson-version = "2.20.0"
 #NavFelles
 rapidAndRivers = { module = "com.github.navikt:rapids-and-rivers", version = "2024082313161724411773.1db923f4402d" }
 brukernotifikasjonSchemas = { module = "com.github.navikt:brukernotifikasjon-schemas", version = "2.5.2"}
-mockOauth2Server = { module = "no.nav.security:mock-oauth2-server", version = "2.2.1"}
+mockOauth2Server = { module = "no.nav.security:mock-oauth2-server", version = "3.0.0"}
 tjenestespesifikasjonerTilbakekreving = { module = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:tilbakekreving-v1-tjenestespesifikasjon", version = "1.d27898d"}
 tjenestespesifikasjonerOppdragSimulering = { module = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:nav-system-os-simuler-fp-service-tjenestespesifikasjon", version = "1.d27898d"}
 
@@ -51,7 +51,7 @@ logging-logstashLogbackEncoder = { module = "net.logstash.logback:logstash-logba
 micrometer-prometheus = { module = "io.micrometer:micrometer-registry-prometheus", version = "1.15.3"}
 
 #MockK
-mockk = { module = "io.mockk:mockk", version = "1.14.5" }
+mockk = { module = "io.mockk:mockk", version = "1.14.6" }
 
 # Kotest
 test-kotest-assertionscore = { module = "io.kotest:kotest-assertions-core", version = "6.0.3" }
