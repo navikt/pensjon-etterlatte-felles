@@ -20,10 +20,60 @@
         <div class="col">Endringstype</div>
         <div class="col">{{ type }}</div>
     </div>
-    <div class="row opplysning">
-        <div class="col">Beskrivelse av endring</div>
-        <div class="col">{{ endringer }}</div>
-    </div>
+
+    {{#if endringer}}
+        <div class="row opplysning">
+            <div class="col">Beskrivelse av endring</div>
+            <div class="col">{{ endringer }}</div>
+        </div>
+    {{/if}}
+
+    {{#if forventetInntektTilNesteAar}}
+        <h4>Forventet inntekt for {{forventetInntektTilNesteAar.inntektsaar}}</h4>
+
+         {{#if forventetInntektTilNesteAar.skalGaaAvMedAlderspensjon }}
+            <div class="row opplysning">
+                <div class="col">Skal gå av med alderspensjon neste år</div>
+                <div class="col">{{ forventetInntektTilNesteAar.skalGaaAvMedAlderspensjon }}</div>
+            </div>
+            {{#eq forventetInntektTilNesteAar.skalGaaAvMedAlderspensjon "JA"}}
+                <div class="row opplysning">
+                    <div class="col">Når skal du gå av med alderspensjon?</div>
+                    <div class="col">{{ forventetInntektTilNesteAar.datoForAaGaaAvMedAlderspensjon }}</div>
+                </div>
+            {{/eq}}
+         {{/if}}
+
+         {{#if forventetInntektTilNesteAar.arbeidsinntekt includeZero=true}}
+             <div class="row opplysning">
+                 <div class="col">Arbeidsinntekter og andre utbetalinger</div>
+                 <div class="col">{{ forventetInntektTilNesteAar.arbeidsinntekt }} kr</div>
+             </div>
+         {{/if}}
+         {{#if forventetInntektTilNesteAar.naeringsinntekt includeZero=true}}
+             <div class="row opplysning">
+                 <div class="col">Næringsinntekt</div>
+                 <div class="col">{{ forventetInntektTilNesteAar.naeringsinntekt }} kr</div>
+             </div>
+         {{/if}}
+         {{#if forventetInntektTilNesteAar.inntektFraUtland includeZero=true}}
+             <div class="row opplysning">
+                 <div class="col">Inntekt fra utland</div>
+                 <div class="col">{{ forventetInntektTilNesteAar.inntektFraUtland }} kr</div>
+             </div>
+         {{/if}}
+         {{#if forventetInntektTilNesteAar.afpInntekt includeZero=true }}
+             <div class="row opplysning">
+                 <div class="col">AFP</div>
+                 <div class="col">{{ forventetInntektTilNesteAar.afpInntekt }} kr</div>
+             </div>
+
+             <div class="row opplysning">
+                 <div class="col">Tjenesteordning du får AFP fra</div>
+                 <div class="col">{{ forventetInntektTilNesteAar.afpTjenesteordning }}</div>
+             </div>
+         {{/if}}
+    {{/if}}
 </div>
 
 </body>
