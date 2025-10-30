@@ -1,6 +1,16 @@
 {
   "sakId": 123,
-  "type": "ANNEN",
+  "type": "FORVENTET_INNTEKT_TIL_NESTE_AAR",
   "endringer": "Fritekst med endringer fra bruker...",
-  "tidspunkt": "20.11.2024 05:06:07"
+  "tidspunkt": "20.11.2024 05:06:07",
+  "forventetInntektTilNesteAar": {
+    "inntektsaar": "2026",
+    "skalGaaAvMedAlderspensjon": "JA",
+    "datoForAaGaaAvMedAlderspensjon": "2026-12-03",
+    "arbeidsinntekt": 100000,
+    "naeringsinntekt": 1000,
+    "inntektFraUtland": 100,
+    "afpInntekt": 10,
+    "afpTjenesteordning": "KLP"
+  }
 }
