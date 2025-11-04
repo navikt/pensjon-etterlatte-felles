@@ -6,7 +6,7 @@ metadata:
   labels:
     team: etterlatte
 spec:
-  image: europe-north1-docker.pkg.dev/nais-management-233d/poao/kafka-manager:2025.06.17-12.54-36e7798
+  image: europe-north1-docker.pkg.dev/nais-management-233d/poao/kafka-manager:2025.10.06-11.14-c4f6934
   port: 8080
   webproxy: true
   ingresses:
@@ -38,7 +38,7 @@ spec:
       tenant: nav.no
       claims:
         groups:
-          - id: 650684ff-8107-4ae4-98fc-e18b5cf3188b # Required for authorization
+          - id: 1a424f32-16a4-4b97-9d77-3e9e781a887e # (DG) NAV Team Etterlatte
   kafka: # Optional. Required for Aiven
     pool: nav-dev
   env:
