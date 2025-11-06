@@ -10,7 +10,7 @@ ENV NODE_ENV="production"
 RUN yarn
 
 
-FROM gcr.io/distroless/nodejs22-debian12 as prod
+FROM gcr.io/distroless/nodejs24-debian12 as prod
 COPY --from=base /usr/src/app /app
 
 USER nonroot
