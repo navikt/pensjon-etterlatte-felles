@@ -54,7 +54,7 @@ micrometer-prometheus = { module = "io.micrometer:micrometer-registry-prometheus
 mockk = { module = "io.mockk:mockk", version = "1.14.6" }
 
 # Kotest
-test-kotest-assertionscore = { module = "io.kotest:kotest-assertions-core", version = "6.0.3" }
+test-kotest-assertionscore = { module = "io.kotest:kotest-assertions-core", version = "6.0.4" }
 
 #Cxf
 cxf-logging = { module = "org.apache.cxf:cxf-rt-features-logging", version.ref = "cxf-version" }
