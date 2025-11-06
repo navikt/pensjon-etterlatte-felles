@@ -7,7 +7,7 @@ jackson-version = "2.20.1"
 [libraries]
 
 #NavFelles
-rapidAndRivers = { module = "com.github.navikt:rapids-and-rivers", version = "2024082313161724411773.1db923f4402d" }
+rapidAndRivers = { module = "com.github.navikt:rapids-and-rivers", version = "2025061811051750237542.df739400e55e" }
 brukernotifikasjonSchemas = { module = "com.github.navikt:brukernotifikasjon-schemas", version = "2.5.2"}
 mockOauth2Server = { module = "no.nav.security:mock-oauth2-server", version = "3.0.0"}
 tjenestespesifikasjonerTilbakekreving = { module = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:tilbakekreving-v1-tjenestespesifikasjon", version = "1.d27898d"}
