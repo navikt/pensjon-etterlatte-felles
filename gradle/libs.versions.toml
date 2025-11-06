@@ -45,7 +45,7 @@ junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher
 #Logging
 logging-slf4jApi = { module = "org.slf4j:slf4j-api", version = "2.0.17" }
 logging-logbackClassic = { module = "ch.qos.logback:logback-classic", version = "1.5.20" }
-logging-logstashLogbackEncoder = { module = "net.logstash.logback:logstash-logback-encoder", version = "8.1"}
+logging-logstashLogbackEncoder = { module = "net.logstash.logback:logstash-logback-encoder", version = "9.0"}
 
 #Micrometer
 micrometer-prometheus = { module = "io.micrometer:micrometer-registry-prometheus", version = "1.15.5"}
