@@ -15,4 +15,5 @@ dependencies {
 
     testImplementation(libs.mockk)
     testRuntimeOnly(libs.junit.platform.launcher)
+    testImplementation(libs.test.navfelles.rapidsandriversktor)
 }

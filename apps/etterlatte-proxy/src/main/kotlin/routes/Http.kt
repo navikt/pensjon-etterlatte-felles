@@ -10,6 +10,7 @@ import io.ktor.client.plugins.logging.Logging
 import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.setBody
 import io.ktor.client.statement.HttpResponse
+import io.ktor.client.statement.content
 import io.ktor.http.ContentType
 import io.ktor.http.Headers
 import io.ktor.http.HttpHeaders
@@ -19,10 +20,10 @@ import io.ktor.serialization.jackson.jackson
 import io.ktor.server.application.ApplicationCall
 import io.ktor.server.request.receiveChannel
 import io.ktor.server.response.respond
-import io.ktor.util.InternalAPI
 import io.ktor.util.filter
 import io.ktor.utils.io.ByteReadChannel
 import io.ktor.utils.io.ByteWriteChannel
+import io.ktor.utils.io.InternalAPI
 import io.ktor.utils.io.copyAndClose
 import org.apache.http.impl.conn.SystemDefaultRoutePlanner
 import java.net.ProxySelector
@@ -46,7 +47,7 @@ fun httpClientWithProxy() =
         }
     }
 
-val proxiedContenHeaders =
+val proxiedContentHeaders =
     listOf(
         HttpHeaders.ContentType,
         HttpHeaders.ContentLength,
@@ -55,7 +56,7 @@ val proxiedContenHeaders =
 
 fun filterContenHeaders(requestHeaders: Headers): Headers =
     Headers.build {
-        appendAll(requestHeaders.filter { key, _ -> proxiedContenHeaders.any { it.equals(key, true) } })
+        appendAll(requestHeaders.filter { key, _ -> proxiedContentHeaders.any { it.equals(key, true) } })
     }
 
 class ProxiedContent(
@@ -121,12 +122,3 @@ suspend fun ApplicationCall.pipeResponse(response: HttpResponse) {
         )
     )
 }
-
-val HttpHeaders.NavCallId: String
-    get() = "Nav-Call-Id"
-val HttpHeaders.NavConsumerId: String
-    get() = "Nav-Consumer-Id"
-val HttpHeaders.NavPersonident: String
-    get() = "Nav-Personident"
-val HttpHeaders.NavConsumerToken: String
-    get() = "Nav-Consumer-Token"
