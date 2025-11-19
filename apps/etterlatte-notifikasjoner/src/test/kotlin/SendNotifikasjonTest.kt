@@ -21,23 +21,6 @@ internal class SendNotifikasjonTest {
         )
 
     @Test
-    fun `skal opprette melding for gjenlevendepensjon`() {
-        val beskjed = sendNotifikasjon.opprettBeskjed(Soeknad.Type.GJENLEVENDEPENSJON)
-        assertEquals(false, beskjed.getEksternVarsling())
-        assertEquals("Vi har mottatt søknaden din om gjenlevendepensjon", beskjed.getTekst())
-        assertEquals(true, isWithin10Seconds(beskjed.getTidspunkt().toLocalDateTime()))
-        assertEquals(
-            true,
-            isWithin10Seconds(
-                beskjed.getSynligFremTil().toLocalDateTime(),
-                LocalDateTime.now(ZoneOffset.UTC).plusDays(7)
-            )
-        )
-        assertEquals(4, beskjed.getSikkerhetsnivaa())
-        assertEquals(false, beskjed.getEksternVarsling())
-    }
-
-    @Test
     fun `skal opprette melding for barnepensjon`() {
         val beskjed = sendNotifikasjon.opprettBeskjed(Soeknad.Type.BARNEPENSJON)
         assertEquals(false, beskjed.getEksternVarsling())

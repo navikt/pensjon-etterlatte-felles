@@ -38,7 +38,6 @@ class SendNotifikasjon(
         val weekFromNow = now.plusDays(7)
         val tekst =
             when (type) {
-                Soeknad.Type.GJENLEVENDEPENSJON -> "Vi har mottatt søknaden din om gjenlevendepensjon"
                 Soeknad.Type.BARNEPENSJON -> "Vi har mottatt søknaden din om barnepensjon"
                 Soeknad.Type.OMSTILLINGSSTOENAD -> "Vi har mottatt søknaden din om omstillingsstønad"
             }

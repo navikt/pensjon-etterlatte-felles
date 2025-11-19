@@ -46,7 +46,7 @@ spec:
     - name: BRUKERNOTIFIKASJON_KAFKA_GROUP_ID
       value: "etterlatte-v1"
     - name: BRUKERNOTIFIKASJON_BESKJED_TOPIC
-      value: "min-side.aapen-brukernotifikasjon-beskjed-v1"
+      value: "min-side.aapen-brukervarsel-v1"
   accessPolicy:
     outbound:
       external:
