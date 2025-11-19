@@ -42,6 +42,8 @@ class SendNotifikasjon(
                 Soeknad.Type.OMSTILLINGSSTOENAD -> "Vi har mottatt søknaden din om omstillingsstønad"
             }
 
+
+
         return BeskjedInputBuilder()
             .withTidspunkt(LocalDateTime.now(ZoneOffset.UTC))
             .withTekst(tekst)
