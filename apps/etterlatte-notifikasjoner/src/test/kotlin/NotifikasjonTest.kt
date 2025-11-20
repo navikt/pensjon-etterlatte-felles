@@ -1,12 +1,11 @@
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
+import com.github.navikt.tbd_libs.rapids_and_rivers.JsonMessage
+import com.github.navikt.tbd_libs.rapids_and_rivers.test_support.TestRapid
 import io.mockk.mockk
 import no.nav.etterlatte.Notifikasjon
 import no.nav.etterlatte.SendNotifikasjon
 import no.nav.etterlatte.Soeknad
 import no.nav.etterlatte.mapper
-import no.nav.helse.rapids_rivers.JsonMessage
-import no.nav.helse.rapids_rivers.testsupport.TestRapid
 import no.nav.tms.varsel.builder.VarselActionBuilder
 import org.apache.kafka.clients.producer.MockProducer
 import org.junit.jupiter.api.Assertions.assertEquals
