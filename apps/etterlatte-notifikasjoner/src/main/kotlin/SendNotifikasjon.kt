@@ -1,6 +1,7 @@
 package no.nav.etterlatte
 
 import no.nav.tms.varsel.action.EksternKanal
+import no.nav.tms.varsel.action.Produsent
 import no.nav.tms.varsel.action.Sensitivitet
 import no.nav.tms.varsel.action.Tekst
 import no.nav.tms.varsel.action.Varseltype
@@ -15,7 +16,7 @@ import java.util.UUID
 import java.util.concurrent.TimeUnit
 
 class SendNotifikasjon(
-    env: Map<String, String>,
+    val env: Map<String, String>,
     private val producer: Producer<String, String> = KafkaProducer(KafkaConfig().getProducerConfig(env))
 ) {
     private val logger: Logger = LoggerFactory.getLogger(SendNotifikasjon::class.java)
@@ -51,6 +52,11 @@ class SendNotifikasjon(
                 preferertKanal = EksternKanal.SMS
                 smsVarslingstekst = varslingTekst
             }
+            produsent = Produsent(
+                cluster = env["NAIS_CLUSTER_NAME"]!!,
+                appnavn = env["NAIS_APP_NAME"]!!,
+                namespace = env["NAIS_NAMESPACE"]!!
+            )
         }
         try {
             producer.send(ProducerRecord(brukernotifikasjontopic, oppgaveId, varsel)).get(10, TimeUnit.SECONDS)

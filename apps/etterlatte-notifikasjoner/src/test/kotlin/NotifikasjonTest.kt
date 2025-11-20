@@ -1,13 +1,13 @@
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import io.mockk.mockk
-import no.nav.brukernotifikasjon.schemas.input.BeskjedInput
-import no.nav.brukernotifikasjon.schemas.input.NokkelInput
 import no.nav.etterlatte.Notifikasjon
 import no.nav.etterlatte.SendNotifikasjon
 import no.nav.etterlatte.Soeknad
 import no.nav.etterlatte.mapper
-import com.github.navikt.tbd_libs.rapids_and_rivers.JsonMessage
-import com.github.navikt.tbd_libs.rapids_and_rivers.test_support.TestRapid
+import no.nav.helse.rapids_rivers.JsonMessage
+import no.nav.helse.rapids_rivers.testsupport.TestRapid
+import no.nav.tms.varsel.builder.VarselActionBuilder
 import org.apache.kafka.clients.producer.MockProducer
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
@@ -17,7 +17,7 @@ import org.junit.jupiter.api.TestInstance
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class NotifikasjonTest {
     private val mockKafkaProducer =
-        MockProducer<NokkelInput, BeskjedInput>(true, mockk(relaxed = true), mockk(relaxed = true))
+        MockProducer<String, String>(true, mockk(relaxed = true), mockk(relaxed = true))
 
     private val sendMelding =
         SendNotifikasjon(
@@ -25,7 +25,8 @@ internal class NotifikasjonTest {
                 "BRUKERNOTIFIKASJON_BESKJED_TOPIC" to "test_topic",
                 "BRUKERNOTIFIKASJON_KAFKA_GROUP_ID" to "bah",
                 "NAIS_NAMESPACE" to "etterlatte",
-                "NAIS_NAME" to "etterlatte-notifikasjoner"
+                "NAIS_APP_NAME" to "etterlatte-notifikasjoner",
+                "NAIS_CLUSTER_NAME" to "dev-gcp"
             ),
             mockKafkaProducer
         )
@@ -69,11 +70,15 @@ internal class NotifikasjonTest {
         assertEquals("4", inspector.message(0).get("@lagret_soeknad_id").asText())
         assertEquals("SendNotifikasjon 5", inspector.key(0))
         assertEquals(mockKafkaProducer.history().size, 1)
-        assertEquals(mockKafkaProducer.history()[0].value().tekst, "Vi har mottatt søknaden din om barnepensjon")
+
+        val varsel = mapper.readValue<VarselActionBuilder.OpprettVarselInstance>(mockKafkaProducer.history()[0].value())
+        assertEquals("Vi har mottatt søknaden din om barnepensjon", varsel.tekster[0].tekst)
         assertEquals(
             soeknad.innsender.foedselsnummer.value,
-            mockKafkaProducer.history()[0].key().fodselsnummer
+            varsel.ident
         )
+
+
     }
 
     @Test
@@ -110,13 +115,15 @@ internal class NotifikasjonTest {
         assertEquals("4", inspector.message(0).get("@lagret_soeknad_id").asText())
         assertEquals("SendNotifikasjon 5", inspector.key(0))
         assertEquals(mockKafkaProducer.history().size, 1)
+
+        val varsel = mapper.readValue<VarselActionBuilder.OpprettVarselInstance>(mockKafkaProducer.history()[0].value())
         assertEquals(
-            mockKafkaProducer.history()[0].value().tekst,
-            "Vi har mottatt søknaden din om omstillingsstønad"
+            "Vi har mottatt søknaden din om omstillingsstønad",
+            varsel.tekster[0].tekst,
         )
         assertEquals(
             soeknad.innsender.foedselsnummer.value,
-            mockKafkaProducer.history()[0].key().fodselsnummer
+            varsel.ident,
         )
     }
 }
