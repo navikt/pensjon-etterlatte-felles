@@ -8,7 +8,7 @@ jackson-version = "2.20.1"
 
 #NavFelles
 rapidAndRivers = { module = "com.github.navikt:rapids-and-rivers", version = "2024082313161724411773.1db923f4402d" }
-brukernotifikasjonSchemas = { module = "com.github.navikt:brukernotifikasjon-schemas", version = "2.5.2"}
+brukernotifikasjonerKotlinBuilder = { module = "no.nav.tms.varsel:kotlin-builder", version = "2.1.1"}
 mockOauth2Server = { module = "no.nav.security:mock-oauth2-server", version = "3.0.0"}
 tjenestespesifikasjonerTilbakekreving = { module = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:tilbakekreving-v1-tjenestespesifikasjon", version = "1.d27898d"}
 tjenestespesifikasjonerOppdragSimulering = { module = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:nav-system-os-simuler-fp-service-tjenestespesifikasjon", version = "1.d27898d"}
