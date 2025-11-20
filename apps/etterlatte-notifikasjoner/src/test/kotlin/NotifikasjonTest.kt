@@ -6,8 +6,8 @@ import no.nav.etterlatte.Notifikasjon
 import no.nav.etterlatte.SendNotifikasjon
 import no.nav.etterlatte.Soeknad
 import no.nav.etterlatte.mapper
-import no.nav.helse.rapids_rivers.JsonMessage
-import no.nav.helse.rapids_rivers.testsupport.TestRapid
+import com.github.navikt.tbd_libs.rapids_and_rivers.JsonMessage
+import com.github.navikt.tbd_libs.rapids_and_rivers.test_support.TestRapid
 import org.apache.kafka.clients.producer.MockProducer
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
