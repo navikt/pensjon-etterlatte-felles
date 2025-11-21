@@ -39,7 +39,7 @@ class SendNotifikasjon(
 
         val varsel =  VarselActionBuilder.opprett {
             type = Varseltype.Beskjed
-            varselId = UUID.randomUUID().toString()
+            varselId = oppgaveId
             sensitivitet = Sensitivitet.High
             ident = foedselsnummer.value
             tekst = Tekst(
@@ -62,7 +62,7 @@ class SendNotifikasjon(
             producer.send(ProducerRecord(brukernotifikasjontopic, oppgaveId, varsel)).get(10, TimeUnit.SECONDS)
         } catch (e: Exception) {
             logger.error(
-                "Beskjed til $brukernotifikasjontopic (Ditt NAV) for søknad med id ${oppgaveId} feilet.",
+                "Beskjed til $brukernotifikasjontopic (Min side) for søknad med id $oppgaveId feilet.",
                 e
             )
         }

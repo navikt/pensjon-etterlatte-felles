@@ -1,8 +1,5 @@
 package no.nav.etterlatte
 
-import io.confluent.kafka.schemaregistry.client.SchemaRegistryClientConfig
-import io.confluent.kafka.serializers.AbstractKafkaSchemaSerDeConfig
-import io.confluent.kafka.serializers.KafkaAvroSerializer
 import org.apache.kafka.clients.CommonClientConfigs
 import org.apache.kafka.clients.producer.ProducerConfig
 import org.apache.kafka.common.config.SaslConfigs
@@ -23,13 +20,6 @@ class KafkaConfig {
         props[ProducerConfig.ACKS_CONFIG] = "1"
         props[ProducerConfig.LINGER_MS_CONFIG] = "0"
         props[ProducerConfig.MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION] = "1"
-        props[ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG] = KafkaAvroSerializer::class.java
-        props[ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG] = KafkaAvroSerializer::class.java
-
-        props[AbstractKafkaSchemaSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG] = env["KAFKA_SCHEMA_REGISTRY"] ?: ""
-        props[SchemaRegistryClientConfig.BASIC_AUTH_CREDENTIALS_SOURCE] = "USER_INFO"
-        props[SchemaRegistryClientConfig.USER_INFO_CONFIG] =
-            env["KAFKA_SCHEMA_REGISTRY_USER"]!! + ':' + env["KAFKA_SCHEMA_REGISTRY_PASSWORD"]!!
 
         props[SslConfigs.SSL_ENDPOINT_IDENTIFICATION_ALGORITHM_CONFIG] = ""
         props[SslConfigs.SSL_TRUSTSTORE_TYPE_CONFIG] = "jks"
