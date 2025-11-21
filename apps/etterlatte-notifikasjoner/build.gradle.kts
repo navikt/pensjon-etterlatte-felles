@@ -12,6 +12,9 @@ dependencies {
     }
 
     implementation(libs.commons.compress)
+    implementation(libs.kafka.avro.serializer) {
+        exclude(group = "org.slf4j", module = "slf4j-log4j12")
+    }
 
     testImplementation(libs.mockk)
     testRuntimeOnly(libs.junit.platform.launcher)
