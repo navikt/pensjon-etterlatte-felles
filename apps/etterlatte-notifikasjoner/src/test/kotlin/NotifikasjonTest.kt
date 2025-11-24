@@ -2,7 +2,7 @@ import com.fasterxml.jackson.module.kotlin.readValue
 import com.github.navikt.tbd_libs.rapids_and_rivers.JsonMessage
 import com.github.navikt.tbd_libs.rapids_and_rivers.test_support.TestRapid
 import io.mockk.mockk
-import no.nav.etterlatte.Notifikasjon
+import no.nav.etterlatte.soeknad.SoeknadNotifikasjon
 import no.nav.etterlatte.SendNotifikasjon
 import no.nav.etterlatte.Soeknad
 import no.nav.etterlatte.mapper
@@ -43,7 +43,7 @@ internal class NotifikasjonTest {
         val inspector =
             TestRapid()
                 .apply {
-                    Notifikasjon(
+                    SoeknadNotifikasjon(
                         sendMelding,
                         this
                     )
@@ -88,7 +88,7 @@ internal class NotifikasjonTest {
         val inspector =
             TestRapid()
                 .apply {
-                    Notifikasjon(
+                    SoeknadNotifikasjon(
                         sendMelding,
                         this
                     )

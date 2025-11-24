@@ -28,6 +28,41 @@ class SendNotifikasjon(
         sendVarselSMS(innsender, soeknad.type)
     }
 
+    fun sendSMSVarselTilBruker(foedselsnummer: String, varselTekst: String) {
+        val smsId = UUID.randomUUID().toString()
+
+        val varsel = VarselActionBuilder.opprett {
+            type = Varseltype.Beskjed
+            varselId = smsId
+            sensitivitet = Sensitivitet.High
+            ident = foedselsnummer
+            tekst = Tekst(
+                spraakkode = "nb",
+                tekst = varselTekst,
+                default = true
+            )
+            aktivFremTil = ZonedDateTime.now().plusDays(7)
+            eksternVarsling {
+                preferertKanal = EksternKanal.SMS
+                smsVarslingstekst = varselTekst
+            }
+            produsent = Produsent(
+                cluster = env["NAIS_CLUSTER_NAME"]!!,
+                appnavn = env["NAIS_APP_NAME"]!!,
+                namespace = env["NAIS_NAMESPACE"]!!
+            )
+        }
+
+        try {
+            producer.send(ProducerRecord(brukernotifikasjontopic, smsId, varsel)).get(10, TimeUnit.SECONDS)
+        } catch (e: Exception) {
+            logger.error(
+                "Beskjed til $brukernotifikasjontopic (Min side) for søknad med id $smsId feilet.",
+                e
+            )
+        }
+    }
+
     internal fun sendVarselSMS(foedselsnummer: Foedselsnummer, soeknadType: Soeknad.Type) {
 
         val oppgaveId = UUID.randomUUID().toString()

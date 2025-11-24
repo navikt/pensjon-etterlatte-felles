@@ -1,5 +1,7 @@
 package no.nav.etterlatte
 
+import no.nav.etterlatte.omsMeldInnEndring.OmsMeldInnEndringNotifikasjon
+import no.nav.etterlatte.soeknad.SoeknadNotifikasjon
 import no.nav.helse.rapids_rivers.RapidApplication
 
 fun main() {
@@ -11,6 +13,7 @@ fun main() {
     RapidApplication
         .create(env)
         .also {
-            Notifikasjon(sendNotifikasjonApp, it)
+            SoeknadNotifikasjon(sendNotifikasjonApp, it)
+            OmsMeldInnEndringNotifikasjon(sendNotifikasjonApp, it)
         }.start()
 }
