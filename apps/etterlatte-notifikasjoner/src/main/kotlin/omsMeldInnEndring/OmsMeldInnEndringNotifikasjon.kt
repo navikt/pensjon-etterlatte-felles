@@ -42,7 +42,7 @@ class OmsMeldInnEndringNotifikasjon(
 
         sendNotifikasjon.sendSMSVarselTilBruker(
             foedselsnummer = meldtInnEndring.fnr.value,
-            varselTekst = "Vi har mottatt endringen din"
+            varselTekst = "Vi har mottatt din melding om endring for omstillingsstønad"
         )
 
         logger.info("Notifikasjon til bruker opprettet")
