@@ -9,7 +9,6 @@ data class Soeknad(
     val type: Type
 ) {
     enum class Type {
-        GJENLEVENDEPENSJON,
         BARNEPENSJON,
         OMSTILLINGSSTOENAD
     }
