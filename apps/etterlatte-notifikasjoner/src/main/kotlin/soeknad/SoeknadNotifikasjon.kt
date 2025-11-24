@@ -9,7 +9,6 @@ import com.github.navikt.tbd_libs.rapids_and_rivers_api.RapidsConnection
 import io.micrometer.core.instrument.MeterRegistry
 import kotlinx.coroutines.runBlocking
 import no.nav.etterlatte.SendNotifikasjon
-import no.nav.etterlatte.Soeknad
 import no.nav.etterlatte.mapper
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

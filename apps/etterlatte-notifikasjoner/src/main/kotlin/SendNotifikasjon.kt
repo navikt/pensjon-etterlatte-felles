@@ -1,5 +1,7 @@
 package no.nav.etterlatte
 
+import no.nav.etterlatte.soeknad.Foedselsnummer
+import no.nav.etterlatte.soeknad.Soeknad
 import no.nav.tms.varsel.action.EksternKanal
 import no.nav.tms.varsel.action.Produsent
 import no.nav.tms.varsel.action.Sensitivitet

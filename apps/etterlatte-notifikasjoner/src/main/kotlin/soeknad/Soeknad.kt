@@ -1,4 +1,4 @@
-package no.nav.etterlatte
+package no.nav.etterlatte.soeknad
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty

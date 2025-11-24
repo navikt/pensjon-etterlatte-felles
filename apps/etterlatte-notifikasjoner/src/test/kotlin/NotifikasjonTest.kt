@@ -4,7 +4,7 @@ import com.github.navikt.tbd_libs.rapids_and_rivers.test_support.TestRapid
 import io.mockk.mockk
 import no.nav.etterlatte.soeknad.SoeknadNotifikasjon
 import no.nav.etterlatte.SendNotifikasjon
-import no.nav.etterlatte.Soeknad
+import no.nav.etterlatte.soeknad.Soeknad
 import no.nav.etterlatte.mapper
 import no.nav.tms.varsel.builder.VarselActionBuilder
 import org.apache.kafka.clients.producer.MockProducer
