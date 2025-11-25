@@ -28,6 +28,8 @@ class OmsMeldInnEndringNotifikasjon(
                     it.requireValue("@event_name", "oms_meldt_inn_endring")
                 }
                 validate { it.requireKey("@oms_meldt_inn_endring_innhold") }
+                validate { it.requireKey("@id") }
+                validate { it.requireKey("@opprettet") }
             }
         }.register(this)
     }
