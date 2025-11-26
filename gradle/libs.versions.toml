@@ -1,7 +1,7 @@
 [versions]
 ktor-version = "3.3.0"
 jupiter-version = "6.0.1"
-cxf-version = "4.1.3"
+cxf-version = "4.1.4"
 jackson-version = "2.20.1"
 rapidsandrivers-version = "2025081112301754908236.47b364d7b14c" # OBS! tbdlibs brukes av denne. De bør stemme overens
 tbdlibs-version = "2025.08.07-09.55-15719a86" # OBS! rapidsandrivers bruker denne. De bør stemme overens
