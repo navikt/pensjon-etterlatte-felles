@@ -4,6 +4,8 @@ updates:
     directory: "/apps/ey-slackbot"
     schedule:
       interval: "monthly"
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 10
     ignore:
       - dependency-name: "*"
@@ -36,24 +38,34 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 10
   - package-ecosystem: "docker"
     directory: "/apps/etterlatte-notifikasjoner"
     schedule:
       interval: "monthly"
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 10
   - package-ecosystem: "docker"
     directory: "/apps/etterlatte-proxy"
     schedule:
       interval: "monthly"
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 10
   - package-ecosystem: "docker"
     directory: "/apps/ey-pdfgen"
     schedule:
       interval: "monthly"
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 10
   - package-ecosystem: "docker"
     directory: "/apps/ey-slackbot"
     schedule:
       interval: "monthly"
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 10
