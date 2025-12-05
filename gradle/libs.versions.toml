@@ -11,7 +11,7 @@ tbdlibs-version = "2025.08.07-09.55-15719a86" # OBS! rapidsandrivers bruker denn
 #NavFelles
 rapidAndRivers = { module = "com.github.navikt:rapids-and-rivers", version.ref = "rapidsandrivers-version" }
 brukernotifikasjonerKotlinBuilder = { module = "no.nav.tms.varsel:kotlin-builder", version = "2.1.1"}
-mockOauth2Server = { module = "no.nav.security:mock-oauth2-server", version = "3.0.0"}
+mockOauth2Server = { module = "no.nav.security:mock-oauth2-server", version = "3.0.1"}
 tjenestespesifikasjonerTilbakekreving = { module = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:tilbakekreving-v1-tjenestespesifikasjon", version = "1.d27898d"}
 tjenestespesifikasjonerOppdragSimulering = { module = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:nav-system-os-simuler-fp-service-tjenestespesifikasjon", version = "1.d27898d"}
 
