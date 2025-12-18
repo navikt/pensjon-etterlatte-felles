@@ -54,7 +54,7 @@ internal class NotifikasjonTest {
                                 mapOf(
                                     "@event_name" to "soeknad_innsendt",
                                     "@dokarkivRetur" to "123456",
-                                    "@fnr_soeker" to "07106123912",
+                                    "@fnr_soeker" to "26430489347",
                                     "@skjema_info" to mapper.readTree(json),
                                     "@lagret_soeknad_id" to "4",
                                     "@dokarkivRetur" to (mapOf("journalpostId" to "5"))
@@ -99,7 +99,7 @@ internal class NotifikasjonTest {
                                 mapOf(
                                     "@event_name" to "soeknad_innsendt",
                                     "@dokarkivRetur" to "123456",
-                                    "@fnr_soeker" to "07106123912",
+                                    "@fnr_soeker" to "26430489347",
                                     "@skjema_info" to mapper.readTree(json),
                                     "@lagret_soeknad_id" to "4",
                                     "@dokarkivRetur" to (mapOf("journalpostId" to "5"))
