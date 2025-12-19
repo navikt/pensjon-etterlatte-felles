@@ -11,7 +11,7 @@ internal class FoedselsnummerValidatorTest {
         isValid("26117512737") shouldBe true
         isValid("26104500284") shouldBe true
         isValid("24116324268") shouldBe true
-        isValid("04096222195") shouldBe true
+        isValid("19440397142") shouldBe true
         isValid("05126307952") shouldBe true
     }
 
