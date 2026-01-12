@@ -17,8 +17,6 @@ spec:
   readiness:
     path: /internal/health/readiness
     initialDelay: 20
-  secureLogs:
-    enabled: true
   liveness:
     path: /internal/health/liveness
     initialDelay: 20
