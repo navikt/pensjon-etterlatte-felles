@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@slack/bolt": "^4.2.0",
-    "cron": "^4.3.1"
+    "cron": "^4.4.0"
   },
   "engines": {
     "node": "24.x"
