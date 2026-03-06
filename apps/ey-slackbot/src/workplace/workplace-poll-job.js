@@ -2,6 +2,7 @@ const CronJob = require('cron').CronJob
 const initWorkplaceBlocks = require("./workplace-blocks")
 
 const TIMEZONE = 'Europe/Oslo'
+const SLACK_CHANNELS = ['team-etterlatte-intern', 'team-ef-etterlatte-privat']
 
 const now = () => {
     return new Date()
@@ -19,22 +20,22 @@ const setupJob = (app) => {
             title = "Hvor skal du jobbe i morgen?"
         }
 
-        try {
-            const result = await app.client.chat.postMessage({
-                // channel: 'etterlatte-slackbot-test', // Test channel
-                channel: 'team-etterlatte-intern',
-                blocks: initWorkplaceBlocks(title),
-                text: 'Should display blocks containing buttons to select workplace'
-            })
-
-            if (result.ok) {
-                console.log('Message sent OK')
-            } else {
-                console.error(`Error on postMessage: ${result.error}`)
-            }
-        } catch (e) {
-            console.error(e)
-        }
+        SLACK_CHANNELS.forEach((channel) => {
+            try {
+                const result = await app.client.chat.postMessage({
+                    channel: channel,
+                    blocks: initWorkplaceBlocks(title),
+                    text: 'Should display blocks containing buttons to select workplace'
+                })
+                if (result.ok) {
+                    console.log(`Message sent OK to #${channel}`)
+                } else {
+                    console.error(`Error on postMessage to channel ${channel}: ${result.error}`)
+                }
+            } catch (e) {
+                console.error(e)
+            }   
+        })
     };
 
     // const time = '0 */5 10 * * 1-5' // Test cron
