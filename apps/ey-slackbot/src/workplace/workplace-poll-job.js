@@ -20,7 +20,7 @@ const setupJob = (app) => {
             title = "Hvor skal du jobbe i morgen?"
         }
 
-        SLACK_CHANNELS.forEach((channel) => {
+        for (const channel of SLACK_CHANNELS) {
             try {
                 const result = await app.client.chat.postMessage({
                     channel: channel,
@@ -34,8 +34,8 @@ const setupJob = (app) => {
                 }
             } catch (e) {
                 console.error(e)
-            }   
-        })
+            }
+        }
     };
 
     // const time = '0 */5 10 * * 1-5' // Test cron
