@@ -33,7 +33,7 @@ jackson-datatypejdk8 = { module = "com.fasterxml.jackson.datatype:jackson-dataty
 jackson-modulekotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson-version" }
 
 #Kafka
-kafka-avro-serializer = { module = "io.confluent:kafka-avro-serializer", version = "7.6.0"}
+kafka-avro-serializer = { module = "io.confluent:kafka-avro-serializer", version = "8.2.0"}
 commons-compress = { module = "org.apache.commons:commons-compress", version = "1.28.0" }
 
 #Jupiter

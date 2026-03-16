@@ -8,6 +8,7 @@ import no.nav.etterlatte.Soeknad
 import no.nav.etterlatte.mapper
 import no.nav.tms.varsel.builder.VarselActionBuilder
 import org.apache.kafka.clients.producer.MockProducer
+import org.apache.kafka.common.Cluster
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -16,7 +17,7 @@ import org.junit.jupiter.api.TestInstance
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class NotifikasjonTest {
     private val mockKafkaProducer =
-        MockProducer<String, String>(true, mockk(relaxed = true), mockk(relaxed = true))
+        MockProducer<String, String>(Cluster.empty(), true, mockk(relaxed = true), mockk(relaxed = true), mockk(relaxed = true))
 
     private val sendMelding =
         SendNotifikasjon(
