@@ -2,7 +2,7 @@ const CronJob = require('cron').CronJob
 const initWorkplaceBlocks = require("./workplace-blocks")
 
 const TIMEZONE = 'Europe/Oslo'
-const SLACK_CHANNELS = ['team-etterlatte-intern', 'team-ef-etterlatte-privat']
+const SLACK_CHANNELS = ['team-efterlatte-privat']
 
 const now = () => {
     return new Date()
@@ -39,7 +39,7 @@ const setupJob = (app) => {
     };
 
     // const time = '0 */5 10 * * 1-5' // Test cron
-    const time = '11 11 11 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
+    const time = '00 55 13 * * 1-5' // kl 13:55:00, man-fre, alle uker, alle måneder
 
     console.log(`Init cronjob with crontime: ${time}`)
 
