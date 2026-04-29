@@ -16,19 +16,7 @@ spec:
     retentionHours: 336  # 2 uker
   acl:
     - team: etterlatte
-      application: dodsfall-fra-leesah
-      access: readwrite
-    - team: etterlatte
-      application: journalfoer-soeknad
-      access: readwrite
-    - team: etterlatte
-      application: selvbetjening-api
-      access: readwrite
-    - team: etterlatte
       application: innsendt-soeknad
-      access: readwrite
-    - team: etterlatte
-      application: sjekk-adressebeskyttelse
       access: readwrite
     - team: etterlatte
       application: etterlatte-kafka-manager
@@ -37,22 +25,10 @@ spec:
       application: etterlatte-notifikasjoner
       access: readwrite
     - team: etterlatte
-      application: etterlatte-fordeler
-      access: readwrite
-    - team: etterlatte
-      application: test-fordeler
-      access: readwrite
-    - team: etterlatte
-      application: etterlatte-opplysninger-fra-soeknad
-      access: readwrite
-    - team: etterlatte
       application: etterlatte-testdata
       access: write
     - team: etterlatte
       application: etterlatte-testdata-behandler
-      access: readwrite
-    - team: etterlatte
-      application: etterlatte-opplysninger-fra-pdl
       access: readwrite
     - team: etterlatte
       application: etterlatte-behandling
@@ -64,20 +40,7 @@ spec:
       application: etterlatte-utbetaling
       access: readwrite
     - team: etterlatte
-      application: etterlatte-tilbakekreving
-      access: readwrite
-    # Skal erstattes av etterlatte-behandling-kafka
-    - team: etterlatte
-      application: etterlatte-oppdater-behandling
-      access: readwrite
-    - team: etterlatte
       application: etterlatte-behandling-kafka
-      access: readwrite
-    - team: etterlatte
-      application: etterlatte-gyldig-soeknad
-      access: readwrite
-    - team: etterlatte
-      application: etterlatte-grunnlag
       access: readwrite
     - team: etterlatte
       application: etterlatte-vedtaksvurdering
@@ -92,19 +55,10 @@ spec:
       application: etterlatte-vedtaksvurdering-kafka
       access: readwrite
     - team: etterlatte
-      application: start-regulering
-      access: write
-    - team: etterlatte
-      application: etterlatte-vilkaarsvurdering-kafka
-      access: readwrite
-    - team: etterlatte
       application: etterlatte-trygdetid-kafka
       access: readwrite
     - team: etterlatte
       application: etterlatte-tidshendelser
-      access: readwrite
-    - team: etterlatte
-      application: etterlatte-migrering
       access: readwrite
     - team: etterlatte
       application: etterlatte-hendelser-samordning
@@ -114,4 +68,11 @@ spec:
       access: readwrite
     - team: etterlatte
       application: etterlatte-brev-kafka
+      access: readwrite
+    # Kun dev
+    - team: etterlatte
+      application: etterlatte-testdata
+      access: write
+    - team: etterlatte
+      application: etterlatte-testdata-behandler
       access: readwrite
