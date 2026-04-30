@@ -25,12 +25,6 @@ spec:
       application: etterlatte-notifikasjoner
       access: readwrite
     - team: etterlatte
-      application: etterlatte-testdata
-      access: write
-    - team: etterlatte
-      application: etterlatte-testdata-behandler
-      access: readwrite
-    - team: etterlatte
       application: etterlatte-behandling
       access: write
     - team: etterlatte
