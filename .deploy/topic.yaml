@@ -26,7 +26,7 @@ spec:
       access: readwrite
     - team: etterlatte
       application: etterlatte-behandling
-      access: write
+      access: readwrite
     - team: etterlatte
       application: etterlatte-beregning-kafka
       access: readwrite
