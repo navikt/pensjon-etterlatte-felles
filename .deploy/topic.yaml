@@ -31,6 +31,9 @@ spec:
       application: etterlatte-beregning-kafka
       access: readwrite
     - team: etterlatte
+      application: etterlatte-brev-api
+      access: readwrite
+    - team: etterlatte
       application: etterlatte-utbetaling
       access: readwrite
     - team: etterlatte
