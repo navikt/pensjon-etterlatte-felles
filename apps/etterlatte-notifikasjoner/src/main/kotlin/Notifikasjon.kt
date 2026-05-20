@@ -42,6 +42,7 @@ class Notifikasjon(
 
             val soeknadId = packet["@lagret_soeknad_id"]
             if (soeknadId.textValue() != "27961") {
+                logger.info("Sender notifikasjon for søknad $soeknadId")
                 sendNotifikasjon.sendMessage(soeknad)
             }
             else {
