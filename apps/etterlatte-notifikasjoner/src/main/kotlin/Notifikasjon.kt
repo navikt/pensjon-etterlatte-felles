@@ -43,9 +43,11 @@ class Notifikasjon(
             val soeknad = mapper.readValue<Soeknad>(packet["@skjema_info"].toString())
 
             if (true) {
+                val journalpostId = packet["@dokarkivRetur"]["journalpostId"]
                 // TEMP: Vi skrur av sending siden vi looper meldinger
+                logger.warn("hopper over notifikasjon til søknad for journalpost $journalpostId")
                 sikkerLogg.warn(
-                    "Sender ikke ut notifikasjon for søknad med journalpostId ${packet["@dokarkivRetur"]["journalpostId"]}. " +
+                    "Sender ikke ut notifikasjon for søknad med journalpostId $journalpostId. " +
                             "Hele søknaden er med i strukurert argument soknad.",
                     kv("soknad", soeknad)
                 )
