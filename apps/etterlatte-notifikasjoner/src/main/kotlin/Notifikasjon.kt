@@ -8,8 +8,11 @@ import com.github.navikt.tbd_libs.rapids_and_rivers_api.RapidsConnection
 import com.github.navikt.tbd_libs.rapids_and_rivers.River
 import com.github.navikt.tbd_libs.rapids_and_rivers_api.MessageMetadata
 import io.micrometer.core.instrument.MeterRegistry
+import net.logstash.logback.argument.StructuredArguments.kv
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+
+val sikkerLogg: Logger = LoggerFactory.getLogger("sikkerLogg")
 
 class Notifikasjon(
     private val sendNotifikasjon: SendNotifikasjon,
@@ -38,6 +41,16 @@ class Notifikasjon(
     ) {
         runBlocking {
             val soeknad = mapper.readValue<Soeknad>(packet["@skjema_info"].toString())
+
+            if (true) {
+                // TEMP: Vi skrur av sending siden vi looper meldinger
+                sikkerLogg.warn(
+                    "Sender ikke ut notifikasjon for søknad med journalpostId ${packet["@dokarkivRetur"]["journalpostId"]}. " +
+                            "Hele søknaden er med i strukurert argument soknad.",
+                    kv("soknad", soeknad)
+                )
+                return@runBlocking
+            }
 
             sendNotifikasjon.sendMessage(soeknad)
 

@@ -47,3 +47,8 @@ spec:
       value: "etterlatte-v1"
     - name: BRUKERNOTIFIKASJON_BESKJED_TOPIC
       value: "min-side.aapen-brukervarsel-v1"
+  accessPolicy:
+    outbound:
+      rules:
+        - application: logging
+          namespace: nais-system
