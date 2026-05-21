@@ -10,7 +10,6 @@ import com.github.navikt.tbd_libs.rapids_and_rivers_api.MessageMetadata
 import io.micrometer.core.instrument.MeterRegistry
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import kotlin.math.log
 
 class Notifikasjon(
     private val sendNotifikasjon: SendNotifikasjon,
@@ -39,15 +38,10 @@ class Notifikasjon(
     ) {
         runBlocking {
             val soeknad = mapper.readValue<Soeknad>(packet["@skjema_info"].toString())
+            val soeknadId = packet["@lagret_soeknad_id"].asText()
 
-            val soeknadId = packet["@lagret_soeknad_id"]
-            if (soeknadId.textValue() != "27961") {
-                logger.info("Sender notifikasjon for søknad $soeknadId")
-                sendNotifikasjon.sendMessage(soeknad)
-            }
-            else {
-                logger.warn("Hoppet over utsending av notifikasjon for søknad $soeknadId")
-            }
+            logger.info("Sender notifikasjon for søknad $soeknadId")
+            sendNotifikasjon.sendMessage(soeknadId, soeknad)
 
             val journalpostId = packet["@dokarkivRetur"]["journalpostId"]
             JsonMessage
