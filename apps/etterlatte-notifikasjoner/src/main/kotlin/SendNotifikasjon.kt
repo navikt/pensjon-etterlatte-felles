@@ -34,9 +34,12 @@ class SendNotifikasjon(
             Soeknad.Type.OMSTILLINGSSTOENAD -> "Vi har mottatt søknaden din om omstillingsstønad"
         }
 
+        //TMS krever at varselId er en UUID, og vi trenger at det blir den samme UUID-en for samme søknad-ID
+        val soeknadIdSomUuid = UUID(0L, soeknadId.toLong())
+
         val varsel =  VarselActionBuilder.opprett {
             type = Varseltype.Beskjed
-            varselId = soeknadId
+            varselId = soeknadIdSomUuid.toString()
             sensitivitet = Sensitivitet.High
             ident = foedselsnummer.value
             tekst = Tekst(
@@ -60,7 +63,7 @@ class SendNotifikasjon(
             producer.send(ProducerRecord(brukernotifikasjontopic, key, varsel)).get(10, TimeUnit.SECONDS)
         } catch (e: Exception) {
             logger.error(
-                "Beskjed til $brukernotifikasjontopic (Min side) for søknad med id $soeknadId feilet.",
+                "Beskjed til $brukernotifikasjontopic (Min side) for søknad med id $soeknadId og varselId $soeknadIdSomUuid feilet.",
                 e
             )
         }
