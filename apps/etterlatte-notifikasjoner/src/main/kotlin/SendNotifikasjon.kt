@@ -22,16 +22,13 @@ class SendNotifikasjon(
     private val logger: Logger = LoggerFactory.getLogger(SendNotifikasjon::class.java)
     private val brukernotifikasjontopic = env["BRUKERNOTIFIKASJON_BESKJED_TOPIC"]!!
 
-    fun sendMessage(soeknad: Soeknad) {
+    fun sendMessage(soeknadId: String, soeknad: Soeknad) {
         val innsender = soeknad.innsender.foedselsnummer
 
-        sendVarselSMS(innsender, soeknad.type)
+        sendVarselSMS(innsender, soeknad.type, soeknadId)
     }
 
-    internal fun sendVarselSMS(foedselsnummer: Foedselsnummer, soeknadType: Soeknad.Type) {
-
-        val oppgaveId = UUID.randomUUID().toString()
-
+    internal fun sendVarselSMS(foedselsnummer: Foedselsnummer, soeknadType: Soeknad.Type, soeknadId: String) {
         val varslingTekst = when (soeknadType) {
             Soeknad.Type.BARNEPENSJON -> "Vi har mottatt søknaden din om barnepensjon"
             Soeknad.Type.OMSTILLINGSSTOENAD -> "Vi har mottatt søknaden din om omstillingsstønad"
@@ -39,7 +36,7 @@ class SendNotifikasjon(
 
         val varsel =  VarselActionBuilder.opprett {
             type = Varseltype.Beskjed
-            varselId = oppgaveId
+            varselId = soeknadId
             sensitivitet = Sensitivitet.High
             ident = foedselsnummer.value
             tekst = Tekst(
@@ -59,10 +56,11 @@ class SendNotifikasjon(
             )
         }
         try {
-            producer.send(ProducerRecord(brukernotifikasjontopic, oppgaveId, varsel)).get(10, TimeUnit.SECONDS)
+            val key = UUID.randomUUID().toString()
+            producer.send(ProducerRecord(brukernotifikasjontopic, key, varsel)).get(10, TimeUnit.SECONDS)
         } catch (e: Exception) {
             logger.error(
-                "Beskjed til $brukernotifikasjontopic (Min side) for søknad med id $oppgaveId feilet.",
+                "Beskjed til $brukernotifikasjontopic (Min side) for søknad med id $soeknadId feilet.",
                 e
             )
         }
