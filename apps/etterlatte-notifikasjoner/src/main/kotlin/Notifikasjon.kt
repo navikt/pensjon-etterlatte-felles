@@ -37,8 +37,6 @@ class Notifikasjon(
         meterRegistry: MeterRegistry
     ) {
         runBlocking {
-            logger.info("Behandler melding med @event_name: ${packet["@event_name"].asText()}: "
-            + packet.toJson())
             val soeknad = mapper.readValue<Soeknad>(packet["@skjema_info"].toString())
             val soeknadId = packet["@lagret_soeknad_id"].asText()
 
