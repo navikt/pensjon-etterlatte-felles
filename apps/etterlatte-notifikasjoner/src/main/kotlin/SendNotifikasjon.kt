@@ -59,8 +59,7 @@ class SendNotifikasjon(
             )
         }
         try {
-            val key = UUID.randomUUID().toString()
-            producer.send(ProducerRecord(brukernotifikasjontopic, key, varsel)).get(10, TimeUnit.SECONDS)
+            producer.send(ProducerRecord(brukernotifikasjontopic, soeknadIdSomUuid.toString(), varsel)).get(10, TimeUnit.SECONDS)
         } catch (e: Exception) {
             logger.error(
                 "Beskjed til $brukernotifikasjontopic (Min side) for søknad med id $soeknadId og varselId $soeknadIdSomUuid feilet.",
