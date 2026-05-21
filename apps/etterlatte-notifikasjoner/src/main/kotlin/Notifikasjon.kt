@@ -38,7 +38,7 @@ class Notifikasjon(
     ) {
         runBlocking {
             val soeknad = mapper.readValue<Soeknad>(packet["@skjema_info"].toString())
-            val soeknadId = packet["@lagret_soeknad_id"].textValue()
+            val soeknadId = packet["@lagret_soeknad_id"].toString()
 
             logger.info("Sender notifikasjon for søknad $soeknadId")
             sendNotifikasjon.sendMessage(soeknadId, soeknad)

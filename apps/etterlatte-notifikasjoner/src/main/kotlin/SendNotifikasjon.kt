@@ -35,7 +35,7 @@ class SendNotifikasjon(
         }
 
         //TMS krever at varselId er en UUID, og vi trenger at det blir den samme UUID-en for samme søknad-ID
-        val soeknadIdSomUuid = UUID(0L, soeknadId.toLong())
+        val soeknadIdSomUuid = soeknadIdSomUuid(soeknadId)
 
         val varsel =  VarselActionBuilder.opprett {
             type = Varseltype.Beskjed
@@ -65,6 +65,16 @@ class SendNotifikasjon(
                 "Beskjed til $brukernotifikasjontopic (Min side) for søknad med id $soeknadId og varselId $soeknadIdSomUuid feilet.",
                 e
             )
+        }
+    }
+
+    private fun soeknadIdSomUuid(soeknadId: String): UUID {
+        try {
+            val soeknadIdLong = soeknadId.toLong()
+            return UUID(0L, soeknadIdLong)
+        }
+        catch (e: RuntimeException) {
+            throw RuntimeException("Søknad-ID $soeknadId kan ikke representeres som en UUID", e)
         }
     }
 }
