@@ -22,7 +22,7 @@ class Notifikasjon(
     init {
         River(rapidsConnection)
             .apply {
-                validate { it.demandValue("@event_name", "soeknad_innsendt") }
+                precondition { it.requireValue("@event_name", "soeknad_innsendt") }
                 validate { it.requireKey("@dokarkivRetur") }
                 validate { it.requireKey("@fnr_soeker") }
                 validate { it.requireKey("@skjema_info") }
