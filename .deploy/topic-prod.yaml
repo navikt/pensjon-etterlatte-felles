@@ -34,9 +34,6 @@ spec:
       application: etterlatte-behandling-kafka
       access: readwrite
     - team: etterlatte
-      application: etterlatte-vedtaksvurdering
-      access: readwrite
-    - team: etterlatte
       application: etterlatte-statistikk
       access: readwrite
     - team: etterlatte
