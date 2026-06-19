@@ -26,10 +26,11 @@ jobs:
           distribution: temurin
           java-version: 21
       - name: Inject slug/short variables
-        uses: rlespinasse/github-slug-action@9e7def61550737ba68c62d34a32dd31792e3f429 # ratchet:rlespinasse/github-slug-action@v5
+        uses: rlespinasse/github-slug-action@e6f261660910b273384c5c42b17a0217881b217a # ratchet:rlespinasse/github-slug-action@v5
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@0723195856401067f7a2779048b490ace7a47d7c # ratchet:gradle/actions/setup-gradle@v5
+        uses: gradle/actions/setup-gradle@50e97c2cd7a37755bbfafc9c5b7cafaece252f6e # ratchet:gradle/actions/setup-gradle@v6.1.0
         with:
+          cache-provider: basic
           cache-encryption-key: ${{ secrets.gradlekey }}
           dependency-graph: generate-and-submit
       - name: Gradle test and build
@@ -38,7 +39,7 @@ jobs:
         run: ./gradlew :apps:${{ github.workflow }}:build --configuration-cache
 
       - name: Build and publish docker image
-        uses: nais/docker-build-push@078e460885ed0424b60d45ce9220b4be1748be9d # ratchet:nais/docker-build-push@v0
+        uses: nais/docker-build-push@be85229e81c0293c265c646c084f05317fb6e0d2 # ratchet:nais/docker-build-push@v0
         id: docker-build-push
         env:
           TRIVY_JAVA_DB_REPOSITORY: "public.ecr.aws/aquasecurity/trivy-java-db:1"

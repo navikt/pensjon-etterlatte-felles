@@ -22,24 +22,24 @@ class SendNotifikasjon(
     private val logger: Logger = LoggerFactory.getLogger(SendNotifikasjon::class.java)
     private val brukernotifikasjontopic = env["BRUKERNOTIFIKASJON_BESKJED_TOPIC"]!!
 
-    fun sendMessage(soeknad: Soeknad) {
+    fun sendMessage(soeknadId: String, soeknad: Soeknad) {
         val innsender = soeknad.innsender.foedselsnummer
 
-        sendVarselSMS(innsender, soeknad.type)
+        sendVarselSMS(innsender, soeknad.type, soeknadId)
     }
 
-    internal fun sendVarselSMS(foedselsnummer: Foedselsnummer, soeknadType: Soeknad.Type) {
-
-        val oppgaveId = UUID.randomUUID().toString()
-
+    internal fun sendVarselSMS(foedselsnummer: Foedselsnummer, soeknadType: Soeknad.Type, soeknadId: String) {
         val varslingTekst = when (soeknadType) {
             Soeknad.Type.BARNEPENSJON -> "Vi har mottatt søknaden din om barnepensjon"
             Soeknad.Type.OMSTILLINGSSTOENAD -> "Vi har mottatt søknaden din om omstillingsstønad"
         }
 
+        //TMS krever at varselId er en UUID, og vi trenger at det blir den samme UUID-en for samme søknad-ID
+        val soeknadIdSomUuid = soeknadIdSomUuid(soeknadId)
+
         val varsel =  VarselActionBuilder.opprett {
             type = Varseltype.Beskjed
-            varselId = oppgaveId
+            varselId = soeknadIdSomUuid.toString()
             sensitivitet = Sensitivitet.High
             ident = foedselsnummer.value
             tekst = Tekst(
@@ -59,12 +59,22 @@ class SendNotifikasjon(
             )
         }
         try {
-            producer.send(ProducerRecord(brukernotifikasjontopic, oppgaveId, varsel)).get(10, TimeUnit.SECONDS)
+            producer.send(ProducerRecord(brukernotifikasjontopic, soeknadIdSomUuid.toString(), varsel)).get(10, TimeUnit.SECONDS)
         } catch (e: Exception) {
             logger.error(
-                "Beskjed til $brukernotifikasjontopic (Min side) for søknad med id $oppgaveId feilet.",
+                "Beskjed til $brukernotifikasjontopic (Min side) for søknad med id $soeknadId og varselId $soeknadIdSomUuid feilet.",
                 e
             )
+        }
+    }
+
+    private fun soeknadIdSomUuid(soeknadId: String): UUID {
+        try {
+            val soeknadIdLong = soeknadId.toLong()
+            return UUID(0L, soeknadIdLong)
+        }
+        catch (e: RuntimeException) {
+            throw RuntimeException("Søknad-ID $soeknadId kan ikke representeres som en UUID", e)
         }
     }
 }

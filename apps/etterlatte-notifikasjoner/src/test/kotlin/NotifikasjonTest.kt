@@ -57,7 +57,7 @@ internal class NotifikasjonTest {
                                     "@dokarkivRetur" to "123456",
                                     "@fnr_soeker" to "26430489347",
                                     "@skjema_info" to mapper.readTree(json),
-                                    "@lagret_soeknad_id" to "4",
+                                    "@lagret_soeknad_id" to 4,
                                     "@dokarkivRetur" to (mapOf("journalpostId" to "5"))
                                 )
                             ).toJson()
@@ -102,7 +102,7 @@ internal class NotifikasjonTest {
                                     "@dokarkivRetur" to "123456",
                                     "@fnr_soeker" to "26430489347",
                                     "@skjema_info" to mapper.readTree(json),
-                                    "@lagret_soeknad_id" to "4",
+                                    "@lagret_soeknad_id" to 4,
                                     "@dokarkivRetur" to (mapOf("journalpostId" to "5"))
                                 )
                             ).toJson()

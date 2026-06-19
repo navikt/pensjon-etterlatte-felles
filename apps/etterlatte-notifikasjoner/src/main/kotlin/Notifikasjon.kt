@@ -38,15 +38,17 @@ class Notifikasjon(
     ) {
         runBlocking {
             val soeknad = mapper.readValue<Soeknad>(packet["@skjema_info"].toString())
+            val soeknadId = packet["@lagret_soeknad_id"].asText()
 
-            sendNotifikasjon.sendMessage(soeknad)
+            logger.info("Sender notifikasjon for søknad $soeknadId")
+            sendNotifikasjon.sendMessage(soeknadId, soeknad)
 
             val journalpostId = packet["@dokarkivRetur"]["journalpostId"]
             JsonMessage
                 .newMessage(
                     mapOf(
                         "@event_name" to "notifikasjon_sendt",
-                        "@lagret_soeknad_id" to packet["@lagret_soeknad_id"],
+                        "@lagret_soeknad_id" to soeknadId,
                         "@journalpostId" to journalpostId,
                         "@notifikasjon" to "Notifikasjon sendt"
                     )

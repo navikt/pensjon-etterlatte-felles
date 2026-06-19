@@ -1,8 +1,8 @@
 [versions]
-ktor-version = "3.3.0"
-jupiter-version = "6.0.1"
+ktor-version = "3.4.3"
+jupiter-version = "6.0.3"
 cxf-version = "4.2.0"
-jackson-version = "2.20.1"
+jackson-version = "2.21.3"
 rapidsandrivers-version = "2025081112301754908236.47b364d7b14c" # OBS! tbdlibs brukes av denne. De bør stemme overens
 tbdlibs-version = "2025.08.07-09.55-15719a86" # OBS! rapidsandrivers bruker denne. De bør stemme overens
 
@@ -11,7 +11,7 @@ tbdlibs-version = "2025.08.07-09.55-15719a86" # OBS! rapidsandrivers bruker denn
 #NavFelles
 rapidAndRivers = { module = "com.github.navikt:rapids-and-rivers", version.ref = "rapidsandrivers-version" }
 brukernotifikasjonerKotlinBuilder = { module = "no.nav.tms.varsel:kotlin-builder", version = "2.1.1"}
-mockOauth2Server = { module = "no.nav.security:mock-oauth2-server", version = "3.0.0"}
+mockOauth2Server = { module = "no.nav.security:mock-oauth2-server", version = "3.0.3"}
 tjenestespesifikasjonerTilbakekreving = { module = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:tilbakekreving-v1-tjenestespesifikasjon", version = "1.d27898d"}
 tjenestespesifikasjonerOppdragSimulering = { module = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:nav-system-os-simuler-fp-service-tjenestespesifikasjon", version = "1.d27898d"}
 
@@ -46,18 +46,18 @@ junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher
 
 #Logging
 logging-slf4jApi = { module = "org.slf4j:slf4j-api", version = "2.0.17" }
-logging-logbackClassic = { module = "ch.qos.logback:logback-classic", version = "1.5.20" }
+logging-logbackClassic = { module = "ch.qos.logback:logback-classic", version = "1.5.32" }
 logging-logstashLogbackEncoder = { module = "net.logstash.logback:logstash-logback-encoder", version = "9.0"}
 
 #Micrometer
-micrometer-prometheus = { module = "io.micrometer:micrometer-registry-prometheus", version = "1.15.5"}
+micrometer-prometheus = { module = "io.micrometer:micrometer-registry-prometheus", version = "1.16.5"}
 
 #MockK
-mockk = { module = "io.mockk:mockk", version = "1.14.6" }
+mockk = { module = "io.mockk:mockk", version = "1.14.9" }
 
 # Kotest
 test-navfelles-rapidsandriversktor = { module = "com.github.navikt.tbd-libs:rapids-and-rivers-test", version.ref = "tbdlibs-version" }
-test-kotest-assertionscore = { module = "io.kotest:kotest-assertions-core", version = "6.1.4" }
+test-kotest-assertionscore = { module = "io.kotest:kotest-assertions-core", version = "6.1.11" }
 
 #Cxf
 cxf-logging = { module = "org.apache.cxf:cxf-rt-features-logging", version.ref = "cxf-version" }
