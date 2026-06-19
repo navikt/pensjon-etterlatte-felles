@@ -27,7 +27,7 @@ jobs:
 
   deploy-to-prod-cluster:
     name: prod-cluster
-    if: ${{ github.ref == 'refs/heads/main' || github.event.inputs.deploy-prod == 'true' }}
+    if: ${{ github.ref == 'refs/heads/main' }}
     needs: deploy-to-dev-cluster
     runs-on: ubuntu-latest
     timeout-minutes: 10
