@@ -23,6 +23,8 @@ dependencies {
     implementation(libs.cxf.logging)
     implementation(libs.cxf.jax.ws)
     implementation(libs.cxf.transports.http)
+     implementation(libs.bcprov)
+    implementation(libs.bcpkix)
     implementation(libs.cxf.ws.security)
     implementation(libs.micrometer.prometheus)
 

@@ -2,6 +2,7 @@
 ktor-version = "3.5.0"
 jupiter-version = "6.1.0"
 cxf-version = "4.2.2"
+bouncycastle-version = "1.85"
 jackson-version = "2.22.0"
 rapidsandrivers-version = "2025081112301754908236.47b364d7b14c" # OBS! tbdlibs brukes av denne. De bør stemme overens
 tbdlibs-version = "2025.08.07-09.55-15719a86" # OBS! rapidsandrivers bruker denne. De bør stemme overens
@@ -58,6 +59,10 @@ mockk = { module = "io.mockk:mockk", version = "1.14.11" }
 # Kotest
 test-navfelles-rapidsandriversktor = { module = "com.github.navikt.tbd-libs:rapids-and-rivers-test", version.ref = "tbdlibs-version" }
 test-kotest-assertionscore = { module = "io.kotest:kotest-assertions-core", version = "6.1.11" }
+
+# BouncyCastle (versjon settes pga CVE-2025-14813)
+bcprov = { module = "org.bouncycastle:bcprov-jdk18on", version.ref = "bouncycastle-version" }
+bcpkix = { module = "org.bouncycastle:bcpkix-jdk18on", version.ref = "bouncycastle-version" }
 
 #Cxf
 cxf-logging = { module = "org.apache.cxf:cxf-rt-features-logging", version.ref = "cxf-version" }
