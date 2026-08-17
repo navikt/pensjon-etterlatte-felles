@@ -24,7 +24,7 @@ jobs:
         uses: rlespinasse/github-slug-action@ef93b2ea4b6405d06fd8684fc3ff795d262ecae8 # ratchet:rlespinasse/github-slug-action@v5
 
       - name: Build and publish docker image
-        uses: nais/docker-build-push@751a312f0803eb96a05a41fadf51be19b7be362c # ratchet:nais/docker-build-push@v0
+        uses: nais/docker-build-push@2d2b0a7193e65422b7f0355d4afb445e0a8b2cc3 # ratchet:nais/docker-build-push@v0
         id: docker-build-push
         env:
           TRIVY_JAVA_DB_REPOSITORY: "public.ecr.aws/aquasecurity/trivy-java-db:1"
