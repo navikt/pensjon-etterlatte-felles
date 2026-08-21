@@ -1,9 +1,9 @@
 [versions]
-ktor-version = "3.5.0"
+ktor-version = "3.5.1"
 jupiter-version = "6.1.0"
 cxf-version = "4.2.2"
 bouncycastle-version = "1.85"
-jackson-version = "2.22.0"
+jackson-version = "2.22.1"
 rapidsandrivers-version = "2025081112301754908236.47b364d7b14c" # OBS! tbdlibs brukes av denne. De bør stemme overens
 tbdlibs-version = "2025.08.07-09.55-15719a86" # OBS! rapidsandrivers bruker denne. De bør stemme overens
 
@@ -47,7 +47,7 @@ junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher
 
 #Logging
 logging-slf4jApi = { module = "org.slf4j:slf4j-api", version = "2.0.18" }
-logging-logbackClassic = { module = "ch.qos.logback:logback-classic", version = "1.5.34" }
+logging-logbackClassic = { module = "ch.qos.logback:logback-classic", version = "1.6.1" }
 logging-logstashLogbackEncoder = { module = "net.logstash.logback:logstash-logback-encoder", version = "9.0"}
 
 #Micrometer
