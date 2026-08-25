@@ -26,8 +26,8 @@ data class Omstillingsstoenad(
     override val soeker: GjenlevendeOMS,
     val avdoed: Avdoed,
     val barn: List<Barn>,
+    override val mottattDato: LocalDateTime = LocalDateTime.now(),
 ) : InnsendtSoeknad {
     override val versjon = "1"
     override val type: SoeknadType = SoeknadType.OMSTILLINGSSTOENAD
-    override val mottattDato: LocalDateTime = LocalDateTime.now()
 }
