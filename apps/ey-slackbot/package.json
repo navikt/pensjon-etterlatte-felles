@@ -6,8 +6,9 @@
     "start": "node src/app.js"
   },
   "dependencies": {
-    "@slack/bolt": "^4.7.2",
-    "cron": "^4.4.0"
+    "@slack/bolt": "^5.0.0",
+    "cron": "^4.4.0",
+    "undici": "^7.0.0"
   },
   "engines": {
     "node": "24.x"

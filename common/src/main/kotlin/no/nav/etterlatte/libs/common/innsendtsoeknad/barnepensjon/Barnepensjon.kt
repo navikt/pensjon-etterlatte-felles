@@ -29,10 +29,10 @@ data class Barnepensjon(
     override val soeker: Barn,
     val foreldre: List<Person>,
     val soesken: List<Barn>,
+    override val mottattDato: LocalDateTime = LocalDateTime.now(),
 ) : InnsendtSoeknad {
     override val versjon = "2"
     override val type = SoeknadType.BARNEPENSJON
-    override val mottattDato: LocalDateTime = LocalDateTime.now()
 }
 
 data class GjenlevendeForelder(
