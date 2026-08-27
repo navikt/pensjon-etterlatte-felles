@@ -12,7 +12,6 @@ import org.apache.kafka.clients.producer.ProducerRecord
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import java.time.ZonedDateTime
-import java.util.UUID
 import java.util.concurrent.TimeUnit
 
 class SendNotifikasjon(
@@ -22,24 +21,22 @@ class SendNotifikasjon(
     private val logger: Logger = LoggerFactory.getLogger(SendNotifikasjon::class.java)
     private val brukernotifikasjontopic = env["BRUKERNOTIFIKASJON_BESKJED_TOPIC"]!!
 
-    fun sendMessage(soeknadId: String, soeknad: Soeknad) {
+    fun sendMessage(soeknadId: SoeknadId, soeknad: Soeknad) {
         val innsender = soeknad.innsender.foedselsnummer
 
         sendVarselSMS(innsender, soeknad.type, soeknadId)
     }
 
-    internal fun sendVarselSMS(foedselsnummer: Foedselsnummer, soeknadType: Soeknad.Type, soeknadId: String) {
+    internal fun sendVarselSMS(foedselsnummer: Foedselsnummer, soeknadType: Soeknad.Type, soeknadId: SoeknadId) {
         val varslingTekst = when (soeknadType) {
             Soeknad.Type.BARNEPENSJON -> "Vi har mottatt søknaden din om barnepensjon"
             Soeknad.Type.OMSTILLINGSSTOENAD -> "Vi har mottatt søknaden din om omstillingsstønad"
         }
 
-        //TMS krever at varselId er en UUID, og vi trenger at det blir den samme UUID-en for samme søknad-ID
-        val soeknadIdSomUuid = soeknadIdSomUuid(soeknadId)
 
         val varsel =  VarselActionBuilder.opprett {
             type = Varseltype.Beskjed
-            varselId = soeknadIdSomUuid.toString()
+            varselId = soeknadId.varselIdForEtterlatte
             sensitivitet = Sensitivitet.High
             ident = foedselsnummer.value
             tekst = Tekst(
@@ -59,22 +56,13 @@ class SendNotifikasjon(
             )
         }
         try {
-            producer.send(ProducerRecord(brukernotifikasjontopic, soeknadIdSomUuid.toString(), varsel)).get(10, TimeUnit.SECONDS)
+            producer.send(ProducerRecord(brukernotifikasjontopic, soeknadId.varselIdForEtterlatte, varsel)).get(10, TimeUnit.SECONDS)
         } catch (e: Exception) {
             logger.error(
-                "Beskjed til $brukernotifikasjontopic (Min side) for søknad med id $soeknadId og varselId $soeknadIdSomUuid feilet.",
+                "Beskjed til $brukernotifikasjontopic (Min side) for søknad med id $soeknadId og varselId ${soeknadId.varselIdForEtterlatte} feilet.",
                 e
             )
         }
     }
 
-    private fun soeknadIdSomUuid(soeknadId: String): UUID {
-        try {
-            val soeknadIdLong = soeknadId.toLong()
-            return UUID(0L, soeknadIdLong)
-        }
-        catch (e: RuntimeException) {
-            throw RuntimeException("Søknad-ID $soeknadId kan ikke representeres som en UUID", e)
-        }
-    }
 }

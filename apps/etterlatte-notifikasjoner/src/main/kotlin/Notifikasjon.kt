@@ -22,7 +22,7 @@ class Notifikasjon(
     init {
         River(rapidsConnection)
             .apply {
-                validate { it.demandValue("@event_name", "soeknad_innsendt") }
+                precondition { it.requireValue("@event_name", "soeknad_innsendt") }
                 validate { it.requireKey("@dokarkivRetur") }
                 validate { it.requireKey("@fnr_soeker") }
                 validate { it.requireKey("@skjema_info") }
@@ -38,7 +38,7 @@ class Notifikasjon(
     ) {
         runBlocking {
             val soeknad = mapper.readValue<Soeknad>(packet["@skjema_info"].toString())
-            val soeknadId = packet["@lagret_soeknad_id"].asText()
+            val soeknadId = SoeknadId(packet["@lagret_soeknad_id"].asText())
 
             logger.info("Sender notifikasjon for søknad $soeknadId")
             sendNotifikasjon.sendMessage(soeknadId, soeknad)
@@ -48,7 +48,7 @@ class Notifikasjon(
                 .newMessage(
                     mapOf(
                         "@event_name" to "notifikasjon_sendt",
-                        "@lagret_soeknad_id" to soeknadId,
+                        "@lagret_soeknad_id" to soeknadId.toString(),
                         "@journalpostId" to journalpostId,
                         "@notifikasjon" to "Notifikasjon sendt"
                     )
