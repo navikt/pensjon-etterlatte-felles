@@ -1,7 +1,7 @@
 [versions]
 ktor-version = "3.5.0"
 jupiter-version = "6.1.3"
-cxf-version = "4.2.2"
+cxf-version = "4.2.3"
 bouncycastle-version = "1.85"
 jackson-version = "2.22.0"
 rapidsandrivers-version = "2025081112301754908236.47b364d7b14c" # OBS! tbdlibs brukes av denne. De bør stemme overens
