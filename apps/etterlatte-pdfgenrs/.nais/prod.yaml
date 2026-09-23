@@ -1,0 +1,39 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: etterlatte-pdfgenrs
+  namespace: etterlatte
+  labels:
+    team: etterlatte
+spec:
+  image: {{ image }}
+  port: 8080
+  replicas:
+    min: 1
+    max: 1
+  resources:
+    limits:
+      memory: 768Mi
+    requests:
+      cpu: 10m
+      memory: 384Mi
+  liveness:
+    path: /internal/is_alive
+  readiness:
+    path: /internal/is_ready
+  prometheus:
+    enabled: true
+    path: /internal/metrics
+  observability:
+    autoInstrumentation:
+      enabled: true
+      runtime: sdk
+    logging:
+      destinations:
+        - id: elastic
+        - id: loki
+  accessPolicy:
+    inbound:
+      rules:
+        - application: etterlatte-brev-api
+        - application: etterlatte-behandling-kafka

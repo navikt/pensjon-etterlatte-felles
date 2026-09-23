@@ -56,7 +56,7 @@ updates:
       default-days: 7
     open-pull-requests-limit: 10
   - package-ecosystem: "docker"
-    directory: "/apps/ey-pdfgen"
+    directory: "/apps/etterlatte-pdfgenrs"
     schedule:
       interval: "monthly"
     cooldown:

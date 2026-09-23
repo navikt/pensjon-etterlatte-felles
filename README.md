@@ -28,8 +28,8 @@ App som sender notifikasjoner (e-post, sms, melding på nav.no) til sluttbrukere
 [etterlatte-proxy](apps/etterlatte-proxy) \
 Proxy for å tillate kommunikasjon mellom GCP og On-Prem.
 
-[ey-pdfgen](apps/ey-pdfgen) \
-Enkel app for opprettelse av PDF til journalføring. Benytter seg av [pdfgen](https://github.com/navikt/pdfgen)
+[etterlatte-pdfgenrs](apps/etterlatte-pdfgenrs) \
+PDF-generator for søknads-PDF-er, notater og klageblanketter. Benytter [pdfgenrs](https://github.com/navikt/pdfgenrs).
 
 [ey-slackbot](apps/ey-slackbot) \
 Konfigurasjon av slackbot for teamet.
