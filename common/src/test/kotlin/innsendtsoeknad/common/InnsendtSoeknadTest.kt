@@ -1,9 +1,5 @@
 package innsendtsoeknad.common
 
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import com.fasterxml.jackson.module.kotlin.jacksonTypeRef
-import com.fasterxml.jackson.module.kotlin.readValue
 import io.kotest.matchers.ints.shouldBeExactly
 import io.kotest.matchers.shouldBe
 import no.nav.etterlatte.libs.common.innsendtsoeknad.barnepensjon.Barnepensjon
@@ -13,12 +9,13 @@ import no.nav.etterlatte.libs.common.innsendtsoeknad.common.SoeknadType
 import no.nav.etterlatte.libs.common.innsendtsoeknad.omstillingsstoenad.Omstillingsstoenad
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
+import tools.jackson.module.kotlin.jacksonObjectMapper
+import tools.jackson.module.kotlin.jacksonTypeRef
+import tools.jackson.module.kotlin.readValue
 
 @Suppress("ktlint:standard:max-line-length")
 internal class InnsendtSoeknadTest {
-    private val mapper =
-        jacksonObjectMapper()
-            .registerModule(JavaTimeModule())
+    private val mapper = jacksonObjectMapper()
 
     @Test
     fun `Deserialisering fungerer som forventet`() {
