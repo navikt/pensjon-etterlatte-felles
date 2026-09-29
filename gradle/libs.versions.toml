@@ -4,8 +4,7 @@ jupiter-version = "6.1.3"
 cxf-version = "4.2.2"
 bouncycastle-version = "1.85"
 jackson-version = "3.2.3"
-rapidsandrivers-version = "2026071513121784113927" # OBS! tbdlibs brukes av denne. De bør stemme overens
-tbdlibs-version = "20260823.1727" # OBS! rapidsandrivers bruker denne. De bør stemme overens
+rapidsandrivers-version = "2026071513121784113927"
 
 [libraries]
 
@@ -55,7 +54,7 @@ micrometer-prometheus = { module = "io.micrometer:micrometer-registry-prometheus
 mockk = { module = "io.mockk:mockk", version = "1.14.11" }
 
 # Kotest
-test-navfelles-rapidsandriversktor = { module = "com.github.navikt.tbd-libs:rapids-and-rivers-test", version.ref = "tbdlibs-version" }
+test-navfelles-rapidsandriversktor = { module = "com.github.navikt.rapids-and-rivers:rapids-and-rivers-test", version.ref = "rapidsandrivers-version" }
 test-kotest-assertionscore = { module = "io.kotest:kotest-assertions-core", version = "6.2.4" }
 
 # BouncyCastle (versjon settes pga CVE-2025-14813)
