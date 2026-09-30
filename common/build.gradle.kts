@@ -13,8 +13,6 @@ dependencies {
     api(kotlin("stdlib"))
     api(kotlin("reflect"))
 
-    api(libs.jacksonDatatypejsr310)
-    api(libs.jackson.datatypejdk8)
     api(libs.jackson.modulekotlin)
 
     testImplementation(libs.jupiter.api)
