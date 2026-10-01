@@ -31,6 +31,9 @@ Proxy for å tillate kommunikasjon mellom GCP og On-Prem.
 [ey-pdfgen](apps/ey-pdfgen) \
 Enkel app for opprettelse av PDF til journalføring. Benytter seg av [pdfgen](https://github.com/navikt/pdfgen)
 
+[ey-pdfgenrs](apps/ey-pdfgenrs) \
+Erstatter ey-pdfgen. Benytter seg av [pdfgenrs](https://github.com/navikt/pdfgenrs) med Typst-maler. Kjører side om side med ey-pdfgen under migreringen.
+
 [ey-slackbot](apps/ey-slackbot) \
 Konfigurasjon av slackbot for teamet.
 
