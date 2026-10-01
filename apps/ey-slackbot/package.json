@@ -6,7 +6,7 @@
     "start": "node src/app.js"
   },
   "dependencies": {
-    "@slack/bolt": "^5.0.0",
+    "@slack/bolt": "^5.1.0",
     "cron": "^4.4.0",
     "undici": "^7.29.1"
   },

@@ -2,16 +2,16 @@
 # yarn lockfile v1
 
 
-"@slack/bolt@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@slack/bolt/-/bolt-5.0.0.tgz#a4c1362dfb27e261c6dfa36c5dfdb6f72ba6d055"
-  integrity sha512-L0FTzidrDKTu4Ph8sdv0bB3acafBTAC02TBcD+hojPTTNSMX3hSK+rkpkUKkqbbc0vGpSjd6A/g71Rjy7EbBhw==
+"@slack/bolt@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@slack/bolt/-/bolt-5.1.0.tgz#37ca9ef8ef9d4ba59a49fc2f033443e971c2cef6"
+  integrity sha512-lSQzEs/OMDVIbTVb+ZXZa7zsYGvnB1d58CnK55vdYdVeSmHMON1RjSgPf3lGUE9lYhNTUIjbFCrCrsJ1j5SAUA==
   dependencies:
     "@slack/logger" "^5.0.0"
     "@slack/oauth" "^4.0.0"
-    "@slack/socket-mode" "^3.0.0"
-    "@slack/types" "^3.0.0"
-    "@slack/web-api" "^8.0.0"
+    "@slack/socket-mode" "^3.0.1"
+    "@slack/types" "^3.1.0"
+    "@slack/web-api" "^8.1.1"
     express "^5.0.0"
     path-to-regexp "^8.1.0"
     raw-body "^3"
@@ -35,33 +35,33 @@
     "@types/node" ">=20"
     jsonwebtoken "^9"
 
-"@slack/socket-mode@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@slack/socket-mode/-/socket-mode-3.0.0.tgz#3570f49b38275f758d1fdf7a01504fcaee733f28"
-  integrity sha512-QShO60SB0E+HH+TbcKj3CBEQbodToRyiXnxuSB4t1kvUlqEmuGA1nOOjrRDkDJbOECAZ13PLe4ek9SrntpfoYg==
+"@slack/socket-mode@^3.0.1":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@slack/socket-mode/-/socket-mode-3.1.0.tgz#51ddd63d50e420e63420e6524f5940c9b15ea9a3"
+  integrity sha512-F9T+FKbtsYRKV23X8l6WW1fx7ncqsMufg+HLA4ffHf/MvZSCvPunFw576ekmY0Q03kgTAIByTKDJxnM+wn1okg==
   dependencies:
     "@slack/logger" "^5.0.0"
-    "@slack/web-api" "^8.0.0"
+    "@slack/web-api" "^8.2.0"
     "@types/node" ">=20"
     eventemitter3 "^5"
 
-"@slack/types@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@slack/types/-/types-3.0.0.tgz#be620fb6ff6e7150b26f189c09760ffbb026428d"
-  integrity sha512-KNOqpnNAlsFt5Jk9XBclslQ0lobRIg/0tnhpmvZJAglHJx9E8oceN8hC3gaBzkR6UzQ9Wzq4rLsJ98wUcxWPfw==
+"@slack/types@^3.1.0", "@slack/types@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@slack/types/-/types-3.2.0.tgz#fc0769fce41fb538abc40b3a787b6e7effef7918"
+  integrity sha512-IN4gdtlzQt8UJoj+1v+qAHeR4TxHO0KMlIs841SFfDQAcFFnsrWaGsEAE4goxVt8O/JOAFaGGdrFTzhNBop/Fg==
 
-"@slack/web-api@^8.0.0":
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/@slack/web-api/-/web-api-8.0.0.tgz#20c6bf7d839a753768a0b6b15db0d13e0c201aa4"
-  integrity sha512-ORx3XQryQPq2Jnxv5giSKXVoQRUeylrrymIR2S9fPzLjPcCts8RayMeBSZMcpfpAqp6fnBRuPW2UB6dUPUTEZA==
+"@slack/web-api@^8.0.0", "@slack/web-api@^8.1.1", "@slack/web-api@^8.2.0":
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/@slack/web-api/-/web-api-8.2.0.tgz#a84f9a34aae73a57c51f6fa7ac543112c60f5c01"
+  integrity sha512-bIW8/8BLD/HLuHLIA2LfA7AhSokzui4swCbMJuwoRJxn/kzHVla6YEKLvN1nCFHK/DfX7g+4Wj3ess/ZSh/tWQ==
   dependencies:
     "@slack/logger" "^5.0.0"
-    "@slack/types" "^3.0.0"
+    "@slack/types" "^3.2.0"
     "@types/node" ">=20"
-    "@types/retry" "0.12.0"
+    "@types/retry" "0.12.5"
     eventemitter3 "^5.0.1"
-    p-queue "^6"
-    p-retry "^4"
+    p-queue "^6.6.2"
+    p-retry "^4.6.2"
     retry "^0.13.1"
 
 "@types/jsonwebtoken@^9":
@@ -92,6 +92,11 @@
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/@types/retry/-/retry-0.12.0.tgz#2b35eccfcee7d38cd72ad99232fbd58bffb3c84d"
   integrity sha512-wWKOClTTiizcZhXnPY4wikVAwmdYHp8q6DmC+EJUzAMsycb7HB32Kh9RN4+0gExjmPmZSAQjgURXIGATPegAvA==
+
+"@types/retry@0.12.5":
+  version "0.12.5"
+  resolved "https://registry.yarnpkg.com/@types/retry/-/retry-0.12.5.tgz#f090ff4bd8d2e5b940ff270ab39fd5ca1834a07e"
+  integrity sha512-3xSjTp3v03X/lSQLkczaN9UIEwJMoMCA1+Nb5HfbJEQWogdeQIyVtTvxPXDQjZ5zws8rFQfVfRdz03ARihPJgw==
 
 accepts@^2.0.0:
   version "2.0.0"
@@ -580,7 +585,7 @@ p-finally@^1.0.0:
   resolved "https://registry.yarnpkg.com/p-finally/-/p-finally-1.0.0.tgz#3fbcfb15b899a44123b34b6dcc18b724336a2cae"
   integrity sha512-LICb2p9CB7FS+0eR1oqWnHhp0FljGLZCWBE9aix0Uye9W8LTQPwMTYVGWQWIw9RdQiDg4+epXQODwIYJtSJaow==
 
-p-queue@^6:
+p-queue@^6.6.2:
   version "6.6.2"
   resolved "https://registry.yarnpkg.com/p-queue/-/p-queue-6.6.2.tgz#2068a9dcf8e67dd0ec3e7a2bcb76810faa85e426"
   integrity sha512-RwFpb72c/BhQLEXIZ5K2e+AhgNVmIejGlTgiB9MzZ0e93GRvqZ7uSi0dvRF7/XIXDeNkra2fNHBxTyPDGySpjQ==
@@ -588,7 +593,7 @@ p-queue@^6:
     eventemitter3 "^4.0.4"
     p-timeout "^3.2.0"
 
-p-retry@^4:
+p-retry@^4.6.2:
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/p-retry/-/p-retry-4.6.2.tgz#9baae7184057edd4e17231cee04264106e092a16"
   integrity sha512-312Id396EbJdvRONlngUx0NydfrIQ5lsYu0znKVUzVvArzEIt08V1qhtyESbGVd1FGX7UKtiFp5uwKZdM8wIuQ==
