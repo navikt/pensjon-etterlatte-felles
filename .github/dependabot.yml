@@ -63,6 +63,13 @@ updates:
       default-days: 7
     open-pull-requests-limit: 10
   - package-ecosystem: "docker"
+    directory: "/apps/ey-pdfgenrs"
+    schedule:
+      interval: "monthly"
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 10
+  - package-ecosystem: "docker"
     directory: "/apps/ey-slackbot"
     schedule:
       interval: "monthly"

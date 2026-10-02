@@ -1,0 +1,51 @@
+{
+  "tittel": "Samordningsnotat",
+  "payload": {
+    "slate": [
+      {
+        "type": "heading-two",
+        "children": [{ "type": "paragraph", "text": "Samordning" }]
+      },
+      {
+        "type": "paragraph",
+        "children": [{ "type": "paragraph", "text": "Kommentar fra saksbehandler om samordningen. Æ, ø og å skal vises riktig." }]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          { "type": "paragraph", "text": "2. Rett til " },
+          { "type": "paragraph", "text": "<STØNAD>", "placeholder": true }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [{ "type": "paragraph", "text": "" }]
+      },
+      {
+        "type": "heading-three",
+        "children": [{ "type": "paragraph", "text": "Tekniske data" }]
+      },
+      {
+        "type": "bulleted-list",
+        "children": [
+          { "type": "list-item", "children": [{ "type": "paragraph", "text": "Saksbehandler: Z123456" }] },
+          { "type": "list-item", "children": [{ "type": "paragraph", "text": "SaksID: 123" }] },
+          { "type": "list-item", "children": [{ "type": "paragraph", "text": "VedtakID: 456" }] }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          { "type": "paragraph", "text": "Avsnitt med liste inni:" },
+          {
+            "type": "bulleted-list",
+            "children": [
+              { "type": "list-item", "text": "Første" },
+              { "type": "list-item", "text": "Andre" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
