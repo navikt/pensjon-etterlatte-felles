@@ -8,7 +8,7 @@
 
 #header(tittel)
 
-== Det ble oppgitt #tekst(data.at("tidspunkt", default: none))
+#h4[Det ble oppgitt #tekst(data.at("tidspunkt", default: none))]
 
 #opplysning[Endringstype][#tekst(data.at("type", default: none))]
 
@@ -19,7 +19,7 @@
 
 #let inntekt = data.at("forventetInntektTilNesteAar", default: none)
 #if har(inntekt) [
-  == Forventet inntekt for #tekst(inntekt.at("inntektsaar", default: none))
+  #h4[Forventet inntekt for #tekst(inntekt.at("inntektsaar", default: none))]
 
   #let alderspensjon = inntekt.at("skalGaaAvMedAlderspensjon", default: none)
   #if har(alderspensjon) {

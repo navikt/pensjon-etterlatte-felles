@@ -23,6 +23,17 @@
   verdi != none and verdi != false and verdi != "" and verdi != () and verdi != (:)
 )
 
+// Henter en verdi fra nøstede JSON-objekter, f.eks. hent(data, "payload", "slate").
+// Gir none hvis et ledd mangler eller er null, slik Handlebars gjør.
+#let hent(objekt, ..noekler) = {
+  let verdi = objekt
+  for noekkel in noekler.pos() {
+    if type(verdi) != dictionary { return none }
+    verdi = verdi.at(noekkel, default: none)
+  }
+  verdi
+}
+
 // Gjør om en JSON-verdi til tekst slik Handlebars skriver den ut. none blir tom tekst.
 #let tekst(verdi) = {
   if verdi == none {
@@ -34,24 +45,127 @@
   }
 }
 
-// Setter opp side, font og overskrifter. Brukes som `#show: dokument.with(tittel: ...)`.
+// Tilsvarer {{iso_to_nor_date}}: "2023-06-14" eller "2023-06-14T12:00:00" blir "14.06.2023".
+// Verdier som ikke er ISO-datoer skrives ut uendret.
+#let nor-dato(verdi) = {
+  let s = tekst(verdi)
+  let treff = s.match(regex("^([0-9]{4})-([0-9]{2})-([0-9]{2})"))
+  if treff == none { return s }
+  let (aar, maaned, dag) = treff.captures
+  dag + "." + maaned + "." + aar
+}
+
+// Tilsvarer {{breaklines}}: linjeskift i fritekst blir linjeskift i PDF-en.
+#let linjeskift(verdi) = {
+  let linjer = tekst(verdi).replace("\r\n", "\n").split("\n")
+  linjer.map(linje => [#linje]).join(linebreak())
+}
+
+// Tilsvarer {{iso_to_nor_datetime}}. pdfgen-formateringen viser dato og timer/minutter.
+#let nor-dato-tid(verdi) = {
+  let s = tekst(verdi)
+  let treff = s.match(regex("^([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2})"))
+  if treff == none { return s }
+  let (aar, maaned, dag, time, minutt) = treff.captures
+  dag + "." + maaned + "." + aar + " " + time + ":" + minutt
+}
+
+// Tilsvarer {{capitalize_names}}: normaliserer mellomrom og bruker stor forbokstav
+// etter mellomrom, bindestrek og apostrof.
+#let navn(verdi) = {
+  let s = tekst(verdi).trim().replace(regex("\\s+"), " ")
+  let deler = s.split(" ")
+  deler.map(ord => {
+    ord.split("-").map(bindestrek => {
+      bindestrek.split("'").map(del => {
+        if del == "" { "" }
+        else { str.upper(del.slice(0, 1)) + str.lower(del.slice(1)) }
+      }).join("'")
+    }).join("-")
+  }).join(" ")
+}
+
+#let som-liste(verdi) = if type(verdi) == array { verdi } else { () }
+
+// Hjelpere for standardformen på søknadsopplysninger: {spoersmaal, svar: {innhold, verdi}}.
+#let raddata(objekt) = {
+  if har(objekt) {
+    let svar = hent(objekt, "svar")
+    let innhold = if type(svar) == dictionary { hent(svar, "innhold") } else { svar }
+    opplysning(tekst(hent(objekt, "spoersmaal")), tekst(innhold))
+  }
+}
+
+#let rad-dato(objekt) = {
+  if har(objekt) {
+    let svar = hent(objekt, "svar")
+    opplysning(tekst(hent(objekt, "spoersmaal")), nor-dato(if type(svar) == dictionary { hent(svar, "innhold") } else { svar }))
+  }
+}
+
+#let rad-liste(objekt) = {
+  if har(objekt) {
+    let svar = hent(objekt, "svar")
+    let innhold = if type(svar) == array { svar.map(item => tekst(hent(item, "innhold"))) } else { (tekst(hent(svar, "innhold")),) }
+    opplysning(
+      tekst(hent(objekt, "spoersmaal")),
+      punktliste(innhold, luft: 0pt),
+    )
+  }
+}
+
+// Setter opp side, font og avsnitt. Brukes som `#show: dokument.with(tittel: ...)`.
 // Tittel er påkrevd fordi pdfgenrs lager PDF/UA-1.
-#let dokument(tittel: none, body) = {
+#let dokument(tittel: none, sidetekst: none, body) = {
   assert(tittel != none, message: "dokument() krever en tittel")
 
   set document(title: tittel)
-  set page(paper: "a4", margin: sidemarger)
+  set page(
+    paper: "a4",
+    margin: (top: sidemarger, bottom: 1.8cm, left: sidemarger, right: sidemarger),
+    footer: context grid(
+      columns: (1fr, auto),
+      if sidetekst == none { [] } else { text(size: px(12), fill: farge-dempet, sidetekst) },
+      text(size: px(12), align(right)[Side #counter(page).display() av #counter(page).final().at(0)]),
+    ),
+  )
   set text(font: "Source Sans Pro", lang: "nb", size: px(16))
-
-  // h1 i de gamle malene
-  show heading.where(level: 1): set text(size: px(20), weight: "bold")
-  show heading.where(level: 1): set block(above: 0pt, below: 0pt)
-  // h4 i de gamle malene. Nivå 2 her, siden PDF/UA ikke tillater hopp i overskriftsnivå.
-  show heading.where(level: 2): set text(size: px(16), weight: "bold")
-  show heading.where(level: 2): set block(above: 1.33em, below: 1.33em)
+  // <p> har 1em marg over og under i HTML.
+  set par(spacing: 1em)
 
   body
 }
+
+// Overskrift med samme utseende som h1–h4 i de gamle malene. Størrelse og marg er
+// standardverdiene i HTML: h2 = 1.5em/0.83em, h3 = 1.17em/1em, h4 = 1em/1.33em.
+//
+// `nivaa` er det semantiske nivået i PDF-en og velges uavhengig av utseendet, siden
+// PDF/UA ikke tillater at et nivå hoppes over (de gamle malene går f.eks. rett fra h1 til h4).
+#let overskrift(innhold, nivaa: 2, stoerrelse: px(16), marg: 1.33) = {
+  show heading: set text(size: stoerrelse, weight: "bold")
+  show heading: set block(above: marg * stoerrelse, below: marg * stoerrelse)
+  heading(level: nivaa, innhold)
+}
+
+#let h2(innhold, nivaa: 2) = overskrift(innhold, nivaa: nivaa, stoerrelse: px(24), marg: 0.83)
+#let h3(innhold, nivaa: 3) = overskrift(innhold, nivaa: nivaa, stoerrelse: px(18.72), marg: 1)
+#let h4(innhold, nivaa: 2) = overskrift(innhold, nivaa: nivaa, stoerrelse: px(16), marg: 1.33)
+#let h5(innhold) = block(
+  above: 1.67em,
+  below: 1.67em,
+  text(size: px(13.28), weight: "bold", innhold),
+)
+
+// Innholdet under headeren (.container).
+#let container(body) = pad(x: 0.7cm, body)
+
+// Punktliste som <ul>: 1em marg og innrykk slik at teksten starter 40px inn.
+// `luft` er avstanden mellom punktene. TODO: kalibrer innrykk mot en PDF fra ey-pdfgen.
+#let punktliste(punkter, luft: auto) = block(
+  above: 1em,
+  below: 1em,
+  list(indent: px(26), body-indent: px(8), spacing: luft, ..punkter),
+)
 
 // Lyseblått felt øverst med Nav-logo og tittel (#header, .navlogo og .title).
 #let header(tittel) = block(
@@ -70,7 +184,7 @@
       left: px(3),
       image("/resources/Navlogo.png", width: px(48), alt: "Nav-logo"),
     ),
-    heading(level: 1, tittel),
+    overskrift(tittel, nivaa: 1, stoerrelse: px(20), marg: 0),
   ),
 )
 

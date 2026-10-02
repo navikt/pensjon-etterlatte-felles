@@ -20,11 +20,14 @@ I malene leses flettedata med `json("/data/<app>/<mal>.json")`.
 
 ## Portert
 
+Avkrysning betyr at malen er skrevet om til Typst. PDF-ene må fortsatt kompileres og sammenlignes
+visuelt med ey-pdfgen før de kan regnes som verifisert.
+
 - [x] `omsendringer/oms_meldt_inn_endring_v1`
-- [ ] `notat/tom_mal`
-- [ ] `notat/klage_oversendelse_blankett`
-- [ ] `eypdfgen/omstillingsstoenad_v1`
-- [ ] `eypdfgen/barnepensjon_v2`
+- [x] `notat/tom_mal`
+- [x] `notat/klage_oversendelse_blankett`
+- [x] `eypdfgen/omstillingsstoenad_v1`
+- [x] `eypdfgen/barnepensjon_v2`
 
 ## Kjøre lokalt
 
@@ -34,6 +37,14 @@ så scriptet må kjøres på nytt etter endringer.
 PDF med testdata fra `data/`:
 
 http://localhost:8082/api/v1/genpdf/omsendringer/oms_meldt_inn_endring_v1
+
+http://localhost:8082/api/v1/genpdf/notat/tom_mal
+
+http://localhost:8082/api/v1/genpdf/notat/klage_oversendelse_blankett
+
+http://localhost:8082/api/v1/genpdf/eypdfgen/omstillingsstoenad_v1
+
+http://localhost:8082/api/v1/genpdf/eypdfgen/barnepensjon_v2
 
 Med egne data:
 
