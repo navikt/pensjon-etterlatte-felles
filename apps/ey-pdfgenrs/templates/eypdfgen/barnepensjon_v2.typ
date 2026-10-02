@@ -5,10 +5,10 @@
 #let spraak = tekst(hent(data, "spraak"))
 #let velg(en, nn, nb) = if spraak == "en" { en } else if spraak == "nn" { nn } else { nb }
 #let tittel = velg("Application for children’s pension", "Søknad om barnepensjon", "Søknad om barnepensjon")
-#let overskrift4(en, nn, nb, nivaa: 2) = h4(velg(en, nn, nb), nivaa: nivaa)
+#let overskrift4(tittel, nivaa: 2) = h4(tittel, nivaa: nivaa)
 #let svarverdi(objekt) = tekst(hent(objekt, "svar", "verdi"))
 #let ja(objekt) = svarverdi(objekt) == "JA"
-#let navn-paa(person) = navn(tekst(hent(person, "fornavn", "svar"))) + " " + navn(tekst(hent(person, "etternavn", "svar")))
+#let navn-paa(person) = [#navn(tekst(hent(person, "fornavn", "svar"))) #navn(tekst(hent(person, "etternavn", "svar")))]
 #let personnummer(person) = {
   let fnr = hent(person, "foedselsnummer", "svar")
   if har(fnr) { " (" + tekst(fnr) + ")" }
@@ -41,7 +41,7 @@
 #let utenlandsopphold(objekt) = {
   let oppholdsliste = som-liste(hent(objekt, "opplysning"))
   [
-    #overskrift4("Time spent outside Norway", "Opphald utanfor Noreg", "Opphold utenfor Norge", nivaa: 3)
+    #overskrift4(velg("Time spent outside Norway", "Opphald utanfor Noreg", "Opphold utenfor Norge"), nivaa: 3)
     #raddata(objekt)
     #if ja(objekt) {
       for opphold in oppholdsliste {
@@ -75,10 +75,10 @@
     #raddata(verge)
     #if ja(verge) {
       let verge-info = hent(verge, "opplysning")
-      opplysning(velg("Guardian", "Verje", "Verge"), navn-paa(verge-info) + personnummer(verge-info))
+      opplysning(velg("Guardian", "Verje", "Verge"), [#navn-paa(verge-info)#personnummer(verge-info)])
     }
     #for forelder in som-liste(hent(barn, "foreldre")) [
-      #opplysning(velg("Parent", "Forelder", "Forelder"), navn-paa(forelder) + personnummer(forelder))
+      #opplysning(velg("Parent", "Forelder", "Forelder"), [#navn-paa(forelder)#personnummer(forelder)])
     ]
     #raddata(hent(barn, "ufoeretrygd"))
     #raddata(hent(barn, "arbeidsavklaringspenger"))
@@ -123,7 +123,7 @@
   // Utbetalingsinformasjon.
   #let utbetaling = hent(data, "utbetalingsInformasjon")
   #h2(velg("Payment information", "Utbetalingsinformasjon", "Utbetalingsinformasjon"))
-  #overskrift4(navn(tekst(hent(utbetaling, "svar", "innhold"))) + " " + velg("account", "konto", "konto"))
+  #overskrift4([#navn(tekst(hent(utbetaling, "svar", "innhold"))) #velg("account", "konto", "konto")])
   #opplysning(tekst(hent(utbetaling, "spoersmaal")), navn(tekst(hent(utbetaling, "svar", "innhold"))))
   #for felt in ("kontonummer", "utenlandskBankNavn", "utenlandskBankAdresse", "iban", "swift") {
     raddata(hent(utbetaling, "opplysning", felt))
@@ -136,7 +136,7 @@
 
   #let bosatt = hent(soeker, "bosattNorge")
   #if har(bosatt) {
-    #overskrift4("Stays abroad", "Opphald utland", "Opphold utland", nivaa: 3)
+    #overskrift4(velg("Stays abroad", "Opphald utland", "Opphold utland"), nivaa: 3)
     #raddata(bosatt)
     #if ja(bosatt) {
       #let opplysning = hent(bosatt, "opplysning")
@@ -166,7 +166,7 @@
       }
       #let militaer = hent(forelder, "militaertjeneste")
       #if har(militaer) [
-        #overskrift4("Military or civil service", "Militær eller sivil førstegongsteneste", "Militær eller sivil førstegangstjeneste", nivaa: 3)
+        #overskrift4(velg("Military or civil service", "Militær eller sivil førstegongsteneste", "Militær eller sivil førstegangstjeneste"), nivaa: 3)
         #raddata(militaer)
         #if ja(militaer) { raddata(hent(militaer, "opplysning")) }
       ]

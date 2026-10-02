@@ -78,14 +78,118 @@
   deler.map(ord => {
     ord.split("-").map(bindestrek => {
       bindestrek.split("'").map(del => {
-        if del == "" { "" }
-        else { str.upper(del.slice(0, 1)) + str.lower(del.slice(1)) }
+        if del == "" { [] }
+        else { upper(del.slice(0, 1)) + lower(del.slice(1)) }
       }).join("'")
     }).join("-")
   }).join(" ")
 }
 
 #let som-liste(verdi) = if type(verdi) == array { verdi } else { () }
+
+// Setter opp side, font og avsnitt. Brukes som `#show: dokument.with(tittel: ...)`.
+// Tittel er påkrevd fordi pdfgenrs lager PDF/UA-1.
+#let dokument(tittel: none, sidetekst: none, body) = {
+  assert(tittel != none, message: "dokument() krever en tittel")
+
+  set document(title: tittel)
+  set page(
+    paper: "a4",
+    margin: (top: sidemarger, bottom: 1.8cm, left: sidemarger, right: sidemarger),
+    footer: context grid(
+      columns: (1fr, auto),
+      if sidetekst == none { [] } else { text(size: px(12), fill: farge-dempet, sidetekst) },
+      text(size: px(12), align(right)[Side #counter(page).display() av #counter(page).final().at(0)]),
+    ),
+  )
+  set text(font: "Source Sans Pro", lang: "nb", size: px(16))
+  // <p> har 1em marg over og under i HTML.
+  set par(spacing: 1em, leading: 0.65em)
+
+  body
+}
+
+// Overskrift med samme utseende som h1–h4 i de gamle malene. Størrelse og marg er
+// standardverdiene i HTML: h2 = 1.5em/0.83em, h3 = 1.17em/1em, h4 = 1em/1.33em.
+//
+// `nivaa` er det semantiske nivået i PDF-en og velges uavhengig av utseendet, siden
+// PDF/UA ikke tillater at et nivå hoppes over (de gamle malene går f.eks. rett fra h1 til h4).
+#let overskrift(innhold, nivaa: 2, stoerrelse: px(16), marg: 1.33) = {
+  block(
+    above: marg * stoerrelse,
+    below: if marg == 0 { 0pt } else { 0.6 * stoerrelse },
+    sticky: true,
+    {
+      set text(size: stoerrelse * 0.95, weight: "bold")
+      show heading: set block(above: 0pt, below: 0pt)
+      heading(level: nivaa, innhold)
+    },
+  )
+}
+
+#let h2(innhold, nivaa: 2) = overskrift(innhold, nivaa: nivaa, stoerrelse: px(24), marg: 1.4)
+#let h3(innhold, nivaa: 3) = overskrift(innhold, nivaa: nivaa, stoerrelse: px(18.72), marg: 1)
+#let h4(innhold, nivaa: 2) = overskrift(innhold, nivaa: nivaa, stoerrelse: px(15), marg: 1.33)
+#let h5(innhold) = block(
+  above: 1.67em,
+  below: 1.67em,
+  text(size: px(13.28) * 0.95, weight: "bold", innhold),
+)
+
+// Innholdet under headeren (.container).
+#let container(body) = pad(x: 0.7cm, body)
+
+// Punktliste som <ul>: 1em marg og innrykk slik at teksten starter 40px inn.
+// `luft` er avstanden mellom punktene. TODO: kalibrer innrykk mot en PDF fra ey-pdfgen.
+#let punktliste(punkter, luft: auto) = block(
+  above: 1em,
+  below: 1em,
+  list(
+    indent: px(26),
+    body-indent: px(8),
+    tight: false,
+    spacing: if luft == auto { 4pt } else { calc.max(luft, 4pt) },
+    ..punkter,
+  ),
+)
+
+// Lyseblått felt øverst med Nav-logo og tittel (#header, .navlogo og .title).
+#let header(tittel) = block(
+  width: 100%,
+  fill: farge-header,
+  inset: (x: 0.7cm),
+  above: 0pt,
+  below: 0.6cm,
+  grid(
+    // Tittelen sto absolutt posisjonert 100px fra venstre kant.
+    columns: (px(100) - 0.7cm, 1fr),
+    align: horizon,
+    pad(
+      top: px(15),
+      bottom: px(12),
+      left: px(3),
+      image("/resources/Navlogo.png", width: px(48), alt: "Nav-logo"),
+    ),
+    overskrift(tittel, nivaa: 1, stoerrelse: px(20), marg: 0),
+  ),
+)
+
+// Rad med spørsmål og svar i to kolonner (.row.opplysning og .col).
+#let opplysning(spoersmaal, svar) = block(
+  width: 100%,
+  inset: (x: 0.1cm, y: 0.22cm),
+  above: 0pt,
+  below: 0pt,
+  stroke: (bottom: px(1) + farge-linje),
+  text(size: px(14), grid(
+    columns: (49%, 49%),
+    column-gutter: px(4),
+    align: horizon,
+    stroke: (x, y) => if x == 0 { (right: px(1) + farge-linje) },
+    spoersmaal,
+    svar,
+  )),
+)
 
 // Hjelpere for standardformen på søknadsopplysninger: {spoersmaal, svar: {innhold, verdi}}.
 #let raddata(objekt) = {
@@ -113,94 +217,3 @@
     )
   }
 }
-
-// Setter opp side, font og avsnitt. Brukes som `#show: dokument.with(tittel: ...)`.
-// Tittel er påkrevd fordi pdfgenrs lager PDF/UA-1.
-#let dokument(tittel: none, sidetekst: none, body) = {
-  assert(tittel != none, message: "dokument() krever en tittel")
-
-  set document(title: tittel)
-  set page(
-    paper: "a4",
-    margin: (top: sidemarger, bottom: 1.8cm, left: sidemarger, right: sidemarger),
-    footer: context grid(
-      columns: (1fr, auto),
-      if sidetekst == none { [] } else { text(size: px(12), fill: farge-dempet, sidetekst) },
-      text(size: px(12), align(right)[Side #counter(page).display() av #counter(page).final().at(0)]),
-    ),
-  )
-  set text(font: "Source Sans Pro", lang: "nb", size: px(16))
-  // <p> har 1em marg over og under i HTML.
-  set par(spacing: 1em)
-
-  body
-}
-
-// Overskrift med samme utseende som h1–h4 i de gamle malene. Størrelse og marg er
-// standardverdiene i HTML: h2 = 1.5em/0.83em, h3 = 1.17em/1em, h4 = 1em/1.33em.
-//
-// `nivaa` er det semantiske nivået i PDF-en og velges uavhengig av utseendet, siden
-// PDF/UA ikke tillater at et nivå hoppes over (de gamle malene går f.eks. rett fra h1 til h4).
-#let overskrift(innhold, nivaa: 2, stoerrelse: px(16), marg: 1.33) = {
-  show heading: set text(size: stoerrelse, weight: "bold")
-  show heading: set block(above: marg * stoerrelse, below: marg * stoerrelse)
-  heading(level: nivaa, innhold)
-}
-
-#let h2(innhold, nivaa: 2) = overskrift(innhold, nivaa: nivaa, stoerrelse: px(24), marg: 0.83)
-#let h3(innhold, nivaa: 3) = overskrift(innhold, nivaa: nivaa, stoerrelse: px(18.72), marg: 1)
-#let h4(innhold, nivaa: 2) = overskrift(innhold, nivaa: nivaa, stoerrelse: px(16), marg: 1.33)
-#let h5(innhold) = block(
-  above: 1.67em,
-  below: 1.67em,
-  text(size: px(13.28), weight: "bold", innhold),
-)
-
-// Innholdet under headeren (.container).
-#let container(body) = pad(x: 0.7cm, body)
-
-// Punktliste som <ul>: 1em marg og innrykk slik at teksten starter 40px inn.
-// `luft` er avstanden mellom punktene. TODO: kalibrer innrykk mot en PDF fra ey-pdfgen.
-#let punktliste(punkter, luft: auto) = block(
-  above: 1em,
-  below: 1em,
-  list(indent: px(26), body-indent: px(8), spacing: luft, ..punkter),
-)
-
-// Lyseblått felt øverst med Nav-logo og tittel (#header, .navlogo og .title).
-#let header(tittel) = block(
-  width: 100%,
-  fill: farge-header,
-  inset: (x: 0.7cm),
-  above: 0pt,
-  below: 0pt,
-  grid(
-    // Tittelen sto absolutt posisjonert 100px fra venstre kant.
-    columns: (px(100) - 0.7cm, 1fr),
-    align: horizon,
-    pad(
-      top: px(15),
-      bottom: px(12),
-      left: px(3),
-      image("/resources/Navlogo.png", width: px(48), alt: "Nav-logo"),
-    ),
-    overskrift(tittel, nivaa: 1, stoerrelse: px(20), marg: 0),
-  ),
-)
-
-// Rad med spørsmål og svar i to kolonner (.row.opplysning og .col).
-#let opplysning(spoersmaal, svar) = block(
-  width: 100%,
-  inset: 0.1cm,
-  above: 0pt,
-  below: 0pt,
-  stroke: (bottom: px(1) + farge-linje),
-  text(size: px(14), grid(
-    columns: (49%, 49%),
-    column-gutter: px(4),
-    align: horizon,
-    stroke: (x, y) => if x == 0 { (right: px(1) + farge-linje) },
-    spoersmaal,
-    svar,
-  )),
-)
