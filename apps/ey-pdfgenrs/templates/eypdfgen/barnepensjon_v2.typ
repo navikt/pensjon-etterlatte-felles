@@ -107,8 +107,8 @@
       #nor-dato-tid(hent(data, "mottattDato"))
     ],
     [
-      let innsender-fnr = hent(data, "innsender", "foedselsnummer", "svar")
-      let soeker-fnr = hent(data, "soeker", "foedselsnummer", "svar")
+      #let innsender-fnr = hent(data, "innsender", "foedselsnummer", "svar")
+      #let soeker-fnr = hent(data, "soeker", "foedselsnummer", "svar")
       #if innsender-fnr != soeker-fnr [
         #overskrift4(velg("On behalf of", "På vegne av", "På vegne av"))
         #navn-paa(hent(data, "soeker"))
@@ -135,16 +135,16 @@
   #barn-innhold(soeker)
 
   #let bosatt = hent(soeker, "bosattNorge")
-  #if har(bosatt) {
+  #if har(bosatt) [
     #overskrift4(velg("Stays abroad", "Opphald utland", "Opphold utland"), nivaa: 3)
     #raddata(bosatt)
-    #if ja(bosatt) {
-      #let opplysning = hent(bosatt, "opplysning")
-      #raddata(hent(opplysning, "oppholdLand"))
-      #rad-dato(hent(opplysning, "oppholdFra"))
-      #rad-dato(hent(opplysning, "oppholdTil"))
-    }
-  }
+    #if ja(bosatt) [
+      #let detaljer = hent(bosatt, "opplysning")
+      #raddata(hent(detaljer, "oppholdLand"))
+      #rad-dato(hent(detaljer, "oppholdFra"))
+      #rad-dato(hent(detaljer, "oppholdTil"))
+    ]
+  ]
 
   // Opplysninger om foreldre.
   #for forelder in som-liste(hent(data, "foreldre")) [

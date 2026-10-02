@@ -141,14 +141,14 @@
 
 // Punktliste som <ul>: 1em marg og innrykk slik at teksten starter 40px inn.
 // `luft` er avstanden mellom punktene. TODO: kalibrer innrykk mot en PDF fra ey-pdfgen.
-#let punktliste(punkter, luft: auto) = block(
+#let punktliste(punkter, luft: auto) = context block(
   above: 1em,
   below: 1em,
   list(
     indent: px(26),
     body-indent: px(8),
     tight: false,
-    spacing: if luft == auto { 4pt } else { calc.max(luft, 4pt) },
+    spacing: if luft == auto { 4pt } else { calc.max(luft.to-absolute(), 4pt) },
     ..punkter,
   ),
 )
@@ -170,7 +170,7 @@
       left: px(3),
       image("/resources/Navlogo.png", width: px(48), alt: "Nav-logo"),
     ),
-    overskrift(tittel, nivaa: 1, stoerrelse: px(20), marg: 0),
+    overskrift(tittel, nivaa: 1, stoerrelse: px(16), marg: 0),
   ),
 )
 
