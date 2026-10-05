@@ -1,6 +1,5 @@
 package no.nav.etterlatte
 
-import com.fasterxml.jackson.module.kotlin.readValue
 import kotlinx.coroutines.runBlocking
 import com.github.navikt.tbd_libs.rapids_and_rivers.JsonMessage
 import com.github.navikt.tbd_libs.rapids_and_rivers_api.MessageContext
@@ -10,6 +9,7 @@ import com.github.navikt.tbd_libs.rapids_and_rivers_api.MessageMetadata
 import io.micrometer.core.instrument.MeterRegistry
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import tools.jackson.module.kotlin.readValue
 
 class Notifikasjon(
     private val sendNotifikasjon: SendNotifikasjon,
@@ -38,7 +38,7 @@ class Notifikasjon(
     ) {
         runBlocking {
             val soeknad = mapper.readValue<Soeknad>(packet["@skjema_info"].toString())
-            val soeknadId = SoeknadId(packet["@lagret_soeknad_id"].asText())
+            val soeknadId = SoeknadId(packet["@lagret_soeknad_id"].asString())
 
             logger.info("Sender notifikasjon for søknad $soeknadId")
             sendNotifikasjon.sendMessage(soeknadId, soeknad)
@@ -54,7 +54,7 @@ class Notifikasjon(
                     )
                 ).apply {
                     try {
-                        rapid.publish("SendNotifikasjon " + journalpostId.textValue(), toJson())
+                        rapid.publish("SendNotifikasjon " + journalpostId.asString(null), toJson())
                     } catch (err: Exception) {
                         logger.error("Uhaandtert feilsituasjon. Ingen notifikasjon opprettet: ", err)
                     }
