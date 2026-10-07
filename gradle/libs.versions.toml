@@ -11,7 +11,7 @@ rapidsandrivers-version = "2026071513121784113927"
 #NavFelles
 rapidAndRivers = { module = "com.github.navikt:rapids-and-rivers", version.ref = "rapidsandrivers-version" }
 brukernotifikasjonerKotlinBuilder = { module = "no.nav.tms.varsel:kotlin-builder", version = "2.1.1"}
-mockOauth2Server = { module = "no.nav.security:mock-oauth2-server", version = "6.0.2"}
+mockOauth2Server = { module = "no.nav.security:mock-oauth2-server", version = "6.0.4"}
 tjenestespesifikasjonerTilbakekreving = { module = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:tilbakekreving-v1-tjenestespesifikasjon", version = "1.d27898d"}
 tjenestespesifikasjonerOppdragSimulering = { module = "com.github.navikt.pensjon-etterlatte-tjenestespesifikasjoner:nav-system-os-simuler-fp-service-tjenestespesifikasjon", version = "1.d27898d"}
 
