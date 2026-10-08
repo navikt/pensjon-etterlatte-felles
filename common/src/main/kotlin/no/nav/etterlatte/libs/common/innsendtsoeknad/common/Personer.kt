@@ -32,6 +32,7 @@ import no.nav.etterlatte.libs.common.person.Foedselsnummer
 @JsonSubTypes(
     JsonSubTypes.Type(value = Gjenlevende::class, name = "GJENLEVENDE"),
     JsonSubTypes.Type(value = GjenlevendeOMS::class, name = "GJENLEVENDE_OMS"),
+    JsonSubTypes.Type(value = GjenlevendeUtvidetOMS::class, name = "GJENLEVENDE_UTVIDET_OMS"),
     JsonSubTypes.Type(value = GjenlevendeForelder::class, name = "GJENLEVENDE_FORELDER"),
     JsonSubTypes.Type(value = Avdoed::class, name = "AVDOED"),
     JsonSubTypes.Type(value = Samboer::class, name = "SAMBOER"),
@@ -52,6 +53,7 @@ enum class PersonType {
     INNSENDER,
     GJENLEVENDE,
     GJENLEVENDE_OMS,
+    GJENLEVENDE_UTVIDET_OMS,
     GJENLEVENDE_FORELDER,
     AVDOED,
     SAMBOER,
@@ -114,6 +116,15 @@ data class GjenlevendeOMS(
     val omsorgForBarn: Opplysning<EnumSvar<JaNeiVetIkke>>,
 ) : Person {
     override val type = PersonType.GJENLEVENDE_OMS
+}
+
+data class GjenlevendeUtvidetOMS(
+    override val fornavn: Opplysning<String>,
+    override val etternavn: Opplysning<String>,
+    override val foedselsnummer: Opplysning<Foedselsnummer>,
+    override val foedselsdato: Opplysning<LocalDate>? = null,
+) : Person {
+    override val type = PersonType.GJENLEVENDE_UTVIDET_OMS
 }
 
 data class Forelder(

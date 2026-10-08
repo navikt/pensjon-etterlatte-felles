@@ -2,16 +2,28 @@ package innsendtsoeknad.common
 
 import io.kotest.matchers.ints.shouldBeExactly
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.string.shouldContain
+import io.kotest.matchers.types.shouldBeInstanceOf
+import no.nav.etterlatte.libs.common.innsendtsoeknad.EndringAvInntektGrunnType
+import no.nav.etterlatte.libs.common.innsendtsoeknad.StudieformType
 import no.nav.etterlatte.libs.common.innsendtsoeknad.barnepensjon.Barnepensjon
+import no.nav.etterlatte.libs.common.innsendtsoeknad.common.Behandlingsnummer
 import no.nav.etterlatte.libs.common.innsendtsoeknad.common.InnsendtSoeknad
+import no.nav.etterlatte.libs.common.innsendtsoeknad.common.JaNeiVetIkke
+import no.nav.etterlatte.libs.common.innsendtsoeknad.common.PersonType
 import no.nav.etterlatte.libs.common.innsendtsoeknad.common.SoeknadRequest
 import no.nav.etterlatte.libs.common.innsendtsoeknad.common.SoeknadType
 import no.nav.etterlatte.libs.common.innsendtsoeknad.omstillingsstoenad.Omstillingsstoenad
+import no.nav.etterlatte.libs.common.innsendtsoeknad.utvidetomstillingsstoenad.NySivilstandValg
+import no.nav.etterlatte.libs.common.innsendtsoeknad.utvidetomstillingsstoenad.TiltakOmfangType
+import no.nav.etterlatte.libs.common.innsendtsoeknad.utvidetomstillingsstoenad.UtdanningOgTiltakValg
+import no.nav.etterlatte.libs.common.innsendtsoeknad.utvidetomstillingsstoenad.UtvidetOmstillingsstoenad
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import tools.jackson.module.kotlin.jacksonObjectMapper
 import tools.jackson.module.kotlin.jacksonTypeRef
 import tools.jackson.module.kotlin.readValue
+import java.time.LocalDate
 
 @Suppress("ktlint:standard:max-line-length")
 internal class InnsendtSoeknadTest {
@@ -56,5 +68,85 @@ internal class InnsendtSoeknadTest {
 
         val soeknad = mapper.readValue<InnsendtSoeknad>(json)
         assertTrue(soeknad is Omstillingsstoenad)
+    }
+
+    @Test
+    fun `Deserialisering av utvidet omstillingsstoenad med utdanning`() {
+        val soeknad = lesUtvidetOms("/soeknad/utvidet_omstillingsstoenad.json")
+
+        soeknad.type shouldBe SoeknadType.UTVIDET_OMSTILLINGSSTOENAD
+        soeknad.type.behandlingsnummer shouldBe Behandlingsnummer.OMSTILLINGSSTOENAD
+        soeknad.template() shouldBe "utvidet_omstillingsstoenad_v1"
+        soeknad.soeker.type shouldBe PersonType.GJENLEVENDE_UTVIDET_OMS
+        soeknad.utbetalingsInformasjon shouldBe null
+
+        soeknad.situasjonenDinIDag.nySivilstand.svar.verdi shouldBe NySivilstandValg.INGEN_AV_DELENE
+        soeknad.situasjonenDinIDag.nySivilstand.opplysning shouldBe null
+
+        with(soeknad.utdanningOgTiltak) {
+            aktivitet.svar.verdi shouldBe UtdanningOgTiltakValg.UTDANNING
+            arbeidsrettetTiltak shouldBe null
+            aktivitetsplan!!.svar.verdi shouldBe JaNeiVetIkke.JA
+            utdanning!!.studieform.svar.verdi shouldBe StudieformType.DELTID
+            utdanning.studieprosent!!.svar.innhold shouldBe "60"
+            utdanning.startDato.svar.innhold shouldBe LocalDate.of(2026, 8, 15)
+        }
+
+        soeknad.inntekt.arbeidsinntekt!!.svar.innhold shouldBe "250000"
+        soeknad.inntekt.afpInntekt shouldBe null
+    }
+
+    @Test
+    fun `Deserialisering av utvidet omstillingsstoenad med arbeidsrettet tiltak`() {
+        val soeknad = lesUtvidetOms("/soeknad/utvidet_omstillingsstoenad_tiltak.json")
+
+        with(soeknad.utdanningOgTiltak) {
+            aktivitet.svar.verdi shouldBe UtdanningOgTiltakValg.ARBEIDSRETTET_TILTAK
+            utdanning shouldBe null
+            arbeidsrettetTiltak!!.omfang.svar.verdi shouldBe TiltakOmfangType.HELTID
+            arbeidsrettetTiltak.tiltak.svar.innhold shouldBe "Arbeidstrening"
+        }
+        soeknad.inntekt.noeSomKanPaavirkeInntekten!!.grunnTilPaavirkelseAvInntekt!!.svar.verdi shouldBe
+            EndringAvInntektGrunnType.ANNEN_GRUNN
+    }
+
+    @Test
+    fun `Deserialisering av utvidet omstillingsstoenad med ny samboer`() {
+        val soeknad = lesUtvidetOms("/soeknad/utvidet_omstillingsstoenad_ny_samboer.json")
+
+        soeknad.situasjonenDinIDag.nySivilstand.svar.verdi shouldBe NySivilstandValg.NY_SAMBOER
+        val samboer = soeknad.situasjonenDinIDag.nySivilstand.opplysning!!
+        samboer.foedselsnummer.svar.value shouldBe "13848599411"
+        samboer.fellesBarnEllertidligereGift.svar.verdi shouldBe JaNeiVetIkke.NEI
+        samboer.inntekt shouldBe null
+
+        with(soeknad.utdanningOgTiltak) {
+            aktivitet.svar.verdi shouldBe UtdanningOgTiltakValg.INGEN
+            utdanning shouldBe null
+            arbeidsrettetTiltak shouldBe null
+            aktivitetsplan shouldBe null
+        }
+    }
+
+    @Test
+    fun `Utvidet omstillingsstoenad overlever serialisering og deserialisering`() {
+        listOf(
+            "/soeknad/utvidet_omstillingsstoenad.json",
+            "/soeknad/utvidet_omstillingsstoenad_tiltak.json",
+            "/soeknad/utvidet_omstillingsstoenad_ny_samboer.json",
+        ).forEach { fil ->
+            val original = lesUtvidetOms(fil)
+
+            val serialisert = mapper.writeValueAsString(original)
+            serialisert shouldContain "\"template\":\"utvidet_omstillingsstoenad_v1\""
+
+            val request = mapper.readValue<SoeknadRequest>("""{"soeknader":[$serialisert]}""")
+            request.soeknader.single() shouldBe original
+        }
+    }
+
+    private fun lesUtvidetOms(fil: String): UtvidetOmstillingsstoenad {
+        val json = javaClass.getResource(fil)!!.readText()
+        return mapper.readValue<InnsendtSoeknad>(json).shouldBeInstanceOf<UtvidetOmstillingsstoenad>()
     }
 }
