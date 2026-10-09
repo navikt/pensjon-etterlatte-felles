@@ -5,6 +5,7 @@ enum class SoeknadType(
 ) {
     BARNEPENSJON(Behandlingsnummer.BARNEPENSJON),
     OMSTILLINGSSTOENAD(Behandlingsnummer.OMSTILLINGSSTOENAD),
+    UTVIDET_OMSTILLINGSSTOENAD(Behandlingsnummer.OMSTILLINGSSTOENAD),
 }
 
 enum class Behandlingsnummer(
