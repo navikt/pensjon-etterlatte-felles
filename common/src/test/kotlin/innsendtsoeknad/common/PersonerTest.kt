@@ -1,9 +1,5 @@
 package innsendtsoeknad.common
 
-import com.fasterxml.jackson.databind.exc.ValueInstantiationException
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import com.fasterxml.jackson.module.kotlin.jacksonTypeRef
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
@@ -16,12 +12,12 @@ import no.nav.etterlatte.libs.common.innsendtsoeknad.common.Person
 import no.nav.etterlatte.libs.common.innsendtsoeknad.common.Verge
 import no.nav.etterlatte.libs.common.person.Foedselsnummer
 import org.junit.jupiter.api.Test
+import tools.jackson.module.kotlin.jacksonObjectMapper
+import tools.jackson.module.kotlin.jacksonTypeRef
 
 @Suppress("ktlint:standard:max-line-length")
 internal class PersonerTest {
-    private val mapper =
-        jacksonObjectMapper()
-            .registerModule(JavaTimeModule())
+    private val mapper = jacksonObjectMapper()
 
     @Test
     fun `Serde av verge fungerer`() {

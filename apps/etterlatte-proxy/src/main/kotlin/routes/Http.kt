@@ -1,6 +1,5 @@
 package no.nav.etterlatte.routes
 
-import com.fasterxml.jackson.databind.DeserializationFeature
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.apache.Apache
@@ -16,7 +15,7 @@ import io.ktor.http.Headers
 import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.content.OutgoingContent
-import io.ktor.serialization.jackson.jackson
+import io.ktor.serialization.jackson3.jackson
 import io.ktor.server.application.ApplicationCall
 import io.ktor.server.request.receiveChannel
 import io.ktor.server.response.respond
@@ -26,6 +25,7 @@ import io.ktor.utils.io.ByteWriteChannel
 import io.ktor.utils.io.InternalAPI
 import io.ktor.utils.io.copyAndClose
 import org.apache.http.impl.conn.SystemDefaultRoutePlanner
+import tools.jackson.databind.DeserializationFeature
 import java.net.ProxySelector
 
 fun httpClient() =
@@ -38,7 +38,7 @@ fun httpClient() =
 fun httpClientWithProxy() =
     HttpClient(Apache) {
         install(ContentNegotiation) {
-            jackson { configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false) }
+            jackson { disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES) }
         }
         engine {
             customizeClient {

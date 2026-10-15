@@ -4,6 +4,7 @@ plugins {
 
 dependencies {
     implementation(libs.rapidAndRivers)
+    implementation(libs.jackson.modulekotlin)
 
     implementation(libs.brukernotifikasjonerKotlinBuilder ) {
         exclude("org.apache.commons", "commons-compress")

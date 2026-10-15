@@ -14,6 +14,7 @@ dependencies {
     implementation(libs.ktor.clientApache)
     implementation(libs.ktor.clientLogging)
     implementation(libs.ktor.jackson)
+    implementation(libs.jackson.modulekotlin)
     implementation(libs.ktor.serverContentNegotiation)
     implementation(libs.ktor.clientContentNegotiation)
     implementation(libs.ktor.serverNetty)

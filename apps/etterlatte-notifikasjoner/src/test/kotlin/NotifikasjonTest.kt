@@ -1,4 +1,3 @@
-import com.fasterxml.jackson.module.kotlin.readValue
 import com.github.navikt.tbd_libs.rapids_and_rivers.JsonMessage
 import com.github.navikt.tbd_libs.rapids_and_rivers.test_support.TestRapid
 import io.mockk.mockk
@@ -13,6 +12,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
+import tools.jackson.module.kotlin.readValue
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class NotifikasjonTest {
@@ -64,10 +64,10 @@ internal class NotifikasjonTest {
                     )
                 }.inspektør
 
-        assertEquals("notifikasjon_sendt", inspector.message(0).get("@event_name").asText())
-        assertEquals("Notifikasjon sendt", inspector.message(0).get("@notifikasjon").asText())
-        assertEquals("5", inspector.message(0).get("@journalpostId").asText())
-        assertEquals("4", inspector.message(0).get("@lagret_soeknad_id").asText())
+        assertEquals("notifikasjon_sendt", inspector.message(0).get("@event_name").asString())
+        assertEquals("Notifikasjon sendt", inspector.message(0).get("@notifikasjon").asString())
+        assertEquals("5", inspector.message(0).get("@journalpostId").asString())
+        assertEquals("4", inspector.message(0).get("@lagret_soeknad_id").asString())
         assertEquals("SendNotifikasjon 5", inspector.key(0))
         assertEquals(mockKafkaProducer.history().size, 1)
 
@@ -109,10 +109,10 @@ internal class NotifikasjonTest {
                     )
                 }.inspektør
 
-        assertEquals("notifikasjon_sendt", inspector.message(0).get("@event_name").asText())
-        assertEquals("Notifikasjon sendt", inspector.message(0).get("@notifikasjon").asText())
-        assertEquals("5", inspector.message(0).get("@journalpostId").asText())
-        assertEquals("4", inspector.message(0).get("@lagret_soeknad_id").asText())
+        assertEquals("notifikasjon_sendt", inspector.message(0).get("@event_name").asString())
+        assertEquals("Notifikasjon sendt", inspector.message(0).get("@notifikasjon").asString())
+        assertEquals("5", inspector.message(0).get("@journalpostId").asString())
+        assertEquals("4", inspector.message(0).get("@lagret_soeknad_id").asString())
         assertEquals("SendNotifikasjon 5", inspector.key(0))
         assertEquals(mockKafkaProducer.history().size, 1)
 

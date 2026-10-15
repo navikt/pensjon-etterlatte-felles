@@ -1,6 +1,6 @@
 package no.nav.etterlatte
 
-import io.ktor.serialization.jackson.jackson
+import io.ktor.serialization.jackson3.jackson
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
 import io.ktor.server.auth.authenticate
@@ -21,6 +21,7 @@ import no.nav.etterlatte.routes.internalRoute
 import no.nav.etterlatte.routes.simuleringOppdragRoute
 import no.nav.etterlatte.routes.tilbakekrevingRoute
 import org.slf4j.event.Level
+import tools.jackson.databind.cfg.DateTimeFeature
 import java.util.*
 
 fun main(args: Array<String>): Unit =
@@ -31,7 +32,7 @@ fun Application.module() {
     val config = runBlocking { environment.config.load() }
 
     installAuthentication(config.aad)
-    install(ContentNegotiation) { jackson() }
+    installContentNegotiation()
     install(IgnoreTrailingSlash)
     install(CallLogging) {
         level = Level.INFO
@@ -54,6 +55,11 @@ fun Application.module() {
             }
         }
     }
+}
+
+// Beholder epoch millis for datoer (XMLGregorianCalendar) slik som i Jackson 2, der dette var default
+fun Application.installContentNegotiation() {
+    install(ContentNegotiation) { jackson { enable(DateTimeFeature.WRITE_DATES_AS_TIMESTAMPS) } }
 }
 
 /**

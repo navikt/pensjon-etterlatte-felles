@@ -8,6 +8,7 @@ import no.nav.etterlatte.libs.common.innsendtsoeknad.Spraak
 import no.nav.etterlatte.libs.common.innsendtsoeknad.UtbetalingsInformasjon
 import no.nav.etterlatte.libs.common.innsendtsoeknad.barnepensjon.Barnepensjon
 import no.nav.etterlatte.libs.common.innsendtsoeknad.omstillingsstoenad.Omstillingsstoenad
+import no.nav.etterlatte.libs.common.innsendtsoeknad.utvidetomstillingsstoenad.UtvidetOmstillingsstoenad
 import java.time.LocalDateTime
 
 @JsonTypeInfo(
@@ -18,6 +19,7 @@ import java.time.LocalDateTime
 @JsonSubTypes(
     JsonSubTypes.Type(value = Barnepensjon::class, name = "BARNEPENSJON"),
     JsonSubTypes.Type(value = Omstillingsstoenad::class, name = "OMSTILLINGSSTOENAD"),
+    JsonSubTypes.Type(value = UtvidetOmstillingsstoenad::class, name = "UTVIDET_OMSTILLINGSSTOENAD"),
 )
 interface InnsendtSoeknad : PDFMal {
     val versjon: String
