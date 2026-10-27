@@ -1,0 +1,35 @@
+name: etterlatte-kafkamanager
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - apps/etterlatte-kafkamanager/**
+      - .github/workflows/app-etterlatte-kafkamanager.yaml
+      - .github/workflows/.build-frontend.yaml
+
+jobs:
+  build:
+    uses: ./.github/workflows/.build-frontend.yaml
+    secrets: inherit
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+  deploy:
+    name: dev-gcp
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # ratchet:actions/checkout@v6
+      - uses: nais/deploy/actions/deploy@2d18f050f07b6a007864c6a57070ed915d571beb # ratchet:nais/deploy/actions/deploy@v2
+        env:
+          CLUSTER: dev-gcp
+          RESOURCE: apps/etterlatte-kafkamanager/.nais/dev.yaml
+          VAR: image=${{ needs.build.outputs.image }}
