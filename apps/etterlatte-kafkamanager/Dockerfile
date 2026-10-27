@@ -1,1 +1,0 @@
-FROM europe-north1-docker.pkg.dev/nais-management-233d/poao/kafka-manager:2026.09.08-08.59-356e4e6

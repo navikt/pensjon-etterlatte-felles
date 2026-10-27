@@ -8,19 +8,10 @@ on:
     paths:
       - apps/etterlatte-kafkamanager/**
       - .github/workflows/app-etterlatte-kafkamanager.yaml
-      - .github/workflows/.build-frontend.yaml
 
 jobs:
-  build:
-    uses: ./.github/workflows/.build-frontend.yaml
-    secrets: inherit
-    permissions:
-      contents: 'read'
-      id-token: 'write'
-
   deploy:
     name: dev-gcp
-    needs: build
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
@@ -32,4 +23,4 @@ jobs:
         env:
           CLUSTER: dev-gcp
           RESOURCE: apps/etterlatte-kafkamanager/.nais/dev.yaml
-          VAR: image=${{ needs.build.outputs.image }}
+          VARS: apps/etterlatte-kafkamanager/.nais/vars-dev.yaml
