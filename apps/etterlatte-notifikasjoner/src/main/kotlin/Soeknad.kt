@@ -10,7 +10,8 @@ data class Soeknad(
 ) {
     enum class Type {
         BARNEPENSJON,
-        OMSTILLINGSSTOENAD
+        OMSTILLINGSSTOENAD,
+        UTVIDET_OMSTILLINGSSTOENAD
     }
 }
 

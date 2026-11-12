@@ -37,6 +37,36 @@ internal class NotifikasjonTest {
     }
 
     @Test
+    fun `Skal opprette notifikasjon til innsender ved innsending av utvidet omstillingsstoenad`() {
+        val json =
+            this::class.java.getResource("omstillingsstoenad.json")!!.readText()
+                .replace("\"OMSTILLINGSSTOENAD\"", "\"UTVIDET_OMSTILLINGSSTOENAD\"")
+        val rapid = TestRapid()
+        Notifikasjon(sendMelding, rapid)
+
+        rapid.sendTestMessage(
+            JsonMessage.newMessage(
+                mapOf(
+                    "@event_name" to "soeknad_innsendt",
+                    "@dokarkivRetur" to mapOf("journalpostId" to "5"),
+                    "@fnr_soeker" to mapper.readTree(json)["innsender"]["foedselsnummer"]["svar"].asString(),
+                    "@skjema_info" to mapper.readTree(json),
+                    "@lagret_soeknad_id" to 4
+                )
+            ).toJson()
+        )
+
+        assertEquals(1, mockKafkaProducer.history().size)
+        val varsel = mapper.readValue<VarselActionBuilder.OpprettVarselInstance>(mockKafkaProducer.history().single().value())
+        assertEquals("Vi har mottatt søknaden din om utvidet omstillingsstønad", varsel.tekster[0].tekst)
+        assertEquals(
+            mapper.readTree(json)["innsender"]["foedselsnummer"]["svar"].asString(),
+            varsel.ident
+        )
+        assertEquals("notifikasjon_sendt", rapid.inspektør.message(0)["@event_name"].asString())
+    }
+
+    @Test
     fun `Skal opprette notifikasjon til innsender ved innsending av barnepensjon`() {
         val json = this::class.java.getResource("barnepensjon.json")!!.readText()
         val soeknad: Soeknad = mapper.readValue(json)

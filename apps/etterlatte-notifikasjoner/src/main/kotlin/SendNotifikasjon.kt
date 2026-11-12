@@ -31,6 +31,7 @@ class SendNotifikasjon(
         val varslingTekst = when (soeknadType) {
             Soeknad.Type.BARNEPENSJON -> "Vi har mottatt søknaden din om barnepensjon"
             Soeknad.Type.OMSTILLINGSSTOENAD -> "Vi har mottatt søknaden din om omstillingsstønad"
+            Soeknad.Type.UTVIDET_OMSTILLINGSSTOENAD -> "Vi har mottatt søknaden din om utvidet omstillingsstønad"
         }
 
 
