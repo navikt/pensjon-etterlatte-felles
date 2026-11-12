@@ -1,0 +1,43 @@
+<h2>
+    {{#eq spraak "en"}}
+        Education and measures
+    {{else}}
+        {{#eq spraak "nn"}}
+            Utdanning og tiltak
+        {{else}}
+            Utdannelse og tiltak
+        {{/eq}}
+    {{/eq}}
+</h2>
+
+{{> eypdfgen/partials_v2/common/opplysning this.aktivitet}}
+
+{{#if this.utdanning}}
+    {{#with this.utdanning}}
+        {{> eypdfgen/partials_v2/common/opplysning this.studiested}}
+
+        {{> eypdfgen/partials_v2/common/opplysning this.studie}}
+
+        {{> eypdfgen/partials_v2/common/datoOpplysning this.startDato}}
+
+        {{> eypdfgen/partials_v2/common/datoOpplysning this.sluttDato}}
+
+        {{> eypdfgen/partials_v2/common/opplysning this.studieform}}
+
+        {{#if this.studieprosent}}
+            {{> eypdfgen/partials_v2/common/opplysning this.studieprosent}}
+        {{/if}}
+    {{/with}}
+{{/if}}
+
+{{#if this.arbeidsrettetTiltak}}
+    {{#with this.arbeidsrettetTiltak}}
+        {{> eypdfgen/partials_v2/common/opplysning this.tiltak}}
+
+        {{> eypdfgen/partials_v2/common/opplysning this.omfang}}
+    {{/with}}
+{{/if}}
+
+{{#if this.aktivitetsplan}}
+    {{> eypdfgen/partials_v2/common/opplysning this.aktivitetsplan}}
+{{/if}}

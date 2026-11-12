@@ -1,0 +1,13 @@
+<h2>
+    {{#eq spraak "en"}}
+        Personal information
+    {{else}}
+        {{#eq spraak "nn"}}
+            Personopplysningar
+        {{else}}
+            Personopplysninger
+        {{/eq}}
+    {{/eq}}
+</h2>
+
+{{> eypdfgen/partials_v2/common/personalia/enkelPersonalia this}}

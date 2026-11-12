@@ -1,0 +1,37 @@
+<h2>
+    {{#eq spraak "en"}}
+        Your situation today
+    {{else}}
+        {{#eq spraak "nn"}}
+            Situasjonen din i dag
+        {{else}}
+            Situasjonen din i dag
+        {{/eq}}
+    {{/eq}}
+</h2>
+
+{{> eypdfgen/partials_v2/common/opplysning this.nySivilstand}}
+
+{{#eq this.nySivilstand.svar.verdi "NY_SAMBOER"}}
+    {{#if this.nySivilstand.opplysning}}
+        {{#with this.nySivilstand.opplysning}}
+            <h4>
+                {{#eq spraak "en"}}
+                    Cohabiting partner
+                {{else}}
+                    {{#eq spraak "nn"}}
+                        Sambuar
+                    {{else}}
+                        Samboer
+                    {{/eq}}
+                {{/eq}}
+            </h4>
+
+            {{> eypdfgen/partials_v2/common/personalia/enkelPersonalia this}}
+
+            {{#if this.fellesBarnEllertidligereGift}}
+                {{> eypdfgen/partials_v2/common/opplysning this.fellesBarnEllertidligereGift}}
+            {{/if}}
+        {{/with}}
+    {{/if}}
+{{/eq}}
