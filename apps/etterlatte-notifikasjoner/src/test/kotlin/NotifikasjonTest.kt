@@ -5,6 +5,8 @@ import no.nav.etterlatte.Notifikasjon
 import no.nav.etterlatte.SendNotifikasjon
 import no.nav.etterlatte.Soeknad
 import no.nav.etterlatte.mapper
+import no.nav.tms.varsel.action.EksternKanal
+import no.nav.tms.varsel.action.OpprettVarsel
 import no.nav.tms.varsel.builder.VarselActionBuilder
 import org.apache.kafka.clients.producer.MockProducer
 import org.apache.kafka.common.Cluster
@@ -17,7 +19,13 @@ import tools.jackson.module.kotlin.readValue
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class NotifikasjonTest {
     private val mockKafkaProducer =
-        MockProducer<String, String>(Cluster.empty(), true, mockk(relaxed = true), mockk(relaxed = true), mockk(relaxed = true))
+        MockProducer<String, String>(
+            Cluster.empty(),
+            true,
+            mockk(relaxed = true),
+            mockk(relaxed = true),
+            mockk(relaxed = true)
+        )
 
     private val sendMelding =
         SendNotifikasjon(
@@ -34,6 +42,52 @@ internal class NotifikasjonTest {
     @BeforeEach
     fun before() {
         mockKafkaProducer.clear()
+    }
+
+    @Test
+    fun `Skal opprette notifikasjon til innsender ved innsending av utvidet omstillingsstoenad`() {
+        val innsender =
+            mapper.readTree(
+                this::class.java.getResource("omstillingsstoenad.json")!!.readText()
+            )["innsender"]
+        val foedselsnummer = innsender["foedselsnummer"]["svar"].asString()
+        val rapid = TestRapid()
+        Notifikasjon(sendMelding, rapid)
+
+        rapid.sendTestMessage(
+            JsonMessage
+                .newMessage(
+                    mapOf(
+                        "@event_name" to "soeknad_innsendt",
+                        "@dokarkivRetur" to mapOf("journalpostId" to "5"),
+                        "@fnr_soeker" to foedselsnummer,
+                        "@skjema_info" to
+                            mapOf(
+                                "type" to "UTVIDET_OMSTILLINGSSTOENAD",
+                                "innsender" to innsender
+                            ),
+                        "@lagret_soeknad_id" to 4
+                    )
+                ).toJson()
+        )
+
+        val melding = mockKafkaProducer.history().single()
+        val varsel = mapper.readValue<OpprettVarsel>(melding.value())
+        val forventetTekst = "Vi har mottatt søknaden din om utvidet omstillingsstønad"
+        assertEquals(forventetTekst, varsel.tekster.single().tekst)
+        assertEquals(foedselsnummer, varsel.ident)
+        assertEquals(varsel.varselId, melding.key())
+        assertEquals(listOf(EksternKanal.SMS), varsel.eksternVarsling?.prefererteKanaler)
+        assertEquals(forventetTekst, varsel.eksternVarsling?.smsVarslingstekst)
+
+        val kvittering = rapid.inspektør.message(0)
+        assertEquals("notifikasjon_sendt", kvittering["@event_name"].asString())
+        assertEquals("5", kvittering["@journalpostId"].asString())
+        assertEquals("4", kvittering["@lagret_soeknad_id"].asString())
+        assertEquals(
+            "SendNotifikasjon 5",
+            rapid.inspektør.key(0)
+        )
     }
 
     @Test
@@ -77,8 +131,6 @@ internal class NotifikasjonTest {
             soeknad.innsender.foedselsnummer.value,
             varsel.ident
         )
-
-
     }
 
     @Test
@@ -119,11 +171,11 @@ internal class NotifikasjonTest {
         val varsel = mapper.readValue<VarselActionBuilder.OpprettVarselInstance>(mockKafkaProducer.history()[0].value())
         assertEquals(
             "Vi har mottatt søknaden din om omstillingsstønad",
-            varsel.tekster[0].tekst,
+            varsel.tekster[0].tekst
         )
         assertEquals(
             soeknad.innsender.foedselsnummer.value,
-            varsel.ident,
+            varsel.ident
         )
     }
 }

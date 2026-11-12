@@ -28,6 +28,7 @@ visuelt med ey-pdfgen før de kan regnes som verifisert.
 - [x] `notat/klage_oversendelse_blankett`
 - [x] `eypdfgen/omstillingsstoenad_v1`
 - [x] `eypdfgen/barnepensjon_v2`
+- [x] `eypdfgen/utvidet_omstillingsstoenad_v1`
 
 ## Kjøre lokalt
 
@@ -45,6 +46,8 @@ http://localhost:8082/api/v1/genpdf/notat/klage_oversendelse_blankett
 http://localhost:8082/api/v1/genpdf/eypdfgen/omstillingsstoenad_v1
 
 http://localhost:8082/api/v1/genpdf/eypdfgen/barnepensjon_v2
+
+http://localhost:8082/api/v1/genpdf/eypdfgen/utvidet_omstillingsstoenad_v1
 
 Med egne data:
 

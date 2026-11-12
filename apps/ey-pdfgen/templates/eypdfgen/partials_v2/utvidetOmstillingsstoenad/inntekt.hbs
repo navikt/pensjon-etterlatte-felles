@@ -1,0 +1,49 @@
+<h2>
+    {{#eq spraak "en"}}
+        Income
+    {{else}}
+        {{#eq spraak "nn"}}
+            Inntekt
+        {{else}}
+            Inntekt
+        {{/eq}}
+    {{/eq}}
+</h2>
+
+{{#if this.arbeidsinntekt}}
+    {{> eypdfgen/partials_v2/common/opplysning this.arbeidsinntekt}}
+{{/if}}
+
+{{#if this.naeringsinntekt.inntekt}}
+    {{> eypdfgen/partials_v2/common/opplysning this.naeringsinntekt.inntekt}}
+    {{#not_eq this.naeringsinntekt.inntekt.svar.innhold "0"}}
+        {{#if this.naeringsinntekt.erNaeringsinntektOpptjentJevnt.valg}}
+            {{> eypdfgen/partials_v2/common/opplysning this.naeringsinntekt.erNaeringsinntektOpptjentJevnt.valg}}
+            {{#eq this.naeringsinntekt.erNaeringsinntektOpptjentJevnt.valg.svar.verdi "NEI"}}
+                {{> eypdfgen/partials_v2/common/opplysning this.naeringsinntekt.erNaeringsinntektOpptjentJevnt.beskrivelse}}
+            {{/eq}}
+        {{/if}}
+    {{/not_eq}}
+{{/if}}
+
+{{#if this.inntektFraUtland}}
+    {{> eypdfgen/partials_v2/common/opplysning this.inntektFraUtland}}
+{{/if}}
+
+{{#if this.andreInntekter.valg}}
+    {{> eypdfgen/partials_v2/common/opplysning this.andreInntekter.valg}}
+    {{#eq this.andreInntekter.valg.svar.verdi "JA"}}
+        {{> eypdfgen/partials_v2/common/opplysning this.andreInntekter.inntekt}}
+        {{> eypdfgen/partials_v2/common/opplysning this.andreInntekter.beskrivelse}}
+    {{/eq}}
+{{/if}}
+
+{{#if this.noeSomKanPaavirkeInntekten.valg}}
+    {{> eypdfgen/partials_v2/common/opplysning this.noeSomKanPaavirkeInntekten.valg}}
+    {{#eq this.noeSomKanPaavirkeInntekten.valg.svar.verdi "JA"}}
+        {{> eypdfgen/partials_v2/common/opplysning this.noeSomKanPaavirkeInntekten.grunnTilPaavirkelseAvInntekt}}
+        {{#eq this.noeSomKanPaavirkeInntekten.grunnTilPaavirkelseAvInntekt.svar.verdi "ANNEN_GRUNN"}}
+            {{> eypdfgen/partials_v2/common/opplysning this.noeSomKanPaavirkeInntekten.beskrivelse}}
+        {{/eq}}
+    {{/eq}}
+{{/if}}

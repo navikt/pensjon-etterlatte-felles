@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8" />
+    {{> eypdfgen/partials_v2/style}}
+    <title>Søknad om utvidet omstillingsstønad</title>
+</head>
+<body>
+
+<div id="header">
+    <img class="navlogo" src="{{ image "Navlogo.png" }}" />
+
+    <h1 class="title">
+        Søknad om utvidet omstillingsstønad
+    </h1>
+</div>
+
+<div class="container">
+    {{> eypdfgen/partials_v2/common/innsender this}}
+
+    {{#if this.utbetalingsInformasjon}}
+        {{> eypdfgen/partials_v2/common/utbetalingsinformasjon/utbetalingsinformasjon this.utbetalingsInformasjon}}
+    {{/if}}
+
+    {{> eypdfgen/partials_v2/utvidetOmstillingsstoenad/soeker this.soeker}}
+
+    {{> eypdfgen/partials_v2/utvidetOmstillingsstoenad/situasjonenDinIDag this.situasjonenDinIDag}}
+
+    {{> eypdfgen/partials_v2/utvidetOmstillingsstoenad/utdanningOgTiltak this.utdanningOgTiltak}}
+
+    {{> eypdfgen/partials_v2/utvidetOmstillingsstoenad/inntekt this.inntekt}}
+</div>
+
+{{> eypdfgen/partials_v2/footer this}}
+
+</body>
+</html>
