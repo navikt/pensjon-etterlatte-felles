@@ -38,3 +38,4 @@ spec:
       rules:
         - application: etterlatte-brev-api
         - application: etterlatte-behandling-kafka
+        - application: etterlatte-behandling
