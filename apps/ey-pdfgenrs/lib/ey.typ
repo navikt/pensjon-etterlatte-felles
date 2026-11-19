@@ -79,7 +79,10 @@
     ord.split("-").map(bindestrek => {
       bindestrek.split("'").map(del => {
         if del == "" { [] }
-        else { upper(del.slice(0, 1)) + lower(del.slice(1)) }
+        else {
+          let foerste = del.first()
+          upper(foerste) + lower(del.slice(foerste.len()))
+        }
       }).join("'")
     }).join("-")
   }).join(" ")
