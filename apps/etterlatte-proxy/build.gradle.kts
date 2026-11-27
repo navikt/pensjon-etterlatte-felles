@@ -32,4 +32,13 @@ dependencies {
     testImplementation(libs.mockOauth2Server)
     testImplementation(libs.ktor.serverTests)
     testRuntimeOnly(libs.junit.platform.launcher)
+
+    constraints {
+        implementation(libs.httpclient5) {
+            because("CVE-2026-71290")
+        }
+        implementation(libs.httpclient5.cache) {
+            because("CVE-2026-71290")
+        }
+    }
 }
