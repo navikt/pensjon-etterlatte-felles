@@ -38,3 +38,4 @@ spec:
       rules:
         - application: etterlatte-brev-api
         - application: etterlatte-behandling-kafka
+        - application: innsendt-soeknad # Søknadsmottak for utvidet OMS (B12), bare i dev
