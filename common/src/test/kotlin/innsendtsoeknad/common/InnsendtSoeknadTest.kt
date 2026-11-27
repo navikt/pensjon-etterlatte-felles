@@ -5,6 +5,7 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldContain
 import io.kotest.matchers.types.shouldBeInstanceOf
 import no.nav.etterlatte.libs.common.innsendtsoeknad.EndringAvInntektGrunnType
+import no.nav.etterlatte.libs.common.innsendtsoeknad.ForventetInntektTilNesteAar
 import no.nav.etterlatte.libs.common.innsendtsoeknad.StudieformType
 import no.nav.etterlatte.libs.common.innsendtsoeknad.barnepensjon.Barnepensjon
 import no.nav.etterlatte.libs.common.innsendtsoeknad.common.Behandlingsnummer
@@ -94,6 +95,7 @@ internal class InnsendtSoeknadTest {
 
         soeknad.inntekt.arbeidsinntekt!!.svar.innhold shouldBe "250000"
         soeknad.inntekt.afpInntekt shouldBe null
+        soeknad.inntektNesteAar shouldBe null
     }
 
     @Test
@@ -126,6 +128,46 @@ internal class InnsendtSoeknadTest {
             arbeidsrettetTiltak shouldBe null
             aktivitetsplan shouldBe null
         }
+    }
+
+    @Test
+    fun `Utvidet omstillingsstoenad med inntekt neste aar overlever serialisering og deserialisering`() {
+        val original = lesUtvidetOms("/soeknad/utvidet_omstillingsstoenad_tiltak.json")
+        val inntekt = original.inntekt
+        val arbeidsinntekt = inntekt.arbeidsinntekt!!
+        val soeknad =
+            original.copy(
+                inntektNesteAar =
+                    ForventetInntektTilNesteAar(
+                        arbeidsinntekt = arbeidsinntekt.copy(svar = arbeidsinntekt.svar.copy(innhold = "345000")),
+                        naeringsinntekt = inntekt.naeringsinntekt,
+                        afpInntekt = null,
+                        inntektFraUtland = inntekt.inntektFraUtland,
+                        andreInntekter = inntekt.andreInntekter,
+                        noeSomKanPaavirkeInntekten = inntekt.noeSomKanPaavirkeInntekten,
+                    ),
+            )
+
+        val serialisert = mapper.writeValueAsString(soeknad)
+        serialisert shouldContain "\"inntektNesteAar\""
+        val request = mapper.readValue<SoeknadRequest>("""{"soeknader":[$serialisert]}""")
+        val resultat = request.soeknader.single().shouldBeInstanceOf<UtvidetOmstillingsstoenad>()
+
+        resultat shouldBe soeknad
+        resultat.inntekt.arbeidsinntekt!!.svar.innhold shouldBe "120000"
+        resultat.inntektNesteAar!!.arbeidsinntekt!!.svar.innhold shouldBe "345000"
+        resultat.inntektNesteAar!!.andreInntekter!!.valg!!.svar.verdi shouldBe JaNeiVetIkke.JA
+        resultat.inntektNesteAar!!.noeSomKanPaavirkeInntekten!!.grunnTilPaavirkelseAvInntekt!!.svar.verdi shouldBe
+            EndringAvInntektGrunnType.ANNEN_GRUNN
+        resultat.template() shouldBe "utvidet_omstillingsstoenad_v1"
+    }
+
+    @Test
+    fun `Utvidet omstillingsstoenad kan leses med eksplisitt null for inntekt neste aar`() {
+        val original = lesUtvidetOms("/soeknad/utvidet_omstillingsstoenad.json")
+        val opprinneligJson = javaClass.getResource("/soeknad/utvidet_omstillingsstoenad.json")!!.readText().trim()
+        val json = """${opprinneligJson.dropLast(1)},"inntektNesteAar":null}"""
+        mapper.readValue<InnsendtSoeknad>(json) shouldBe original
     }
 
     @Test

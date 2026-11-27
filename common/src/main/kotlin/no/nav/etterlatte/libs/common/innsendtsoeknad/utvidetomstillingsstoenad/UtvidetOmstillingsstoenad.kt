@@ -3,6 +3,7 @@ package no.nav.etterlatte.libs.common.innsendtsoeknad.utvidetomstillingsstoenad
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import no.nav.etterlatte.libs.common.innsendtsoeknad.BankkontoType
 import no.nav.etterlatte.libs.common.innsendtsoeknad.ForventetInntektIAar
+import no.nav.etterlatte.libs.common.innsendtsoeknad.ForventetInntektTilNesteAar
 import no.nav.etterlatte.libs.common.innsendtsoeknad.Spraak
 import no.nav.etterlatte.libs.common.innsendtsoeknad.StudieformType
 import no.nav.etterlatte.libs.common.innsendtsoeknad.UtbetalingsInformasjon
@@ -32,6 +33,7 @@ data class UtvidetOmstillingsstoenad(
     val inntekt: ForventetInntektIAar,
     override val utbetalingsInformasjon: BetingetOpplysning<EnumSvar<BankkontoType>, UtbetalingsInformasjon>? = null,
     override val mottattDato: LocalDateTime = LocalDateTime.now(),
+    val inntektNesteAar: ForventetInntektTilNesteAar? = null,
 ) : InnsendtSoeknad {
     override val versjon = "1"
     override val type: SoeknadType = SoeknadType.UTVIDET_OMSTILLINGSSTOENAD
